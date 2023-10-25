@@ -1,2 +1,4 @@
-package com.alexanderhasslund.demo.main.Engine;public class UserLogic {
+package com.alexanderhasslund.demo.main.Engine;
+
+public class UserLogic {
 }

@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
     // how do you balance a game like this? if 1 is stronger and 3 spawns?
     // based on how many players and exp rounded down? <- new game plus should have rounded up.
+    // Should I use interface for players and return the value or put it into a separate java class?
 
     // how should they fight? Random within restriction based on classes best attribute?
             // agi => fights with agi but gets more armor from str <- look inte what int gives
@@ -13,6 +14,8 @@ public class Main {
             // int => fights with int but gets more armor from str and more evasion from agi
                                         // or that cheat code is playing int-hero?
                                         // less scaling on AGI and STR compared to agi and str hero
+                                        // Colors for each attribute
+                                        // HP from classes?
 
         // Player
             // name
@@ -26,6 +29,7 @@ public class Main {
                 // List for items
                 // List for talent tree
                 // List for inventory slots
+                        // getters and setters for item list in classes?
 
         // Monster
             // stats - agility / intellect / strength
@@ -36,7 +40,7 @@ public class Main {
 
         // Classes
             // Barb
-            // Thief <- extra loot? Everyone should have its own trait
+            // Rogue <- extra loot? Everyone should have its own trait
             // Warlock
 
             // Blood mage <- uses HP to fight and regenerates when something dies?

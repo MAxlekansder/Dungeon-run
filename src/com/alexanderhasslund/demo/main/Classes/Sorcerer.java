@@ -1,6 +1,6 @@
 package com.alexanderhasslund.demo.main.Classes;
 
-public class Barbarian implements IClasses {
+public class Sorcerer implements IClasses{
     @Override
     public int hp() {
         return 0;

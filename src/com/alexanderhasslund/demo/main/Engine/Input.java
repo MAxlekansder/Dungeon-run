@@ -1,2 +1,4 @@
-package com.alexanderhasslund.demo.main.Engine;public class Input {
+package com.alexanderhasslund.demo.main.Engine;
+
+public class Input {
 }
