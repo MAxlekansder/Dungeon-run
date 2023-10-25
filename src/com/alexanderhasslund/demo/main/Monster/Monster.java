@@ -1,2 +1,7 @@
-package com.alexanderhasslund.demo.main.Monster;public class Monster {
+package com.alexanderhasslund.demo.main.Monster;
+
+public class Monster {
+
+
+
 }

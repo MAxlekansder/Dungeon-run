@@ -1,2 +1,4 @@
-package com.alexanderhasslund.demo.main.Engine;public class Color {
+package com.alexanderhasslund.demo.main.Engine;
+
+public class Color {
 }
