@@ -43,8 +43,7 @@ public class Player {
     }
 
     //uses for setting player array <- look into it
-    public Player(String name, int experience, int level, int currency) {
-        this.name = name;
+    public Player(int experience, int level, int currency) {
         this.experience = experience;
         this.level = level;
         this.currency = currency;

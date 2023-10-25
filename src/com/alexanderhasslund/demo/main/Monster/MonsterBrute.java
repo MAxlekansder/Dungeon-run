@@ -4,10 +4,21 @@ public class MonsterBrute implements IMonster {
 
     private int hp;
     private int resoruce;
-    private int initative;
+    private int damage;
+    private int initiative;
     private int strength;
     private int agility;
     private int intellect;
+
+    public MonsterBrute(int initiative, int level) {
+        this.hp = 60;
+        this.resoruce = 0;
+        this.damage = 20 * level;
+        this.initiative = initiative;
+        this.strength = 20 * level;
+        this.agility = 13 * level;
+        this.intellect = level;
+    }
 
     @Override
     public int damage() {
@@ -18,5 +29,7 @@ public class MonsterBrute implements IMonster {
     public void spells() {
 
     }
+
+
 }
 
