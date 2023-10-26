@@ -8,13 +8,19 @@ import java.util.List;
 public class Player {
 
     private String name;
-    private int id;
-    List<IClasses> playerClass = new ArrayList<>(1);
+    private int playerId;
     List<TalentTree> talentTreeList = new ArrayList<>(3);
     List<Inventory> inventoryList = new ArrayList<>(4);
     private int experience;
     private int currency;
 
+    public int getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
+    }
 
     public String getName() {
         return name;
@@ -27,10 +33,9 @@ public class Player {
     public Player() {
 
     }
-    public Player(String name, int id, List<IClasses> playerClass, List<TalentTree> talentTreeList, List<Inventory> inventoryList, int experience, int currency) {
+    public Player(String name, int playerId, List<TalentTree> talentTreeList, List<Inventory> inventoryList, int experience, int currency) {
         this.name = name;
-        this.id = id;
-        this.playerClass = playerClass;
+        this.playerId = playerId;
         this.talentTreeList = talentTreeList;
         this.inventoryList = inventoryList;
         this.experience = experience;

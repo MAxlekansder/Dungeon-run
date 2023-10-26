@@ -9,6 +9,7 @@ public class MonsterSpellWeaver implements IMonster {
     private int strength;
     private int agility;
     private int intellect;
+    private boolean isDead;
 
     public MonsterSpellWeaver(int initiative, int level) {
         this.hp = 60;
@@ -18,6 +19,7 @@ public class MonsterSpellWeaver implements IMonster {
         this.strength = 20 * level;
         this.agility = 13 * level;
         this.intellect = level;
+        this.isDead = false;
     }
 
     @Override

@@ -28,11 +28,11 @@ public class RegisterPlayer {
 
     public void setPlayerName(Player player) {
         System.out.println("Din karaktär behöver ett namn... vad väljer du?");
-        player.setName(Input.stringInput());
+
     }
 
 
-    public void chooseClass(Input input) {
+    public void chooseClass(Input input, Player player) {
         boolean choice = true;
         for (int i = 0; i < getCountPlayers(); i++) {
             do {
@@ -42,6 +42,12 @@ public class RegisterPlayer {
                     case 3 -> { playerList.add(new Sorcerer());choice = false; }
                     default -> {System.out.println("Use right input");}
                 }
+
+                System.out.printf("Enter character name, for player %s", (i + 1));
+                player.setName(Input.stringInput());
+
+                playerList.get(i).setName(player.getName());
+                playerList.get(i).setPlayerId(i + 1);
             } while (choice);
         }
     }

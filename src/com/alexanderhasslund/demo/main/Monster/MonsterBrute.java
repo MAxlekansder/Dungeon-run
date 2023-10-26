@@ -1,5 +1,7 @@
 package com.alexanderhasslund.demo.main.Monster;
 
+import com.alexanderhasslund.demo.main.Combat.ICombat;
+
 public class MonsterBrute implements IMonster {
 
     private int hp;
@@ -9,6 +11,7 @@ public class MonsterBrute implements IMonster {
     private int strength;
     private int agility;
     private int intellect;
+    private boolean isDead;
 
     public MonsterBrute(int initiative, int level) {
         this.hp = 60;
@@ -18,6 +21,7 @@ public class MonsterBrute implements IMonster {
         this.strength = 20 * level;
         this.agility = 13 * level;
         this.intellect = level;
+        this.isDead = false;
     }
 
     @Override
@@ -29,7 +33,6 @@ public class MonsterBrute implements IMonster {
     public void spells() {
 
     }
-
 
 }
 

@@ -1,8 +1,10 @@
 package com.alexanderhasslund.demo.main.Classes;
 import java.math.*;
+
+import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Player.Player;
 
-public class Barbarian extends Player implements IClasses {
+public class Barbarian extends Player implements IClasses, ICombat {
 
     private String className;
     private int id;
@@ -15,7 +17,7 @@ public class Barbarian extends Player implements IClasses {
     private int level;
     private int defence;
     private int initative;
-    //find a way to increase these
+
 
     public Barbarian() {
         this.className = "BARBARIAN";
@@ -31,30 +33,32 @@ public class Barbarian extends Player implements IClasses {
         this.initative = 55;
     }
 
+
     @Override
     public void trait() {
         //berserkers rage
         //when hp is below 30 <- activate berserkers rage
 
-        if ( hp <= 30) {
+        if ( hp <= hp * 0.3) {
             System.out.println("The barbarian gains berserker rage, gaining extra damage");
-            while (hp <= 30) {
-                damage += 7;
+            while (hp <= hp * 0.3) {
+                damage += (int) (damage * 0.07);
             }
         }
     }
 
+
     @Override
     public int spells(int choice) {
         int temporaryBuffs = 0;
-        switch (choice){
+        switch (choice) {
             case 1 -> { // a baseline damage spell that adds 3 damage and uses 'resources'
                 temporaryBuffs = (int) (Math.ceil(damage) + ( 3 * level^level/4));
-                System.out.println("Cleaves the target with: " );
+                System.out.println("Cleaves the target with: " + temporaryBuffs);
                 resource -= 20;
             }
             case 2 -> { //
-                System.out.println( " the barbarian muster its rage, gaining defence euqal to: " + (defence + 2));
+                System.out.println( "The barbarian muster its rage, gaining defence euqal to: " + (defence + 2));
                 resource -= 30;
                 temporaryBuffs += 2;
             }
@@ -63,8 +67,24 @@ public class Barbarian extends Player implements IClasses {
         return temporaryBuffs;
     }
 
+
     @Override
     public void setLevelUp() {
+
+    }
+
+    @Override
+    public void attack() {
+
+    }
+
+    @Override
+    public void flee() {
+
+    }
+
+    @Override
+    public void getStatus() {
 
     }
 }
