@@ -103,6 +103,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
                         " Agility = " + agility + "  || " +
                         " Intellect = " + intellect + "  || " +
                         " Initiative = " + initative + "  ||"
+
                 ;
     }
 }

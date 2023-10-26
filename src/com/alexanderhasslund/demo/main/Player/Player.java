@@ -1,5 +1,4 @@
 package com.alexanderhasslund.demo.main.Player;
-import com.alexanderhasslund.demo.main.Classes.IClasses;
 import com.alexanderhasslund.demo.main.Inventory.Inventory;
 import com.alexanderhasslund.demo.main.TalentTree.TalentTree;
 import java.util.ArrayList;
@@ -30,9 +29,26 @@ public class Player {
         this.name = name;
     }
 
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public int getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(int currency) {
+        this.currency = currency;
+    }
+
     public Player() {
 
     }
+
     public Player(String name, int playerId, List<TalentTree> talentTreeList, List<Inventory> inventoryList, int experience, int currency) {
         this.name = name;
         this.playerId = playerId;
@@ -41,5 +57,7 @@ public class Player {
         this.experience = experience;
         this.currency = currency;
     }
+
+
 
 }

@@ -4,6 +4,7 @@ import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Classes.Rogue;
 import com.alexanderhasslund.demo.main.Classes.Sorcerer;
 import com.alexanderhasslund.demo.main.File.StringLore;
+import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.Player.RegisterPlayer;
 
 public class GameStartControl {
@@ -26,6 +27,7 @@ public class GameStartControl {
 
         registerPlayer.playerCount();
         registerPlayer.chooseClass();
+        registerPlayer.getPlayerInformation();
 
     }
 

@@ -11,7 +11,6 @@ import java.util.List;
 
 public class RegisterPlayer {
     List<Player> playerList = new ArrayList<>();
-    private Player player;
     private int countPlayers;
 
 
@@ -51,6 +50,18 @@ public class RegisterPlayer {
 
         for (int i = 0; i < countPlayers; i++) {
             System.out.println(playerList.get(i));
+        }
+
+
+    }
+
+    public void getPlayerInformation() {
+        for (int i = 0; i < playerList.size(); i++) {
+            System.out.println(
+                    " Name = " + playerList.get(i).getName() + "  || "
+                  + " Currency = " + playerList.get(i).getCurrency() + "  || "
+                  + " Experience = " + playerList.get(i).getExperience() + "  || "
+            );
         }
     }
 

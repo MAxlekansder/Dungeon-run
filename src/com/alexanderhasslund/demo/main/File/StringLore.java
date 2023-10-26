@@ -42,7 +42,7 @@ public class StringLore {
 
         for (int i = 0; i < 4; i++) {
             System.out.println(RED + "SAVE PRINCESS BENNY" + RESET);
-            Thread.sleep(200);
+            Thread.sleep(300);
         }
     }
 
