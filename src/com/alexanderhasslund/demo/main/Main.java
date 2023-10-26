@@ -1,25 +1,27 @@
 package com.alexanderhasslund.demo.main;
-import com.alexanderhasslund.demo.main.Classes.Barbarian;
-import com.alexanderhasslund.demo.main.Engine.Input;
-import com.alexanderhasslund.demo.main.Player.Player;
-import com.alexanderhasslund.demo.main.Player.RegisterPlayer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.alexanderhasslund.demo.main.Engine.StringManipulator;
+import com.alexanderhasslund.demo.main.File.StringLore;
+import com.alexanderhasslund.demo.main.Player.RegisterPlayer;
 
 public class Main {
 
 
-    public static void main(String[] args) {
-        List<Player> playerList = new ArrayList<>();
+    public static void main(String[] args) throws InterruptedException {
         RegisterPlayer registerPlayer = new RegisterPlayer();
-        System.out.println("Hur många spelare?");
-        int countPlayers = Input.intInput();
+        StringManipulator stringManipulator = new StringManipulator();
+        StringLore stringLore = new StringLore();
 
-        for (int i = 0; i < countPlayers; i++) {
-            playerList.add(new Barbarian());
-            System.out.println(playerList.get(i).getClass());
-        }
+        //System.out.println(stringManipulator.manipulateString(stringLore.intro()));
+        stringLore.gameTitle();
+
+        /*
+        System.out.println("Hur många ska spela spelet?");
+        registerPlayer.setCountPlayers(Input.intInput());
+
+        System.out.println("välj klass");
+        registerPlayer.chooseClass(Input.intInput());
+
+         */
     }
 }
