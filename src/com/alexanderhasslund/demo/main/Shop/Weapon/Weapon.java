@@ -1,9 +1,10 @@
-package com.alexanderhasslund.demo.main.Items.Weapon;
+package com.alexanderhasslund.demo.main.Shop.Weapon;
 
 public class Weapon {
 
     private int damage;
     private int initiative;
+    private int levelLock;
 
 
     public int getDamage() {

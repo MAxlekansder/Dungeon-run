@@ -1,28 +1,19 @@
 package com.alexanderhasslund.demo.main.Player;
-
 import com.alexanderhasslund.demo.main.Classes.IClasses;
 import com.alexanderhasslund.demo.main.Inventory.Inventory;
-import com.alexanderhasslund.demo.main.Items.Items;
 import com.alexanderhasslund.demo.main.TalentTree.TalentTree;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
 
     private String name;
-    private int experience;
-    private int level;
-    private int initative;
-    private int currency;
-
-    //kolla upp hur initialCapacity faktiskt fungerar
-    List<Player> playerList = new ArrayList<>();
-    List<Items> itemList = new ArrayList<>(5);
-    //kolla om det här faktiskt är bäst sätt att spara detta på? Finns det en bättre practice?
+    private int id;
     List<IClasses> playerClass = new ArrayList<>(1);
     List<TalentTree> talentTreeList = new ArrayList<>(3);
-    List<Inventory> inventoryList = new ArrayList<>();
+    List<Inventory> inventoryList = new ArrayList<>(4);
+    private int experience;
+    private int currency;
 
 
     public String getName() {
@@ -33,19 +24,17 @@ public class Player {
         this.name = name;
     }
 
-    //find a formula for exp? <- no need now
-    public int levelUp() {
-        if (experience == 100) {
-            level += level;
+    public Player() {
 
-        }
-        return level;
     }
-
-    //uses for setting player array <- look into it
-    public Player(int experience, int level, int currency) {
+    public Player(String name, int id, List<IClasses> playerClass, List<TalentTree> talentTreeList, List<Inventory> inventoryList, int experience, int currency) {
+        this.name = name;
+        this.id = id;
+        this.playerClass = playerClass;
+        this.talentTreeList = talentTreeList;
+        this.inventoryList = inventoryList;
         this.experience = experience;
-        this.level = level;
         this.currency = currency;
     }
+
 }
