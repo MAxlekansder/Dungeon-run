@@ -1,4 +1,5 @@
 package com.alexanderhasslund.demo.main.File;
+
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
 
 import static com.alexanderhasslund.demo.main.Engine.Color.*;
@@ -46,9 +47,44 @@ public class StringLore {
     }
 
 
-    public String gameIntroduction() {
+    public String gameIntroductionClasses() {
         return ("""
-                Welcome Hero! 
+                
+                Hello Hero! 
+                                
+                Welcome to the game 'SAVE PRINCESS BENNY' 
+                you have 3 classes... to start with.
+                -----------------------------------------------------
+                \033[1;31mBARBARIAN         \033[1;32mROGUE              \033[1;34mSORCERER\033[0m
+                \033[1;37mBERSERKERS RAGE   FOOLS ELUSIVENESS  DRAGONS BREATH\033[0m
+                High strength     High agility       High intellect
+                High damage       Medium damage      Ramping damage
+                High defence      Medium defence     Low defence   
+                Low resource      High resource      Ramping resource
+                
+                -----------------------------------------------------      
+                """);
+    }
+
+    public String gameIntroductionRules() {
+        return ("""
+                Each Class have their own unique play style and attributes:
+                \033[1;31mStrength\033[0m is an attribute that grants more raw damage and protection
+                \033[1;32mAgility\033[0m is an attirubte that give higher initiative and a better chance to dodge
+                \033[1;34mIntellect\033[0m is an attribute that gives higher resources and higher scaling damage
+                                
+                The game have some basic rules, you can either play alone or with a party of 3.
+                it's a turned based dungeon crawl, with a rogue-like twist... 
+                Therefore you'll explore the skewering underworld of Azgarak Karaz
+                beneath the city of Elderwell
+                                
+                where both you and the monsters have initative, the lower the number
+                the better the chances for you to start the round
+                                
+                but remember...
+                                
+                If you die - the game ends
+                good luck heroes...
                 """);
     }
 }

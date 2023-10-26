@@ -1,5 +1,6 @@
 package com.alexanderhasslund.demo.main.Classes;
 
+import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Player.Player;
 
 public class Sorcerer extends Player implements IClasses{
@@ -20,12 +21,15 @@ public class Sorcerer extends Player implements IClasses{
         this.id = 3;
         this.hp = 80;
         this.damage = 10; //find a good formula;
-        this.resource = 100;
+        this.resource = 150;
         this.strength = 3;
         this.agility = 5;
         this.intellect = 22;
         this.level = 1;
         this.initative = 70;
+    }
+    public String getClassName() {
+        return className;
     }
 
     @Override
@@ -46,5 +50,19 @@ public class Sorcerer extends Player implements IClasses{
     @Override
     public void setLevelUp() {
 
+    }
+
+    @Override
+    public String toString() {
+        return
+                Color.BLUE+ className + Color.RESET + ":" +
+                "  Hp = " + hp + "   || " +
+                " Damage = " + damage + "  || " +
+                " Resource = " + resource + "  || " +
+                " Strength = " + strength + "  || " +
+                " Agility = " + agility + "  || " +
+                " Intellect = " + intellect + "  || " +
+                " Initiative = " + initative + "  ||"
+             ;
     }
 }

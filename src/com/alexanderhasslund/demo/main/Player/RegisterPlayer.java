@@ -2,7 +2,9 @@ package com.alexanderhasslund.demo.main.Player;
 import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Classes.Rogue;
 import com.alexanderhasslund.demo.main.Classes.Sorcerer;
+import com.alexanderhasslund.demo.main.Engine.GameStartControl;
 import com.alexanderhasslund.demo.main.Engine.Input;
+import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,6 @@ public class RegisterPlayer {
     private Player player;
     private int countPlayers;
 
-    //find a formula for exp? <- no need now
 
     public int getCountPlayers() {
         return countPlayers;
@@ -22,20 +23,23 @@ public class RegisterPlayer {
         this.countPlayers = countPlayers;
     }
 
+
     public void playerCount() {
-        System.out.println("Hur många ska spela spelet?");
+        System.out.print("Please enter number of players: ");
         setCountPlayers(Input.intInput());
     }
 
 
-    public void chooseClass(int input) {
-        boolean choice = true;
+    public void chooseClass() {
         for (int i = 0; i < getCountPlayers(); i++) {
+            PlayerChoice playerChoice = new PlayerChoice();
+            System.out.println(playerChoice.nameAndClass());
+            boolean choice = true;
             do {
-                switch (input) {
-                    case 1 -> { playerList.add(new Barbarian());choice = false; }
-                    case 2 -> { playerList.add(new Rogue());choice = false; }
-                    case 3 -> { playerList.add(new Sorcerer());choice = false; }
+                switch (Input.intInput()) {
+                    case 1 -> {playerList.add(i, new Barbarian());choice = false;}
+                    case 2 -> {playerList.add(i, new Rogue());choice = false;}
+                    case 3 -> {playerList.add(i, new Sorcerer());choice = false;}
                     default -> {System.out.println("Use right input");}
                 }
 
@@ -44,7 +48,10 @@ public class RegisterPlayer {
                 playerList.get(i).setPlayerId(i + 1);
             } while (choice);
         }
-        System.out.println(playerList.get(0).getName());
+
+        for (int i = 0; i < countPlayers; i++) {
+            System.out.println(playerList.get(i));
+        }
     }
 
     

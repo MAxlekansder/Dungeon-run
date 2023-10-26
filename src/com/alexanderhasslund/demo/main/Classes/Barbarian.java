@@ -2,6 +2,7 @@ package com.alexanderhasslund.demo.main.Classes;
 import java.math.*;
 
 import com.alexanderhasslund.demo.main.Combat.ICombat;
+import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Player.Player;
 
 public class Barbarian extends Player implements IClasses, ICombat {
@@ -25,14 +26,17 @@ public class Barbarian extends Player implements IClasses, ICombat {
         this.hp = 115;
         this.damage = 20;
         this.resource = 100;
-        this.strength = 20;
-        this.agility = 10;
+        this.strength = 22;
+        this.agility = 8;
         this.intellect = 0;
         this.level = 1;
         this.defence = 1;
         this.initative = 55;
     }
 
+    public String getClassName() {
+        return className;
+    }
 
     @Override
     public void trait() {
@@ -86,5 +90,19 @@ public class Barbarian extends Player implements IClasses, ICombat {
     @Override
     public void getStatus() {
 
+    }
+
+    @Override
+    public String toString() {
+        return
+                Color.RED + className + Color.RESET + ":" +
+                        " Hp = " + hp + "  || " +
+                        " Damage = " + damage + "  || " +
+                        " Resource = " + resource + "  || " +
+                        " Strength = " + strength + "  || " +
+                        " Agility = " + agility + "  || " +
+                        " Intellect = " + intellect + "  || " +
+                        " Initiative = " + initative + "  ||"
+                ;
     }
 }

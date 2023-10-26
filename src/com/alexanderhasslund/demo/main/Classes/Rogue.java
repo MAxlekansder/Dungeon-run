@@ -1,8 +1,9 @@
 package com.alexanderhasslund.demo.main.Classes;
 
+import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Player.Player;
 
-public class Rogue extends Player implements IClasses{
+public class Rogue extends Player implements IClasses {
 
     private String className;
     private int id;
@@ -30,6 +31,10 @@ public class Rogue extends Player implements IClasses{
         this.initative = 40;
     }
 
+    public String getClassName() {
+        return className;
+    }
+
     @Override
     public void trait() {
         //fools elusiveness
@@ -37,10 +42,14 @@ public class Rogue extends Player implements IClasses{
 
     @Override
     public int spells(int choice) {
-        switch (choice){
-            case 1 -> {}
-            case 2 -> {}
-            default -> {System.out.println("Use right input");}
+        switch (choice) {
+            case 1 -> {
+            }
+            case 2 -> {
+            }
+            default -> {
+                System.out.println("Use right input");
+            }
         }
         return 2;
     }
@@ -48,5 +57,19 @@ public class Rogue extends Player implements IClasses{
     @Override
     public void setLevelUp() {
 
+    }
+
+    @Override
+    public String toString() {
+        return
+                Color.GREEN + className + Color.RESET + ":" +
+                        "     Hp = " + hp + "  || " +
+                        " Damage = " + damage + "  || " +
+                        " Resource = " + resource + "  || " +
+                        " Strength = " + strength + "  || " +
+                        " Agility = " + agility + "  || " +
+                        " Intellect = " + intellect + "  || " +
+                        " Initiative = " + initative + "  ||"
+                ;
     }
 }

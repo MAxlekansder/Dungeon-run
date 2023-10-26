@@ -1,27 +1,16 @@
 package com.alexanderhasslund.demo.main;
-
-import com.alexanderhasslund.demo.main.Engine.StringManipulator;
-import com.alexanderhasslund.demo.main.File.StringLore;
-import com.alexanderhasslund.demo.main.Player.RegisterPlayer;
+import com.alexanderhasslund.demo.main.Engine.GameStartControl;
 
 public class Main {
 
 
     public static void main(String[] args) throws InterruptedException {
-        RegisterPlayer registerPlayer = new RegisterPlayer();
-        StringManipulator stringManipulator = new StringManipulator();
-        StringLore stringLore = new StringLore();
+        GameStartControl gameStartControl = new GameStartControl();
 
-        //System.out.println(stringManipulator.manipulateString(stringLore.intro()));
-        stringLore.gameTitle();
+        gameStartControl.startIntroductionGame();
 
-        /*
-        System.out.println("Hur många ska spela spelet?");
-        registerPlayer.setCountPlayers(Input.intInput());
 
-        System.out.println("välj klass");
-        registerPlayer.chooseClass(Input.intInput());
-
-         */
     }
 }
+
+
