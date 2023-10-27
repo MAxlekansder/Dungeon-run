@@ -28,9 +28,7 @@ public class Sorcerer extends Player implements IClasses{
         this.level = 1;
         this.initative = 70;
     }
-    public String getClassName() {
-        return className;
-    }
+
 
     @Override
     public void trait() {
@@ -62,7 +60,79 @@ public class Sorcerer extends Player implements IClasses{
                 " Strength = " + strength + "  || " +
                 " Agility = " + agility + "  || " +
                 " Intellect = " + intellect + "  || " +
-                " Initiative = " + initative + "  ||"
-             ;
+                " Initiative = " + initative + "  ||";
+    }
+
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public int getResource() {
+        return resource;
+    }
+
+    public void setResource(int resource) {
+        this.resource = resource;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getAgility() {
+        return agility;
+    }
+
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    public int getIntellect() {
+        return intellect;
+    }
+
+    public void setIntellect(int intellect) {
+        this.intellect = intellect;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getInitative() {
+        return initative;
+    }
+
+    public void setInitative(int initative) {
+        this.initative = initative;
     }
 }

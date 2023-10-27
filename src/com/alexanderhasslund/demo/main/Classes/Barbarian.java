@@ -1,5 +1,4 @@
 package com.alexanderhasslund.demo.main.Classes;
-import java.math.*;
 
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
@@ -17,7 +16,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
     private int intellect;
     private int level;
     private int defence;
-    private int initative;
+    private int initiative;
 
 
     public Barbarian() {
@@ -31,12 +30,10 @@ public class Barbarian extends Player implements IClasses, ICombat {
         this.intellect = 0;
         this.level = 1;
         this.defence = 1;
-        this.initative = 55;
+        this.initiative = 55;
     }
 
-    public String getClassName() {
-        return className;
-    }
+
 
     @Override
     public void trait() {
@@ -102,8 +99,88 @@ public class Barbarian extends Player implements IClasses, ICombat {
                         " Strength = " + strength + "  || " +
                         " Agility = " + agility + "  || " +
                         " Intellect = " + intellect + "  || " +
-                        " Initiative = " + initative + "  ||"
+                        " Initiative = " + initiative + "  ||";
+    }
 
-                ;
+
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public int getResource() {
+        return resource;
+    }
+
+    public void setResource(int resource) {
+        this.resource = resource;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getAgility() {
+        return agility;
+    }
+
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    public int getIntellect() {
+        return intellect;
+    }
+
+    public void setIntellect(int intellect) {
+        this.intellect = intellect;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getDefence() {
+        return defence;
+    }
+
+    public void setDefence(int defence) {
+        this.defence = defence;
+    }
+
+    public int getInitiative() {
+        return initiative;
+    }
+
+    public void setInitiative(int initiative) {
+        this.initiative = initiative;
     }
 }

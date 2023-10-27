@@ -2,15 +2,16 @@ package com.alexanderhasslund.demo.main.Player;
 import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Classes.Rogue;
 import com.alexanderhasslund.demo.main.Classes.Sorcerer;
-import com.alexanderhasslund.demo.main.Engine.GameStartControl;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RegisterPlayer {
     List<Player> playerList = new ArrayList<>();
+    List<Barbarian> barbarianList = new ArrayList<>();
     private int countPlayers;
 
 
@@ -24,7 +25,7 @@ public class RegisterPlayer {
 
 
     public void playerCount() {
-        System.out.print("Please enter number of players: ");
+        System.out.print("\nPlease enter number of players: ");
         setCountPlayers(Input.intInput());
     }
 
@@ -41,18 +42,19 @@ public class RegisterPlayer {
                     case 3 -> {playerList.add(i, new Sorcerer());choice = false;}
                     default -> {System.out.println("Use right input");}
                 }
-
+            } while (choice);
                 System.out.printf("Enter character name, for player %s: ", (i + 1));
                 playerList.get(i).setName(Input.stringInput());
                 playerList.get(i).setPlayerId(i + 1);
-            } while (choice);
+
         }
 
         for (int i = 0; i < countPlayers; i++) {
             System.out.println(playerList.get(i));
+            System.out.println(playerList.get(i).getClassName());
+            playerList.get(i).setDamage(playerList.get(i).getDamage() + 5) ;
+            System.out.println(playerList.get(i).getDamage());
         }
-
-
     }
 
     public void getPlayerInformation() {
@@ -63,8 +65,13 @@ public class RegisterPlayer {
                   + " Experience = " + playerList.get(i).getExperience() + "  || "
             );
         }
+        setDamageBarbarian();
     }
 
-    
+    public void setDamageBarbarian() {
+
+
+    }
+
 }
 

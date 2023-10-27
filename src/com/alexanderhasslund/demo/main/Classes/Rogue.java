@@ -15,7 +15,7 @@ public class Rogue extends Player implements IClasses {
     private int intellect;
     private int level;
     private int evasion;
-    private int initative;
+    private int initiative;
 
     public Rogue() {
         this.className = "ROGUE";
@@ -28,12 +28,9 @@ public class Rogue extends Player implements IClasses {
         this.intellect = 2;
         this.level = 1;
         this.evasion = 1;
-        this.initative = 40;
+        this.initiative = 40;
     }
 
-    public String getClassName() {
-        return className;
-    }
 
     @Override
     public void trait() {
@@ -69,7 +66,87 @@ public class Rogue extends Player implements IClasses {
                         " Strength = " + strength + "  || " +
                         " Agility = " + agility + "  || " +
                         " Intellect = " + intellect + "  || " +
-                        " Initiative = " + initative + "  ||"
-                ;
+                        " Initiative = " + initiative + "  ||";
+    }
+
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public int getResource() {
+        return resource;
+    }
+
+    public void setResource(int resource) {
+        this.resource = resource;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getAgility() {
+        return agility;
+    }
+
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    public int getIntellect() {
+        return intellect;
+    }
+
+    public void setIntellect(int intellect) {
+        this.intellect = intellect;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getDefence() {
+        return evasion;
+    }
+
+    public void setDefence(int evasion) {
+        this.evasion = evasion;
+    }
+
+    public int getInitiative() {
+        return initiative;
+    }
+
+    public void setInitiative(int initiative) {
+        this.initiative = initiative;
     }
 }

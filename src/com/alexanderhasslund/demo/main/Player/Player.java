@@ -1,4 +1,5 @@
 package com.alexanderhasslund.demo.main.Player;
+import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Inventory.Inventory;
 import com.alexanderhasslund.demo.main.TalentTree.TalentTree;
 import java.util.ArrayList;
@@ -12,6 +13,107 @@ public class Player {
     List<Inventory> inventoryList = new ArrayList<>(4);
     private int experience;
     private int currency;
+
+    private String className;
+    private int id;
+    private int hp;
+    private int damage;
+    private int resource;
+    private int strength;
+    private int agility;
+    private int intellect;
+    private int level;
+    private int defence;
+    private int initiative;
+
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public int getResource() {
+        return resource;
+    }
+
+    public void setResource(int resource) {
+        this.resource = resource;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getAgility() {
+        return agility;
+    }
+
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    public int getIntellect() {
+        return intellect;
+    }
+
+    public void setIntellect(int intellect) {
+        this.intellect = intellect;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getDefence() {
+        return defence;
+    }
+
+    public void setDefence(int defence) {
+        this.defence = defence;
+    }
+
+    public int getInitiative() {
+        return initiative;
+    }
+
+    public void setInitiative(int initiative) {
+        this.initiative = initiative;
+    }
 
     public int getPlayerId() {
         return playerId;
@@ -49,15 +151,22 @@ public class Player {
 
     }
 
-    public Player(String name, int playerId, List<TalentTree> talentTreeList, List<Inventory> inventoryList, int experience, int currency) {
+
+    public Player(String name, List<TalentTree> talentTreeList, List<Inventory> inventoryList, int experience, int currency, String className, int hp, int damage, int resource, int strength, int agility, int intellect, int level, int defence, int initiative) {
         this.name = name;
-        this.playerId = playerId;
         this.talentTreeList = talentTreeList;
         this.inventoryList = inventoryList;
         this.experience = experience;
         this.currency = currency;
+        this.className = className;
+        this.hp = hp;
+        this.damage = damage;
+        this.resource = resource;
+        this.strength = strength;
+        this.agility = agility;
+        this.intellect = intellect;
+        this.level = level;
+        this.defence = defence;
+        this.initiative = initiative;
     }
-
-
-
 }

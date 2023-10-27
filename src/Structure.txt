@@ -1,12 +1,13 @@
  // SAVE PRINCESS BENNY
 
-
+ //Look up system design in files...
  // souf -> system out format , %s för att ta in värden
  // if there's a lot of monsters, sum the entire HP pool and use that as a check condition
  // lambda for that or just count monsterArraylist... 3 enemys 10 / 20 / 40 = 70;
  // use index to fight different enemies and reduce that monsters health
 
     //find a formula for exp? <- no need now
+
 
  // how do you balance a game like this? if 1 is stronger and 3 spawns?
     // based on how many players and exp rounded down? <- new game plus should have rounded up.
