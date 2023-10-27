@@ -7,12 +7,20 @@ import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 
 public class RegisterPlayer {
-    List<Player> playerList = new ArrayList<>();
-    List<Barbarian> barbarianList = new ArrayList<>();
+    private List<Player> playerList = new ArrayList<>();
     private int countPlayers;
+
+
+    public List<Player> getPlayerList() {
+        return playerList;
+    }
+
+    public void setPlayerList(List<Player> playerList) {
+        this.playerList = playerList;
+    }
 
 
     public int getCountPlayers() {
@@ -23,12 +31,10 @@ public class RegisterPlayer {
         this.countPlayers = countPlayers;
     }
 
-
     public void playerCount() {
         System.out.print("\nPlease enter number of players: ");
         setCountPlayers(Input.intInput());
     }
-
 
     public void chooseClass() {
         for (int i = 0; i < getCountPlayers(); i++) {
@@ -43,21 +49,19 @@ public class RegisterPlayer {
                     default -> {System.out.println("Use right input");}
                 }
             } while (choice);
-                System.out.printf("Enter character name, for player %s: ", (i + 1));
-                playerList.get(i).setName(Input.stringInput());
-                playerList.get(i).setPlayerId(i + 1);
-
-        }
-
-        for (int i = 0; i < countPlayers; i++) {
-            System.out.println(playerList.get(i));
-            System.out.println(playerList.get(i).getClassName());
-            playerList.get(i).setDamage(playerList.get(i).getDamage() + 5) ;
-            System.out.println(playerList.get(i).getDamage());
         }
     }
 
-    public void getPlayerInformation() {
+    public void choosePlayerName() {
+        for ( int i = 0; i < getCountPlayers(); i++) {
+            System.out.printf("Enter character name, for player %s: ", (i + 1));
+            playerList.get(i).setName(Input.stringInput());
+            playerList.get(i).setPlayerId(i + 1);
+        }
+    }
+
+
+    public List<Player> getPlayerInformation() {
         for (int i = 0; i < playerList.size(); i++) {
             System.out.println(
                     " Name = " + playerList.get(i).getName() + "  || "
@@ -65,12 +69,7 @@ public class RegisterPlayer {
                   + " Experience = " + playerList.get(i).getExperience() + "  || "
             );
         }
-        setDamageBarbarian();
-    }
-
-    public void setDamageBarbarian() {
-
-
+        return playerList;
     }
 
 }

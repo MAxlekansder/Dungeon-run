@@ -15,10 +15,10 @@ public class MonsterSpellWeaver implements IMonster {
         this.hp = 60;
         this.resoruce = 0;
         this.damage = 20 * level;
-        this.initiative = initiative;
-        this.strength = 20 * level;
-        this.agility = 13 * level;
-        this.intellect = level;
+        this.initiative = 80;
+        this.strength = 20 ;
+        this.agility = 13;
+        this.intellect = 20;
         this.isDead = false;
     }
 

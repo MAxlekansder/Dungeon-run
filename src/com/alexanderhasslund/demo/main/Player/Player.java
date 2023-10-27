@@ -147,6 +147,22 @@ public class Player {
         this.currency = currency;
     }
 
+    public List<TalentTree> getTalentTreeList() {
+        return talentTreeList;
+    }
+
+    public void setTalentTreeList(List<TalentTree> talentTreeList) {
+        this.talentTreeList = talentTreeList;
+    }
+
+    public List<Inventory> getInventoryList() {
+        return inventoryList;
+    }
+
+    public void setInventoryList(List<Inventory> inventoryList) {
+        this.inventoryList = inventoryList;
+    }
+
     public Player() {
 
     }

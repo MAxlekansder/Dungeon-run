@@ -34,15 +34,24 @@ public class Rogue extends Player implements IClasses {
 
     @Override
     public void trait() {
+        //When struck in combat you have a chance to dodge the attack, multiplies evasion
         //fools elusiveness
+        //count number of rounds and try to get it in here so there's a chance to use the trait
+        // maybe put the for loop for rounds in the fighting sequence and not in the spell?
+
+        evasion *= evasion * 2;
+
+        //Cooldown
     }
 
     @Override
     public int spells(int choice) {
         switch (choice) {
             case 1 -> {
+                System.out.printf("Backstabs the target, dealing: %s extra damage and gaining: %s extra evasion", 3, 2);
             }
             case 2 -> {
+                System.out.printf("Pick pockets the target gaining: %s gold", 1);
             }
             default -> {
                 System.out.println("Use right input");
@@ -69,84 +78,4 @@ public class Rogue extends Player implements IClasses {
                         " Initiative = " + initiative + "  ||";
     }
 
-
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
-    public int getResource() {
-        return resource;
-    }
-
-    public void setResource(int resource) {
-        this.resource = resource;
-    }
-
-    public int getStrength() {
-        return strength;
-    }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public int getAgility() {
-        return agility;
-    }
-
-    public void setAgility(int agility) {
-        this.agility = agility;
-    }
-
-    public int getIntellect() {
-        return intellect;
-    }
-
-    public void setIntellect(int intellect) {
-        this.intellect = intellect;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public int getDefence() {
-        return evasion;
-    }
-
-    public void setDefence(int evasion) {
-        this.evasion = evasion;
-    }
-
-    public int getInitiative() {
-        return initiative;
-    }
-
-    public void setInitiative(int initiative) {
-        this.initiative = initiative;
-    }
 }

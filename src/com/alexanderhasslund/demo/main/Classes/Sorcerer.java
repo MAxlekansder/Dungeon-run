@@ -33,13 +33,22 @@ public class Sorcerer extends Player implements IClasses{
     @Override
     public void trait() {
         //Dragons breath
+        //Based on how many targets it will cleave
+        //Find a good way to work this out, but first we need to add all monsters and then split
+        //damage * some trait / array.size() == all monster in Array
+
+        //Cooldown
     }
 
     @Override
     public int spells(int choice) {
         switch (choice){
-            case 1 -> {}
-            case 2 -> {}
+            case 1 -> {
+                System.out.println("builds up damage over time, over three rounds: ");
+            }
+            case 2 -> {
+                System.out.println("The sorcerer cocoons it self, soaks all incoming harm");
+            }
             default -> {System.out.println("Use right input");}
         }
         return 2;
@@ -63,76 +72,4 @@ public class Sorcerer extends Player implements IClasses{
                 " Initiative = " + initative + "  ||";
     }
 
-
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
-    public int getResource() {
-        return resource;
-    }
-
-    public void setResource(int resource) {
-        this.resource = resource;
-    }
-
-    public int getStrength() {
-        return strength;
-    }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public int getAgility() {
-        return agility;
-    }
-
-    public void setAgility(int agility) {
-        this.agility = agility;
-    }
-
-    public int getIntellect() {
-        return intellect;
-    }
-
-    public void setIntellect(int intellect) {
-        this.intellect = intellect;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public int getInitative() {
-        return initative;
-    }
-
-    public void setInitative(int initative) {
-        this.initative = initative;
-    }
 }
