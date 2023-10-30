@@ -31,10 +31,6 @@ public class Player {
         return className;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
     public int getId() {
         return id;
     }
