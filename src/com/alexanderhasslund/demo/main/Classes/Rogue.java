@@ -15,7 +15,7 @@ public class Rogue extends Player implements IClasses {
     private int intellect;
     private int level;
     private int evasion;
-    private int initative;
+    private int initiative;
 
     public Rogue() {
         this.className = "ROGUE";
@@ -28,24 +28,30 @@ public class Rogue extends Player implements IClasses {
         this.intellect = 2;
         this.level = 1;
         this.evasion = 1;
-        this.initative = 40;
+        this.initiative = 40;
     }
 
-    public String getClassName() {
-        return className;
-    }
 
     @Override
     public void trait() {
+        //When struck in combat you have a chance to dodge the attack, multiplies evasion
         //fools elusiveness
+        //count number of rounds and try to get it in here so there's a chance to use the trait
+        // maybe put the for loop for rounds in the fighting sequence and not in the spell?
+
+        evasion *= evasion * 2;
+
+        //Cooldown
     }
 
     @Override
     public int spells(int choice) {
         switch (choice) {
             case 1 -> {
+                System.out.printf("Backstabs the target, dealing: %s extra damage and gaining: %s extra evasion", 3, 2);
             }
             case 2 -> {
+                System.out.printf("Pick pockets the target gaining: %s gold", 1);
             }
             default -> {
                 System.out.println("Use right input");
@@ -69,7 +75,7 @@ public class Rogue extends Player implements IClasses {
                         " Strength = " + strength + "  || " +
                         " Agility = " + agility + "  || " +
                         " Intellect = " + intellect + "  || " +
-                        " Initiative = " + initative + "  ||"
-                ;
+                        " Initiative = " + initiative + "  ||";
     }
+
 }

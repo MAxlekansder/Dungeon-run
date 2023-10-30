@@ -28,20 +28,27 @@ public class Sorcerer extends Player implements IClasses{
         this.level = 1;
         this.initative = 70;
     }
-    public String getClassName() {
-        return className;
-    }
+
 
     @Override
     public void trait() {
         //Dragons breath
+        //Based on how many targets it will cleave
+        //Find a good way to work this out, but first we need to add all monsters and then split
+        //damage * some trait / array.size() == all monster in Array
+
+        //Cooldown
     }
 
     @Override
     public int spells(int choice) {
         switch (choice){
-            case 1 -> {}
-            case 2 -> {}
+            case 1 -> {
+                System.out.println("builds up damage over time, over three rounds: ");
+            }
+            case 2 -> {
+                System.out.println("The sorcerer cocoons it self, soaks all incoming harm");
+            }
             default -> {System.out.println("Use right input");}
         }
         return 2;
@@ -62,7 +69,7 @@ public class Sorcerer extends Player implements IClasses{
                 " Strength = " + strength + "  || " +
                 " Agility = " + agility + "  || " +
                 " Intellect = " + intellect + "  || " +
-                " Initiative = " + initative + "  ||"
-             ;
+                " Initiative = " + initative + "  ||";
     }
+
 }

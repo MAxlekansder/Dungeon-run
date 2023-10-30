@@ -26,6 +26,6 @@ public class Game {
 
     public void saveCharacter() {
         //if you want to go back to check how it went maybe?
-        // Like high score (Alexander with this and this -> expand to see build, tree, item and stats? 
+        // Like high score (Alexander with this and this -> expand to see build, tree, item and stats?
     }
 }

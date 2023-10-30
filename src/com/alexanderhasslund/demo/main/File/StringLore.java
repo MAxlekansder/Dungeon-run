@@ -15,7 +15,7 @@ public class StringLore {
                 Stowed away and locked in the dungeon darkest!' shouts a distressed citizen 
                 'Someone needs to save the princess!!' another one yells
                                 
-                In the quite town where nothing really happens, chaos abruptly spews out from the sewers and gutters
+                In the quite town where nothing really happens, chaos abruptly spews out from the sewers 
                 with fell-like substance, swords and mayhem
                 obscure creatures raids the city 
                                 
@@ -35,6 +35,7 @@ public class StringLore {
                                 
                 left alone...
                 to die... 
+                
                 """);
     }
 

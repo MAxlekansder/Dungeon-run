@@ -13,14 +13,14 @@ public class MonsterBrute implements IMonster {
     private int intellect;
     private boolean isDead;
 
-    public MonsterBrute(int initiative, int level) {
+    public MonsterBrute() {
         this.hp = 60;
         this.resoruce = 0;
-        this.damage = 20 * level;
-        this.initiative = initiative;
-        this.strength = 20 * level;
-        this.agility = 13 * level;
-        this.intellect = level;
+        this.damage = 20 ;
+        this.initiative = 60;
+        this.strength = 20;
+        this.agility = 13;
+        this.intellect = 0;
         this.isDead = false;
     }
 

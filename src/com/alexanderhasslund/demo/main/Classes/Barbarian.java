@@ -1,5 +1,4 @@
 package com.alexanderhasslund.demo.main.Classes;
-import java.math.*;
 
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
@@ -17,7 +16,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
     private int intellect;
     private int level;
     private int defence;
-    private int initative;
+    private int initiative;
 
 
     public Barbarian() {
@@ -31,12 +30,10 @@ public class Barbarian extends Player implements IClasses, ICombat {
         this.intellect = 0;
         this.level = 1;
         this.defence = 1;
-        this.initative = 55;
+        this.initiative = 55;
     }
 
-    public String getClassName() {
-        return className;
-    }
+
 
     @Override
     public void trait() {
@@ -102,8 +99,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
                         " Strength = " + strength + "  || " +
                         " Agility = " + agility + "  || " +
                         " Intellect = " + intellect + "  || " +
-                        " Initiative = " + initative + "  ||"
-
-                ;
+                        " Initiative = " + initiative + "  ||";
     }
+
 }
