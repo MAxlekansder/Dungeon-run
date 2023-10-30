@@ -2,13 +2,27 @@ package com.alexanderhasslund.demo.main.PlayerInteraction;
 
 import com.alexanderhasslund.demo.main.Engine.GameStartControl;
 import com.alexanderhasslund.demo.main.Engine.Input;
+import com.alexanderhasslund.demo.main.File.SaveFile;
+import com.alexanderhasslund.demo.main.Player.Player;
+
+import java.io.IOException;
+import java.util.List;
 
 public class StartMenu {
 
+    private List<Player> playerList;
+
+    public StartMenu() {
+
+    }
+    public StartMenu(List<Player> playerList) {
+        this.playerList = playerList;
+    }
     //switch här
-    public void mainGameSwitch() throws InterruptedException {
+
+    public void mainGameSwitch() throws InterruptedException, IOException {
         GameStartControl gameStartControl = new GameStartControl();
-        MainGameMenu mainGameMenu = new MainGameMenu();
+        MainGameMenu mainGameMenu = new MainGameMenu(playerList);
         PlayerChoice playerChoice = new PlayerChoice();
         boolean isPlaying = true;
 

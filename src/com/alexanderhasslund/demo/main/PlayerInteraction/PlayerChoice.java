@@ -58,7 +58,6 @@ public class PlayerChoice {
                     
                     1. START NEW GAME 
                     \033[0;37m2. CONTINUE SAVE \033[0m
-                    3. SAVE GAME
                     4. HIGHSCORE
                     5. QUIT GAME
                     """);
@@ -67,7 +66,26 @@ public class PlayerChoice {
                 
                 1. START NEW GAME 
                 2. CONTINUE SAVE
-                3. SAVE GAME
+                4. HIGHSCORE
+                5. QUIT GAME""");
+    }
+
+
+    public void mainMenuChoice() {
+        int savedFile = 0; // placeholder
+        if (savedFile == 0) {
+            System.out.println("""
+                    
+                    1. START NEW GAME 
+                    \033[0;37m2. CONTINUE SAVE \033[0m
+                    4. HIGHSCORE
+                    5. QUIT GAME
+                    """);
+        } else
+            System.out.println("""
+                
+                1. START NEW GAME 
+                2. CONTINUE SAVE
                 4. HIGHSCORE
                 5. QUIT GAME""");
     }

@@ -27,7 +27,6 @@ public class SwordsShop {
                             player.getInventoryList().add(0,( swords.standardSword()));
                         }
                 );
-
             }
             case 2 -> {
                 //swords.fastSword();

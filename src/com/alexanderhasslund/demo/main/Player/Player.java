@@ -2,10 +2,12 @@ package com.alexanderhasslund.demo.main.Player;
 import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Inventory.Inventory;
 import com.alexanderhasslund.demo.main.TalentTree.TalentTree;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements Serializable {
 
     private String name;
     private int playerId;
