@@ -21,11 +21,13 @@ public class SwordsShop {
         int swordChoice = Input.intInput();
         switch (swordChoice) {
             case 1 -> {
+                // maybe do for loor here to control it better...
                 //swords.standardSword();
                 playerList.forEach(player -> {
                             player.getInventoryList().add(0,( swords.standardSword()));
                         }
                 );
+
             }
             case 2 -> {
                 //swords.fastSword();

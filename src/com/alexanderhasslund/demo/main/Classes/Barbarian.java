@@ -4,6 +4,7 @@ import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Player.Player;
 
+
 public class Barbarian extends Player implements IClasses, ICombat {
 
     private String className;
@@ -20,6 +21,8 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
 
     public Barbarian() {
+        //Player barbarian = new Player(getName(),getTalentTreeList(),getInventoryList(),0,0,"BARBARIAN",115,20,100,22,8,0,0,10,55);
+        //return barbarian;
         this.className = "BARBARIAN";
         this.id = 1;
         this.hp = 115;
@@ -33,7 +36,114 @@ public class Barbarian extends Player implements IClasses, ICombat {
         this.initiative = 55;
     }
 
+    @Override
+    public String getClassName() {
+        return className;
+    }
 
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public int getHp() {
+        return hp;
+    }
+
+    @Override
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    @Override
+    public int getDamage() {
+        return damage;
+    }
+
+    @Override
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    @Override
+    public int getResource() {
+        return resource;
+    }
+
+    @Override
+    public void setResource(int resource) {
+        this.resource = resource;
+    }
+
+    @Override
+    public int getStrength() {
+        return strength;
+    }
+
+    @Override
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    @Override
+    public int getAgility() {
+        return agility;
+    }
+
+    @Override
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    @Override
+    public int getIntellect() {
+        return intellect;
+    }
+
+    @Override
+    public void setIntellect(int intellect) {
+        this.intellect = intellect;
+    }
+
+    @Override
+    public int getLevel() {
+        return level;
+    }
+
+    @Override
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    @Override
+    public int getDefence() {
+        return defence;
+    }
+
+    @Override
+    public void setDefence(int defence) {
+        this.defence = defence;
+    }
+
+    @Override
+    public int getInitiative() {
+        return initiative;
+    }
+
+    @Override
+    public void setInitiative(int initiative) {
+        this.initiative = initiative;
+    }
 
     @Override
     public void trait() {

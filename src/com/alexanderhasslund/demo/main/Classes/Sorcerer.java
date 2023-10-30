@@ -1,5 +1,4 @@
 package com.alexanderhasslund.demo.main.Classes;
-
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Player.Player;
 
@@ -38,6 +37,103 @@ public class Sorcerer extends Player implements IClasses{
         //damage * some trait / array.size() == all monster in Array
 
         //Cooldown
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public int getHp() {
+        return hp;
+    }
+
+    @Override
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    @Override
+    public int getDamage() {
+        return damage;
+    }
+
+    @Override
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    @Override
+    public int getResource() {
+        return resource;
+    }
+
+    @Override
+    public void setResource(int resource) {
+        this.resource = resource;
+    }
+
+    @Override
+    public int getStrength() {
+        return strength;
+    }
+
+    @Override
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    @Override
+    public int getAgility() {
+        return agility;
+    }
+
+    @Override
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    @Override
+    public int getIntellect() {
+        return intellect;
+    }
+
+    @Override
+    public void setIntellect(int intellect) {
+        this.intellect = intellect;
+    }
+
+    @Override
+    public int getLevel() {
+        return level;
+    }
+
+    @Override
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getInitative() {
+        return initative;
+    }
+
+    public void setInitative(int initative) {
+        this.initative = initative;
     }
 
     @Override

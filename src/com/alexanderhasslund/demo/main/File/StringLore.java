@@ -69,6 +69,7 @@ public class StringLore {
 
     public String gameIntroductionRules() {
         return ("""
+                
                 Each Class have their own unique play style and attributes:
                 \033[1;31mStrength\033[0m is an attribute that grants more raw damage and protection
                 \033[1;32mAgility\033[0m is an attirubte that give higher initiative and a better chance to dodge
@@ -76,7 +77,7 @@ public class StringLore {
                                 
                 The game have some basic rules, you can either play alone or with a party of 3.
                 it's a turned based dungeon crawl, with a rogue-like twist... 
-                Therefore you'll explore the skewering underworld of Azgarak Karaz
+                Uou'll explore the skewering underworld of Azgarak Karaz
                 beneath the city of Elderwell
                                 
                 where both you and the monsters have initative, the lower the number
@@ -86,6 +87,13 @@ public class StringLore {
                                 
                 If you die - the game ends
                 good luck heroes...
+                """);
+    }
+
+    public String newGameWakingUp() {
+        return ("""
+                
+                
                 """);
     }
 }

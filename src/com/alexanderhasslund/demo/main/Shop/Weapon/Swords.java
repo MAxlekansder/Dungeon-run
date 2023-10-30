@@ -10,6 +10,7 @@ public class Swords extends Weapon {
     private int levelLock;
     private int defence;
     private int block;
+    private int price;
 
 
 

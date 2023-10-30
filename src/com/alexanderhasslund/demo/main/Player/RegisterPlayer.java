@@ -4,6 +4,7 @@ import com.alexanderhasslund.demo.main.Classes.Rogue;
 import com.alexanderhasslund.demo.main.Classes.Sorcerer;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
+import com.alexanderhasslund.demo.main.Shop.ShopMenu;
 import com.alexanderhasslund.demo.main.Shop.Weapon.SwordsShop;
 
 import java.util.ArrayList;
@@ -64,6 +65,7 @@ public class RegisterPlayer {
             System.out.printf("Enter character name, for player %s: ", (i + 1));
             playerList.get(i).setName(Input.stringInput());
             playerList.get(i).setPlayerId(i + 1);
+            playerList.get(i).setCurrency(200);
 
         }
     }
@@ -71,9 +73,11 @@ public class RegisterPlayer {
 
     public List<Player> getPlayerInformation() {
         for (int i = 0; i < playerList.size(); i++) {
+
             System.out.println(
                     " Name = " + playerList.get(i).getName() + "  || "
                   + " Class name = " + playerList.get(i).getClassName() + "  || "
+                  + " Damage = " + playerList.get(i).getDamage() + "  || "
                   + " Currency = " + playerList.get(i).getCurrency() + "  || "
                   + " Experience = " + playerList.get(i).getExperience() + "  || "
             );
@@ -86,8 +90,10 @@ public class RegisterPlayer {
     }
 
     public void addItem() {
-        SwordsShop swordsShop = new SwordsShop(getPlayerList());
-        swordsShop.swordsShopSwitch();
+        ShopMenu shopMenu = new ShopMenu(getPlayerList());
+        //SwordsShop swordsShop = new SwordsShop(getPlayerList());
+        //swordsShop.swordsShopSwitch();
+        shopMenu.basicShopMenu();
 
 
 
