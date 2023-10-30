@@ -3,17 +3,15 @@ import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Classes.Rogue;
 import com.alexanderhasslund.demo.main.Classes.Sorcerer;
 import com.alexanderhasslund.demo.main.Engine.Input;
-import com.alexanderhasslund.demo.main.Inventory.Inventory;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
-import com.alexanderhasslund.demo.main.PlayerInteraction.SwordsMenu;
-import com.alexanderhasslund.demo.main.Shop.Weapon.Swords;
+import com.alexanderhasslund.demo.main.Shop.Weapon.SwordsShop;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class RegisterPlayer {
-    private List<Player> playerList = new ArrayList<>();
+    private List<Player> playerList;
     private int countPlayers;
 
     public RegisterPlayer() {
@@ -24,8 +22,8 @@ public class RegisterPlayer {
         return playerList;
     }
 
-    public void setPlayerList(List<Player> playerList) {
-        this.playerList = playerList;
+    public void addPlayer(Player player) {
+        playerList.add(player);
     }
 
     public int getCountPlayers() {
@@ -42,9 +40,6 @@ public class RegisterPlayer {
 
     }
 
-    public void addPlayer(Player player) {
-        playerList.add(player);
-    }
 
     public void chooseClass() {
         for (int i = 0; i < getCountPlayers(); i++) {
@@ -54,14 +49,13 @@ public class RegisterPlayer {
             boolean choice = true;
             do {
                 switch (Input.intInput()) {
-                    case 1 -> {playerList.add(i, new Barbarian());choice = false;}
-                    case 2 -> {playerList.add(i, new Rogue());choice = false;}
-                    case 3 -> {playerList.add(i, new Sorcerer());choice = false;}
+                    case 1 -> {addPlayer( new Barbarian());choice = false;}
+                    case 2 -> {addPlayer( new Rogue());choice = false;}
+                    case 3 -> {addPlayer( new Sorcerer());choice = false;}
                     default -> {System.out.println("Use right input");}
 
                 }
             } while (choice);
-            SwordsMenu swordsMenu = new SwordsMenu(getPlayerList());
         }
     }
 
@@ -92,10 +86,8 @@ public class RegisterPlayer {
     }
 
     public void addItem() {
-        Inventory sword = new Inventory("Sword");
-        Inventory shield = new Inventory("Shield");
-        Inventory potion = new Inventory("Health Potion");
-        Swords swords = new Swords();
+        SwordsShop swordsShop = new SwordsShop(getPlayerList());
+        swordsShop.swordsShopSwitch();
 
 
 

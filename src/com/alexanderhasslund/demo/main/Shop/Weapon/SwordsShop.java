@@ -1,19 +1,19 @@
-package com.alexanderhasslund.demo.main.PlayerInteraction;
+package com.alexanderhasslund.demo.main.Shop.Weapon;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Player.Player;
-import com.alexanderhasslund.demo.main.Player.RegisterPlayer;
 import com.alexanderhasslund.demo.main.Shop.Weapon.Swords;
 
 import java.util.List;
 
-public class SwordsMenu {
+public class SwordsShop {
 
     private List<Player> playerList;
 
-    public SwordsMenu(List<Player> playerList) {
+    public SwordsShop(List<Player> playerList) {
         this.playerList = playerList;
     }
 
+    // introduce logic so each player can buy
     public void swordsShopSwitch () {
         Swords swords = new Swords();
 
@@ -23,29 +23,29 @@ public class SwordsMenu {
             case 1 -> {
                 //swords.standardSword();
                 playerList.forEach(player -> {
-                            player.getInventoryList().add(swords.standardSword());
+                            player.getInventoryList().add(0,( swords.standardSword()));
                         }
                 );
             }
             case 2 -> {
-                swords.fastSword();
-                for (int i = 0; i < playerList.size(); i++) {
-                    playerList.get(i).getInventoryList().add(swords.fastSword());
-                }
+                //swords.fastSword();
+                playerList.forEach(player -> {
+                            player.getInventoryList().add(0, swords.fastSword());
+                        }
+                );
             }
             case 3 -> {
-                swords.sharpSword();
+               // swords.sharpSword();
                 playerList.forEach(player -> {
-                            player.getInventoryList().add(swords.sharpSword());
+                            player.getInventoryList().add(0, swords.sharpSword());
                         }
                 );
             }
             case 4 -> {
-                swords.divineSword();
-               /* registerPlayer.getPlayerList().forEach(player -> {
-                            player.getInventoryList().add(swords.divineSword());
+                playerList.forEach(player -> {
+                            player.getInventoryList().add(0, swords.divineSword());
                         }
-                ); */
+                );
             }
         }
         checkSwordSlot();
@@ -53,11 +53,10 @@ public class SwordsMenu {
 
     public void checkSwordSlot() {
 
-        RegisterPlayer registerPlayer = new RegisterPlayer();
-        registerPlayer.getPlayerList().forEach(player -> {
+            playerList.forEach(player -> {
             System.out.println(player.getName() + "'s Inventory:");
             player.getInventoryList().forEach(item -> {
-                System.out.println("  " + item.getItemName());
+                System.out.println("  " + item.getItemName() + " " + item.getDamage());
             });
         });
     }

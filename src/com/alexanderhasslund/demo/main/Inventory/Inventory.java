@@ -1,5 +1,6 @@
 package com.alexanderhasslund.demo.main.Inventory;
 
+import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.Player.RegisterPlayer;
 import com.alexanderhasslund.demo.main.Shop.Weapon.Swords;
@@ -10,28 +11,51 @@ public class Inventory {
     private int damage;
     private int initiative;
     private int levelLock;
+    private int defence;
+    private int block;
 
-    public Inventory(String itemName) {
-        this.itemName = itemName;
-    }
 
-    public Inventory(String standardSword, int damage, int initiative, int levelLock) {
+
+    public Inventory(String standardSword, int damage, int initiative, int levelLock, int defence, int block) {
         this.itemName = standardSword;
         this.damage = damage;
         this.initiative = initiative;
         this.levelLock = levelLock;
+        this.defence = defence;
+        this.block = block;
     }
 
     public String getItemName() {
         return itemName;
     }
 
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getInitiative() {
+        return initiative;
+    }
+
+    public int getLevelLock() {
+        return levelLock;
+    }
+
+    public int getDefence() {
+        return defence;
+    }
+
+    public int getBlock() {
+        return block;
+    }
 
     @Override
     public String toString() {
-        return "Inventory{" +
-                "itemName='" + itemName + '\'' +
-                '}';
+        return Color.WHITE +" Sword Slot:"+ Color.RESET + " || " +
+                "itemName = " + itemName + "  || " +
+                " damage = " + damage + "  || " +
+                " initiative = " + initiative + "  || " +
+                " levelLock = " + levelLock + "  ||";
     }
 }
 

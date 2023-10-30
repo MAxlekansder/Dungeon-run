@@ -3,24 +3,10 @@ import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Classes.Rogue;
 import com.alexanderhasslund.demo.main.Classes.Sorcerer;
 import com.alexanderhasslund.demo.main.File.StringLore;
-import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.Player.RegisterPlayer;
-import com.alexanderhasslund.demo.main.PlayerInteraction.ShopMenu;
-import com.alexanderhasslund.demo.main.PlayerInteraction.SwordsMenu;
-
-import java.util.List;
 
 public class GameStartControl {
 
-    private List<Player> playerList;
-
-    public GameStartControl() {
-
-    }
-
-    public GameStartControl(List<Player> playerList) {
-        this.playerList = playerList;
-    }
 
     public void startIntroductionGame() throws InterruptedException {
         StringManipulator stringManipulator = new StringManipulator();
@@ -45,11 +31,6 @@ public class GameStartControl {
         registerPlayer.choosePlayerName();
         registerPlayer.getPlayerInformation();
         registerPlayer.addItem();
-        ShopMenu shopMenu = new ShopMenu(playerList);
-
-        shopMenu.basicShopMenu();
-        //swordsMenu.swordsShopSwitch();
-
 
     }
 }
