@@ -18,22 +18,51 @@ public class PlayerChoice {
                 In here you have the option to buy new equipment
                 These three different categories provides different bonus stats while in combat
                                 
+                \033[1;36mSWORDS            SHIELDS               POTIONS\033[0m
+                provides more     provides protection   provides temporary
+                damage towards    during combat         buffs during combat
+                your enemies      chance to block
+                             
+                """);
+    }
+
+    public String insideShop() {
+        return ("""
+                
                 1. SWORDS - provides more damage towards your enemies 
                 2. SHIELDS - provides protection during combat and some shields have a chance to block
                 3. POTIONS - provides temporary buffs during combat
-                                
                 """);
     }
 
     public String swordsMenu() {
         return ("""
-                                
+                WELCOME TO THE SWORD SHOP
+                
+                \033[1;36m1.STANDARD SWORD     \033[1;34m2.FAST SWORD               \033[1;35m3.SHARP SWORD         \033[1;33m4.DIVINE SWORD\033[0m             
+                \033[1;37mTHE TRUSTY SWORD     FOR THE FAST ATTACKER      THE TACHI BLADE       THE ONE TRUE BLADE\033[0m    
+                
+                Damage 6             Damage 4                   Damage 20             Damage 60
+                Initiative 40        Initiative 60              Initiative 55         Initiative 85
+                Level lock 0         Level lock 2               Level lock 5          Level lock 15
+                
+                Price: 200           Price: 500                 Price: 1000           Price: 15000 
                 """);
     }
 
+
     public String shieldsMenu() {
-        return ("""
-                                
+        return (""" 
+                WELCOME TO THE SHIELD SHOP
+                
+                \033[1;36m1.STANDARD SHILED      \033[1;34m2.BULK SHILED                   \033[1;35m3.SPIKED SHIELD           \033[1;33m4.DIVINE SHIELD\033[0m             
+                \033[1;37mTHE TRUSTY SHIELD      YOU'RE NOT GETTING THROUGH      BITE ME, ILL BITE BACK    SVALINN, THE SUN EATER\033[0m 
+                
+                Defence 5              Defence 10                      Defence 15                Defence 40
+                Block 1                Block 1                         Block 5                   Block 30
+                Level lock 0           Level lock 2                    Level lock 5              Level lock 15
+                
+                Price: 200             Price: 500                      Price: 1000               Price: 15000 
                 """);
     }
 

@@ -22,12 +22,12 @@ public class Shields extends Defence {
     }
 
     public Inventory spikedShield() {
-        Inventory spikedShield = new Inventory("Bulk shield",2,0,5,15,5);
+        Inventory spikedShield = new Inventory("spiked shield",2,0,5,15,5);
         return spikedShield;
     }
 
     public Inventory divineShield() {
-        Inventory divineShield = new Inventory("Bulk shield",2,0,15,40,30);
+        Inventory divineShield = new Inventory("Divine shield",2,0,15,40,30);
         return divineShield;
     }
 }

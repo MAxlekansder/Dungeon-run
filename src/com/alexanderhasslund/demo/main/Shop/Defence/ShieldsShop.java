@@ -1,11 +1,8 @@
 package com.alexanderhasslund.demo.main.Shop.Defence;
-
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Player.Player;
-import com.alexanderhasslund.demo.main.Shop.Defence.Shields;
-
+import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class ShieldsShop {
 
@@ -15,52 +12,47 @@ public class ShieldsShop {
         this.playerList = playerList;
     }
 
-    // introduce logic so each player can buy
+
     public void shieldsShopSwitch (int playerIndex) {
         Shields shields = new Shields();
-        Player firstPlayer = playerList.get(0);
-        Player secondPlayer = playerList.get(1);
+        PlayerChoice playerChoice = new PlayerChoice();
+        int shieldPrice = 0;
 
-
+        System.out.println(playerChoice.shieldsMenu());
         int swordChoice = Input.intInput();
         switch (swordChoice) {
             case 1 -> {
-                firstPlayer.getInventoryList().add(1, shields.standardShield());
-                playerList.forEach(player -> {
-                            player.getInventoryList().add(1, shields.standardShield());
-                        }
-                );
+                playerList.get(playerIndex).getInventoryList().add(shields.standardShield());
+                shieldPrice = 200;
             }
             case 2 -> {
-                playerList.forEach(player -> {
-                            player.getInventoryList().add(1, shields.bulkShield());
-                        }
-                );
-
+                playerList.get(playerIndex).getInventoryList().add(shields.bulkShield());
+                shieldPrice = 500;
             }
             case 3 -> {
-
-                playerList.forEach(player -> {
-                            player.getInventoryList().add(1, shields.spikedShield());
-                        }
-                );
+                playerList.get(playerIndex).getInventoryList().add(shields.spikedShield());
+                shieldPrice = 1000;
             }
             case 4 -> {
-                playerList.forEach(player -> {
-                            player.getInventoryList().add(1, shields.divineShield());
-                        }
-                );
+                playerList.get(playerIndex).getInventoryList().add(shields.divineShield());
+                shieldPrice = 15000;
             }
         }
-        checkSwordSlot();
+        checkShieldSlot(shieldPrice);
+        //return shieldPrice;
+
     }
 
-    public void checkSwordSlot() {
+
+    public void checkShieldSlot(int shieldPrice) {
 
         playerList.forEach(player -> {
+
             System.out.println(player.getName() + "'s Inventory:");
             player.getInventoryList().forEach(item -> {
-                System.out.println("  " + item.getItemName() + " " + item.getDamage());
+                System.out.println("bought " + item.getItemName() + " with " + item.getDamage() +" damage");
+                System.out.println("and a cost of: " + shieldPrice);
+                System.out.println("and now has balance left: " + (player.getCurrency() - shieldPrice));
             });
         });
     }

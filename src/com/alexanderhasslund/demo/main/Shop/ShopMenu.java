@@ -24,21 +24,23 @@ public class ShopMenu {
         PlayerChoice playerChoice = new PlayerChoice();
 
         System.out.println(playerChoice.mainShop());
-        choosePlayerShop();
+        //choosePlayerShop();
+        int playerIndex = choosePlayerShop();
 
         boolean isBuying = true;
         do {
+            System.out.println(playerChoice.insideShop());
             switch (Input.intInput()) {
                 case 1 -> {
-                    swordsShop.swordsShopSwitch(choosePlayerShop());
+                    swordsShop.swordsShopSwitch(playerIndex);
                     //swords
                 }
                 case 2 -> {
-                    shieldsShop.shieldsShopSwitch(choosePlayerShop());
+                    shieldsShop.shieldsShopSwitch(playerIndex);
                     //Shields
                 }
                 case 3 -> {
-                    potionsShop.potionsMenuSwitch(choosePlayerShop());
+                    potionsShop.potionsMenuSwitch(playerIndex);
                     // potions
                 }
                 case 4 -> {
@@ -48,17 +50,23 @@ public class ShopMenu {
         } while (isBuying);
     }
 
+    // build a safety check here to make sure wrong name isnt put in ->
     public int choosePlayerShop() {
         System.out.println("What player is using the shop?");
-        int playerChoice = 0;
+        playerList.forEach(player -> System.out.println("PLAYERLIST: " + player.getName().toUpperCase() +" "+ player.getClassName()));
+
+
         String playerChoice1 = Input.stringInput().toLowerCase();
+        int playerChoice = 0;
+
+
         for (int i = 0; i < playerList.size();i++) {
             System.out.println(
-                    " Name:  " + playerList.get(i).getName() +
+                    " Name: " + playerList.get(i).getName() +
                     " Current currency: "+ playerList.get(i).getCurrency());
 
             if (playerList.get(i).getName().toLowerCase().equals(playerChoice1)){
-                playerChoice = playerList.get(i).getPlayerId();
+                playerChoice = i;
             }
         }
         return playerChoice;

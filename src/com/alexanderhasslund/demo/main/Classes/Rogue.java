@@ -18,7 +18,7 @@ public class Rogue extends Player implements IClasses {
     private int initiative;
 
     public Rogue() {
-        this.className = "ROGUE";
+        this.className = Color.GREEN + "ROGUE" + Color.RESET;
         this.id = 2;
         this.hp = 100;
         this.damage = 15;

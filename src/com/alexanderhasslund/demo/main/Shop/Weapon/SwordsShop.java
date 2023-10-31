@@ -1,8 +1,7 @@
 package com.alexanderhasslund.demo.main.Shop.Weapon;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Player.Player;
-import com.alexanderhasslund.demo.main.Shop.Weapon.Swords;
-
+import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 import java.util.List;
 
 public class SwordsShop {
@@ -13,12 +12,13 @@ public class SwordsShop {
         this.playerList = playerList;
     }
 
-    // introduce logic so each player can buy
+
     public int swordsShopSwitch (int playerIndex) {
         Swords swords = new Swords();
+        PlayerChoice playerChoice = new PlayerChoice();
         int swordPrice = 0;
 
-        System.out.println("sword shop");
+        System.out.println(playerChoice.swordsMenu());
         int swordChoice = Input.intInput();
         switch (swordChoice) {
             case 1 -> {
@@ -50,31 +50,10 @@ public class SwordsShop {
 
                 System.out.println(player.getName() + "'s Inventory:");
                 player.getInventoryList().forEach(item -> {
-                    System.out.println("bought  " + item.getItemName() + " with " + item.getDamage() +" damage");
+                    System.out.println("bought " + item.getItemName() + " with " + item.getDamage() +" damage");
                     System.out.println("and a cost of: " + swordPrice);
                     System.out.println("and now has balance left: " + (player.getCurrency() - swordPrice));
                 });
         });
     }
 }
-
-               /* playerList.forEach(player -> {
-                            player.getInventoryList().add(0, swords.divineSword());
-                        }
-                          playerList.forEach(player -> {
-                            player.getInventoryList().add(0, swords.sharpSword());
-                        }
-                );
-                // maybe do for loor here to control it better...
-                //swords.standardSword();
-                /*
-                playerList.forEach(player -> {
-                            player.getInventoryList().add(0,( swords.standardSword()));
-                        }
-                );
-
-                playerList.forEach(player -> {
-                        player.getInventoryList().add(0, swords.fastSword());
-                        }
-                        );
-                );*/

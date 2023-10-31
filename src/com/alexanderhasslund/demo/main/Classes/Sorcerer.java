@@ -16,7 +16,7 @@ public class Sorcerer extends Player implements IClasses{
     private int initative;
 
     public Sorcerer() {
-        this.className = "SORCERER";
+        this.className = Color.BLUE + "SORCERER" + Color.RESET;
         this.id = 3;
         this.hp = 80;
         this.damage = 10; //find a good formula;

@@ -23,7 +23,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
     public Barbarian() {
         //Player barbarian = new Player(getName(),getTalentTreeList(),getInventoryList(),0,0,"BARBARIAN",115,20,100,22,8,0,0,10,55);
         //return barbarian;
-        this.className = "BARBARIAN";
+        this.className = Color.RED + "BARBARIAN" + Color.RESET;
         this.id = 1;
         this.hp = 115;
         this.damage = 20;
