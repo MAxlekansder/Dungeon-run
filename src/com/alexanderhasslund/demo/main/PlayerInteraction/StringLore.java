@@ -1,4 +1,4 @@
-package com.alexanderhasslund.demo.main.File;
+package com.alexanderhasslund.demo.main.PlayerInteraction;
 
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
 

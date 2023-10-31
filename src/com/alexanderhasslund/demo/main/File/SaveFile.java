@@ -15,7 +15,11 @@ public class SaveFile {
     }
 
         public void saveFilePlayer() throws IOException {
-            File thisFile = new File("text " + LocalDate.now() +".txt");
+
+            String concat = "";
+            for (Player player : playerList) concat = player.getName() + " " + concat;
+
+            File thisFile = new File("src\\com\\alexanderhasslund\\demo\\main\\File\\StoredFiles/save file " + concat + LocalDate.now() +".txt");
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(thisFile));
             out.writeObject(playerList);
         }

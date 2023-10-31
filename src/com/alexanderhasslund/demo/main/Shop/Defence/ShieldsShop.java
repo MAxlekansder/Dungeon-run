@@ -16,7 +16,7 @@ public class ShieldsShop {
     }
 
     // introduce logic so each player can buy
-    public void shieldsShopSwitch () {
+    public void shieldsShopSwitch (int playerIndex) {
         Shields shields = new Shields();
         Player firstPlayer = playerList.get(0);
         Player secondPlayer = playerList.get(1);

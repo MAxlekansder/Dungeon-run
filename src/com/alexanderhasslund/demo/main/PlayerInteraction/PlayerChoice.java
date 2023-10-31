@@ -14,32 +14,32 @@ public class PlayerChoice {
     public String mainShop() {
         return ("""
                 "Welcome to the main shop!
-            
+                            
                 In here you have the option to buy new equipment
                 These three different categories provides different bonus stats while in combat
-                
+                                
                 1. SWORDS - provides more damage towards your enemies 
                 2. SHIELDS - provides protection during combat and some shields have a chance to block
                 3. POTIONS - provides temporary buffs during combat
-                
+                                
                 """);
     }
 
     public String swordsMenu() {
         return ("""
-                
+                                
                 """);
     }
 
     public String shieldsMenu() {
         return ("""
-                
+                                
                 """);
     }
 
     public String potionsShop() {
         return ("""
-                
+                                
                 """);
     }
 
@@ -55,38 +55,32 @@ public class PlayerChoice {
         int savedFile = 0; // placeholder
         if (savedFile == 0) {
             System.out.println("""
-                    
+                                        
                     1. START NEW GAME 
                     \033[0;37m2. CONTINUE SAVE \033[0m
-                    4. HIGHSCORE
-                    5. QUIT GAME
-                    """);
+                    3. HIGHSCORE
+                    4. QUIT GAME""");
         } else
-        System.out.println("""
-                
-                1. START NEW GAME 
-                2. CONTINUE SAVE
-                4. HIGHSCORE
-                5. QUIT GAME""");
+            System.out.println("""
+                                    
+                    1. START NEW GAME 
+                    2. CONTINUE SAVE
+                    3. HIGHSCORE
+                    4. QUIT GAME""");
     }
 
 
-    public void mainMenuChoice() {
-        int savedFile = 0; // placeholder
-        if (savedFile == 0) {
-            System.out.println("""
-                    
-                    1. START NEW GAME 
-                    \033[0;37m2. CONTINUE SAVE \033[0m
-                    4. HIGHSCORE
-                    5. QUIT GAME
-                    """);
-        } else
-            System.out.println("""
-                
-                1. START NEW GAME 
-                2. CONTINUE SAVE
-                4. HIGHSCORE
-                5. QUIT GAME""");
+    public String mainMenuChoice() {
+
+        return ("""
+                                    
+                1. CONTINUE
+                2. SHOP
+                3. SAVE CURRENT GAME
+                4. CURRENT STATUS
+                5. CURRENT LEVEL
+                6. QUIT TO MAIN MENU
+                                    
+                """);
     }
 }

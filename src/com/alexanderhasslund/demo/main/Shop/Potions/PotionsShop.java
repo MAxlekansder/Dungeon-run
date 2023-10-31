@@ -9,7 +9,7 @@ public class PotionsShop {
     public PotionsShop(List<Player> playerList) {
     }
 
-    public void potionsMenuSwitch() {
+    public void potionsMenuSwitch(int playerIndex) {
 
     }
 }

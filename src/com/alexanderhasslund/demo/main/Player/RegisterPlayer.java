@@ -82,19 +82,17 @@ public class RegisterPlayer {
                   + " Experience = " + playerList.get(i).getExperience() + "  || "
             );
 
-            System.out.println(playerList.get(i));
-            System.out.printf("Inventory slot %s: " + playerList.get(i).getInventoryList(), i, "\n");
-
+            //System.out.println(playerList.get(i));
         }
         return playerList;
     }
 
+    /*
     public void addItem() {
         ShopMenu shopMenu = new ShopMenu(getPlayerList());
         //SwordsShop swordsShop = new SwordsShop(getPlayerList());
         //swordsShop.swordsShopSwitch();
         shopMenu.basicShopMenu();
-
 
 
         for (int i = 0; i < playerList.size(); i++) {
@@ -103,6 +101,8 @@ public class RegisterPlayer {
             System.out.println(playerList.get(i).getInventoryList());
         }
     }
+
+     */
 }
 
 
