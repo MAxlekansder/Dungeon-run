@@ -32,6 +32,7 @@ public class PlayerChoice {
                 1. SWORDS - provides more damage towards your enemies 
                 2. SHIELDS - provides protection during combat and some shields have a chance to block
                 3. POTIONS - provides temporary buffs during combat
+                4. LEAVE...
                 """);
     }
 
