@@ -53,12 +53,11 @@ public class ShopMenu {
     // build a safety check here to make sure wrong name isnt put in ->
     public int choosePlayerShop() {
         System.out.println("What player is using the shop?");
-        playerList.forEach(player -> System.out.println("PLAYERLIST: " + player.getName().toUpperCase() +" "+ player.getClassName()));
+        playerList.forEach(player -> System.out.println("PLAYERLIST: " + player.getName().toUpperCase() +" "+ player.getClassName() + " " + player.getLevel()));
 
 
         String playerChoice1 = Input.stringInput().toLowerCase();
         int playerChoice = 0;
-
 
         for (int i = 0; i < playerList.size();i++) {
             System.out.println(
@@ -67,6 +66,8 @@ public class ShopMenu {
 
             if (playerList.get(i).getName().toLowerCase().equals(playerChoice1)){
                 playerChoice = i;
+            } else {
+                System.out.println("Wrong input, try again...");
             }
         }
         return playerChoice;

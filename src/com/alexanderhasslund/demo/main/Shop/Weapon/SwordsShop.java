@@ -20,39 +20,81 @@ public class SwordsShop {
 
         System.out.println(playerChoice.swordsMenu());
         int swordChoice = Input.intInput();
-        switch (swordChoice) {
-            case 1 -> {
-                playerList.get(playerIndex).getInventoryList().add(swords.standardSword());
-                swordPrice = 200;
-            }
-            case 2 -> {
-                playerList.get(playerIndex).getInventoryList().add(swords.fastSword());
-                swordPrice = 500;
-            }
-            case 3 -> {
-                playerList.get(playerIndex).getInventoryList().add(swords.sharpSword());
-                swordPrice = 1000;
-            }
-            case 4 -> {
-                playerList.get(playerIndex).getInventoryList().add(swords.divineSword());
-                swordPrice = 15000;
-            }
-        }
-        checkSwordSlot(swordPrice);
-        return swordPrice;
+        boolean isShop = true;
+        do {
+            switch (swordChoice) {
+                case 1 -> {
+                    if (playerList.get(playerIndex).getLevel() >= 0 && playerList.get(playerIndex).getCurrency() >= 200) {
+                        playerList.get(playerIndex).getInventoryList().add(swords.standardSword());
 
+                        swordPrice = 200;
+                        isShop = false;
+                    } else {
+                        System.out.println("... ah, you're not really there yet...");
+                    }
+                }
+                case 2 -> {
+                    if (playerList.get(playerIndex).getLevel() >= 2 && playerList.get(playerIndex).getCurrency() >= 500) {
+                        playerList.get(playerIndex).getInventoryList().add(swords.fastSword());
+
+                        swordPrice = 500;
+                        isShop = false;
+                    } else {
+                        System.out.println("With haste hero!! as far as you come for now, just hold on a bit more...");
+                    }
+
+                }
+                case 3 -> {
+                    if (playerList.get(playerIndex).getLevel() >= 5 && playerList.get(playerIndex).getCurrency() >= 1000) {
+                        playerList.get(playerIndex).getInventoryList().add(swords.sharpSword());
+
+                        swordPrice = 1000;
+                        isShop = false;
+                    } else {
+                        System.out.println("ah, the sword of thousands truths... A gift from the crouching tiger, hidden dragon");
+                        isShop = false;
+                    }
+
+                }
+                case 4 -> {
+                    if (playerList.get(playerIndex).getLevel() >= 15 && playerList.get(playerIndex).getCurrency() >= 15000) {
+                        playerList.get(playerIndex).getInventoryList().add(swords.divineSword());
+
+                        swordPrice = 15000;
+                        isShop = false;
+                    } else {
+                        System.out.println("... only a fool would reach for divinity...");
+                        isShop = false;
+                    }
+                }
+                default -> {
+                    System.out.println("Use right input");
+                }
+            }
+          // sets new currency for player - swords
+        } while (isShop);
+
+        if (swordPrice != 0) {
+            playerList.get(playerIndex).setCurrency(playerList.get(playerIndex).getCurrency() - swordPrice);
+            checkSwordSlot(swordPrice);
+            return swordPrice;
+        }
+        return swordPrice;
     }
 
 
     public void checkSwordSlot(int swordPrice) {
 
+            if (swordPrice == 0) {
+                System.out.println("see you around...");
+            }
+
             playerList.forEach(player -> {
 
                 System.out.println(player.getName() + "'s Inventory:");
                 player.getInventoryList().forEach(item -> {
-                    System.out.println("bought " + item.getItemName() + " with " + item.getDamage() +" damage");
-                    System.out.println("and a cost of: " + swordPrice);
-                    System.out.println("and now has balance left: " + (player.getCurrency() - swordPrice));
+                    System.out.println("bought " + item.getItemName() + " with " + item.getDamage() +" damage with a cost of: " + swordPrice);
+                    System.out.println("Balance left: " + (player.getCurrency()));
                 });
         });
     }

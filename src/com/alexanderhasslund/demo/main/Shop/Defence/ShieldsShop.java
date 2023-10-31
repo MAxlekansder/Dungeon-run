@@ -38,6 +38,7 @@ public class ShieldsShop {
                 shieldPrice = 15000;
             }
         }
+        playerList.get(playerIndex).setCurrency(playerList.get(playerIndex).getCurrency() - shieldPrice);
         checkShieldSlot(shieldPrice);
         //return shieldPrice;
 
