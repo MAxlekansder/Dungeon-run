@@ -1,8 +1,9 @@
 package com.alexanderhasslund.demo.main.Monster;
 
+import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Player.Player;
 
-public class MonsterRanger implements IMonster {
+public class MonsterRanger extends Monster implements IMonster, ICombat {
 
     private int hp;
     private int resoruce;
@@ -31,8 +32,26 @@ public class MonsterRanger implements IMonster {
 
     @Override
     public void spells() {
+        //shoot ranged
 
     }
 
 
+    @Override
+    public void attack() {
+        System.out.println("The ranger shoots for: ");
+
+    }
+
+    @Override
+    public void flee() {
+        // end combat and release, release all or just this class?
+        // if monster leaves, brute enrages?
+
+    }
+
+    @Override
+    public void getStatus() {
+
+    }
 }

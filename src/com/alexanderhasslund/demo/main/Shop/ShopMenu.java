@@ -1,4 +1,5 @@
 package com.alexanderhasslund.demo.main.Shop;
+
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.Player.RegisterPlayer;
@@ -27,6 +28,8 @@ public class ShopMenu {
         //choosePlayerShop();
         int playerIndex = choosePlayerShop();
 
+        System.out.println("\nName: " + playerList.get(playerIndex).getName() + " Current currency: " + playerList.get(playerIndex).getCurrency());
+        // if playerIndex == -1 break...
         boolean isBuying = true;
         do {
             System.out.println(playerChoice.insideShop());
@@ -52,24 +55,69 @@ public class ShopMenu {
 
     // build a safety check here to make sure wrong name isnt put in ->
     public int choosePlayerShop() {
-        System.out.println("What player is using the shop?");
-        playerList.forEach(player -> System.out.println("PLAYERLIST: " + player.getName().toUpperCase() +" "+ player.getClassName() + " " + player.getLevel()));
 
-
-        String playerChoice1 = Input.stringInput().toLowerCase();
+        playerList.forEach(player -> System.out.println("PLAYERLIST: " + player.getName().toUpperCase() + " " + player.getClassName() + " " + player.getLevel()));
+        boolean isChoosing = true;
         int playerChoice = 0;
 
-        for (int i = 0; i < playerList.size();i++) {
-            System.out.println(
-                    " Name: " + playerList.get(i).getName() +
-                    " Current currency: "+ playerList.get(i).getCurrency());
+        while (isChoosing) {
+            System.out.println("Choose player to use shop: ");
+            String playerChoiceName = Input.stringInput().toLowerCase();
+            for (int i = 0; i < playerList.size(); i++) {
 
-            if (playerList.get(i).getName().toLowerCase().equals(playerChoice1)){
-                playerChoice = i;
-            } else {
-                System.out.println("Wrong input, try again...");
+                if (playerList.get(i).getName().toLowerCase().equals(playerChoiceName)) {
+                    //System.out.println(" Name: " + playerList.get(i).getName() + " Current currency: " + playerList.get(i).getCurrency());
+                    playerChoice = i;
+                    isChoosing = false;
+                }
             }
         }
         return playerChoice;
     }
+
 }
+
+
+          /*
+            String playerChoiceName = Input.stringInput().toLowerCase();
+            for (int i = 0; i < playerList.size(); i++) {
+
+                if (playerList.get(i).getName().toLowerCase().equals(playerChoiceName)) {
+                    System.out.println(" Name: " + playerList.get(i).getName() + " Current currency: " + playerList.get(i).getCurrency());
+                    playerChoice = i;
+                    isTrying = false;
+                }
+            }
+
+
+        }  while (isTrying);
+        return playerChoice;
+
+
+    boolean isTrying = true;
+    int playerChoice = 0;
+
+        do {
+                String playerChoiceName = Input.stringInput().toLowerCase();
+                for (int i = 0; i < playerList.size(); i++) {
+        if (playerList.get(i).getName().toLowerCase().equals(playerChoiceName)) {
+        playerChoice = i;
+        }
+        else playerChoice = -1;
+        }
+
+        if (playerChoice >= 0) {
+
+        System.out.println("Name: "
+        + playerList.get(playerChoice).getName()
+        + " Current currency: "
+        + playerList.get(playerChoice).getCurrency());
+        }
+        else {
+        System.out.println("No player found");
+        }
+        } while (isTrying);
+        return playerChoice
+
+
+           */

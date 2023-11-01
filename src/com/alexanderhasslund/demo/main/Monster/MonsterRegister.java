@@ -2,28 +2,36 @@ package com.alexanderhasslund.demo.main.Monster;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Random;
+/*
 public class MonsterRegister {
 
-    List<Monster> monsterList = new ArrayList<>();
+    //List<Monster> monsterList = new ArrayList<>();
 
-    private int hp;
-    private int resoruce;
-    private int damage;
-    private int initiative;
-    private int strength;
-    private int agility;
-    private int intellect;
-    private boolean isDead;
+    public List<Monster> getMonsterList() {
+        return monsterList;
+    }
 
-    public MonsterRegister(int hp, int resoruce, int damage, int initiative, int strength, int agility, int intellect, boolean isDead) {
-        this.hp = hp;
-        this.resoruce = resoruce;
-        this.damage = damage;
-        this.initiative = initiative;
-        this.strength = strength;
-        this.agility = agility;
-        this.intellect = intellect;
-        this.isDead = isDead;
+    public void setMonsterList(List<Monster> monsterList) {
+        this.monsterList = monsterList;
+    }
+
+    public void addMonster(Monster monster) {
+        monsterList.add(monster);
+    }
+
+    public void countMonsters() {
+        Random rand = new Random();
+
+    }
+
+    public void constructMonsters() {
+
+    }
+
+    public void addMonstersToArray() {
+
     }
 }
+
+ */

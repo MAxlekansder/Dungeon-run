@@ -64,10 +64,10 @@ public class RegisterPlayer {
         for ( int i = 0; i < getCountPlayers(); i++) {
             System.out.printf("Enter character name, for player %s: ", (i + 1));
             playerList.get(i).setName(Input.stringInput());
-            playerList.get(i).setPlayerId(i + 1);
+            playerList.get(i).setId(i);
             playerList.get(i).setCurrency(200);
-
         }
+        System.out.print("\n");
     }
 
 
@@ -80,6 +80,7 @@ public class RegisterPlayer {
                   + " Damage = " + playerList.get(i).getDamage() + "  || "
                   + " Currency = " + playerList.get(i).getCurrency() + "  || "
                   + " Experience = " + playerList.get(i).getExperience() + "  || "
+                  + " ID = " + playerList.get(i).getId()
             );
 
             //System.out.println(playerList.get(i));

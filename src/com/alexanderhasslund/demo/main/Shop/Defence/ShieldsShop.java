@@ -13,49 +13,97 @@ public class ShieldsShop {
     }
 
 
-    public void shieldsShopSwitch (int playerIndex) {
+    public int shieldsShopSwitch (int playerIndex) {
         Shields shields = new Shields();
         PlayerChoice playerChoice = new PlayerChoice();
         int shieldPrice = 0;
 
         System.out.println(playerChoice.shieldsMenu());
-        int swordChoice = Input.intInput();
-        switch (swordChoice) {
-            case 1 -> {
-                playerList.get(playerIndex).getInventoryList().add(shields.standardShield());
-                shieldPrice = 200;
-            }
-            case 2 -> {
-                playerList.get(playerIndex).getInventoryList().add(shields.bulkShield());
-                shieldPrice = 500;
-            }
-            case 3 -> {
-                playerList.get(playerIndex).getInventoryList().add(shields.spikedShield());
-                shieldPrice = 1000;
-            }
-            case 4 -> {
-                playerList.get(playerIndex).getInventoryList().add(shields.divineShield());
-                shieldPrice = 15000;
-            }
-        }
-        playerList.get(playerIndex).setCurrency(playerList.get(playerIndex).getCurrency() - shieldPrice);
-        checkShieldSlot(shieldPrice);
-        //return shieldPrice;
+        int shieldChoice = Input.intInput();
+        boolean isShop = true;
+        do {
 
+            switch (shieldChoice) {
+                case 1 -> {
+                    if (playerList.get(playerIndex).getLevel() >= 0 && playerList.get(playerIndex).getCurrency() >= 200) {
+                        playerList.get(playerIndex).getInventoryList().add(shields.standardShield());
+
+                        shieldPrice = 200;
+                        isShop = false;
+
+                    } else {
+                        System.out.println("... ah, you're not really there yet...");
+                        isShop = false;
+                    }
+                }
+                case 2 -> {
+                    if (playerList.get(playerIndex).getLevel() >= 2 && playerList.get(playerIndex).getCurrency() >= 500) {
+                        playerList.get(playerIndex).getInventoryList().add(shields.bulkShield());
+
+                        shieldPrice = 500;
+                        isShop = false;
+                    } else {
+                        System.out.println("looks a bit to heavy for now hero, but with experience and some money of course...");
+                        isShop = false;
+                    }
+
+                }
+                case 3 -> {
+                    if (playerList.get(playerIndex).getLevel() >= 5 && playerList.get(playerIndex).getCurrency() >= 1000) {
+                        playerList.get(playerIndex).getInventoryList().add(shields.spikedShield());
+
+                        shieldPrice = 1000;
+                        isShop = false;
+                    } else {
+                        System.out.println("...HAH, this shield wouldn't just bite the enemies! It would bite you too!");
+                        isShop = false;
+                    }
+
+                }
+                case 4 -> {
+                    if (playerList.get(playerIndex).getLevel() >= 15 && playerList.get(playerIndex).getCurrency() >= 15000) {
+                        playerList.get(playerIndex).getInventoryList().add(shields.divineShield());
+
+                        shieldPrice = 15000;
+                        isShop = false;
+                    } else {
+                        System.out.println("... if the weight of the world doesnt kill you, the fire would ...");
+                        isShop = false;
+                    }
+                }
+                default -> {
+                    System.out.println("Use right input");
+                }
+            }
+            // sets new currency for player - swords
+        } while (isShop);
+
+        if (shieldPrice != 0) {
+            playerList.get(playerIndex).setCurrency(playerList.get(playerIndex).getCurrency() - shieldPrice);
+            checkSwordSlot(shieldPrice, playerIndex);
+            return shieldPrice;
+        }
+        return shieldPrice;
     }
 
 
-    public void checkShieldSlot(int shieldPrice) {
+    public void checkSwordSlot(int shieldPrice, int playerIndex) {
+
+        if (shieldPrice == 0) {
+            System.out.println("see you around...");
+        }
 
         playerList.forEach(player -> {
+            if (player.getId() == playerIndex ) {
+                player.getInventoryList().forEach(item -> {
+                    System.out.println(player.getName() + " bought " + item.getItemName() + " with " + item.getDamage() +" damage with a cost of: " + shieldPrice);
+                    System.out.println("Balance left: " + (player.getCurrency()));
+                });
 
-            System.out.println(player.getName() + "'s Inventory:");
-            player.getInventoryList().forEach(item -> {
-                System.out.println("bought " + item.getItemName() + " with " + item.getDamage() +" damage");
-                System.out.println("and a cost of: " + shieldPrice);
-                System.out.println("and now has balance left: " + (player.getCurrency() - shieldPrice));
-            });
+            } else {
+                System.out.println("TEST");
+            }
         });
+
     }
 }
-

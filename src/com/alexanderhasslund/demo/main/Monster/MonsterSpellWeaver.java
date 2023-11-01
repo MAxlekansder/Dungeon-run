@@ -1,6 +1,8 @@
 package com.alexanderhasslund.demo.main.Monster;
 
-public class MonsterSpellWeaver implements IMonster {
+import com.alexanderhasslund.demo.main.Combat.ICombat;
+
+public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
 
     private int hp;
     private int resoruce;
@@ -29,6 +31,23 @@ public class MonsterSpellWeaver implements IMonster {
 
     @Override
     public void spells() {
+        //spell fireball
+
+    }
+
+    @Override
+    public void attack() { //insert attack modifiers here?
+        System.out.println("The spellweaver hits for: ");
+    }
+
+    @Override
+    public void flee() {
+        // end combat and release, release all or just this class?
+        // if monster leaves, brute enrages?
+    }
+
+    @Override
+    public void getStatus() {
 
     }
 }

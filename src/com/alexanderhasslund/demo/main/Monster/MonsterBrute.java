@@ -2,7 +2,7 @@ package com.alexanderhasslund.demo.main.Monster;
 
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 
-public class MonsterBrute implements IMonster {
+public class MonsterBrute extends Monster implements IMonster, ICombat {
 
     private int hp;
     private int resoruce;
@@ -31,8 +31,26 @@ public class MonsterBrute implements IMonster {
 
     @Override
     public void spells() {
+        //slams
 
     }
 
+    @Override
+    public void attack() {
+        System.out.println("The brute hits for: ");
+
+    }
+
+    @Override
+    public void flee() {
+        // end combat and release, release all or just this class?
+        // if monster leaves, brute enrages?
+
+    }
+
+    @Override
+    public void getStatus() {
+
+    }
 }
 

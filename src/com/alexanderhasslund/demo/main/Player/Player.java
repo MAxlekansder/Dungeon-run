@@ -165,8 +165,9 @@ public class Player implements Serializable {
 
     }
 
-    public Player(String name, List<TalentTree> talentTreeList, List<Inventory> inventoryList, int experience, int currency, String className, int hp, int damage, int resource, int strength, int agility, int intellect, int level, int defence, int initiative) {
+    public Player(String name, int id, List<TalentTree> talentTreeList, List<Inventory> inventoryList, int experience, int currency, String className, int hp, int damage, int resource, int strength, int agility, int intellect, int level, int defence, int initiative) {
         this.name = name;
+        this.id = id;
         this.talentTreeList = talentTreeList;
         this.inventoryList = inventoryList;
         this.experience = experience;

@@ -19,8 +19,8 @@ public class Rogue extends Player implements IClasses {
 
     public Rogue() {
         this.className = Color.GREEN + "ROGUE" + Color.RESET;
-        this.id = 2;
         this.hp = 100;
+        this.id = 0;
         this.damage = 15;
         this.resource = 200;
         this.strength = 8;
@@ -32,15 +32,6 @@ public class Rogue extends Player implements IClasses {
     }
 
     @Override
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    @Override
     public int getId() {
         return id;
     }
@@ -48,6 +39,15 @@ public class Rogue extends Player implements IClasses {
     @Override
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 
     @Override

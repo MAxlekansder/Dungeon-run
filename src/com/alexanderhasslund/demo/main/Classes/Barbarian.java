@@ -24,8 +24,8 @@ public class Barbarian extends Player implements IClasses, ICombat {
         //Player barbarian = new Player(getName(),getTalentTreeList(),getInventoryList(),0,0,"BARBARIAN",115,20,100,22,8,0,0,10,55);
         //return barbarian;
         this.className = Color.RED + "BARBARIAN" + Color.RESET;
-        this.id = 1;
         this.hp = 115;
+        this.id = 0;
         this.damage = 20;
         this.resource = 100;
         this.strength = 22;
@@ -37,15 +37,6 @@ public class Barbarian extends Player implements IClasses, ICombat {
     }
 
     @Override
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    @Override
     public int getId() {
         return id;
     }
@@ -53,6 +44,15 @@ public class Barbarian extends Player implements IClasses, ICombat {
     @Override
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 
     @Override

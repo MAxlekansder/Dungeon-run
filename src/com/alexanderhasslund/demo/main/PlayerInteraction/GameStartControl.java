@@ -52,6 +52,7 @@ public class GameStartControl {
 
                 }
                 case 2 -> {
+                    System.out.println("No file found");
                     // continue
                     // load into the save
                     // if no save file exists, make the text grey...
@@ -75,7 +76,6 @@ public class GameStartControl {
         registerPlayer.chooseClass();
         registerPlayer.choosePlayerName();
         registerPlayer.getPlayerInformation();
-        System.out.println(registerPlayer.getPlayerList());
         MainGameControl mainGameControl = new MainGameControl(registerPlayer.getPlayerList());
         mainGameControl.mainSwitch();
     }

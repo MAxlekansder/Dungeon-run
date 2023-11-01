@@ -17,8 +17,8 @@ public class Sorcerer extends Player implements IClasses{
 
     public Sorcerer() {
         this.className = Color.BLUE + "SORCERER" + Color.RESET;
-        this.id = 3;
         this.hp = 80;
+        this.id = 0;
         this.damage = 10; //find a good formula;
         this.resource = 150;
         this.strength = 3;
@@ -28,6 +28,15 @@ public class Sorcerer extends Player implements IClasses{
         this.initative = 70;
     }
 
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Override
     public void trait() {
@@ -48,15 +57,7 @@ public class Sorcerer extends Player implements IClasses{
         this.className = className;
     }
 
-    @Override
-    public int getId() {
-        return id;
-    }
 
-    @Override
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Override
     public int getHp() {

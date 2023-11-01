@@ -22,6 +22,7 @@ public class SwordsShop {
         int swordChoice = Input.intInput();
         boolean isShop = true;
         do {
+
             switch (swordChoice) {
                 case 1 -> {
                     if (playerList.get(playerIndex).getLevel() >= 0 && playerList.get(playerIndex).getCurrency() >= 200) {
@@ -29,8 +30,10 @@ public class SwordsShop {
 
                         swordPrice = 200;
                         isShop = false;
+
                     } else {
                         System.out.println("... ah, you're not really there yet...");
+                        isShop = false;
                     }
                 }
                 case 2 -> {
@@ -41,6 +44,7 @@ public class SwordsShop {
                         isShop = false;
                     } else {
                         System.out.println("With haste hero!! as far as you come for now, just hold on a bit more...");
+                        isShop = false;
                     }
 
                 }
@@ -76,26 +80,30 @@ public class SwordsShop {
 
         if (swordPrice != 0) {
             playerList.get(playerIndex).setCurrency(playerList.get(playerIndex).getCurrency() - swordPrice);
-            checkSwordSlot(swordPrice);
+            checkSwordSlot(swordPrice, playerIndex);
             return swordPrice;
         }
         return swordPrice;
     }
 
 
-    public void checkSwordSlot(int swordPrice) {
+    public void checkSwordSlot(int swordPrice, int playerIndex) {
 
             if (swordPrice == 0) {
                 System.out.println("see you around...");
             }
 
             playerList.forEach(player -> {
+                if (player.getId() == playerIndex ) {
+                    player.getInventoryList().forEach(item -> {
+                        System.out.println(player.getName() + " bought " + item.getItemName() + " with " + item.getDamage() +" damage with a cost of: " + swordPrice);
+                        System.out.println("Balance left: " + (player.getCurrency()));
+                    });
 
-                System.out.println(player.getName() + "'s Inventory:");
-                player.getInventoryList().forEach(item -> {
-                    System.out.println("bought " + item.getItemName() + " with " + item.getDamage() +" damage with a cost of: " + swordPrice);
-                    System.out.println("Balance left: " + (player.getCurrency()));
-                });
-        });
+                } else {
+                    System.out.println("");
+                }
+            });
+
     }
 }
