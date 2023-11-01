@@ -4,7 +4,7 @@ import com.alexanderhasslund.demo.main.Classes.Rogue;
 import com.alexanderhasslund.demo.main.Classes.Sorcerer;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
-import com.alexanderhasslund.demo.main.Player.RegisterPlayer;
+import com.alexanderhasslund.demo.main.Player.PlayerController;
 
 import java.io.IOException;
 
@@ -36,7 +36,7 @@ public class GameStartControl {
 
     public void startUpMenu() throws InterruptedException, IOException {
         PlayerChoice playerChoice = new PlayerChoice();
-        RegisterPlayer registerPlayer = new RegisterPlayer();
+        PlayerController playerController = new PlayerController();
         boolean isPlaying = true;
 
 
@@ -68,15 +68,15 @@ public class GameStartControl {
     }
 
     public void startIntroductionChoice() throws InterruptedException, IOException {
-        RegisterPlayer registerPlayer = new RegisterPlayer();
+        PlayerController playerController = new PlayerController();
         PlayerChoice playerChoice = new PlayerChoice();
         StringManipulator stringManipulator = new StringManipulator();
         //  stringManipulator.manipulateString(playerChoice.newGameSetup());
-        registerPlayer.playerCount();
-        registerPlayer.chooseClass();
-        registerPlayer.choosePlayerName();
-        registerPlayer.getPlayerInformation();
-        MainGameControl mainGameControl = new MainGameControl(registerPlayer.getPlayerList());
+        playerController.playerCount();
+        playerController.chooseClass();
+        playerController.choosePlayerName();
+        playerController.getPlayerInformation();
+        MainGameControl mainGameControl = new MainGameControl(playerController.getPlayerList());
         mainGameControl.mainSwitch();
     }
 }

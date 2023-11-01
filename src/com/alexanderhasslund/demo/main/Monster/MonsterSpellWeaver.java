@@ -13,10 +13,10 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
     private int intellect;
     private boolean isDead;
 
-    public MonsterSpellWeaver(int initiative, int level) {
+    public MonsterSpellWeaver() {
         this.hp = 60;
         this.resoruce = 0;
-        this.damage = 20 * level;
+        this.damage = 20;
         this.initiative = 80;
         this.strength = 20 ;
         this.agility = 13;
@@ -32,7 +32,6 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
     @Override
     public void spells() {
         //spell fireball
-
     }
 
     @Override

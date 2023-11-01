@@ -2,7 +2,6 @@ package com.alexanderhasslund.demo.main.Shop;
 
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Player.Player;
-import com.alexanderhasslund.demo.main.Player.RegisterPlayer;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 import com.alexanderhasslund.demo.main.Shop.Defence.ShieldsShop;
 import com.alexanderhasslund.demo.main.Shop.Potions.PotionsShop;

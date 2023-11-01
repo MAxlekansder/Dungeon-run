@@ -1,11 +1,11 @@
 package com.alexanderhasslund.demo.main.PlayerInteraction;
 
-import com.alexanderhasslund.demo.main.Player.RegisterPlayer;
+import com.alexanderhasslund.demo.main.Player.PlayerController;
 
 public class PlayerChoice {
 
     public String nameAndClass() {
-        RegisterPlayer registerPlayer = new RegisterPlayer();
+        PlayerController playerController = new PlayerController();
         return ("""
                 Please choose a class: 
                 1. \033[1;31mBARBARIAN\033[0m      2.\033[1;32mROGUE\033[0m     3.\033[1;34mSORCERER\033[0m""");

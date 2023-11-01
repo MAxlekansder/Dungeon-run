@@ -1,9 +1,6 @@
 package com.alexanderhasslund.demo.main.Inventory;
 
 import com.alexanderhasslund.demo.main.Engine.Color;
-import com.alexanderhasslund.demo.main.Player.Player;
-import com.alexanderhasslund.demo.main.Player.RegisterPlayer;
-import com.alexanderhasslund.demo.main.Shop.Weapon.Swords;
 
 public class Inventory {
 

@@ -4,18 +4,16 @@ import com.alexanderhasslund.demo.main.Classes.Rogue;
 import com.alexanderhasslund.demo.main.Classes.Sorcerer;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
-import com.alexanderhasslund.demo.main.Shop.ShopMenu;
-import com.alexanderhasslund.demo.main.Shop.Weapon.SwordsShop;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class RegisterPlayer {
+public class PlayerController {
     private List<Player> playerList;
     private int countPlayers;
 
-    public RegisterPlayer() {
+    public PlayerController() {
         this.playerList = new ArrayList<>();
     }
 
@@ -88,22 +86,6 @@ public class RegisterPlayer {
         return playerList;
     }
 
-    /*
-    public void addItem() {
-        ShopMenu shopMenu = new ShopMenu(getPlayerList());
-        //SwordsShop swordsShop = new SwordsShop(getPlayerList());
-        //swordsShop.swordsShopSwitch();
-        shopMenu.basicShopMenu();
-
-
-        for (int i = 0; i < playerList.size(); i++) {
-            //playerList.get(i).getInventoryList().add(sword);
-            //playerList.get(i).getInventoryList().add(swords.fastSword());
-            System.out.println(playerList.get(i).getInventoryList());
-        }
-    }
-
-     */
 }
 
 
