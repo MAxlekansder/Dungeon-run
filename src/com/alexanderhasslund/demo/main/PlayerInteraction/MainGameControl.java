@@ -1,4 +1,5 @@
 package com.alexanderhasslund.demo.main.PlayerInteraction;
+import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.File.SaveFile;
 import com.alexanderhasslund.demo.main.Monster.MonsterController;
@@ -11,9 +12,11 @@ import java.util.List;
 public class MainGameControl {
 
     private List<Player> playerList;
+    private int countPlayers;
 
-    public MainGameControl(List<Player> playerList) {
+    public MainGameControl(List<Player> playerList, int countPlayers) {
         this.playerList = playerList;
+        this.countPlayers = countPlayers;
     }
 
 
@@ -21,7 +24,7 @@ public class MainGameControl {
         PlayerChoice playerChoice = new PlayerChoice();
         ShopMenu shopMenu = new ShopMenu(playerList); // this line becomes null, seems like something is wrong
         SaveFile saveFile = new SaveFile(playerList);
-        MonsterController monsterController = new MonsterController();
+        MonsterController monsterController = new MonsterController(countPlayers);
         boolean isMainPlaying = true;
 
 
@@ -41,7 +44,15 @@ public class MainGameControl {
                      saveFile.saveFilePlayer();
                 }
                 case 4 -> {
-                    // current status
+
+                    for(int i = 0; i < playerList.size(); i++) {
+                        System.out.println(
+                                Color.WHITE + playerList.get(i).getName().toUpperCase() + Color.RESET +
+                                Color.WHITE + " Current level: " + Color.PURPLE  + playerList.get(i).getLevel() + Color.RESET +
+                                Color.WHITE + " Current currency:  " + Color.YELLOW + playerList.get(i).getCurrency() + Color.RESET +
+                                Color.WHITE + " Current experience " + Color.CYAN + playerList.get(i).getExperience() + Color.RESET +
+                                "       " + playerList.get(i));
+                    }
                 }
                 case 5 -> {
                     // current level

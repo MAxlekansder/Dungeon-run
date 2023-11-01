@@ -6,27 +6,10 @@ import com.alexanderhasslund.demo.main.Player.Player;
 
 public class MonsterRanger extends Monster implements IMonster, ICombat {
 
-    private String monsterName;
-    private int hp;
-    private int resoruce;
-    private int damage;
-    private int initiative;
-    private int strength;
-    private int agility;
-    private int intellect;
-    private boolean isDead;
 
     public MonsterRanger() {
-        //super("MONSTER - Vermin Gunslinger", 60,0,20,40,20,13,0,false);
-        this.monsterName = "MONSTER - Vermin Gunslinger";
-        this.hp = 60;
-        this.resoruce = 0;
-        this.damage = 20;
-        this.initiative = 40;
-        this.strength = 20;
-        this.agility = 13;
-        this.intellect = 0;
-        this.isDead = false;
+        super("MONSTER - Vermin Gunslinger", 60,0,20,40,20,13,0,false);
+
     }
 
     
@@ -53,23 +36,10 @@ public class MonsterRanger extends Monster implements IMonster, ICombat {
     public void flee() {
         // end combat and release, release all or just this class?
         // if monster leaves, brute enrages?
-
     }
 
     @Override
     public void getStatus() {
-
     }
 
-    @Override
-    public String toString() {
-        return
-                Color.PURPLE + monsterName + Color.RESET + ":" +
-                        " Hp = " + hp + "  -- " +
-                        " Damage = " + damage + "  -- " +
-                        " Strength = " + strength + "  -- " +
-                        " Agility = " + agility + "  -- " +
-                        " Intellect = " + intellect + "  -- " +
-                        " Initiative = " + initiative + "  --";
-    }
 }

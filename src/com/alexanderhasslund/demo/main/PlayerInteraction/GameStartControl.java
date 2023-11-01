@@ -76,7 +76,7 @@ public class GameStartControl {
         playerController.chooseClass();
         playerController.choosePlayerName();
         playerController.getPlayerInformation();
-        MainGameControl mainGameControl = new MainGameControl(playerController.getPlayerList());
+        MainGameControl mainGameControl = new MainGameControl(playerController.getPlayerList(), playerController.getCountPlayers());
         mainGameControl.mainSwitch();
     }
 }

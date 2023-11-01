@@ -1,5 +1,7 @@
 package com.alexanderhasslund.demo.main.Monster;
 
+import com.alexanderhasslund.demo.main.Levels.LevelGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,8 +23,43 @@ public class MonsterGenerator {
             int monsterIndex = rand.nextInt(allMonsters.size());
             Monster monster = allMonsters.get(monsterIndex);
             monsterList.add(monster);
+
         }
 
+        LevelGenerator levelGenerator = new LevelGenerator(monsterList);
+        levelGenerator.generateLevels();
+    }
+
+
+    public List<Monster> getMonsterList() {
+        return monsterList;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*
         for (int i = 0; i < monsterList.size(); i++) {
             System.out.println(
                     monsterList.get(i).getMonsterName() + " HP " +
@@ -31,10 +68,10 @@ public class MonsterGenerator {
                             monsterList.get(i).getDamage());
         }
 
-        for (int i = 0; i < monsterList.size(); i++) {
-                    monsterList.get(i).setDamage(monsterList.get(i).getDamage() -5);
-                    monsterList.get(i).setHp(monsterList.get(i).getHp() -20);
-        }
+
+                    monsterList.get(0).setDamage(monsterList.get(0).getDamage()-5);
+                    monsterList.get(0).setHp(monsterList.get(0).getHp() -20);
+
 
         for (int i = 0; i < monsterList.size(); i++) {
             System.out.println(
@@ -45,11 +82,4 @@ public class MonsterGenerator {
                             monsterList.get(i).getDamage());
         }
 
-    }
-
-
-
-    public List<Monster> getMonsterList() {
-        return monsterList;
-    }
-}
+         */

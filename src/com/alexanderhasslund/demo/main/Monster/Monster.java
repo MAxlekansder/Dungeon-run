@@ -82,7 +82,7 @@ public class Monster {
         isDead = dead;
     }
 
-    /*
+
     public Monster(String monsterName, int hp, int resoruce, int damage, int initiative, int strength, int agility, int intellect, boolean isDead) {
         this.monsterName = monsterName;
         this.hp = hp;
@@ -93,5 +93,5 @@ public class Monster {
         this.agility = agility;
         this.intellect = intellect;
         this.isDead = isDead;
-    } */
+    }
 }
