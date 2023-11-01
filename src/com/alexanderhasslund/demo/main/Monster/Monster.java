@@ -2,6 +2,7 @@ package com.alexanderhasslund.demo.main.Monster;
 
 public class Monster {
 
+    private String monsterName;
     private int hp;
     private int resoruce;
     private int damage;
@@ -10,6 +11,12 @@ public class Monster {
     private int agility;
     private int intellect;
     private boolean isDead;
+
+
+
+    public String getMonsterName() {
+        return monsterName;
+    }
 
     public int getHp() {
         return hp;
@@ -74,4 +81,17 @@ public class Monster {
     public void setDead(boolean dead) {
         isDead = dead;
     }
+
+    /*
+    public Monster(String monsterName, int hp, int resoruce, int damage, int initiative, int strength, int agility, int intellect, boolean isDead) {
+        this.monsterName = monsterName;
+        this.hp = hp;
+        this.resoruce = resoruce;
+        this.damage = damage;
+        this.initiative = initiative;
+        this.strength = strength;
+        this.agility = agility;
+        this.intellect = intellect;
+        this.isDead = isDead;
+    } */
 }

@@ -15,7 +15,7 @@ public class Input {
                 stringCheck = false;
 
             } catch (InputMismatchException e) {
-                System.out.println("Du behöver skriva in ett strängvärde för att komma vidare");
+                System.out.println("Please enter a String value to continue");
             }
         }
         return stringInput;
@@ -35,10 +35,10 @@ public class Input {
                     //intScan.nextLine(); verkar inte funga som tänkt <- ta bort överflödet.
                     intCheck = false;
                 } else {
-                    System.out.println("Heltalet behöver större än noll! och får inte vara tom");
+                    System.out.println("Input cant be empty or zero");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Du behöver skriva in ett heltal för att komma vidare");
+                System.out.println("Please enter an integer to continue");
             }
 
         }

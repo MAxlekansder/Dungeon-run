@@ -1,9 +1,11 @@
 package com.alexanderhasslund.demo.main.Monster;
 
 import com.alexanderhasslund.demo.main.Combat.ICombat;
+import com.alexanderhasslund.demo.main.Engine.Color;
 
 public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
 
+    private String monsterName;
     private int hp;
     private int resoruce;
     private int damage;
@@ -14,6 +16,8 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
     private boolean isDead;
 
     public MonsterSpellWeaver() {
+        //super("MONSTER - Vermin Spellweaver", 50,0,20,80,0,13,20,false);
+        this.monsterName = "MONSTER - Skaven Spellweaver";
         this.hp = 60;
         this.resoruce = 0;
         this.damage = 20;
@@ -48,5 +52,17 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
     @Override
     public void getStatus() {
 
+    }
+
+    @Override
+    public String toString() {
+        return
+                Color.PURPLE + monsterName + Color.RESET + ":" +
+                        " Hp = " + hp + "  -- " +
+                        " Damage = " + damage + "  -- " +
+                        " Strength = " + strength + "  -- " +
+                        " Agility = " + agility + "  -- " +
+                        " Intellect = " + intellect + "  -- " +
+                        " Initiative = " + initiative + "  --";
     }
 }

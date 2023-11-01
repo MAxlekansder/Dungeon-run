@@ -1,6 +1,7 @@
 package com.alexanderhasslund.demo.main.PlayerInteraction;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.File.SaveFile;
+import com.alexanderhasslund.demo.main.Monster.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.Shop.ShopMenu;
 
@@ -20,6 +21,7 @@ public class MainGameControl {
         PlayerChoice playerChoice = new PlayerChoice();
         ShopMenu shopMenu = new ShopMenu(playerList); // this line becomes null, seems like something is wrong
         SaveFile saveFile = new SaveFile(playerList);
+        MonsterController monsterController = new MonsterController();
         boolean isMainPlaying = true;
 
 
@@ -28,6 +30,7 @@ public class MainGameControl {
             switch (Input.intInput()) {
                 case 1 -> {
                     // continue
+                    monsterController.valueController();
                 }
                 case 2 -> {
                     // shop
