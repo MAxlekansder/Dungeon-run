@@ -36,6 +36,75 @@ public class Barbarian extends Player implements IClasses, ICombat {
     }
 
     @Override
+    public void trait() {
+        //berserkers rage
+        //when hp is below 30 <- activate berserkers rage
+
+        if ( hp <= hp * 0.3) {
+            System.out.println("The barbarian gains berserker rage, gaining extra damage");
+            while (hp <= hp * 0.3) {
+                damage += (int) (damage * 0.07);
+            }
+        }
+    }
+
+
+    @Override
+    public int spells() {
+        int temporaryBuffs = 0;
+        switch (1) {
+            case 1 -> { // a baseline damage spell that adds 3 damage and uses 'resources'
+                temporaryBuffs = (int) (Math.ceil(damage) + ( 3 * level^level/4));
+                System.out.println("Cleaves the target with: " + temporaryBuffs);
+                resource -= 20;
+            }
+            case 2 -> { //
+                System.out.println( "The barbarian muster its rage, gaining defence euqal to: " + (defence + 2));
+                resource -= 30;
+                temporaryBuffs += 2;
+            }
+            default -> {System.out.println("Use right input");}
+        }
+        return temporaryBuffs;
+    }
+
+
+    @Override
+    public void setLevelUp() {
+
+    }
+
+    @Override
+    public void attack() {
+
+
+    }
+
+    @Override
+    public void flee() {
+
+    }
+
+    @Override
+    public void getStatus() {
+
+    }
+
+    @Override
+    public String toString() {
+        return
+                Color.RED + className + Color.RESET + ":" +
+                        " Hp = " + hp + "  || " +
+                        " Damage = " + damage + "  || " +
+                        " Resource = " + resource + "  || " +
+                        " Strength = " + strength + "  || " +
+                        " Agility = " + agility + "  || " +
+                        " Intellect = " + intellect + "  || " +
+                        " Initiative = " + initiative + "  ||";
+    }
+
+
+    @Override
     public int getId() {
         return id;
     }
@@ -144,71 +213,5 @@ public class Barbarian extends Player implements IClasses, ICombat {
         this.initiative = initiative;
     }
 
-    @Override
-    public void trait() {
-        //berserkers rage
-        //when hp is below 30 <- activate berserkers rage
-
-        if ( hp <= hp * 0.3) {
-            System.out.println("The barbarian gains berserker rage, gaining extra damage");
-            while (hp <= hp * 0.3) {
-                damage += (int) (damage * 0.07);
-            }
-        }
-    }
-
-
-    @Override
-    public int spells() {
-        int temporaryBuffs = 0;
-        switch (1) {
-            case 1 -> { // a baseline damage spell that adds 3 damage and uses 'resources'
-                temporaryBuffs = (int) (Math.ceil(damage) + ( 3 * level^level/4));
-                System.out.println("Cleaves the target with: " + temporaryBuffs);
-                resource -= 20;
-            }
-            case 2 -> { //
-                System.out.println( "The barbarian muster its rage, gaining defence euqal to: " + (defence + 2));
-                resource -= 30;
-                temporaryBuffs += 2;
-            }
-            default -> {System.out.println("Use right input");}
-        }
-        return temporaryBuffs;
-    }
-
-
-    @Override
-    public void setLevelUp() {
-
-    }
-
-    @Override
-    public void attack() {
-
-    }
-
-    @Override
-    public void flee() {
-
-    }
-
-    @Override
-    public void getStatus() {
-
-    }
-
-    @Override
-    public String toString() {
-        return
-                Color.RED + className + Color.RESET + ":" +
-                        " Hp = " + hp + "  || " +
-                        " Damage = " + damage + "  || " +
-                        " Resource = " + resource + "  || " +
-                        " Strength = " + strength + "  || " +
-                        " Agility = " + agility + "  || " +
-                        " Intellect = " + intellect + "  || " +
-                        " Initiative = " + initiative + "  ||";
-    }
 
 }

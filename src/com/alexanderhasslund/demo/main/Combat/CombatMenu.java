@@ -33,6 +33,7 @@ public class CombatMenu {
         switch (fightInput) {
             case 1 -> {
                 System.out.println("fight");
+                //fight.fightMonster(); vill ha player som argument
 
             }
             case 2 -> {

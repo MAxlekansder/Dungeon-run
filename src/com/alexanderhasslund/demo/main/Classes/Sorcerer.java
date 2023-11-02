@@ -14,7 +14,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     private int agility;
     private int intellect;
     private int level;
-    private int initative;
+    private int initiative;
 
     public Sorcerer() {
         this.className = Color.BLUE + "SORCERER" + Color.RESET;
@@ -26,7 +26,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         this.agility = 5;
         this.intellect = 22;
         this.level = 1;
-        this.initative = 70;
+        this.initiative = 70;
     }
 
     @Override
@@ -130,12 +130,14 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         this.level = level;
     }
 
-    public int getInitative() {
-        return initative;
+    @Override
+    public int getInitiative() {
+        return initiative;
     }
 
-    public void setInitative(int initative) {
-        this.initative = initative;
+    @Override
+    public void setInitiative(int initiative) {
+        this.initiative = initiative;
     }
 
     @Override
@@ -160,6 +162,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     @Override
     public void attack() {
 
+
     }
 
     @Override
@@ -182,7 +185,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
                 " Strength = " + strength + "  || " +
                 " Agility = " + agility + "  || " +
                 " Intellect = " + intellect + "  || " +
-                " Initiative = " + initative + "  ||";
+                " Initiative = " + initiative + "  ||";
     }
 
 }

@@ -32,6 +32,68 @@ public class Rogue extends Player implements IClasses, ICombat {
         this.initiative = 40;
     }
 
+
+    @Override
+    public void trait() {
+        //When struck in combat you have a chance to dodge the attack, multiplies evasion
+        //fools elusiveness
+        //count number of rounds and try to get it in here so there's a chance to use the trait
+        // maybe put the for loop for rounds in the fighting sequence and not in the spell?
+
+        damage *= damage * 2;
+
+        //Cooldown
+    }
+
+    @Override
+    public int spells() {
+        switch (1) {
+            case 1 -> {
+                System.out.printf("Backstabs the target, dealing: %s extra damage and gaining: %s extra evasion", 3, 2);
+            }
+            case 2 -> {
+                System.out.printf("Pick pockets the target gaining: %s gold", 1);
+            }
+            default -> {
+                System.out.println("Use right input");
+            }
+        }
+        return 2;
+    }
+
+    @Override
+    public void setLevelUp() {
+
+    }
+
+    @Override
+    public void attack() {
+
+    }
+
+    @Override
+    public void flee() {
+
+    }
+
+    @Override
+    public void getStatus() {
+
+    }
+
+    @Override
+    public String toString() {
+        return
+                Color.GREEN + className + Color.RESET + ":" +
+                        "     Hp = " + hp + "  || " +
+                        " Damage = " + damage + "  || " +
+                        " Resource = " + resource + "  || " +
+                        " Strength = " + strength + "  || " +
+                        " Agility = " + agility + "  || " +
+                        " Intellect = " + intellect + "  || " +
+                        " Initiative = " + initiative + "  ||";
+    }
+
     @Override
     public int getId() {
         return id;
@@ -138,67 +200,5 @@ public class Rogue extends Player implements IClasses, ICombat {
     public void setInitiative(int initiative) {
         this.initiative = initiative;
     }
-
-    @Override
-    public void trait() {
-        //When struck in combat you have a chance to dodge the attack, multiplies evasion
-        //fools elusiveness
-        //count number of rounds and try to get it in here so there's a chance to use the trait
-        // maybe put the for loop for rounds in the fighting sequence and not in the spell?
-
-        evasion *= evasion * 2;
-
-        //Cooldown
-    }
-
-    @Override
-    public int spells() {
-        switch (1) {
-            case 1 -> {
-                System.out.printf("Backstabs the target, dealing: %s extra damage and gaining: %s extra evasion", 3, 2);
-            }
-            case 2 -> {
-                System.out.printf("Pick pockets the target gaining: %s gold", 1);
-            }
-            default -> {
-                System.out.println("Use right input");
-            }
-        }
-        return 2;
-    }
-
-    @Override
-    public void setLevelUp() {
-
-    }
-
-    @Override
-    public void attack() {
-
-    }
-
-    @Override
-    public void flee() {
-
-    }
-
-    @Override
-    public void getStatus() {
-
-    }
-
-    @Override
-    public String toString() {
-        return
-                Color.GREEN + className + Color.RESET + ":" +
-                        "     Hp = " + hp + "  || " +
-                        " Damage = " + damage + "  || " +
-                        " Resource = " + resource + "  || " +
-                        " Strength = " + strength + "  || " +
-                        " Agility = " + agility + "  || " +
-                        " Intellect = " + intellect + "  || " +
-                        " Initiative = " + initiative + "  ||";
-    }
-
 
 }

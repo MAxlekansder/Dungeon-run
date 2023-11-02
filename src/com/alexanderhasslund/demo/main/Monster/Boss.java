@@ -20,3 +20,5 @@ public class Boss implements IMonster {
     }
 
 }
+
+// have a boss that strikes four times in a row - tag team boss

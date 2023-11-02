@@ -7,4 +7,6 @@ public interface IClasses {
     public int spells();
     public void setLevelUp();
 
+
+
 }

@@ -35,13 +35,7 @@ public class Player implements Serializable {
         return className;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getHp() {
         return hp;
@@ -115,6 +109,14 @@ public class Player implements Serializable {
         this.initiative = initiative;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getPlayerId() {
         return playerId;
     }
@@ -174,6 +176,7 @@ public class Player implements Serializable {
         this.inventoryList = inventoryList;
         this.experience = experience;
         this.currency = currency;
+
         this.className = className;
         this.hp = hp;
         this.damage = damage;

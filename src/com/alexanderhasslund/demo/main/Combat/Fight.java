@@ -12,7 +12,6 @@ import java.util.List;
 public class Fight  {
 
     private List<Player> playerList;
-    Barbarian barbarian = new Barbarian();
 
     public void fightMonster(List<Player> playerList) {
         int fightSequence = Input.intInput();
