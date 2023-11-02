@@ -1,4 +1,6 @@
 package com.alexanderhasslund.demo.main.PlayerInteraction;
+import com.alexanderhasslund.demo.main.Combat.CombatMenu;
+import com.alexanderhasslund.demo.main.Combat.Fight;
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.File.SaveFile;
@@ -24,6 +26,7 @@ public class MainGameControl {
         PlayerChoice playerChoice = new PlayerChoice();
         ShopMenu shopMenu = new ShopMenu(playerList); // this line becomes null, seems like something is wrong
         SaveFile saveFile = new SaveFile(playerList);
+        CombatMenu combatMenu = new CombatMenu();
         MonsterController monsterController = new MonsterController(countPlayers);
         boolean isMainPlaying = true;
 
@@ -34,6 +37,8 @@ public class MainGameControl {
                 case 1 -> {
                     // continue
                     monsterController.valueController();
+                   // this method call is only for test, this might be in levelGenerator
+                    combatMenu.fightMonster();
                 }
                 case 2 -> {
                     // shop

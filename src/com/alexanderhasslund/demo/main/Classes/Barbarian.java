@@ -159,9 +159,9 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
 
     @Override
-    public int spells(int choice) {
+    public int spells() {
         int temporaryBuffs = 0;
-        switch (choice) {
+        switch (1) {
             case 1 -> { // a baseline damage spell that adds 3 damage and uses 'resources'
                 temporaryBuffs = (int) (Math.ceil(damage) + ( 3 * level^level/4));
                 System.out.println("Cleaves the target with: " + temporaryBuffs);

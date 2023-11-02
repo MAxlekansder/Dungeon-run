@@ -29,6 +29,12 @@ public class Player implements Serializable {
     private int initiative;
 
 
+
+
+
+
+
+
     public String getClassName() {
         return className;
     }

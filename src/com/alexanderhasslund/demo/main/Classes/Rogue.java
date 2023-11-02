@@ -151,8 +151,8 @@ public class Rogue extends Player implements IClasses {
     }
 
     @Override
-    public int spells(int choice) {
-        switch (choice) {
+    public int spells() {
+        switch (1) {
             case 1 -> {
                 System.out.printf("Backstabs the target, dealing: %s extra damage and gaining: %s extra evasion", 3, 2);
             }

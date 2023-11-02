@@ -12,8 +12,6 @@ public class MonsterRanger extends Monster implements IMonster, ICombat {
 
     }
 
-    
-
     @Override
     public int damage() {
         return 0;

@@ -1,27 +1,44 @@
 package com.alexanderhasslund.demo.main.Combat;
 
+import com.alexanderhasslund.demo.main.Classes.Barbarian;
+import com.alexanderhasslund.demo.main.Classes.IClasses;
 import com.alexanderhasslund.demo.main.Engine.Input;
+import com.alexanderhasslund.demo.main.Monster.Monster;
+import com.alexanderhasslund.demo.main.Player.Player;
 import org.w3c.dom.ls.LSOutput;
 
-public class Fight {
+import java.util.List;
 
-    Input input;
+public class Fight  {
 
-    public void fight() {
-        int fightInput = input.intInput();
-        switch (fightInput) {
+    private List<Player> playerList;
+    Barbarian barbarian = new Barbarian();
+
+    public void fightMonster(List<Player> playerList) {
+        int fightSequence = Input.intInput();
+        switch (fightSequence) {
             case 1 -> {
-                System.out.println("fight");
+                playerList.stream().filter(player -> player instanceof ICombat).forEach(player -> ((ICombat) player).attack());
             }
             case 2 -> {
-                System.out.println("get status");
-            }
-            case 3 -> {
-                System.out.println("flee");
-            }
-            default -> {
-                System.out.println("use the right input");
+                playerList.stream().filter(player -> player instanceof IClasses).forEach(player -> ((IClasses) player).spells());
             }
         }
+
+
+
+        for (Player player : playerList) {
+            if (player instanceof ICombat) {
+               ((ICombat) player).attack();
+            }
+        }
+
+        for (Player player: playerList) {
+            if (player instanceof IClasses) {
+                ((IClasses) player).spells();
+
+            }
+        }
+
     }
 }

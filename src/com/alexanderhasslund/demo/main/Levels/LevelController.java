@@ -7,7 +7,6 @@ import java.util.List;
 
 public class LevelController {
 
-    private List<LevelGenerator> levelList;
     private int countLevels;
 
     public int getCountLevels() {
@@ -17,11 +16,6 @@ public class LevelController {
     public void setCountLevels(int countLevels) {
         this.countLevels = countLevels;
     }
-
-    public LevelController(List<LevelGenerator> levelList) {
-        this.levelList = new ArrayList<>();
-    }
-
 
 
 }

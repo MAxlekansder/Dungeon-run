@@ -48,7 +48,5 @@ public class MonsterController {
 
 
         monsterGenerator.randomizeMonster(getCountMonsters(), allMonsters);
-        //monsterGenerator.randomizeMonster(countMonsters, allMonsters);
-
     }
 }

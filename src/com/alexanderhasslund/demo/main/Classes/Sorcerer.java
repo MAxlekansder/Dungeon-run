@@ -138,8 +138,8 @@ public class Sorcerer extends Player implements IClasses{
     }
 
     @Override
-    public int spells(int choice) {
-        switch (choice){
+    public int spells() {
+        switch (1){
             case 1 -> {
                 System.out.println("builds up damage over time, over three rounds: ");
             }
