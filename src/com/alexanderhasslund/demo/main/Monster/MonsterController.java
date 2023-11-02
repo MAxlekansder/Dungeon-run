@@ -15,7 +15,6 @@ public class MonsterController {
         this.countPlayers = countPlayers;
     }
 
-
     public int getCountFloors() {
         return countFloors;
     }
@@ -35,7 +34,6 @@ public class MonsterController {
     public void valueController() {
         MonsterGenerator monsterGenerator = new MonsterGenerator();
         LevelController levelController = new LevelController();
-        PlayerController playerController = new PlayerController();
 
         countFloors = 1 + levelController.getCountLevels();
         countMonsters = (2 + levelController.getCountLevels()) * countPlayers;
@@ -45,8 +43,6 @@ public class MonsterController {
         allMonsters.add(new MonsterRanger());
         allMonsters.add(new MonsterBrute());
         allMonsters.add(new MonsterSpellWeaver());
-
-
         monsterGenerator.randomizeMonster(getCountMonsters(), allMonsters);
     }
 }

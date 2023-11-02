@@ -30,4 +30,26 @@ public class Shields extends Defence {
         Inventory divineShield = new Inventory("Divine shield",2,0,15,40,30);
         return divineShield;
     }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getInitiative() {
+        return initiative;
+    }
+
+    @Override
+    public int getDefence() {
+        return defence;
+    }
+
+    @Override
+    public int getBlock() {
+        return block;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

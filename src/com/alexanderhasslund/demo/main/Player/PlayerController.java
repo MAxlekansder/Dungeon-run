@@ -3,6 +3,7 @@ import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Classes.Rogue;
 import com.alexanderhasslund.demo.main.Classes.Sorcerer;
 import com.alexanderhasslund.demo.main.Engine.Input;
+import com.alexanderhasslund.demo.main.Inventory.Inventory;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
 import java.util.ArrayList;
@@ -63,9 +64,19 @@ public class PlayerController {
             System.out.printf("Enter character name, for player %s: ", (i + 1));
             playerList.get(i).setName(Input.stringInput());
             playerList.get(i).setId(i);
-            playerList.get(i).setCurrency(200);
+            playerList.get(i).setCurrency(2000000); // remove these
+            playerList.get(i).setLevel(15); // remove these
         }
+
         System.out.print("\n");
+
+        for (int i = 0; i < countPlayers; i ++) {
+
+            playerList.get(i).getInventoryList().add(0,new Inventory("",0,0,0,0,0));
+            playerList.get(i).getInventoryList().add(1,new Inventory("",0,0,0,0,0));
+            playerList.get(i).getInventoryList().add(2,new Inventory("",0,0,0,0,0));
+            playerList.get(i).getInventoryList().add(3,new Inventory("",0,0,0,0,0));
+        }
     }
 
 

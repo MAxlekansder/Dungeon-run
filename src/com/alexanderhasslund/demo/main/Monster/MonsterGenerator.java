@@ -20,7 +20,7 @@ public class MonsterGenerator {
 
         for (int i = 0; i < countMonsters; i++) {
 
-            int monsterIndex = rand.nextInt(allMonsters.size());
+            int monsterIndex = rand.nextInt(0,2) + allMonsters.size();
             Monster monster = allMonsters.get(monsterIndex);
             monsterList.add(monster);
 

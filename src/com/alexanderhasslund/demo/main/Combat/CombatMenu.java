@@ -41,6 +41,7 @@ public class CombatMenu {
             case 3 -> {
                 System.out.println("flee");
                 // calculate if you get away
+
             }
             default -> {
                 System.out.println("use the right input");

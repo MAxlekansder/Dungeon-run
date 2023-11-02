@@ -13,8 +13,8 @@ public class Inventory {
 
 
 
-    public Inventory(String standardSword, int damage, int initiative, int levelLock, int defence, int block) {
-        this.itemName = standardSword;
+    public Inventory(String itemName, int damage, int initiative, int levelLock, int defence, int block) {
+        this.itemName = itemName;
         this.damage = damage;
         this.initiative = initiative;
         this.levelLock = levelLock;
@@ -48,8 +48,8 @@ public class Inventory {
 
     @Override
     public String toString() {
-        return Color.WHITE +" Sword Slot:"+ Color.RESET + " || " +
-                "itemName = " + itemName + "  || " +
+        return Color.WHITE +" ITEM SLOT:"+ Color.RESET + " || " +
+                "Item = " + itemName + "  || " +
                 " damage = " + damage + "  || " +
                 " initiative = " + initiative + "  || " +
                 " levelLock = " + levelLock + "  ||";

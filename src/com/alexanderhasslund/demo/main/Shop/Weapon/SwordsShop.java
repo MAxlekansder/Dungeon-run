@@ -26,7 +26,7 @@ public class SwordsShop {
             switch (swordChoice) {
                 case 1 -> {
                     if (playerList.get(playerIndex).getLevel() >= 0 && playerList.get(playerIndex).getCurrency() >= 200) {
-                        playerList.get(playerIndex).getInventoryList().add(swords.standardSword());
+                        playerList.get(playerIndex).getInventoryList().set(0,swords.standardSword());
 
                         swordPrice = 200;
                         isShop = false;
@@ -38,7 +38,7 @@ public class SwordsShop {
                 }
                 case 2 -> {
                     if (playerList.get(playerIndex).getLevel() >= 2 && playerList.get(playerIndex).getCurrency() >= 500) {
-                        playerList.get(playerIndex).getInventoryList().add(swords.fastSword());
+                        playerList.get(playerIndex).getInventoryList().set(0,swords.fastSword());
 
                         swordPrice = 500;
                         isShop = false;
@@ -50,7 +50,7 @@ public class SwordsShop {
                 }
                 case 3 -> {
                     if (playerList.get(playerIndex).getLevel() >= 5 && playerList.get(playerIndex).getCurrency() >= 1000) {
-                        playerList.get(playerIndex).getInventoryList().add(swords.sharpSword());
+                        playerList.get(playerIndex).getInventoryList().set(0,swords.sharpSword());
 
                         swordPrice = 1000;
                         isShop = false;
@@ -62,7 +62,7 @@ public class SwordsShop {
                 }
                 case 4 -> {
                     if (playerList.get(playerIndex).getLevel() >= 15 && playerList.get(playerIndex).getCurrency() >= 15000) {
-                        playerList.get(playerIndex).getInventoryList().add(swords.divineSword());
+                        playerList.get(playerIndex).getInventoryList().set(0,swords.divineSword());
 
                         swordPrice = 15000;
                         isShop = false;
@@ -93,17 +93,12 @@ public class SwordsShop {
                 System.out.println("see you around...");
             }
 
-            playerList.forEach(player -> {
-                if (player.getId() == playerIndex ) {
-                    player.getInventoryList().forEach(item -> {
-                        System.out.println(player.getName() + " bought " + item.getItemName() + " with " + item.getDamage() +" damage with a cost of: " + swordPrice);
-                        System.out.println("Balance left: " + (player.getCurrency()));
-                    });
 
-                } else {
-                    System.out.println("");
-                }
-            });
-
+        playerList.forEach(player -> {
+            System.out.println(player.getName() + " bought " + playerList.get(playerIndex).getInventoryList().get(0).getItemName()
+                    + " with " +playerList.get(playerIndex).getInventoryList().get(0).getInitiative() + " initiative"
+                    + " and " + playerList.get(playerIndex).getInventoryList().get(0).getDamage() + " Defence, with a cost of: " + swordPrice);
+            System.out.println("Balance left: " + (player.getCurrency()));
+        });
     }
 }

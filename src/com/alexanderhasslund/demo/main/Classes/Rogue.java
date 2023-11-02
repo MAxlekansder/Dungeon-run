@@ -1,9 +1,10 @@
 package com.alexanderhasslund.demo.main.Classes;
 
+import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Player.Player;
 
-public class Rogue extends Player implements IClasses {
+public class Rogue extends Player implements IClasses, ICombat {
 
     private String className;
     private int id;
@@ -172,6 +173,21 @@ public class Rogue extends Player implements IClasses {
     }
 
     @Override
+    public void attack() {
+
+    }
+
+    @Override
+    public void flee() {
+
+    }
+
+    @Override
+    public void getStatus() {
+
+    }
+
+    @Override
     public String toString() {
         return
                 Color.GREEN + className + Color.RESET + ":" +
@@ -183,5 +199,6 @@ public class Rogue extends Player implements IClasses {
                         " Intellect = " + intellect + "  || " +
                         " Initiative = " + initiative + "  ||";
     }
+
 
 }

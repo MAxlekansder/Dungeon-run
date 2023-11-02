@@ -1,8 +1,9 @@
 package com.alexanderhasslund.demo.main.Classes;
+import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Player.Player;
 
-public class Sorcerer extends Player implements IClasses{
+public class Sorcerer extends Player implements IClasses, ICombat {
 
     private String className;
     private int id;
@@ -153,6 +154,21 @@ public class Sorcerer extends Player implements IClasses{
 
     @Override
     public void setLevelUp() {
+
+    }
+
+    @Override
+    public void attack() {
+
+    }
+
+    @Override
+    public void flee() {
+
+    }
+
+    @Override
+    public void getStatus() {
 
     }
 

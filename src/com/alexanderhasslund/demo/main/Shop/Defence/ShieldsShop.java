@@ -3,6 +3,7 @@ import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ShieldsShop {
 
@@ -26,7 +27,7 @@ public class ShieldsShop {
             switch (shieldChoice) {
                 case 1 -> {
                     if (playerList.get(playerIndex).getLevel() >= 0 && playerList.get(playerIndex).getCurrency() >= 200) {
-                        playerList.get(playerIndex).getInventoryList().add(shields.standardShield());
+                        playerList.get(playerIndex).getInventoryList().set(1,shields.standardShield());
 
                         shieldPrice = 200;
                         isShop = false;
@@ -38,7 +39,7 @@ public class ShieldsShop {
                 }
                 case 2 -> {
                     if (playerList.get(playerIndex).getLevel() >= 2 && playerList.get(playerIndex).getCurrency() >= 500) {
-                        playerList.get(playerIndex).getInventoryList().add(shields.bulkShield());
+                        playerList.get(playerIndex).getInventoryList().set(1,shields.bulkShield());
 
                         shieldPrice = 500;
                         isShop = false;
@@ -50,7 +51,7 @@ public class ShieldsShop {
                 }
                 case 3 -> {
                     if (playerList.get(playerIndex).getLevel() >= 5 && playerList.get(playerIndex).getCurrency() >= 1000) {
-                        playerList.get(playerIndex).getInventoryList().add(shields.spikedShield());
+                        playerList.get(playerIndex).getInventoryList().set(1,shields.spikedShield());
 
                         shieldPrice = 1000;
                         isShop = false;
@@ -62,7 +63,7 @@ public class ShieldsShop {
                 }
                 case 4 -> {
                     if (playerList.get(playerIndex).getLevel() >= 15 && playerList.get(playerIndex).getCurrency() >= 15000) {
-                        playerList.get(playerIndex).getInventoryList().add(shields.divineShield());
+                        playerList.get(playerIndex).getInventoryList().set(1,shields.divineShield());
 
                         shieldPrice = 15000;
                         isShop = false;
@@ -80,30 +81,27 @@ public class ShieldsShop {
 
         if (shieldPrice != 0) {
             playerList.get(playerIndex).setCurrency(playerList.get(playerIndex).getCurrency() - shieldPrice);
-            checkSwordSlot(shieldPrice, playerIndex);
+            checkShieldSlot(shieldPrice, playerIndex);
             return shieldPrice;
         }
         return shieldPrice;
     }
 
 
-    public void checkSwordSlot(int shieldPrice, int playerIndex) {
-
+    public void checkShieldSlot(int shieldPrice, int playerIndex) {
+        int shieldIndex = 1;
         if (shieldPrice == 0) {
             System.out.println("see you around...");
         }
 
+
         playerList.forEach(player -> {
-            if (player.getId() == playerIndex ) {
-                player.getInventoryList().forEach(item -> {
-                    System.out.println(player.getName() + " bought " + item.getItemName() + " with " + item.getDamage() +" damage with a cost of: " + shieldPrice);
-                    System.out.println("Balance left: " + (player.getCurrency()));
-                });
-
-            } else {
-                System.out.println("TEST");
-            }
+            System.out.println(player.getName() + " bought " + playerList.get(playerIndex).getInventoryList().get(1).getItemName()
+                    + " with " +playerList.get(playerIndex).getInventoryList().get(1).getBlock() + " block"
+                    + " and " + playerList.get(playerIndex).getInventoryList().get(1).getDefence() + " Defence, with a cost of: " + shieldPrice);
+            System.out.println("Balance left: " + (player.getCurrency()));
         });
-
     }
+
+
 }

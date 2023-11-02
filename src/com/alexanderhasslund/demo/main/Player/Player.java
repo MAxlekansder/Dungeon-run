@@ -5,6 +5,7 @@ import com.alexanderhasslund.demo.main.TalentTree.TalentTree;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Player implements Serializable {
@@ -27,11 +28,6 @@ public class Player implements Serializable {
     private int level;
     private int defence;
     private int initiative;
-
-
-
-
-
 
 
 

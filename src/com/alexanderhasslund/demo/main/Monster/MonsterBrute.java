@@ -1,7 +1,7 @@
 package com.alexanderhasslund.demo.main.Monster;
 
 import com.alexanderhasslund.demo.main.Combat.ICombat;
-import com.alexanderhasslund.demo.main.Engine.Color;
+
 
 public class MonsterBrute extends Monster implements IMonster, ICombat {
 

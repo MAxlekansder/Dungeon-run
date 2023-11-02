@@ -5,4 +5,5 @@ public interface ICombat {
     public void attack();
     public void flee();
     public void getStatus();
+
 }
