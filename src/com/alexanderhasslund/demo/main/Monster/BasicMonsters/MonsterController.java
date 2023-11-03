@@ -1,7 +1,6 @@
 package com.alexanderhasslund.demo.main.Monster.BasicMonsters;
 
 import com.alexanderhasslund.demo.main.Levels.LevelController;
-import com.alexanderhasslund.demo.main.Levels.LevelGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +19,46 @@ public class MonsterController {
         this.monsterList = new ArrayList<>();
     }
 
+
+
+    public void monsterValueController() {
+
+        LevelController levelController = new LevelController();
+        Random rand = new Random();
+
+        countFloors = 1 + levelController.getCountLevels();
+        //why is countPlayers 0?
+        countMonsters = (2 * getCountPlayers()) + rand.nextInt(0,3);
+
+
+        List<Monster> allMonsters = new ArrayList<>();
+        allMonsters.add(new MonsterRanger());
+        allMonsters.add(new MonsterBrute());
+        allMonsters.add(new MonsterSpellWeaver());
+        randomizeMonster(countMonsters, allMonsters);
+    }
+
+
+    public void randomizeMonster(int countMonsters, List<Monster> allMonsters) {
+        Random rand = new Random();
+
+        for (int i = 0; i < countMonsters; i++) {
+
+            int monsterIndex = rand.nextInt(allMonsters.size());
+            Monster monster = allMonsters.get(monsterIndex);
+            monsterList.add(monster);
+
+        }
+
+        //LevelGenerator levelGenerator = new LevelGenerator(monsterList);
+        //levelGenerator.generateLevels();
+    }
+
+
+    public List<Monster> getMonsterList() {
+        return monsterList;
+    }
+
     public int getCountFloors() {
         return countFloors;
     }
@@ -36,42 +75,8 @@ public class MonsterController {
         this.countMonsters = countMonsters;
     }
 
-
-    public void valueController() {
-        LevelController levelController = new LevelController();
-
-        countFloors = 1 + levelController.getCountLevels();
-        countMonsters = (2 + levelController.getCountLevels()) * countPlayers;
-
-
-        List<Monster> allMonsters = new ArrayList<>();
-        allMonsters.add(new MonsterRanger());
-        allMonsters.add(new MonsterBrute());
-        allMonsters.add(new MonsterSpellWeaver());
-        randomizeMonster(getCountMonsters(), allMonsters);
+    public int getCountPlayers() {
+        return countPlayers;
     }
-
-
-    public void randomizeMonster(int countMonsters, List<Monster> allMonsters) {
-
-        Random rand = new Random();
-
-        for (int i = 0; i < countMonsters; i++) {
-
-            int monsterIndex = rand.nextInt(0, 2) + allMonsters.size();
-            Monster monster = allMonsters.get(monsterIndex);
-            monsterList.add(monster);
-
-        }
-
-        LevelGenerator levelGenerator = new LevelGenerator(monsterList);
-        levelGenerator.generateLevels();
-    }
-
-
-    public List<Monster> getMonsterList() {
-        return monsterList;
-    }
-
 
 }

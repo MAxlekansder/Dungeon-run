@@ -70,6 +70,7 @@ public class GameStartControl {
         } while (isPlaying);
     }
 
+    //Singleton-isch...
     public void startIntroductionChoice() throws InterruptedException, IOException {
         PlayerController playerController = new PlayerController();
 
@@ -78,7 +79,7 @@ public class GameStartControl {
         //  stringManipulator.manipulateString(playerChoice.newGameSetup());
         playerController.playerCount();
         MonsterController monsterController = new MonsterController(playerController.getCountPlayers());
-        CombatController combatController = new CombatController(playerController.getPlayerList(), monsterController.getMonsterList());
+        CombatController combatController = new CombatController(playerController.getPlayerList(), playerController.getCountPlayers());
         playerController.chooseClass();
         playerController.choosePlayerName();
         playerController.getPlayerInformation();

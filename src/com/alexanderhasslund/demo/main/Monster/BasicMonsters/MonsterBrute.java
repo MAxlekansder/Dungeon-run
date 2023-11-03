@@ -7,10 +7,11 @@ import com.alexanderhasslund.demo.main.Monster.IMonster;
 public class MonsterBrute extends Monster implements IMonster, ICombat {
 
     public MonsterBrute() {
-        super("MONSTER - Vermin Ogre", 60,0,20,60,20,13,0,false, 30,20,20, false);
+        super("VERMIN OGRE", 60,0,20,60,20,13,0,false, 30,20,20, false);
     }
 
 
+    //randomize initiative within bound?
     @Override
     public void spells() {
         //slams

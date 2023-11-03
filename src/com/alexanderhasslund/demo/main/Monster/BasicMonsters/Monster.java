@@ -1,5 +1,7 @@
 package com.alexanderhasslund.demo.main.Monster.BasicMonsters;
 
+import com.alexanderhasslund.demo.main.Engine.Color;
+
 public class Monster {
 
     private String monsterName;
@@ -134,16 +136,15 @@ public class Monster {
 
     @Override
     public String toString() {
-        return "Monster{" +
-                "monsterName='" + monsterName + '\'' +
-                ", hp=" + hp +
-                ", resoruce=" + resoruce +
-                ", damage=" + damage +
-                ", initiative=" + initiative +
-                ", strength=" + strength +
-                ", agility=" + agility +
-                ", intellect=" + intellect +
-                ", isDead=" + isDead +
-                '}';
+        return
+                Color.CYAN +"MONSTER -  " + Color.RESET + monsterName + " -- " +
+                " HP = " + hp + " -- " +
+                " Defence = " + defence + " -- " +
+                " damage = " + damage + " -- " +
+                " initiative = " + initiative + " -- " +
+                " strength = " + strength + " -- " +
+                " agility = " + agility + " -- " +
+                " intellect = " + intellect + " -- " +
+                " Dead = " + isDead;
     }
 }

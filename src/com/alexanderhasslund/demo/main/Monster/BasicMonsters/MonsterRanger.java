@@ -7,7 +7,7 @@ public class MonsterRanger extends Monster implements IMonster, ICombat {
 
 
     public MonsterRanger() {
-        super("MONSTER - Vermin Gunslinger", 60,0,20,40,20,13,0,false,30,20,10, false);
+        super("VERMIN GUNSLINGER", 60,0,20,40,20,13,0,false,30,20,10, false);
 
     }
 

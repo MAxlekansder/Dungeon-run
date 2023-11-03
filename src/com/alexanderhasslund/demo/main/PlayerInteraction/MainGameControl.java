@@ -29,18 +29,19 @@ public class MainGameControl {
         PlayerChoice playerChoice = new PlayerChoice();
         ShopMenu shopMenu = new ShopMenu(playerList); // this line becomes null, seems like something is wrong
         SaveFile saveFile = new SaveFile(playerList);
-        CombatController combatController = new CombatController(playerList, monsterList);
-        CombatMenu combatMenu = new CombatMenu();
         MonsterController monsterController = new MonsterController(countPlayers);
+        CombatController combatController = new CombatController(playerList, countPlayers);
+        CombatMenu combatMenu = new CombatMenu();
+
         boolean isMainPlaying = true;
 
+        //monsterController.randomizeMonster(countPlayer);
 
         do {
             System.out.println(playerChoice.mainMenuChoice());
             switch (Input.intInput()) {
                 case 1 -> {
                     // continue
-                    monsterController.valueController();
                    // this method call is only for test, this might be in levelGenerator
                     combatMenu.fightMonster();
                 }

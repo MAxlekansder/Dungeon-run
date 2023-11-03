@@ -7,7 +7,7 @@ public class BossTagTeam extends Boss implements IMonster {
 
     //either they all have 3 bosses, or all together, shared health pool
     public BossTagTeam() {
-        super("BOSS - THE VERMIN TAG TEAM: Skarrik, Rasknitt and DeathRattler", 10, 10,250, 40, 25, 0, 0, 0,false,false);
+        super("THE VERMIN TAG TEAM: Skarrik, Rasknitt and DeathRattler", 10, 10,250, 40, 25, 0, 0, 0,false,false);
     }
 
 

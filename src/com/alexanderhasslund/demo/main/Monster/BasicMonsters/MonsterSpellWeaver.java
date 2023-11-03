@@ -7,7 +7,7 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
 
 
     public MonsterSpellWeaver() {
-        super("MONSTER - Vermin Spellweaver", 50,0,20,80,0,13,20,false,25,30,5,false);
+        super("VERMIN SPELLWEAVER", 50,0,20,80,0,13,20,false,25,30,5,false);
 
     }
 
