@@ -38,7 +38,7 @@ public class PlayerChoice {
 
     public String swordsMenu() {
         return ("""
-                WELCOME TO THE SWORD SHOP
+                WELCOME TO THE SWORD SHOP - - 5 to leave...
                 
                 \033[1;36m1.STANDARD SWORD     \033[1;34m2.FAST SWORD               \033[1;35m3.SHARP SWORD         \033[1;33m4.DIVINE SWORD\033[0m             
                 \033[1;37mTHE TRUSTY SWORD     FOR THE FAST ATTACKER      THE TACHI BLADE       THE ONE TRUE BLADE\033[0m    
@@ -54,7 +54,7 @@ public class PlayerChoice {
 
     public String shieldsMenu() {
         return (""" 
-                WELCOME TO THE SHIELD SHOP
+                WELCOME TO THE SHIELD SHOP - 5 to leave...
                 
                 \033[1;36m1.STANDARD SHILED      \033[1;34m2.BULK SHILED                   \033[1;35m3.SPIKED SHIELD           \033[1;33m4.DIVINE SHIELD\033[0m             
                 \033[1;37mTHE TRUSTY SHIELD      YOU'RE NOT GETTING THROUGH      BITE ME, ILL BITE BACK    SVALINN, THE SUN EATER\033[0m 
@@ -111,6 +111,32 @@ public class PlayerChoice {
                 5. CURRENT LEVEL
                 6. QUIT TO MAIN MENU
                                     
+                """);
+    }
+
+
+    public String firstFightIntroduction() {
+        return ("""
+                Welcome hero!
+                                
+                This is your first time fighting, therefor ill just let you know how the combat works...
+                you get some alternatives. As mentioned, every class has their own ability and also a trait...
+                            
+                Base Attack is just Attacking without consequences of your resource management...
+                But spells cost...
+                            
+                These are the alternatives during combat: 
+                CASE 1: Fight! This will present a new menu with the alternative to ATTACK or use SPELLS
+                CASE 2: GET STATUS - lets you see how your heros HP and resource
+                CASE 3: FLEE! This fight was maybe too hard? or you forgot to use the shop to upgrade...
+                            
+                That's it for now... Lets see how the first Fight goes!
+                            
+                Remember, killing a monster will grant you both experience for leveling and currency to spend in the shop
+                Each floor gets progressively hard for each floor your clear ... and finally meet a boss
+                
+                Good luck...
+
                 """);
     }
 }

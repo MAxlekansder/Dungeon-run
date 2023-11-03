@@ -9,6 +9,13 @@ public class StringManipulator {
         }
         return string;
     }
+    public String manipulateStringFast(String string) throws InterruptedException {
+        for (char c : string.toCharArray()) {
+            System.out.print(c);
+            Thread.sleep(2);
+        }
+        return string;
+    }
 
 
     // try to print a YOU DIED - dark souls grej...

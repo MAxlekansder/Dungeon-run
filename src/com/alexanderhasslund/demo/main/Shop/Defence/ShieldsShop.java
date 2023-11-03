@@ -72,6 +72,7 @@ public class ShieldsShop {
                         isShop = false;
                     }
                 }
+                case 5 -> isShop = false;
                 default -> {
                     System.out.println("Use right input");
                 }
@@ -94,13 +95,11 @@ public class ShieldsShop {
             System.out.println("see you around...");
         }
 
+        System.out.println(playerList.get(playerIndex).getName()+ " bought " + playerList.get(playerIndex).getInventoryList().get(1).getItemName()
+                + " with " +playerList.get(playerIndex).getInventoryList().get(1).getInitiative() + " initiative"
+                + " and " + playerList.get(playerIndex).getInventoryList().get(1).getDamage() + " damage, with a cost of: " + shieldPrice);
+        System.out.println("Balance left: " + (playerList.get(playerIndex).getCurrency()));
 
-        playerList.forEach(player -> {
-            System.out.println(player.getName() + " bought " + playerList.get(playerIndex).getInventoryList().get(1).getItemName()
-                    + " with " +playerList.get(playerIndex).getInventoryList().get(1).getBlock() + " block"
-                    + " and " + playerList.get(playerIndex).getInventoryList().get(1).getDefence() + " Defence, with a cost of: " + shieldPrice);
-            System.out.println("Balance left: " + (player.getCurrency()));
-        });
     }
 
 

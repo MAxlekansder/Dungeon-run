@@ -71,6 +71,7 @@ public class SwordsShop {
                         isShop = false;
                     }
                 }
+                case 5 -> isShop = false;
                 default -> {
                     System.out.println("Use right input");
                 }
@@ -93,12 +94,17 @@ public class SwordsShop {
                 System.out.println("see you around...");
             }
 
+        System.out.println(playerList.get(playerIndex).getName()+ " bought " + playerList.get(playerIndex).getInventoryList().get(0).getItemName()
+                + " with " +playerList.get(playerIndex).getInventoryList().get(0).getInitiative() + " initiative"
+                + " and " + playerList.get(playerIndex).getInventoryList().get(0).getDamage() + " damage, with a cost of: " + swordPrice);
+        System.out.println("Balance left: " + (playerList.get(playerIndex).getCurrency()));
 
+        /*
         playerList.forEach(player -> {
             System.out.println(player.getName() + " bought " + playerList.get(playerIndex).getInventoryList().get(0).getItemName()
                     + " with " +playerList.get(playerIndex).getInventoryList().get(0).getInitiative() + " initiative"
-                    + " and " + playerList.get(playerIndex).getInventoryList().get(0).getDamage() + " Defence, with a cost of: " + swordPrice);
+                    + " and " + playerList.get(playerIndex).getInventoryList().get(0).getDamage() + " damage, with a cost of: " + swordPrice);
             System.out.println("Balance left: " + (player.getCurrency()));
-        });
+        }); */
     }
 }

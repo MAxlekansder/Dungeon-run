@@ -1,25 +1,24 @@
-package com.alexanderhasslund.demo.main.Monster;
+package com.alexanderhasslund.demo.main.Monster.BasicMonsters;
 
 import com.alexanderhasslund.demo.main.Combat.ICombat;
-import com.alexanderhasslund.demo.main.Engine.Color;
-import com.alexanderhasslund.demo.main.Player.Player;
+import com.alexanderhasslund.demo.main.Monster.IMonster;
 
 public class MonsterRanger extends Monster implements IMonster, ICombat {
 
 
     public MonsterRanger() {
-        super("MONSTER - Vermin Gunslinger", 60,0,20,40,20,13,0,false);
+        super("MONSTER - Vermin Gunslinger", 60,0,20,40,20,13,0,false,30,20,10, false);
 
-    }
-
-    @Override
-    public int damage() {
-        return 0;
     }
 
     @Override
     public void spells() {
         //shoot ranged
+
+    }
+
+    @Override
+    public void damageMultiplierForLevel() {
 
     }
 

@@ -1,18 +1,23 @@
-package com.alexanderhasslund.demo.main.Monster;
+package com.alexanderhasslund.demo.main.Monster.BasicMonsters;
+
 import com.alexanderhasslund.demo.main.Levels.LevelController;
-import com.alexanderhasslund.demo.main.Player.PlayerController;
+import com.alexanderhasslund.demo.main.Levels.LevelGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MonsterController {
 
-        private int countFloors;
-        private int countMonsters;
-        private int countPlayers;
+    private List<Monster> monsterList;
+    private int countFloors;
+    private int countMonsters;
+    private int countPlayers;
+
 
     public MonsterController(int countPlayers) {
         this.countPlayers = countPlayers;
+        this.monsterList = new ArrayList<>();
     }
 
     public int getCountFloors() {
@@ -31,8 +36,8 @@ public class MonsterController {
         this.countMonsters = countMonsters;
     }
 
+
     public void valueController() {
-        MonsterGenerator monsterGenerator = new MonsterGenerator();
         LevelController levelController = new LevelController();
 
         countFloors = 1 + levelController.getCountLevels();
@@ -43,6 +48,30 @@ public class MonsterController {
         allMonsters.add(new MonsterRanger());
         allMonsters.add(new MonsterBrute());
         allMonsters.add(new MonsterSpellWeaver());
-        monsterGenerator.randomizeMonster(getCountMonsters(), allMonsters);
+        randomizeMonster(getCountMonsters(), allMonsters);
     }
+
+
+    public void randomizeMonster(int countMonsters, List<Monster> allMonsters) {
+
+        Random rand = new Random();
+
+        for (int i = 0; i < countMonsters; i++) {
+
+            int monsterIndex = rand.nextInt(0, 2) + allMonsters.size();
+            Monster monster = allMonsters.get(monsterIndex);
+            monsterList.add(monster);
+
+        }
+
+        LevelGenerator levelGenerator = new LevelGenerator(monsterList);
+        levelGenerator.generateLevels();
+    }
+
+
+    public List<Monster> getMonsterList() {
+        return monsterList;
+    }
+
+
 }

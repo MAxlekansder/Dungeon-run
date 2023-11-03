@@ -17,6 +17,8 @@ public class Barbarian extends Player implements IClasses, ICombat {
     private int level;
     private int defence;
     private int initiative;
+    private boolean isDead;
+    private boolean hasPlayed;
 
 
     public Barbarian() {
@@ -33,6 +35,8 @@ public class Barbarian extends Player implements IClasses, ICombat {
         this.level = 1;
         this.defence = 1;
         this.initiative = 55;
+        this.isDead = false;
+        this.hasPlayed = false;
     }
 
     @Override
@@ -213,5 +217,11 @@ public class Barbarian extends Player implements IClasses, ICombat {
         this.initiative = initiative;
     }
 
+    public boolean isDead() {
+        return isDead;
+    }
 
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
 }

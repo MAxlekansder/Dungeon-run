@@ -96,4 +96,15 @@ public class StringLore {
                 
                 """);
     }
+
+    public String bossTagTeam() {
+        return("""
+                sounding like a horde running towards the last room you just finished
+                Like shadows, you see nothing but the sound keeps getting closer
+                
+                you realise, there's not just one - but three of them...
+                
+                
+                """);
+    }
 }

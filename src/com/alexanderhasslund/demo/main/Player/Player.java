@@ -28,14 +28,21 @@ public class Player implements Serializable {
     private int level;
     private int defence;
     private int initiative;
+    private boolean isDead;
+    private boolean hasPlayed;
 
 
+    public boolean isHasPlayed() {
+        return hasPlayed;
+    }
+
+    public void setHasPlayed(boolean hasPlayed) {
+        this.hasPlayed = hasPlayed;
+    }
 
     public String getClassName() {
         return className;
     }
-
-
 
     public int getHp() {
         return hp;
@@ -165,18 +172,26 @@ public class Player implements Serializable {
         this.inventoryList = inventoryList;
     }
 
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
+
     public Player() {
 
     }
 
-    public Player(String name, int id, List<TalentTree> talentTreeList, List<Inventory> inventoryList, int experience, int currency, String className, int hp, int damage, int resource, int strength, int agility, int intellect, int level, int defence, int initiative) {
+    public Player(String name, int id, List<TalentTree> talentTreeList, List<Inventory> inventoryList, int experience, int currency, String className, int hp, int damage, int resource, int strength, int agility, int intellect, int level, int defence, int initiative, boolean isDead, boolean hasPlayed) {
         this.name = name;
         this.id = id;
         this.talentTreeList = talentTreeList;
         this.inventoryList = inventoryList;
         this.experience = experience;
         this.currency = currency;
-
+        this.isDead = isDead;
         this.className = className;
         this.hp = hp;
         this.damage = damage;
@@ -187,5 +202,6 @@ public class Player implements Serializable {
         this.level = level;
         this.defence = defence;
         this.initiative = initiative;
+        this.hasPlayed = hasPlayed;
     }
 }

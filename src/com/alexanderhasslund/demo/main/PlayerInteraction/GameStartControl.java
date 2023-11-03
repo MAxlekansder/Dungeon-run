@@ -2,8 +2,10 @@ package com.alexanderhasslund.demo.main.PlayerInteraction;
 import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Classes.Rogue;
 import com.alexanderhasslund.demo.main.Classes.Sorcerer;
+import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
+import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
 import com.alexanderhasslund.demo.main.Player.PlayerController;
 
 import java.io.IOException;
@@ -48,6 +50,7 @@ public class GameStartControl {
                     // start new game
                     // while in this menu -> only loop that switch
                     // create a check to see if playerList exists?
+
                     startIntroductionChoice();
 
                 }
@@ -69,14 +72,21 @@ public class GameStartControl {
 
     public void startIntroductionChoice() throws InterruptedException, IOException {
         PlayerController playerController = new PlayerController();
+
         PlayerChoice playerChoice = new PlayerChoice();
         StringManipulator stringManipulator = new StringManipulator();
         //  stringManipulator.manipulateString(playerChoice.newGameSetup());
         playerController.playerCount();
+        MonsterController monsterController = new MonsterController(playerController.getCountPlayers());
+        CombatController combatController = new CombatController(playerController.getPlayerList(), monsterController.getMonsterList());
         playerController.chooseClass();
         playerController.choosePlayerName();
         playerController.getPlayerInformation();
-        MainGameControl mainGameControl = new MainGameControl(playerController.getPlayerList(), playerController.getCountPlayers());
+        MainGameControl mainGameControl = new MainGameControl(playerController.getPlayerList(), playerController.getCountPlayers(), monsterController.getMonsterList());
+
+        //set in scenario and present text
+        stringManipulator.manipulateStringFast(playerChoice.firstFightIntroduction());
+        combatController.calculatePlayerDamage();
         mainGameControl.mainSwitch();
     }
 }

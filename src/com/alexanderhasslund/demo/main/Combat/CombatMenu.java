@@ -25,6 +25,8 @@ public class CombatMenu {
     Each floor gets progressively hard for each floor your clear ... and finally meet a boss
 
     Good luck...
+
+    Set a first encounter to learn fights? Or just toss them out?
      */
 
     public void fightMonster() {

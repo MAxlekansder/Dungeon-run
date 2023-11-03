@@ -15,8 +15,11 @@ public class Rogue extends Player implements IClasses, ICombat {
     private int agility;
     private int intellect;
     private int level;
-    private int evasion;
+    private int defence;
     private int initiative;
+    private boolean isDead;
+    private boolean hasPlayed;
+
 
     public Rogue() {
         this.className = Color.GREEN + "ROGUE" + Color.RESET;
@@ -28,14 +31,16 @@ public class Rogue extends Player implements IClasses, ICombat {
         this.agility = 20;
         this.intellect = 2;
         this.level = 1;
-        this.evasion = 1;
+        this.defence = 1;
         this.initiative = 40;
+        this.isDead = false;
+        this.hasPlayed = false;
     }
 
 
     @Override
     public void trait() {
-        //When struck in combat you have a chance to dodge the attack, multiplies evasion
+        //When struck in combat you have a chance to dodge the attack, multiplies defence
         //fools elusiveness
         //count number of rounds and try to get it in here so there's a chance to use the trait
         // maybe put the for loop for rounds in the fighting sequence and not in the spell?
@@ -49,7 +54,7 @@ public class Rogue extends Player implements IClasses, ICombat {
     public int spells() {
         switch (1) {
             case 1 -> {
-                System.out.printf("Backstabs the target, dealing: %s extra damage and gaining: %s extra evasion", 3, 2);
+                System.out.printf("Backstabs the target, dealing: %s extra damage and gaining: %s extra defence", 3, 2);
             }
             case 2 -> {
                 System.out.printf("Pick pockets the target gaining: %s gold", 1);
@@ -63,6 +68,8 @@ public class Rogue extends Player implements IClasses, ICombat {
 
     @Override
     public void setLevelUp() {
+
+
 
     }
 
@@ -183,12 +190,12 @@ public class Rogue extends Player implements IClasses, ICombat {
         this.level = level;
     }
 
-    public int getEvasion() {
-        return evasion;
+    public int getdefence() {
+        return defence;
     }
 
-    public void setEvasion(int evasion) {
-        this.evasion = evasion;
+    public void setdefence(int defence) {
+        this.defence = defence;
     }
 
     @Override
@@ -201,4 +208,11 @@ public class Rogue extends Player implements IClasses, ICombat {
         this.initiative = initiative;
     }
 
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
 }

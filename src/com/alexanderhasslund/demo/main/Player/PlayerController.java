@@ -65,17 +65,15 @@ public class PlayerController {
             playerList.get(i).setName(Input.stringInput());
             playerList.get(i).setId(i);
             playerList.get(i).setCurrency(2000000); // remove these
-            playerList.get(i).setLevel(15); // remove these
+            playerList.get(i).setLevel(15);// remove these
         }
 
         System.out.print("\n");
 
-        for (int i = 0; i < countPlayers; i ++) {
-
-            playerList.get(i).getInventoryList().add(0,new Inventory("",0,0,0,0,0));
-            playerList.get(i).getInventoryList().add(1,new Inventory("",0,0,0,0,0));
-            playerList.get(i).getInventoryList().add(2,new Inventory("",0,0,0,0,0));
-            playerList.get(i).getInventoryList().add(3,new Inventory("",0,0,0,0,0));
+        for (int i = 0; i < playerList.size(); i ++) {
+            for (int j = 0; j < 4; j++) {
+                playerList.get(i).getInventoryList().add(j,new Inventory("",0,0,0,0,0));
+            }
         }
     }
 

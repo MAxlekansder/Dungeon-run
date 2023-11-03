@@ -14,7 +14,10 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     private int agility;
     private int intellect;
     private int level;
+    private int defence;
     private int initiative;
+    private boolean isDead;
+    private boolean hasPlayed;
 
     public Sorcerer() {
         this.className = Color.BLUE + "SORCERER" + Color.RESET;
@@ -27,6 +30,9 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         this.intellect = 22;
         this.level = 1;
         this.initiative = 70;
+        this.defence = 0;
+        this.isDead = false;
+        this.hasPlayed = false;
     }
 
     @Override
@@ -58,7 +64,15 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         this.className = className;
     }
 
+    @Override
+    public int getDefence() {
+        return defence;
+    }
 
+    @Override
+    public void setDefence(int defence) {
+        this.defence = defence;
+    }
 
     @Override
     public int getHp() {
@@ -138,6 +152,16 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     @Override
     public void setInitiative(int initiative) {
         this.initiative = initiative;
+    }
+
+    @Override
+    public boolean isDead() {
+        return isDead;
+    }
+
+    @Override
+    public void setDead(boolean dead) {
+        isDead = dead;
     }
 
     @Override

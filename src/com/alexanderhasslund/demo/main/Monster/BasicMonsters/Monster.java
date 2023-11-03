@@ -1,4 +1,4 @@
-package com.alexanderhasslund.demo.main.Monster;
+package com.alexanderhasslund.demo.main.Monster.BasicMonsters;
 
 public class Monster {
 
@@ -7,15 +7,33 @@ public class Monster {
     private int resoruce;
     private int damage;
     private int initiative;
+    private int defence;
     private int strength;
     private int agility;
     private int intellect;
     private boolean isDead;
+    private int givesExperience;
+    private int givesCurrency;
+    private boolean hasPlayed;
 
+    public boolean isHasPlayed() {
+        return hasPlayed;
+    }
 
+    public void setHasPlayed(boolean hasPlayed) {
+        this.hasPlayed = hasPlayed;
+    }
 
     public String getMonsterName() {
         return monsterName;
+    }
+
+    public int getDefence() {
+        return defence;
+    }
+
+    public void setDefence(int defence) {
+        this.defence = defence;
     }
 
     public int getHp() {
@@ -82,8 +100,23 @@ public class Monster {
         isDead = dead;
     }
 
+    public int getGivesExperience() {
+        return givesExperience;
+    }
 
-    public Monster(String monsterName, int hp, int resoruce, int damage, int initiative, int strength, int agility, int intellect, boolean isDead) {
+    public void setGivesExperience(int givesExperience) {
+        this.givesExperience = givesExperience;
+    }
+
+    public int getGivesCurrency() {
+        return givesCurrency;
+    }
+
+    public void setGivesCurrency(int givesCurrency) {
+        this.givesCurrency = givesCurrency;
+    }
+
+    public Monster(String monsterName, int hp, int resoruce, int damage, int initiative, int strength, int agility, int intellect, boolean isDead, int givesExperience, int givesCurrency, int defence, boolean hasPlayed) {
         this.monsterName = monsterName;
         this.hp = hp;
         this.resoruce = resoruce;
@@ -93,5 +126,24 @@ public class Monster {
         this.agility = agility;
         this.intellect = intellect;
         this.isDead = isDead;
+        this.givesExperience = givesExperience;
+        this.givesCurrency = givesCurrency;
+        this.defence = defence;
+        this.hasPlayed = hasPlayed;
+    }
+
+    @Override
+    public String toString() {
+        return "Monster{" +
+                "monsterName='" + monsterName + '\'' +
+                ", hp=" + hp +
+                ", resoruce=" + resoruce +
+                ", damage=" + damage +
+                ", initiative=" + initiative +
+                ", strength=" + strength +
+                ", agility=" + agility +
+                ", intellect=" + intellect +
+                ", isDead=" + isDead +
+                '}';
     }
 }
