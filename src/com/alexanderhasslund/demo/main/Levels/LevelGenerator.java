@@ -1,6 +1,6 @@
 package com.alexanderhasslund.demo.main.Levels;
 
-import com.alexanderhasslund.demo.main.Monster.BasicMonsters.Monster;
+import com.alexanderhasslund.demo.main.Monster.Monster;
 
 import java.util.List;
 

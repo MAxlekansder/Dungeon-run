@@ -1,4 +1,4 @@
-package com.alexanderhasslund.demo.main.Monster.BasicMonsters;
+package com.alexanderhasslund.demo.main.Monster;
 
 import com.alexanderhasslund.demo.main.Engine.Color;
 

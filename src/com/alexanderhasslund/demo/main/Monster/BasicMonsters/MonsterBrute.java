@@ -2,6 +2,7 @@ package com.alexanderhasslund.demo.main.Monster.BasicMonsters;
 
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Monster.IMonster;
+import com.alexanderhasslund.demo.main.Monster.Monster;
 
 
 public class MonsterBrute extends Monster implements IMonster, ICombat {

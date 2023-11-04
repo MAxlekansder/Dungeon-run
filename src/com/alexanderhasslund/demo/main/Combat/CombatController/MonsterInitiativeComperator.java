@@ -1,6 +1,6 @@
 package com.alexanderhasslund.demo.main.Combat.CombatController;
 
-import com.alexanderhasslund.demo.main.Monster.BasicMonsters.Monster;
+import com.alexanderhasslund.demo.main.Monster.Monster;
 
 import java.util.Comparator;
 

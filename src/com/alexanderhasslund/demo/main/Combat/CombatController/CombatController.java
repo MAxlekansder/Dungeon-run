@@ -1,5 +1,6 @@
 package com.alexanderhasslund.demo.main.Combat.CombatController;
 import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
+import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 
 import java.util.Collections;
@@ -9,11 +10,12 @@ public class CombatController {
 
     private List<Player> playerList;
     private int countPlayer;
-    //private List<Monster> monsterList;
+
 
     public CombatController(List<Player> playerList, int countPlayer) {
         this.playerList = playerList;
         this.countPlayer = countPlayer;
+
     }
 
 
@@ -33,11 +35,11 @@ public class CombatController {
     }
 
     // move this one out????
-    public void initiateFight() {
+    public void initiateFight(List<Monster> monsterList) {
 
         // kika på den här, blir lite onödig
-        MonsterController monsterController = new MonsterController(countPlayer);
-        monsterController.monsterValueController();
+        //MonsterController monsterController = new MonsterController(countPlayer);
+        //monsterController.monsterValueController();
         int countRounds = 0;
         // have a "hasPlayed"? to make it easier to fall through it???
 
@@ -49,11 +51,11 @@ public class CombatController {
             System.out.println(playerList.get(i));
         }
         System.out.println(" ");
-        for(int i = 0; i < monsterController.getMonsterList().size();i++) {
-            System.out.println(monsterController.getMonsterList().get(i));
+        for(int i = 0; i < monsterList.size();i++) {
+            System.out.println(monsterList.get(i));
         }
         Collections.sort(playerList, new PlayerInitiativeComperator());
-        Collections.sort(monsterController.getMonsterList(), new MonsterInitiativeComperator());
+        Collections.sort(monsterList, new MonsterInitiativeComperator());
 
         System.out.println("\nSorted");
 
@@ -61,149 +63,59 @@ public class CombatController {
             System.out.println(playerList.get(i));
         }
         System.out.println(" ");
-        for(int i = 0; i < monsterController.getMonsterList().size();i++) {
-            System.out.println(monsterController.getMonsterList().get(i));
-        }
-        /*
-        new dicitonary combatlist<string, int>
-
-        foreach monster in monsterlist{
-            combatlist.add("monster", monster.initiative)
-
-            combatList tabell
-            playerlist tabell
-            join playerlist on combatlist on playerid = playerid
-
-            playerlist.get(i).setDamage -> playerList faktiskt dmg
+        for(int i = 0; i < monsterList.size();i++) {
+            System.out.println(monsterList.get(i));
         }
 
-        foreach player in playerlist{
-            combatlist.add("player", player.initiative)
-            "Player1", List<Player>
+        int playerInitiativeTracker = 0;
+        int monsterInitiativeTracker = 0;
 
-            "Monster3" 80
-            "player1" 20
-
-            Collections.Sort(combatList, new combatInitivatieComperator)
-
-            while(!combatlist.isEmpty)
-
-            if ( && !combatlist.isDead
-            combat ->
-            "player1" 20
-            "monster3" 80
-
-            fight == över
-
-            combatlist.remove(monster) == isDead
-            playlist = combatlist -> player 2 isDead
-            palylist == if (isdead)
-            writeline (player.get(isDead)
-
-
-        }
-
-        init = 1, går först
-        1 monster 2
-        2 monster 3
-        3 monster 1
-
-        monsterFightIndex == attack mot monster på plats 1
-
-        monster 1 - 80
-        monster 2 - 20
-        player 1 - 40
-        player 2- 60
-
-        sorterar:
-
-       1. monster 2 - 20 MonsterList
-       2. player 1 - 40 PlayerList
-       3. player 2- 60 PlayerList
-       4. monster 1 - 80 MonsterList
-
-        sortera eller iterera över combatList
-
-        playerListan har värden -> om de förändras i fight, stannar som de blev satta.
-        player 1 tar 20 dmg -> play1 50 hp, play1 30hp
-
-        combatList -> spelaren i combatListan player1 tar -20 hp
-        playerListan -> spelaren 1  inte tar -20hp
-
-        när combaten är över, värderna kan vara kvar och sen skrivas över till playerListan?
-
-
-        combatList = monsterlist, playerlist
-
-        Gå igenom monsterListan -> gå igenom initiative
-
-        String, List
-
-
-
-        Dictionary<String, List<T>> dict= new Hashtable<>();
-        for (player: playerList) {
-            combatlist.add("Player", playerList)
-        }
-         for (monster : monsterlist) {
-            combatlist.add("Monster", monsterList)
-        }
-
-
-
-        combatlist.listOf<T>
-
-
-
-        //fight startar
-        //sorterar initiative
-        // fighten går i turordning baserat på lägst initiative
-
-        player hasPlayed
-
-        playerResetHP() <- om spelaren ska få tillbaka sitt HP efter fighten
-
-        //lambda
-        while(monsterlist != dead || playerlist != dead)
-
+        while (!playerList.isEmpty() || !monsterList.isEmpty()) {
             Collections.sort(playerList, new PlayerInitiativeComperator());
             Collections.sort(monsterList, new MonsterInitiativeComperator());
 
 
-             //sort before start playing
+            // funkar inte...
+            if (playerList.get(playerInitiativeTracker).getInitiative() > monsterList.get(monsterInitiativeTracker).getInitiative()
+                && playerList.get(playerInitiativeTracker).isHasPlayed()|| monsterList.get(monsterInitiativeTracker).isHasPlayed()
+            ) {
+                System.out.printf("Player %s turn: ", playerList.get(playerInitiativeTracker).getName());
+                 // playerString to present all options...
+                        // then again when in attack, present next possible actions...
+                 // player
+                 // checkPlayerifDead...
+                 // checkMonsterIfDead
 
-            player init 1 -> går först
-                                        monster init 1 ->
-            player init 2 -> går andra
+                //if(player hp <= 0) -> call on methods... keep them in playerController?
+                    //playerList.get(playerInitiativeTracker).setDead(true);
+                    //playerList.remove(playerList.get(playerInitiativeTracker));
+                playerList.get(playerInitiativeTracker).setHasPlayed(true);
+                playerInitiativeTracker++;
+            } else {
+                System.out.printf("Monster %s turn", monsterList.get(monsterInitiativeTracker).getMonsterName());
+                monsterList.get(monsterInitiativeTracker).setHasPlayed(true);
+                // monster
+                // checkMonsterIfDead
+                // checkMonsterIfDead
+                monsterInitiativeTracker++;
 
-            find a way to filter out player that hasPlayed = true
-            
-
-            if (player.init > monster.init) {
-                switch menu for all attacks and spells
-                player attack -> monster, spells allt tjena
-                checkMonsterDead()
-                setPlayerCurrencyIfMonsterDead
-                ...
-                player.get(i).hasPlayed = true;
             }
-            else
-                monster, monster figting logic ->
-                          monster 20% chans att stunna dig
-                          checkPlayerIfDead()
-
 
             countRounds++;
-
-            //insert fight here as well, so we can use both attack and spells...
-
-            //my lists are sorted...
-            //compare initiative and use that
-            //add it into two lists? i'd rather not...
-
-        } */
+            // reset initiativeTracker here??? as thing dies, list will shrink
+            // tracker might be a dumb idea here...
+            // how do i by the best find the index...
+        }
 
     }
+
+
+
+
+
+
+
+
 
     //Flytta ut dessa?
 

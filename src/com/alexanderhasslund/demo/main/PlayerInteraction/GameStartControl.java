@@ -83,11 +83,11 @@ public class GameStartControl {
         playerController.chooseClass();
         playerController.choosePlayerName();
         playerController.getPlayerInformation();
-        MainGameControl mainGameControl = new MainGameControl(playerController.getPlayerList(), playerController.getCountPlayers(), monsterController.getMonsterList());
+        MainGameControl mainGameControl = new MainGameControl(playerController.getPlayerList(), playerController.getCountPlayers());
 
         //set in scenario and present text
         stringManipulator.manipulateStringFast(playerChoice.firstFightIntroduction());
-        combatController.calculatePlayerDamage();
+        //combatController.calculatePlayerDamage();
         mainGameControl.mainSwitch();
     }
 }

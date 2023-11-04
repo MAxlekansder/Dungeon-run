@@ -4,7 +4,7 @@ import com.alexanderhasslund.demo.main.Combat.CombatMenu;
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.File.SaveFile;
-import com.alexanderhasslund.demo.main.Monster.BasicMonsters.Monster;
+import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.Shop.ShopMenu;
@@ -15,13 +15,13 @@ import java.util.List;
 public class MainGameControl {
 
     private List<Player> playerList;
-    private List<Monster> monsterList;
+    //private List<Monster> monsterList;
     private int countPlayers;
 
-    public MainGameControl(List<Player> playerList, int countPlayers, List<Monster> monsterList) {
+    public MainGameControl(List<Player> playerList, int countPlayers) {
         this.playerList = playerList;
         this.countPlayers = countPlayers;
-        this.monsterList = monsterList;
+      //  this.monsterList = monsterList;
     }
 
 
@@ -43,6 +43,7 @@ public class MainGameControl {
                 case 1 -> {
                     // continue
                    // this method call is only for test, this might be in levelGenerator
+                    monsterController.monsterValueController();
                     combatMenu.fightMonster();
                 }
                 case 2 -> {
@@ -67,7 +68,8 @@ public class MainGameControl {
                 case 5 -> {
                     // current level
                     // current base damage
-                    combatController.initiateFight();
+                    monsterController.monsterValueController();
+                    combatController.initiateFight(monsterController.getMonsterList());
                 }
                 case 6 -> {
                     // quit game
