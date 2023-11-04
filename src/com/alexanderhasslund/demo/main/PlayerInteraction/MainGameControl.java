@@ -25,7 +25,7 @@ public class MainGameControl {
     }
 
 
-    public void mainSwitch() throws IOException {
+    public void mainSwitch() throws IOException, NoSuchFieldException, IllegalAccessException {
         PlayerChoice playerChoice = new PlayerChoice();
         ShopMenu shopMenu = new ShopMenu(playerList); // this line becomes null, seems like something is wrong
         SaveFile saveFile = new SaveFile(playerList);

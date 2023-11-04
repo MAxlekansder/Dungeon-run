@@ -29,7 +29,7 @@ public class MonsterController {
 
         countFloors = 1 + levelController.getCountLevels();
         //why is countPlayers 0?
-        countMonsters = (2 * getCountPlayers()) + rand.nextInt(0,3);
+        countMonsters = (2 * getCountPlayers()) + rand.nextInt(0,1);
 
 
         List<Monster> allMonsters = new ArrayList<>();

@@ -13,7 +13,7 @@ import java.io.IOException;
 public class GameStartControl {
 
 
-    public void startIntroductionGame() throws InterruptedException, IOException {
+    public void startIntroductionGame() throws InterruptedException, IOException, NoSuchFieldException, IllegalAccessException {
         StringManipulator stringManipulator = new StringManipulator();
         StringLore stringLore = new StringLore();
 
@@ -36,7 +36,7 @@ public class GameStartControl {
 
 
 
-    public void startUpMenu() throws InterruptedException, IOException {
+    public void startUpMenu() throws InterruptedException, IOException, NoSuchFieldException, IllegalAccessException {
         PlayerChoice playerChoice = new PlayerChoice();
         PlayerController playerController = new PlayerController();
         boolean isPlaying = true;
@@ -71,7 +71,7 @@ public class GameStartControl {
     }
 
     //Singleton-isch...
-    public void startIntroductionChoice() throws InterruptedException, IOException {
+    public void startIntroductionChoice() throws InterruptedException, IOException, NoSuchFieldException, IllegalAccessException {
         PlayerController playerController = new PlayerController();
 
         PlayerChoice playerChoice = new PlayerChoice();
@@ -86,7 +86,7 @@ public class GameStartControl {
         MainGameControl mainGameControl = new MainGameControl(playerController.getPlayerList(), playerController.getCountPlayers());
 
         //set in scenario and present text
-        stringManipulator.manipulateStringFast(playerChoice.firstFightIntroduction());
+        //stringManipulator.manipulateStringFast(playerChoice.firstFightIntroduction());
         //combatController.calculatePlayerDamage();
         mainGameControl.mainSwitch();
     }
