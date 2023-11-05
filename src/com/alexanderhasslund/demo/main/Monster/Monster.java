@@ -2,8 +2,11 @@ package com.alexanderhasslund.demo.main.Monster;
 
 import com.alexanderhasslund.demo.main.Engine.Color;
 
+import java.util.Random;
+
 public class Monster {
 
+    Random rand = new Random();
     private String monsterName;
     private int hp;
     private int resoruce;
@@ -118,12 +121,13 @@ public class Monster {
         this.givesCurrency = givesCurrency;
     }
 
-    public Monster(String monsterName, int hp, int resoruce, int damage, int initiative, int strength, int agility, int intellect, boolean isDead, int givesExperience, int givesCurrency, int defence, boolean hasPlayed) {
+    public Monster(String monsterName, int hp, int resoruce, int damage, int strength, int agility, int intellect, boolean isDead, int givesExperience, int givesCurrency, int defence, boolean hasPlayed) {
+
         this.monsterName = monsterName;
         this.hp = hp;
         this.resoruce = resoruce;
         this.damage = damage;
-        this.initiative = initiative;
+        this.initiative = rand.nextInt(3,9) * 10;
         this.strength = strength;
         this.agility = agility;
         this.intellect = intellect;

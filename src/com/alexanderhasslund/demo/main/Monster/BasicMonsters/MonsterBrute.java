@@ -4,12 +4,19 @@ import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Monster.IMonster;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 
+import java.util.Random;
+
 
 public class MonsterBrute extends Monster implements IMonster, ICombat {
 
+
+
     public MonsterBrute() {
-        super("VERMIN OGRE", 60,0,20,60,20,13,0,false, 30,20,20, false);
+        super("VERMIN OGRE", 60,0,20,20,13,0,false, 30,20,20, false);
+
     }
+
+
 
 
     //randomize initiative within bound?

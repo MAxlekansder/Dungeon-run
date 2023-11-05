@@ -1,5 +1,6 @@
 package com.alexanderhasslund.demo.main.Combat.CombatController;
 
+import com.alexanderhasslund.demo.main.Combat.Fight;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 
@@ -37,6 +38,7 @@ public class CombatController {
 
     // move this one out????
     public void initiateFight(List<Monster> monsterList) throws NoSuchFieldException, IllegalAccessException {
+        Fight fight = new Fight();
 
         for (int i = 0; i < playerList.size(); i++) {
             System.out.println(playerList.get(i));
@@ -72,14 +74,14 @@ public class CombatController {
         boolean checkPlayerHasPlayed = true;
         boolean checkMonsterHasPlayed = true;
         while (checkPlayerHasPlayed && checkMonsterHasPlayed) */
-
+        // insert a break if player flees
         while (!playerList.isEmpty() || !monsterList.isEmpty()) {
             Collections.sort(playerList, new PlayerInitiativeComperator());
             Collections.sort(monsterList, new MonsterInitiativeComperator());
 
             //       0          <= 1+3 = 4
             // check after every round and reset??
-
+            // insert a break if player flee
             while (!(checkPlayerHasPLayed(playerList) && checkMonsterHasPLayed(monsterList))) {
 
 
@@ -88,17 +90,17 @@ public class CombatController {
                     if (playerList.get(playerInitiativeTracker).getInitiative() < monsterList.get(monsterInitiativeTracker).getInitiative()) {
                         System.out.printf("Player %s turn: ", playerList.get(playerInitiativeTracker).getName());
 
-
-
-
+                        fight.fightMonster(playerList, playerInitiativeTracker);
 
                         playerList.get(playerInitiativeTracker).setHasPlayed(true);
                         System.out.println(playerList.get(playerInitiativeTracker).isHasPlayed());
                         if (playerInitiativeTracker < playerList.size() - 1) playerInitiativeTracker++;
 
                     } else {
+                        System.out.printf("Monster %s:", monsterList.get(monsterInitiativeTracker).getMonsterName());
 
-                        System.out.printf("Monster %s turn", monsterList.get(monsterInitiativeTracker).getMonsterName());
+
+
                         monsterList.get(monsterInitiativeTracker).setHasPlayed(true);
                         System.out.println(monsterList.get(playerInitiativeTracker).isHasPlayed());
                         if (monsterInitiativeTracker < monsterList.size() - 1) monsterInitiativeTracker++;

@@ -10,11 +10,12 @@ public class Fight  {
 
     private List<Player> playerList;
 
-    public void fightMonster(List<Player> playerList) {
+    public void fightMonster(List<Player> playerList, int playerIndex) {
         int fightSequence = Input.intInput();
         switch (fightSequence) {
             case 1 -> {
-                playerList.stream().filter(player -> player instanceof ICombat).forEach(player -> ((ICombat) player).attack());
+                playerList.stream().filter(player -> player instanceof ICombat).filter(player -> player.getId() == playerIndex )
+                        .forEach(player -> ((ICombat) player).attack());
             }
             case 2 -> {
                 playerList.stream().filter(player -> player instanceof IClasses).forEach(player -> ((IClasses) player).spells());

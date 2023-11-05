@@ -80,7 +80,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
     @Override
     public void attack() {
-
+        System.out.println("in attack for barb");
 
     }
 

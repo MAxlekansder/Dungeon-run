@@ -185,7 +185,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
     @Override
     public void attack() {
-
+        System.out.println("in attack for Sorc");
 
     }
 

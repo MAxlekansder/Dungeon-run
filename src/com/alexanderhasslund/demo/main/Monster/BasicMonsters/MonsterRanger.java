@@ -4,12 +4,14 @@ import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Monster.IMonster;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 
+import java.util.Random;
+
 public class MonsterRanger extends Monster implements IMonster, ICombat {
 
 
-    public MonsterRanger() {
-        super("VERMIN GUNSLINGER", 60,0,20,45,20,13,0,false,30,20,10, false);
 
+    public MonsterRanger() {
+        super("VERMIN GUNSLINGER", 60,0,20,20,13,0,false,30,20,10, false);
     }
 
     @Override
