@@ -20,6 +20,7 @@ public class Monster {
     private int givesExperience;
     private int givesCurrency;
     private boolean hasPlayed;
+    private int monsterId;
 
     public boolean isHasPlayed() {
         return hasPlayed;
@@ -121,13 +122,21 @@ public class Monster {
         this.givesCurrency = givesCurrency;
     }
 
-    public Monster(String monsterName, int hp, int resoruce, int damage, int strength, int agility, int intellect, boolean isDead, int givesExperience, int givesCurrency, int defence, boolean hasPlayed) {
+    public int getMonsterId() {
+        return monsterId;
+    }
+
+    public void setMonsterId(int monsterId) {
+        this.monsterId = monsterId;
+    }
+
+    public Monster(String monsterName, int hp, int resoruce, int damage, int strength, int agility, int intellect, boolean isDead, int givesExperience, int givesCurrency, int defence, boolean hasPlayed, int monsterId) {
 
         this.monsterName = monsterName;
         this.hp = hp;
         this.resoruce = resoruce;
         this.damage = damage;
-        this.initiative = rand.nextInt(1,2) * 10;
+        this.initiative = rand.nextInt(1,9) * 10;
         this.strength = strength;
         this.agility = agility;
         this.intellect = intellect;
@@ -136,6 +145,7 @@ public class Monster {
         this.givesCurrency = givesCurrency;
         this.defence = defence;
         this.hasPlayed = hasPlayed;
+        this.monsterId = monsterId;
     }
 
     @Override

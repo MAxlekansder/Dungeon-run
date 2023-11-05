@@ -41,11 +41,25 @@ public class MonsterController {
         Random rand = new Random();
 
         for (int i = 0; i < countMonsters; i++) {
-
             int monsterIndex = rand.nextInt(allMonsters.size());
+            Monster firstMonster = allMonsters.get(monsterIndex);
+
+            if (firstMonster instanceof MonsterBrute) {
+                firstMonster = new MonsterBrute();
+            } else if (firstMonster instanceof MonsterRanger) {
+                firstMonster = new MonsterRanger();
+            } else if (firstMonster instanceof MonsterSpellWeaver) {
+                firstMonster = new MonsterSpellWeaver();
+            }
+
+            firstMonster.setMonsterId(i);
+            monsterList.add(firstMonster);
+
+
+            /*
             Monster monster = allMonsters.get(monsterIndex);
             monsterList.add(monster);
-
+            monsterList.get(i).setMonsterId(i); */
         }
     }
 

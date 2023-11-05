@@ -136,3 +136,58 @@
             //add it into two lists? i'd rather not...
 
         } */
+
+
+
+                // false
+                /*
+                if (!(playerList.get(paIT).isHasPlayed())) {
+
+
+                    if (playerList.get(paIT).getInitiative() < monsterList.get(moIT).getInitiative()) {
+
+                        System.out.printf("Player %s turn: \n", playerList.get(paIT).getName());
+                        System.out.println(playerChoice.fightSequence());
+
+                        combatMenu.combatSwitch(playerList, paIT, monsterList);
+
+                        playerList.get(paIT).setHasPlayed(true);
+                        System.out.println(playerList.get(paIT).isHasPlayed());
+                        if (paIT < playerList.size() - 1) paIT++;
+
+                    } else {
+
+                        System.out.printf("Monster %s:", monsterList.get(moIT).getMonsterName());
+
+                        //IntStream.range(0,monsterList).filter(index -> index == moIT).forEach();
+                        for (Monster monster : monsterList) {
+                            if (monster.getMonsterId() == moIT) {
+                                monster.setHasPlayed(true);
+                            }
+                        }
+
+                        System.out.println(monsterList.get(paIT).isHasPlayed());
+                        if (moIT < monsterList.size() - 1) moIT++;
+                    }
+                }
+
+            }
+        }
+
+
+
+        // reset initiativeTracker here??? as thing dies, list will shrink
+        // tracker might be a dumb idea here...
+        // how do i by the best find the index...
+
+    }
+
+
+}
+
+
+
+
+
+
+

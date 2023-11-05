@@ -9,6 +9,7 @@ import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class CombatController {
 
@@ -80,41 +81,36 @@ public class CombatController {
             // insert a break if player flee
             while (!(checkPlayerHasPLayed(playerList) && checkMonsterHasPLayed(monsterList))) {
 
-                    // false
-                if (!(playerList.get(paIT).isHasPlayed())) {
+                Player currentPlayer = playerList.get(paIT);
+                Monster currentMonster = monsterList.get(moIT);
 
+                if (!currentPlayer.isHasPlayed() && (currentPlayer.getInitiative()) < currentMonster.getInitiative()) {
+                    System.out.printf("Player %s turn:\n", currentPlayer.getName());
+                    System.out.println(playerChoice.fightSequence());
+                    combatMenu.combatSwitch(playerList, paIT, monsterList);
+                    currentPlayer.setHasPlayed(true);
+                    if (paIT < playerList.size() - 1) paIT++;
 
-                    if (playerList.get(paIT).isHasPlayed() == false && playerList.get(paIT).getInitiative() < (monsterList.get(moIT).getInitiative()) && monsterList.get(moIT).isHasPlayed() == false) {
-
-                        System.out.printf("Player %s turn: \n", playerList.get(paIT).getName());
-                        System.out.println(playerChoice.fightSequence());
-
-                        combatMenu.combatSwitch(playerList, paIT, monsterList);
-
-                        playerList.get(paIT).setHasPlayed(true);
-                        System.out.println(playerList.get(paIT).isHasPlayed());
-                        if (paIT < playerList.size() - 1) paIT++;
-
-                    } else {
-
-                        System.out.printf("Monster %s:", monsterList.get(moIT).getMonsterName());
-
-
-                        monsterList.get(moIT).setHasPlayed(true);
-                        System.out.println(monsterList.get(paIT).isHasPlayed());
-                        if (moIT < monsterList.size() - 1) moIT++;
-                    }
-
-                } else {
-                    System.out.printf("Monster %s turn", monsterList.get(moIT).getMonsterName());
-                    monsterList.get(moIT).setHasPlayed(true);
-                    System.out.println(monsterList.get(paIT).isHasPlayed());
+                } else if (!currentMonster.isHasPlayed()) {
+                    System.out.printf("Monster %s turn:\n", currentMonster.getMonsterName());
+                    // Perform monster actions here
+                    currentMonster.setHasPlayed(true);
                     if (moIT < monsterList.size() - 1) moIT++;
-                }
+                } else {
 
+                    System.out.printf("Player %s turn:\n", currentPlayer.getName());
+                    System.out.println(playerChoice.fightSequence());
+                    combatMenu.combatSwitch(playerList, paIT, monsterList);
+                    currentPlayer.setHasPlayed(true);
+                    if (paIT < playerList.size() - 1) paIT++;
+                }
             }
 
-            System.out.println("end of first round");
+            countRounds++;
+            paIT = 0;
+            moIT = 0;
+
+            System.out.printf("end of %s  round \n", countRounds);
             for (Player player : playerList) {
                 player.setHasPlayed(false);
             }
@@ -123,17 +119,12 @@ public class CombatController {
                 monster.setHasPlayed(false);
             }
 
-            countRounds++;
-            paIT = 0;
-            moIT = 0;
-
-            // reset initiativeTracker here??? as thing dies, list will shrink
-            // tracker might be a dumb idea here...
-            // how do i by the best find the index...
-
         }
-    }
 
+
+
+
+    }
 
     public boolean checkMonsterHasPLayed(List<Monster> monsterList) {
         for (Monster monster : monsterList) {
@@ -154,13 +145,6 @@ public class CombatController {
         return true;
     }
 }
-
-
-
-
-
-
-
 
 /*
 

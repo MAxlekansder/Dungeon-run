@@ -227,4 +227,8 @@ public class Barbarian extends Player implements IClasses, ICombat {
     public void setDead(boolean dead) {
         isDead = dead;
     }
+
+
 }
+
+
