@@ -139,4 +139,16 @@ public class PlayerChoice {
 
                 """);
     }
+
+    public String fightSequence() {
+        return ("""
+                1. FIGHT    2. GET STATUS       3. FLEE
+                """);
+    }
+
+    public String abilityChoice() {
+        return ("""
+                1. BASIC ATTACK     2. CHOOSE SPELL
+                """);
+    }
 }

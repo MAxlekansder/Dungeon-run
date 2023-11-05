@@ -2,42 +2,43 @@ package com.alexanderhasslund.demo.main.Combat;
 
 import com.alexanderhasslund.demo.main.Classes.IClasses;
 import com.alexanderhasslund.demo.main.Engine.Input;
+import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
-public class Fight  {
+public class Fight {
 
     private List<Player> playerList;
 
-    public void fightMonster(List<Player> playerList, int playerIndex) {
+    public void fightMonster(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
         int fightSequence = Input.intInput();
         switch (fightSequence) {
             case 1 -> {
-                playerList.stream().filter(player -> player instanceof ICombat).filter(player -> player.getId() == playerIndex )
-                        .forEach(player -> ((ICombat) player).attack());
+
+                IntStream.range(0, playerList.size()).filter(index -> index == playerIndex).forEach(index -> {
+                            Player player = playerList.get(playerIndex);
+                            if (player instanceof ICombat) {
+                                ((ICombat) player).attack(playerList, playerIndex, monsterList);
+                            }
+                        }
+                );
             }
+
             case 2 -> {
-                playerList.stream().filter(player -> player instanceof IClasses).forEach(player -> ((IClasses) player).spells());
+                IntStream.range(0,playerList.size()).filter(index -> index == playerIndex).forEach(index -> {
+                    Player player = playerList.get(playerIndex);
+                    if (player instanceof IClasses) {
+                        ((IClasses) player).spells();
+                    }
+                });
+            }
+
+            case 3 -> {
+                System.out.println("back to menu");
             }
         }
     }
-
-
 }
 
-    /*
-        for (Player player : playerList) {
-            if (player instanceof ICombat) {
-               ((ICombat) player).attack();
-            }
-        }
-
-        for (Player player: playerList) {
-            if (player instanceof IClasses) {
-                ((IClasses) player).spells();
-
-            }
-        }
-
-     */

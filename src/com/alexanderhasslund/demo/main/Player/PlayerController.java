@@ -95,6 +95,10 @@ public class PlayerController {
         return playerList;
     }
 
+
+    public void playerResetToStandard() {
+        
+    }
 }
 
 

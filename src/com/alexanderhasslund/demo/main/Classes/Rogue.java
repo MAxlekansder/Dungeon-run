@@ -2,7 +2,11 @@ package com.alexanderhasslund.demo.main.Classes;
 
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
+import com.alexanderhasslund.demo.main.Engine.Input;
+import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
+
+import java.util.List;
 
 public class Rogue extends Player implements IClasses, ICombat {
 
@@ -74,7 +78,17 @@ public class Rogue extends Player implements IClasses, ICombat {
     }
 
     @Override
-    public void attack() {
+    public void attack(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
+        int monsterChoice = 1;
+        for (Monster monster : monsterList) {
+            System.out.println("CHOICE: "+ monsterChoice+ " " + monster);
+            monsterChoice++;
+        }
+        int monsterIndex = Input.intInput() -1;
+
+        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() - playerList.get(playerIndex).getDamage());
+
+        //monsterList.get(monsterIndex);
         System.out.println("in attack for rogue");
     }
 
@@ -85,7 +99,7 @@ public class Rogue extends Player implements IClasses, ICombat {
 
     @Override
     public void getStatus() {
-
+        // should remove this one
     }
 
     @Override

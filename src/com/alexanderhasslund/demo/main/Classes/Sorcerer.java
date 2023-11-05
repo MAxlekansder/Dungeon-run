@@ -1,7 +1,10 @@
 package com.alexanderhasslund.demo.main.Classes;
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
+import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
+
+import java.util.List;
 
 public class Sorcerer extends Player implements IClasses, ICombat {
 
@@ -33,6 +36,43 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         this.defence = 0;
         this.isDead = false;
         this.hasPlayed = false;
+    }
+
+
+
+    @Override
+    public int spells() {
+        switch (1){
+            case 1 -> {
+                System.out.println("builds up damage over time, over three rounds: ");
+            }
+            case 2 -> {
+                System.out.println("The sorcerer cocoons it self, soaks all incoming harm");
+            }
+            default -> {System.out.println("Use right input");}
+        }
+        return 2;
+    }
+
+    @Override
+    public void setLevelUp() {
+
+    }
+
+    @Override
+    public void attack(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
+        System.out.println("in attack for Sorc");
+
+    }
+
+    @Override
+    public void flee() {
+
+    }
+
+    @Override
+    public void getStatus() {
+
     }
 
     @Override
@@ -164,40 +204,6 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         isDead = dead;
     }
 
-    @Override
-    public int spells() {
-        switch (1){
-            case 1 -> {
-                System.out.println("builds up damage over time, over three rounds: ");
-            }
-            case 2 -> {
-                System.out.println("The sorcerer cocoons it self, soaks all incoming harm");
-            }
-            default -> {System.out.println("Use right input");}
-        }
-        return 2;
-    }
-
-    @Override
-    public void setLevelUp() {
-
-    }
-
-    @Override
-    public void attack() {
-        System.out.println("in attack for Sorc");
-
-    }
-
-    @Override
-    public void flee() {
-
-    }
-
-    @Override
-    public void getStatus() {
-
-    }
 
     @Override
     public String toString() {

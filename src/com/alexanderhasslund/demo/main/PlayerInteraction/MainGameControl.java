@@ -44,7 +44,7 @@ public class MainGameControl {
                     // continue
                    // this method call is only for test, this might be in levelGenerator
                     monsterController.monsterValueController();
-                    combatMenu.fightMonster();
+                    combatController.initiateFight(monsterController.getMonsterList());
                 }
                 case 2 -> {
                     // shop
@@ -65,11 +65,10 @@ public class MainGameControl {
                                 "       " + playerList.get(i));
                     }
                 }
+
                 case 5 -> {
                     // current level
-                    // current base damage
-                    monsterController.monsterValueController();
-                    combatController.initiateFight(monsterController.getMonsterList());
+
                 }
                 case 6 -> {
                     // quit game

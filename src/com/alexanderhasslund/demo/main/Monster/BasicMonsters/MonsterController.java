@@ -23,14 +23,11 @@ public class MonsterController {
 
 
     public void monsterValueController() {
-
         LevelController levelController = new LevelController();
         Random rand = new Random();
 
         countFloors = 1 + levelController.getCountLevels();
-        //why is countPlayers 0?
         countMonsters = (2 * getCountPlayers()) + rand.nextInt(0,1);
-
 
         List<Monster> allMonsters = new ArrayList<>();
         allMonsters.add(new MonsterRanger());
@@ -50,9 +47,6 @@ public class MonsterController {
             monsterList.add(monster);
 
         }
-
-        //LevelGenerator levelGenerator = new LevelGenerator(monsterList);
-        //levelGenerator.generateLevels();
     }
 
 

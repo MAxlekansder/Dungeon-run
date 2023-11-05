@@ -3,6 +3,9 @@ package com.alexanderhasslund.demo.main.Monster.BasicMonsters;
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Monster.IMonster;
 import com.alexanderhasslund.demo.main.Monster.Monster;
+import com.alexanderhasslund.demo.main.Player.Player;
+
+import java.util.List;
 
 public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
 
@@ -23,7 +26,7 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
     }
 
     @Override
-    public void attack() { //insert attack modifiers here?
+    public void attack(List<Player> playerList, int playerIndex, List<Monster> monsterList) { //insert attack modifiers here?
         System.out.println("The spellweaver hits for: ");
     }
 

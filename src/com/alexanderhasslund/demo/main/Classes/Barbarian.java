@@ -1,7 +1,10 @@
 package com.alexanderhasslund.demo.main.Classes;
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
+import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
+
+import java.util.List;
 
 
 public class Barbarian extends Player implements IClasses, ICombat {
@@ -79,7 +82,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
     }
 
     @Override
-    public void attack() {
+    public void attack(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
         System.out.println("in attack for barb");
 
     }

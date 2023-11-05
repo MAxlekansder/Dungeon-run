@@ -3,7 +3,9 @@ package com.alexanderhasslund.demo.main.Monster.BasicMonsters;
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Monster.IMonster;
 import com.alexanderhasslund.demo.main.Monster.Monster;
+import com.alexanderhasslund.demo.main.Player.Player;
 
+import java.util.List;
 import java.util.Random;
 
 public class MonsterRanger extends Monster implements IMonster, ICombat {
@@ -27,7 +29,7 @@ public class MonsterRanger extends Monster implements IMonster, ICombat {
 
 
     @Override
-    public void attack() {
+    public void attack(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
         System.out.println("The ranger shoots for: ");
 
     }

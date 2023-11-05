@@ -127,7 +127,7 @@ public class Monster {
         this.hp = hp;
         this.resoruce = resoruce;
         this.damage = damage;
-        this.initiative = rand.nextInt(3,9) * 10;
+        this.initiative = rand.nextInt(1,2) * 10;
         this.strength = strength;
         this.agility = agility;
         this.intellect = intellect;

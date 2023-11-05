@@ -2,39 +2,27 @@ package com.alexanderhasslund.demo.main.Combat;
 
 import com.alexanderhasslund.demo.main.Engine.Input;
 
+import com.alexanderhasslund.demo.main.Monster.Monster;
+import com.alexanderhasslund.demo.main.Player.Player;
+import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
+
+import java.util.List;
+
 public class CombatMenu {
 
-    Input input;
 
-    //Introduce a fighting sequence...
-    /*
-    Welcome hero!
-
-    This is your first time figting, therefor ill just let you know how the combat works...
-    you get some alternatives. As mentioned, every class has their own ability and also a trait...
-
-    Base Attack() is just Attacking without consequences of your resource manangement...
-
-    CASE 1: Fight! This will present a new menu with the alternative to ATTACK or use SPELLS
-    CASE 2: GET STATUS - lets you see how your heros HP and resource
-    CASE 3: FLEE! This fight was maybe too hard? or you forgot to use the shop to upgrade...
-
-    Thats it for now... Lets see how the first Fight goes!
-
-    Remember, killing a monster will grant you both experience for leveling and currency to spend in the shop
-    Each floor gets progressively hard for each floor your clear ... and finally meet a boss
-
-    Good luck...
-
-    Set a first encounter to learn fights? Or just toss them out?
-     */
-
-    public void fightMonster() {
+    public void combatSwitch(List<Player> playerList, int paIT, List<Monster> monsterList) {
+        PlayerChoice playerChoice = new PlayerChoice();
         Fight fight = new Fight();
-        int fightInput = input.intInput();
+
+        int fightInput = Input.intInput();
+        System.out.println(playerChoice.fightSequence());
         switch (fightInput) {
             case 1 -> {
-                System.out.println("fight");
+                //System.out.println("fight");
+                System.out.println(playerChoice.abilityChoice());
+                fight.fightMonster(playerList, paIT, monsterList);
+                //fight.fightMonster(pla);
                 //fight.fightMonster(); vill ha player som argument
 
             }
