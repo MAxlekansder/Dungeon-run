@@ -44,6 +44,7 @@ public class CombatMenu {
                     case 3 -> {
                         System.out.println("flee");
                         Flee flee = new Flee();
+                        flee.chanceOfFleeing(monsterList);
                         // calculate if you get away
                         // take flase or break into next step
 
