@@ -64,8 +64,6 @@ public class PlayerController {
             System.out.printf("Enter character name, for player %s: ", (i + 1));
             playerList.get(i).setName(Input.stringInput());
             playerList.get(i).setId(i);
-            playerList.get(i).setCurrency(2000000); // remove these
-            playerList.get(i).setLevel(15);// remove these
         }
 
         System.out.print("\n");

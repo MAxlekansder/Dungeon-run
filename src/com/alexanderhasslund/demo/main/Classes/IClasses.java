@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface IClasses {
 
-    public void trait(List<Player> playerList, int playerIndex, List<Monster> monsterList);
-    public void spells(List<Player> playerList, int playerIndex, List<Monster> monsterList);
+    public void trait(List<Player> playerList, Player player, List<Monster> monsterList);
+    public void spells(List<Player> playerList, Player player, List<Monster> monsterList);
     public void setLevelUp();
 
 

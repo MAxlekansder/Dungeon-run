@@ -42,7 +42,11 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
 
     @Override
-    public void trait(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
+    public void trait(List<Player> playerList, Player player, List<Monster> monsterList) {
+
+        for (Monster monster : monsterList) {
+            monster.setHp(monster.getHp()- ((int) (damage * (level * 1.3))));
+        }
         //Dragons breath
         //Based on how many targets it will cleave
         //Find a good way to work this out, but first we need to add all monsters and then split
@@ -52,7 +56,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     }
 
     @Override
-    public void spells(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
+    public void spells(List<Player> playerList, Player player, List<Monster> monsterList) {
         switch (1){
             case 1 -> {
                 System.out.println("builds up damage over time, over three rounds: ");
@@ -70,7 +74,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     }
 
     @Override
-    public void attack(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
+    public void attack(List<Player> playerList, Player player, List<Monster> monsterList) {
         int monsterChoice = 1;
 
         for (Monster monster : monsterList) {

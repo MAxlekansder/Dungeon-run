@@ -43,34 +43,30 @@ public class Rogue extends Player implements IClasses, ICombat {
 
 
     @Override
-    public void trait(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
+    public void trait(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
         //When struck in combat you have a chance to dodge the attack, multiplies defence
         //fools elusiveness
         //count number of rounds and try to get it in here so there's a chance to use the trait
         // maybe put the for loop for rounds in the fighting sequence and not in the spell?
         //(int countrounds?)
-        int savePreviousDamage = playerList.get(playerIndex).getDamage();
+        int savePreviousDamage =currentPlayer.getDamage();
         //trigger trait from within the combat menu?
-        for (int i = 0; i < 2; i++) {
-            playerList.get(playerIndex).setDamage(playerList.get(playerIndex).getDamage() * 2);
+        for (int i = 0; i < 2; i++) {  // while här istället och skicka in antalet rundor (current round trigger round < 2 )
+            currentPlayer.setDamage(currentPlayer.getDamage() * 2);
         }
-        playerList.get(playerIndex).setDamage(savePreviousDamage);
+        currentPlayer.setDamage(savePreviousDamage);
 
         //Cooldown
     }
 
     @Override
-    public void spells(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
+    public void spells(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
         switch (1) {
             case 1 -> {
                 System.out.printf("Backstabs the target, dealing: %s extra damage and gaining: %s extra defence", 3, 2);
-
             }
             case 2 -> {
                 System.out.printf("Pick pockets the target gaining: %s gold", 1);
-            }
-            case 3 -> {
-                trait(playerList, playerIndex, monsterList);
             }
             default -> {
                 System.out.println("Use right input");
@@ -85,7 +81,7 @@ public class Rogue extends Player implements IClasses, ICombat {
     }
 
     @Override
-    public void attack(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
+    public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
         int monsterChoice = 1;
 
         for (Monster monster : monsterList) {
@@ -96,8 +92,8 @@ public class Rogue extends Player implements IClasses, ICombat {
         int monsterIndex = Input.intInput() -1;
         // build a miss system? Even for monsters based on something.
 
-        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() - playerList.get(playerIndex).getDamage());
-        System.out.printf("The rogue attacks with a swift slash, Dealing %s to monster %s", playerList.get(playerIndex).getDamage(), monsterList.get(monsterIndex).getMonsterName());
+        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() - currentPlayer.getDamage());
+        System.out.printf("The rogue attacks with a swift slash, Dealing %s to monster %s", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
     @Override

@@ -1,3 +1,22 @@
+/* TODO
+   Fixa sista combat
+   Fixa levels
+   implementera bossar
+   implementera levels (MODULUS på EXP)
+   Fixa intro
+   Fixa save file
+   Fixa potions
+   Fixa Logik
+   Fixa fler bossar
+
+
+
+
+
+
+
+
+
  // SAVE PRINCESS BENNY
 
  //Look up system design in files...

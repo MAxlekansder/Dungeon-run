@@ -44,7 +44,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
     }
 
     @Override
-    public void trait(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
+    public void trait(List<Player> playerList, Player player, List<Monster> monsterList) {
         //berserkers rage
         //when hp is below 30 <- activate berserkers rage
 
@@ -58,18 +58,19 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
 
     @Override
-    public void spells(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
+    public void spells(List<Player> playerList, Player player, List<Monster> monsterList) {
         int temporaryBuffs = 0;
         switch (1) {
             case 1 -> { // a baseline damage spell that adds 3 damage and uses 'resources'
-                temporaryBuffs = (int) (Math.ceil(damage) + ( 3 * level^level/4));
+
                 System.out.println("Cleaves the target with: " + temporaryBuffs);
+                strength += 10;
                 resource -= 20;
             }
             case 2 -> { //
                 System.out.println( "The barbarian muster its rage, gaining defence euqal to: " + (defence + 2));
                 resource -= 30;
-                temporaryBuffs += 2;
+                defence += 2;
             }
             default -> {System.out.println("Use right input");}
         }
@@ -82,7 +83,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
     }
 
     @Override
-    public void attack(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
+    public void attack(List<Player> playerList, Player player, List<Monster> monsterList) {
         int monsterChoice = 1;
 
         for (Monster monster : monsterList) {
