@@ -11,5 +11,10 @@ public class PotionsShop {
 
     public void potionsMenuSwitch(int playerIndex) {
 
+        // potion of haste - increase initiative
+        // potion of health - heal hp
+        // potion of mana
+        //
+
     }
 }

@@ -127,8 +127,8 @@ public class PlayerChoice {
                             
                 These are the alternatives during combat: 
                 CASE 1: Fight! This will present a new menu with the alternative to ATTACK or use SPELLS
-                CASE 2: GET STATUS - lets you see how your heros HP and resource
-                CASE 3: FLEE! This fight was maybe too hard? or you forgot to use the shop to upgrade...
+                CASE 2: GET STATUS - let's you see how your heroes HP and resource
+                CASE 3: FLEE! This fight was maybe too hard? or you forgot to use the shop to upgrade... 
                             
                 That's it for now... Lets see how the first Fight goes!
                             

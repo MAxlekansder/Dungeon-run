@@ -63,7 +63,22 @@ public class StringLore {
                 High defence      Medium defence     Low defence   
                 Low resource      High resource      Ramping resource
                 
-                -----------------------------------------------------      
+                -----------------------------------------------------   
+                """);
+    }
+
+    public String ultimateClassPresentation() {
+        return ("""
+                
+                -----------------------------------------------------   
+                \033[1;33mBERSERKERS RAGE                    FOOLS ELUSIVENESS               DRAGONS BREATH\033[0m
+                 The barbarian enrages,             The rogue performs a            The sorcerer breathes fire  
+                 increasing damage when under       swift attack striking           to every enemy dealing massive
+                 30% hp                             2 targets the rogue is          area of effect damage 
+                                                    facing, dealing double          **BETA** burning every enemy
+                                                    damage. But has a               for 2 rounds
+                                                    2 rounds cooldown
+                -----------------------------------------------------   
                 """);
     }
 
@@ -71,6 +86,13 @@ public class StringLore {
         return ("""
                 
                 Each Class have their own unique play style and attributes:
+                All have one basic attack that doesnt cost any resource. 
+                Two spells that's on a low cost and deals modirate damage 
+                One ulitmate as seen above - these spells have works around cooldowns
+                while the rest doesnt. 
+                
+                Every class has a higher set of the main attributes per class -
+                
                 \033[1;31mStrength\033[0m is an attribute that grants more raw damage and protection
                 \033[1;32mAgility\033[0m is an attirubte that give higher initiative and a better chance to dodge
                 \033[1;34mIntellect\033[0m is an attribute that gives higher resources and higher scaling damage
@@ -105,6 +127,11 @@ public class StringLore {
                 you realise, there's not just one - but three of them...
                 
                 
+                """);
+    }
+
+    public String presentHowToPlay() {
+        return ("""
                 """);
     }
 }

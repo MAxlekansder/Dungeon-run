@@ -1,6 +1,7 @@
 package com.alexanderhasslund.demo.main.Monster.BasicMonsters;
 
 import com.alexanderhasslund.demo.main.Combat.ICombat;
+import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Monster.IMonster;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
@@ -31,9 +32,18 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
     }
 
     @Override
-    public void attack(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
-        System.out.println("The brute hits for: ");
+    public void attack(List<Player> playerList, int monsterIndex, List<Monster> monsterList) {
+        Random random = new Random();
 
+        int randPlayer = random.nextInt(playerList.size());
+        System.out.println("The brute hits for: "+ monsterList.get(monsterIndex).getDamage() + " damage");
+
+         playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
+            - monsterList.get(monsterIndex).getDamage());
+
+        System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
+        System.out.println("Press enter to continue: ");
+        String enter = Input.stringInput();
     }
 
     @Override

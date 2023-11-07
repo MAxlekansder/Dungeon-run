@@ -1,8 +1,10 @@
 package com.alexanderhasslund.demo.main.PlayerInteraction;
+
 import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Classes.Rogue;
 import com.alexanderhasslund.demo.main.Classes.Sorcerer;
 import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
+import com.alexanderhasslund.demo.main.Combat.FirstCombatEncounter;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
 import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
@@ -17,6 +19,7 @@ public class GameStartControl {
         StringManipulator stringManipulator = new StringManipulator();
         StringLore stringLore = new StringLore();
 
+
         //stringManipulator.manipulateString(stringLore.intro());
         stringLore.gameTitle();
         System.out.println(stringLore.gameIntroductionClasses());
@@ -28,17 +31,18 @@ public class GameStartControl {
         Sorcerer sorcerer = new Sorcerer();
         System.out.println(sorcerer);
 
+        System.out.println(stringLore.ultimateClassPresentation());
         //stringManipulator.manipulateString(stringLore.gameIntroductionRules());
+        System.out.println("Press enter to continue, where you start the game and choose class");
 
+        String enter = Input.stringInput();
         startUpMenu();
 
     }
 
 
-
     public void startUpMenu() throws InterruptedException, IOException, NoSuchFieldException, IllegalAccessException {
         PlayerChoice playerChoice = new PlayerChoice();
-        PlayerController playerController = new PlayerController();
         boolean isPlaying = true;
 
 
@@ -71,23 +75,24 @@ public class GameStartControl {
     }
 
     //Singleton-isch...
-    public void startIntroductionChoice() throws InterruptedException, IOException, NoSuchFieldException, IllegalAccessException {
+    public void startIntroductionChoice() throws IOException, NoSuchFieldException, IllegalAccessException, InterruptedException {
         PlayerController playerController = new PlayerController();
 
         PlayerChoice playerChoice = new PlayerChoice();
         StringManipulator stringManipulator = new StringManipulator();
         //  stringManipulator.manipulateString(playerChoice.newGameSetup());
         playerController.playerCount();
+        FirstCombatEncounter firstCombatEncounter = new FirstCombatEncounter(playerController.getPlayerList(), playerController.getCountPlayers());
         MonsterController monsterController = new MonsterController(playerController.getCountPlayers());
-        CombatController combatController = new CombatController(playerController.getPlayerList(), playerController.getCountPlayers());
+        CombatController combatController = new CombatController(playerController.getPlayerList(), playerController.getCountPlayers(), monsterController.getMonsterList());
         playerController.chooseClass();
         playerController.choosePlayerName();
         playerController.getPlayerInformation();
         MainGameControl mainGameControl = new MainGameControl(playerController.getPlayerList(), playerController.getCountPlayers());
 
-        //set in scenario and present text
+
         //stringManipulator.manipulateStringFast(playerChoice.firstFightIntroduction());
-        //combatController.calculatePlayerDamage();
+        firstCombatEncounter.firstPlayerFight();
         mainGameControl.mainSwitch();
     }
 }

@@ -1,6 +1,7 @@
 package com.alexanderhasslund.demo.main.Classes;
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
+import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 
@@ -43,7 +44,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
     }
 
     @Override
-    public void trait() {
+    public void trait(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
         //berserkers rage
         //when hp is below 30 <- activate berserkers rage
 
@@ -57,7 +58,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
 
     @Override
-    public int spells() {
+    public void spells(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
         int temporaryBuffs = 0;
         switch (1) {
             case 1 -> { // a baseline damage spell that adds 3 damage and uses 'resources'
@@ -72,7 +73,6 @@ public class Barbarian extends Player implements IClasses, ICombat {
             }
             default -> {System.out.println("Use right input");}
         }
-        return temporaryBuffs;
     }
 
 
@@ -83,8 +83,18 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
     @Override
     public void attack(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
-        System.out.println("in attack for barb");
+        int monsterChoice = 1;
 
+        for (Monster monster : monsterList) {
+            System.out.println("CHOICE: "+ monsterChoice+ " " + monster);
+            monsterChoice++;
+        }
+        System.out.print("Decide what monster you want to hit: ");
+        int monsterIndex = Input.intInput() -1;
+        // build a miss system? Even for monsters based on something.
+
+        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() - playerList.get(playerIndex).getDamage());
+        System.out.printf("The barbarian attacks with a hard hitting strike, Dealing %s to monster %s", playerList.get(playerIndex).getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
     @Override

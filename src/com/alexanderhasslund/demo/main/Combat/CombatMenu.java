@@ -11,17 +11,18 @@ import java.util.List;
 public class CombatMenu {
 
 
-    public void combatSwitch(List<Player> playerList, int paIT, List<Monster> monsterList) {
+    public void combatSwitch(List<Player> playerList, int paIT, List<Monster> monsterList, Player currentPlayer) {
         PlayerChoice playerChoice = new PlayerChoice();
         Fight fight = new Fight();
-
-        int fightInput = Input.intInput();
+        System.out.printf("Player %s turn:\n", currentPlayer.getName());
         System.out.println(playerChoice.fightSequence());
+        int fightInput = Input.intInput();
+
         switch (fightInput) {
             case 1 -> {
                 //System.out.println("fight");
                 System.out.println(playerChoice.abilityChoice());
-                fight.fightMonster(playerList, paIT, monsterList);
+                fight.fightMonster(playerList, paIT, monsterList, currentPlayer);
                 //fight.fightMonster(pla);
                 //fight.fightMonster(); vill ha player som argument
 

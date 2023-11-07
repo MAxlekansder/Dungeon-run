@@ -14,15 +14,16 @@ import java.util.stream.IntStream;
 public class CombatController {
 
     private List<Player> playerList;
+    private List<Monster> monsterList;
     private int countPlayer;
 
 
-    public CombatController(List<Player> playerList, int countPlayer) {
+    public CombatController(List<Player> playerList, int countPlayer, List<Monster> monsterList) {
         this.playerList = playerList;
         this.countPlayer = countPlayer;
+        this.monsterList = monsterList;
 
     }
-
 
     public void chanceOfFleeing() {
 
@@ -40,9 +41,10 @@ public class CombatController {
     }
 
     // move this one out????
-    public void initiateFight(List<Monster> monsterList) {
+    public void initiateFight() {
         PlayerChoice playerChoice = new PlayerChoice();
         CombatMenu combatMenu = new CombatMenu();
+        MonsterAttack monsterAttack = new MonsterAttack();
 
         Collections.sort(playerList, new PlayerInitiativeComperator());
         Collections.sort(monsterList, new MonsterInitiativeComperator());
@@ -72,61 +74,74 @@ public class CombatController {
         boolean checkMonsterHasPlayed = true;
         while (checkPlayerHasPlayed && checkMonsterHasPlayed) */
         // insert a break if player flees
-        while (!playerList.isEmpty() || !monsterList.isEmpty()) {
+        while (!(playerList.isEmpty() || monsterList.isEmpty())) {
             Collections.sort(playerList, new PlayerInitiativeComperator());
             Collections.sort(monsterList, new MonsterInitiativeComperator());
 
-            //       0          <= 1+3 = 4
-            // check after every round and reset??
-            // insert a break if player flee
             while (!(checkPlayerHasPLayed(playerList) && checkMonsterHasPLayed(monsterList))) {
 
-                Player currentPlayer = playerList.get(paIT);
-                Monster currentMonster = monsterList.get(moIT);
+                if (playerList.isEmpty() || monsterList.isEmpty()) {
+                    break;
 
-                if (!currentPlayer.isHasPlayed() && (currentPlayer.getInitiative()) < currentMonster.getInitiative()) {
-                    System.out.printf("Player %s turn:\n", currentPlayer.getName());
-                    System.out.println(playerChoice.fightSequence());
-                    combatMenu.combatSwitch(playerList, paIT, monsterList);
-                    currentPlayer.setHasPlayed(true);
-                    if (paIT < playerList.size() - 1) paIT++;
-
-                } else if (!currentMonster.isHasPlayed()) {
-                    System.out.printf("Monster %s turn:\n", currentMonster.getMonsterName());
-                    // Perform monster actions here
-                    currentMonster.setHasPlayed(true);
-                    if (moIT < monsterList.size() - 1) moIT++;
                 } else {
 
-                    System.out.printf("Player %s turn:\n", currentPlayer.getName());
-                    System.out.println(playerChoice.fightSequence());
-                    combatMenu.combatSwitch(playerList, paIT, monsterList);
-                    currentPlayer.setHasPlayed(true);
-                    if (paIT < playerList.size() - 1) paIT++;
+                    Player currentPlayer = playerList.stream().filter(player -> !player.isHasPlayed()).findFirst().orElse(null);
+                    Monster currentMonster = monsterList.stream().filter(monster -> !monster.isHasPlayed()).findFirst().orElse(null);
+
+
+                    if (currentMonster == null) {
+
+                        combatMenu.combatSwitch(playerList, paIT, monsterList, currentPlayer);
+                        break;
+
+                    } else if (currentPlayer == null) {
+
+                        monsterAttack.monsterStrikePlayer(moIT, monsterList, playerList, currentMonster);
+                        break;
+
+                    } else {
+
+                        if (currentPlayer.getInitiative() < currentMonster.getInitiative()) {
+
+                            combatMenu.combatSwitch(playerList, paIT, monsterList, currentPlayer);
+
+                        } else {
+
+                            monsterAttack.monsterStrikePlayer(moIT, monsterList, playerList, currentMonster);
+
+                        }
+                    }
                 }
             }
 
             countRounds++;
-            paIT = 0;
-            moIT = 0;
-
             System.out.printf("end of %s  round \n", countRounds);
-            for (Player player : playerList) {
-                player.setHasPlayed(false);
-            }
 
-            for (Monster monster : monsterList) {
-                monster.setHasPlayed(false);
-            }
+            resetPlayerInitiative();
 
+            resetMonsterInitiative(monsterList);
+            System.out.println("Outside of first while loop - isEmpty");
         }
-
-
-
-
     }
 
+
+
+    public void resetPlayerInitiative() {
+        for (Player player : playerList) {
+            player.setHasPlayed(false);
+        }
+    }
+
+
+    public void resetMonsterInitiative(List<Monster> monsterList) {
+        for (Monster monster : monsterList) {
+            monster.setHasPlayed(false);
+        }
+    }
+
+
     public boolean checkMonsterHasPLayed(List<Monster> monsterList) {
+
         for (Monster monster : monsterList) {
             if (!monster.isHasPlayed()) {
                 return false;
@@ -137,6 +152,7 @@ public class CombatController {
 
 
     public boolean checkPlayerHasPLayed(List<Player> playerList) {
+
         for (Player player : playerList) {
             if (!player.isHasPlayed()) {
                 return false;

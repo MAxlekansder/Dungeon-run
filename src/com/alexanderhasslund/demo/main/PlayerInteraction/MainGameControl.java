@@ -30,7 +30,7 @@ public class MainGameControl {
         ShopMenu shopMenu = new ShopMenu(playerList); // this line becomes null, seems like something is wrong
         SaveFile saveFile = new SaveFile(playerList);
         MonsterController monsterController = new MonsterController(countPlayers);
-        CombatController combatController = new CombatController(playerList, countPlayers);
+        CombatController combatController = new CombatController(playerList, countPlayers, monsterController.getMonsterList());
         CombatMenu combatMenu = new CombatMenu();
 
         boolean isMainPlaying = true;
@@ -44,7 +44,7 @@ public class MainGameControl {
                     // continue
                    // this method call is only for test, this might be in levelGenerator
                     monsterController.monsterValueController();
-                    combatController.initiateFight(monsterController.getMonsterList());
+                    combatController.initiateFight();
                 }
                 case 2 -> {
                     // shop

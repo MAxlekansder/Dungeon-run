@@ -188,6 +188,54 @@
 
 
 
+    // while (!playerList.isEmpty() || !monsterList.isEmpty()) -> combat över, återställa spelares hp, börja om från noll -> level += 1 / spelet över
+
+        // while (!(checkPlayerHasPLayed(playerList) && checkMonsterHasPLayed(monsterList))) -> rundor, false, runda +1, set tillbaka paIT moIT
+
+            // if ((paIT < playerList.size() && moIT < monsterList.size())) -> combat loop, slåss man
+
+        }
+            slåss vi, tills alla har slagits
+        }
+            nollställ hasPlayed, runda +1
+        }
+            räkna poäng, level -> tillbaka huvudmenyn
+
+
+  if (!currentPlayer.isHasPlayed() && (currentPlayer.getInitiative()) < currentMonster.getInitiative()) {
+
+                        System.out.printf("Player %s turn:\n", currentPlayer.getName());
+                        System.out.println(playerChoice.fightSequence()); // move out?
+                        combatMenu.combatSwitch(playerList, paIT, monsterList);
+
+                        currentPlayer.setHasPlayed(true);
+                        if (paIT < playerList.size()) paIT++;
+
+                    } else if (!currentMonster.isHasPlayed()) {
+
+                        System.out.printf("Monster %s turn:\n", currentMonster.getMonsterName());
+                        // Perform monster actions here
+
+                        monsterAttack.monsterStrikePlayer(moIT, monsterList, playerList);
+                        checkPlayerhasDied(playerList);
+                        currentMonster.setHasPlayed(true);
+
+                        if (moIT < monsterList.size()) moIT++;
+
+                    } else {
+
+                        System.out.printf("Player %s turn:\n", currentPlayer.getName());
+                        System.out.println(playerChoice.fightSequence());
+                        combatMenu.combatSwitch(playerList, paIT, monsterList);
+
+                        checkMonsterhasDied(monsterList, playerList);
+                        if (paIT < playerList.size()) paIT++;
+                    }
 
 
 
+player 1 har spelat sant()
+player 2 inte har spelat ej sant() <-
+
+monster 1
+monster 2

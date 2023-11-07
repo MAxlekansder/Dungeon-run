@@ -1,6 +1,7 @@
 package com.alexanderhasslund.demo.main.Classes;
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
+import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 
@@ -41,7 +42,17 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
 
     @Override
-    public int spells() {
+    public void trait(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
+        //Dragons breath
+        //Based on how many targets it will cleave
+        //Find a good way to work this out, but first we need to add all monsters and then split
+        //damage * some trait / array.size() == all monster in Array
+
+        //Cooldown
+    }
+
+    @Override
+    public void spells(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
         switch (1){
             case 1 -> {
                 System.out.println("builds up damage over time, over three rounds: ");
@@ -51,7 +62,6 @@ public class Sorcerer extends Player implements IClasses, ICombat {
             }
             default -> {System.out.println("Use right input");}
         }
-        return 2;
     }
 
     @Override
@@ -61,8 +71,18 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
     @Override
     public void attack(List<Player> playerList, int playerIndex, List<Monster> monsterList) {
-        System.out.println("in attack for Sorc");
+        int monsterChoice = 1;
 
+        for (Monster monster : monsterList) {
+            System.out.println("CHOICE: "+ monsterChoice+ " " + monster);
+            monsterChoice++;
+        }
+        System.out.print("Decide what monster you want to hit: ");
+        int monsterIndex = Input.intInput() -1;
+        // build a miss system? Even for monsters based on something.
+
+        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() - playerList.get(playerIndex).getDamage());
+        System.out.printf("The Sorcerer attacks with all element aligned, Dealing %s to monster %s", playerList.get(playerIndex).getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
     @Override
@@ -83,16 +103,6 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     @Override
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Override
-    public void trait() {
-        //Dragons breath
-        //Based on how many targets it will cleave
-        //Find a good way to work this out, but first we need to add all monsters and then split
-        //damage * some trait / array.size() == all monster in Array
-
-        //Cooldown
     }
 
     @Override
