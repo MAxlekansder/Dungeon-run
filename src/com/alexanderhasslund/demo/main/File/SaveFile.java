@@ -14,7 +14,19 @@ public class SaveFile {
         this.playerList = playerList;
     }
 
+
+
+
+
         public void saveFilePlayer() throws IOException {
+
+            String osName = System.getProperty("os.name").toLowerCase();
+            String firstNameInOS = osName.substring(0, osName.indexOf(' '));
+            switch(firstNameInOS) {
+                case "linux" -> System.out.println("running on Linux");
+                case "mac os x" -> System.out.println("running on macOS");
+                case "windows" -> System.out.println("running on PC");
+            }
 
             String concat = "";
             for (Player player : playerList) concat = player.getName() + " " + concat;

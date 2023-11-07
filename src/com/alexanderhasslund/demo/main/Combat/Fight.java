@@ -10,6 +10,15 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Fight {
+    private int countDeadMonsters;
+
+    public int getCountDeadMonsters() {
+        return countDeadMonsters;
+    }
+
+    public void setCountDeadMonsters(int countDeadMonsters) {
+        this.countDeadMonsters = countDeadMonsters;
+    }
 
     private List<Player> playerList;
 
@@ -52,7 +61,9 @@ public class Fight {
         int giveCurrency = 0;
         int giveExperience = 0;
 
+
         for (int i = 0; i < monsterList.size(); i++) {
+            countDeadMonsters++;
             if (monsterList.get(i).getHp() <= 0) {
 
 

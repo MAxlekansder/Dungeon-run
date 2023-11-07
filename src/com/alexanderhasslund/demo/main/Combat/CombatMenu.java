@@ -15,31 +15,68 @@ public class CombatMenu {
         PlayerChoice playerChoice = new PlayerChoice();
         Fight fight = new Fight();
         System.out.printf("Player %s turn:\n", currentPlayer.getName());
-        System.out.println(playerChoice.fightSequence());
-        int fightInput = Input.intInput();
 
-        switch (fightInput) {
-            case 1 -> {
-                //System.out.println("fight");
-                System.out.println(playerChoice.abilityChoice());
-                fight.fightMonster(playerList, paIT, monsterList, currentPlayer);
-                //fight.fightMonster(pla);
-                //fight.fightMonster(); vill ha player som argument
+        int fightInput = 0;
+        boolean isFighting = true;
+        boolean isViewing = true;
 
-            }
-            case 2 -> {
-                System.out.println("get status");
-            }
-            case 3 -> {
-                System.out.println("flee");
-                // calculate if you get away
+        while (isFighting) {
+            isViewing = true;
+            while (isViewing) {
+                System.out.println(playerChoice.fightSequence());
+                fightInput = Input.intInput();
+                switch (fightInput) {
+                    case 1 -> {
+                        //System.out.println("fight");
+                        System.out.println(playerChoice.abilityChoice());
+                        fight.fightMonster(playerList, paIT, monsterList, currentPlayer);
+                        //fight.fightMonster(pla);
+                        //fight.fightMonster(); vill ha player som argument
+                        isFighting = false;
+                        isViewing = false;
 
-            }
-            default -> {
-                System.out.println("use the right input");
+                    }
+                    case 2 -> {
+                        System.out.println("get status");
+                        getStatusActivePlayerAndMosnter(playerList, monsterList);
+                        isViewing = false;
+                    }
+                    case 3 -> {
+                        System.out.println("flee");
+                        Flee flee = new Flee();
+                        // calculate if you get away
+                        // take flase or break into next step
+
+                    }
+                    default -> {
+                        System.out.println("use the right input");
+                    }
+                }
             }
         }
+    }
 
+    public void getStatusActivePlayerAndMosnter(List<Player> playerList, List<Monster> monsterList) {
+        for (Player player : playerList) {
+            System.out.println(
+                    player.getClassName()
+                    + " || Player = " +player.getName()
+                    + " || HP = " + player.getHp()
+                    + " || Resource = " + player.getResource()
+                    + " || Damage = " + player.getDamage()
+                    + " || Defence = " + player.getDefence()
+                    + " || Initiative = " + player.getInitiative()
+            );
+        }
 
+        for (Monster monster : monsterList) {
+            System.out.println(
+                    monster.getMonsterName()
+                    + " -- HP = " + monster.getHp()
+                    + " -- ID = " + (monster.getMonsterId() +1)
+                    + " -- Damage = " + monster.getDamage()
+                    + " -- Defence = "  + monster.getDefence()
+                    + " -- Initiative = "  + monster.getInitiative());
+        }
     }
 }

@@ -30,7 +30,7 @@ public class MainGameControl {
         ShopMenu shopMenu = new ShopMenu(playerList); // this line becomes null, seems like something is wrong
         SaveFile saveFile = new SaveFile(playerList);
         MonsterController monsterController = new MonsterController(countPlayers);
-        CombatController combatController = new CombatController(playerList, countPlayers, monsterController.getMonsterList());
+        CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
         CombatMenu combatMenu = new CombatMenu();
 
         boolean isMainPlaying = true;

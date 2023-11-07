@@ -84,7 +84,7 @@ public class GameStartControl {
         playerController.playerCount();
         FirstCombatEncounter firstCombatEncounter = new FirstCombatEncounter(playerController.getPlayerList(), playerController.getCountPlayers());
         MonsterController monsterController = new MonsterController(playerController.getCountPlayers());
-        CombatController combatController = new CombatController(playerController.getPlayerList(), playerController.getCountPlayers(), monsterController.getMonsterList());
+        CombatController combatController = new CombatController(playerController.getPlayerList(), monsterController.getMonsterList());
         playerController.chooseClass();
         playerController.choosePlayerName();
         playerController.getPlayerInformation();

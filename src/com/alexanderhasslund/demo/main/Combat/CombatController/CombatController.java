@@ -1,34 +1,23 @@
 package com.alexanderhasslund.demo.main.Combat.CombatController;
-
 import com.alexanderhasslund.demo.main.Combat.CombatMenu;
-import com.alexanderhasslund.demo.main.Combat.Fight;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
+
 
 public class CombatController {
 
     private List<Player> playerList;
     private List<Monster> monsterList;
-    private int countPlayer;
 
 
-    public CombatController(List<Player> playerList, int countPlayer, List<Monster> monsterList) {
+
+    public CombatController(List<Player> playerList, List<Monster> monsterList) {
         this.playerList = playerList;
-        this.countPlayer = countPlayer;
         this.monsterList = monsterList;
-
-    }
-
-    public void chanceOfFleeing() {
-
-        // calculate and use this for entire party but monster can flee one by one
-        // maybe brute shouldn't be able to flee
 
     }
 
@@ -112,15 +101,27 @@ public class CombatController {
                         }
                     }
                 }
+                countRounds++;
             }
 
-            countRounds++;
+
             System.out.printf("end of %s  round \n", countRounds);
 
             resetPlayerInitiative();
 
             resetMonsterInitiative(monsterList);
-            System.out.println("Outside of first while loop - isEmpty");
+            if (playerList.isEmpty()) {
+                System.out.println("Seems like you didnt make it further than here... ");
+                System.out.println("too bad... better luck next time, hero");
+                // save a file here
+            }
+            else {
+
+                System.out.println("");
+                for (Player player : playerList) {
+
+                }
+            }
         }
     }
 

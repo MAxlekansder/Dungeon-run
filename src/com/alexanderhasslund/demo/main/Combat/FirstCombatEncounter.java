@@ -41,7 +41,7 @@ public class FirstCombatEncounter {
                 You now have the option to explore every option during combat
                 """);
 
-        CombatController combatController = new CombatController(firstPlayerList,playerCount, firstMonsterList);
+        CombatController combatController = new CombatController(firstPlayerList, firstMonsterList);
         combatController.initiateFight();
 
         System.out.println
