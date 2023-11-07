@@ -55,11 +55,6 @@ public class MonsterController {
             firstMonster.setMonsterId(i);
             monsterList.add(firstMonster);
 
-
-            /*
-            Monster monster = allMonsters.get(monsterIndex);
-            monsterList.add(monster);
-            monsterList.get(i).setMonsterId(i); */
         }
     }
 

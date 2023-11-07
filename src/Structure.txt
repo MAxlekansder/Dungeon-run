@@ -8,7 +8,7 @@
    Fixa potions
    Fixa Logik
    Fixa fler bossar
-
+   Balansera monster mot spelare - ska vara svårt men inte för svårt
 
 
 

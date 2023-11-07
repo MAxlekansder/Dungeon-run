@@ -74,19 +74,19 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     }
 
     @Override
-    public void attack(List<Player> playerList, Player player, List<Monster> monsterList) {
+    public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster monster) {
         int monsterChoice = 1;
 
-        for (Monster monster : monsterList) {
-            System.out.println("CHOICE: "+ monsterChoice+ " " + monster);
+        for (Monster monster1 : monsterList) {
+            System.out.println("CHOICE: "+ monsterChoice+ " " + monster1);
             monsterChoice++;
         }
         System.out.print("Decide what monster you want to hit: ");
         int monsterIndex = Input.intInput() -1;
         // build a miss system? Even for monsters based on something.
 
-        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() - playerList.get(playerIndex).getDamage());
-        System.out.printf("The Sorcerer attacks with all element aligned, Dealing %s to monster %s", playerList.get(playerIndex).getDamage(), monsterList.get(monsterIndex).getMonsterName());
+        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() - currentPlayer.getDamage());
+        System.out.printf("The Sorcerer attacks with all element aligned, Dealing %s to monster %s", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
     @Override

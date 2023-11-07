@@ -32,18 +32,17 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
     }
 
     @Override
-    public void attack(List<Player> playerList, int monsterIndex, List<Monster> monsterList) {
+    public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
         Random random = new Random();
 
         int randPlayer = random.nextInt(playerList.size());
-        System.out.println("The brute hits for: "+ monsterList.get(monsterIndex).getDamage() + " damage");
+        System.out.println("The brute hits for: "+ currentMonster.getDamage() + " damage");
 
          playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
-            - monsterList.get(monsterIndex).getDamage());
+            - currentMonster.getDamage());
 
-        System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
-        System.out.println("Press enter to continue: ");
-        String enter = Input.stringInput();
+        System.out.printf("And player: %s %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getHp());
+
     }
 
     @Override

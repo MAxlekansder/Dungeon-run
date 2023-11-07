@@ -1,68 +1,53 @@
 package com.alexanderhasslund.demo.main.Combat.CombatController;
 import com.alexanderhasslund.demo.main.Combat.CombatMenu;
+import com.alexanderhasslund.demo.main.Engine.Color;
+import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 
 public class CombatController {
 
     private List<Player> playerList;
     private List<Monster> monsterList;
+    private int calculateLevels;
 
+    public int getCalculateLevels() {
+        return calculateLevels;
+    }
 
+    public void setCalculateLevels(int calculateLevels) {
+        this.calculateLevels = calculateLevels;
+    }
 
     public CombatController(List<Player> playerList, List<Monster> monsterList) {
         this.playerList = playerList;
         this.monsterList = monsterList;
-
     }
 
-    public void chanceOfDodge() {
-        // maybe just for rogue...
-    }
-
-    public void chanceOfBlock() {
-
-    }
 
     // move this one out????
+    // -- return boolean to break isPlaying -> easier to handle
     public void initiateFight() {
-        PlayerChoice playerChoice = new PlayerChoice();
+        CombatEndingController combatEndingController = new CombatEndingController();
         CombatMenu combatMenu = new CombatMenu();
         MonsterAttack monsterAttack = new MonsterAttack();
 
         Collections.sort(playerList, new PlayerInitiativeComperator());
         Collections.sort(monsterList, new MonsterInitiativeComperator());
 
-        System.out.println("\nSorted");
+        checkCombatSorted(playerList, monsterList);
+        System.out.println("Enter to start combat ");
+        String enter = Input.stringInput();
 
-        for (int i = 0; i < playerList.size(); i++) {
-            System.out.println(playerList.get(i));
-        }
-        System.out.println(" ");
-        for (int i = 0; i < monsterList.size(); i++) {
-            System.out.println(monsterList.get(i));
-        }
-        // kika på den här, blir lite onödig
-        //MonsterController monsterController = new MonsterController(countPlayer);
-        //monsterController.monsterValueController();
         int countRounds = 0;
-        // have a "hasPlayed"? to make it easier to fall through it???
 
-        //this is mock code <- remove this...
-
-
-        int paIT = 0; // player InitiativeTracker
-        int moIT = 0; // monster InitiativeTracker
-        /*
-        boolean checkPlayerHasPlayed = true;
-        boolean checkMonsterHasPlayed = true;
-        while (checkPlayerHasPlayed && checkMonsterHasPlayed) */
-        // insert a break if player flees
         while (!(playerList.isEmpty() || monsterList.isEmpty())) {
             Collections.sort(playerList, new PlayerInitiativeComperator());
             Collections.sort(monsterList, new MonsterInitiativeComperator());
@@ -80,51 +65,40 @@ public class CombatController {
 
                     if (currentMonster == null) {
 
-                        combatMenu.combatSwitch(playerList, paIT, monsterList, currentPlayer);
+                        combatMenu.combatSwitch(playerList, monsterList, currentPlayer, currentMonster);
                         break;
 
                     } else if (currentPlayer == null) {
 
-                        monsterAttack.monsterStrikePlayer(moIT, monsterList, playerList, currentMonster);
+                        monsterAttack.monsterStrikePlayer( monsterList, playerList, currentMonster, currentPlayer);
                         break;
 
                     } else {
 
                         if (currentPlayer.getInitiative() < currentMonster.getInitiative()) {
 
-                            combatMenu.combatSwitch(playerList, paIT, monsterList, currentPlayer);
+                            combatMenu.combatSwitch(playerList,  monsterList, currentPlayer, currentMonster);
 
                         } else {
 
-                            monsterAttack.monsterStrikePlayer(moIT, monsterList, playerList, currentMonster);
+                            monsterAttack.monsterStrikePlayer(monsterList, playerList, currentMonster, currentPlayer);
 
                         }
                     }
                 }
-                countRounds++;
             }
+            countRounds++;
 
-
-            System.out.printf("end of %s  round \n", countRounds);
+            System.out.printf("end of round  %s \n", countRounds);
 
             resetPlayerInitiative();
 
             resetMonsterInitiative(monsterList);
-            if (playerList.isEmpty()) {
-                System.out.println("Seems like you didnt make it further than here... ");
-                System.out.println("too bad... better luck next time, hero");
-                // save a file here
-            }
-            else {
 
-                System.out.println("");
-                for (Player player : playerList) {
-
-                }
-            }
         }
+        calculateLevels++;
+        combatEndingController.decideCombatWinner(playerList);
     }
-
 
 
     public void resetPlayerInitiative() {
@@ -133,7 +107,7 @@ public class CombatController {
         }
     }
 
-
+    // move these out?
     public void resetMonsterInitiative(List<Monster> monsterList) {
         for (Monster monster : monsterList) {
             monster.setHasPlayed(false);
@@ -161,115 +135,42 @@ public class CombatController {
         }
         return true;
     }
+
+
+    public void checkCombatSorted(List<Player> playerList, List<Monster> monsterList) {
+
+        /*List<Object> tempList = new ArrayList<>();
+        tempList.addAll(playerList);
+        tempList.addAll(monsterList);
+
+        Collections.sort(tempList, new WindowInitiativComperator());
+        System.out.println(tempList); */
+
+        // fix vewing here and sort it so we see how everyone plays, thats the whole point of combat...
+        System.out.println("INITIATIVE TRACKER: Ascending order -----------------------------------\n");
+        for( Player player : playerList) {
+            System.out.println(
+                    player.getClassName()
+                    + " || Player = " +player.getName()
+                    + " || HP = " + player.getHp()
+                    + " || Resource = " + player.getResource()
+                    + " || Damage = " + player.getDamage()
+                    + " || Defence = " + player.getDefence()
+                    + " || Initiative = " + player.getInitiative());
+        }
+
+        for (Monster monster : monsterList) {
+            System.out.println(
+            Color.CYAN +"MONSTER" + Color.RESET
+                    + " // Type = "+ monster.getMonsterName()
+                    + " // HP = " + monster.getHp()
+                    + " // ID = " + (monster.getMonsterId() +1)
+                    + " // Damage = " + monster.getDamage()
+                    + " // Defence = "  + monster.getDefence()
+                    + " // Initiative = "  + monster.getInitiative());
+        }
+        System.out.println("\nINITIATIVE TRACKER: Ascending order -----------------------------------");
+
+    }
 }
 
-/*
-
-    public void checkBothListsAndSort() {
-
-        for(int i = 0; i < playerList.size();i++) {
-            System.out.println(playerList.get(i));
-        }
-        System.out.println(" ");
-        for(int i = 0; i < monsterList.size();i++) {
-            System.out.println(monsterList.get(i));
-        }
-        Collections.sort(playerList, new PlayerInitiativeComperator());
-        Collections.sort(monsterList, new MonsterInitiativeComperator());
-
-        System.out.println("\nSorted");
-
-        for(int i = 0; i < playerList.size();i++) {
-            System.out.println(playerList.get(i));
-        }
-        System.out.println(" ");
-        for(int i = 0; i < monsterList.size();i++) {
-            System.out.println(monsterList.get(i));
-        }
-    }
-
-
-
-    //Flytta ut dessa?
-
-    // kika lite på den här... är väldigt osäker på hur jag ska räkna? Tippar på att göra playersize...
-    public void calculatePlayerDamage() {
-
-        for (int i = 0; i < playerList.size(); i++) {
-            for (int j = 0; j < playerList.get(i).getInventoryList().size(); j++) {
-                playerList.get(i).setDamage(playerList.get(i).getDamage()
-                        + playerList.get(i).getInventoryList().get(j).getDamage()
-                );
-            }
-        }
-    }
-
-    public void calculatePlayerDefence() {
-        MonsterController monsterController = new MonsterController(countPlayer);
-        for (int i = 0; i < playerList.size(); i++) {
-            for (int j = 0; j < playerList.get(i).getInventoryList().size(); j++) {
-                playerList.get(i).setDefence(playerList.get(i).getDefence()
-                        + playerList.get(i).getInventoryList().get(j).getDefence()
-                );
-            }
-        }
-    }
-
-    public void calculateMonsterDamage() {
-        MonsterController monsterController = new MonsterController(countPlayer);
-        for(int i = 0; i < monsterController.getMonsterList().size();i++) {
-            monsterController.getMonsterList().get(i).setDamage(monsterController.getMonsterList().get(i).getDamage() * playerList.get(i).getLevel());
-        }
-        // * level
-    }
-
-
-
-    public void calculateMonsterDefence() {
-        MonsterController monsterController = new MonsterController(countPlayer);
-        for(int i = 0; i <monsterController.getMonsterList().size();i++) {
-            monsterController.getMonsterList().get(i).setDamage(monsterController.getMonsterList().get(i).getDamage() * playerList.get(i).getLevel());
-        }// * level
-
-    }
-
-
-
-    public void playerDied() {
-
-        for (int i = 0; i < playerList.size(); i++) {
-            if (playerList.get(i).getHp() <= 0 ) {
-            playerList.get(i).setDead(true);
-            }
-        }
-    }
-
-    public void monsterDied() {
-        MonsterController monsterController = new MonsterController(countPlayer);
-        for (int i = 0; i < monsterController.getMonsterList().size(); i++) {
-            if (monsterController.getMonsterList().get(i).getHp() <= 0 ) {
-                monsterController.getMonsterList().get(i).setDead(true);
-
-                playerList.get(i).setCurrency(playerList.get(i).getCurrency() + monsterController.getMonsterList().get(i).getGivesCurrency());
-                System.out.println(playerList.get(i).getCurrency());
-                playerList.get(i).setExperience(playerList.get(i).getExperience() + monsterController.getMonsterList().get(i).getGivesExperience());
-                System.out.println(playerList.get(i).getExperience());
-            }
-        }
-    }
-
-}
-
-
-// attack is raw damage, should be calc with:
-// damage + str
-// damage + agi
-// damage + int
-
-//maybe get this into the interface, so it's controlled by the class
-
-// defence should just reduce damage taken, find formula for how to calculate it
-// block is raw damage mitigation <- if monk class is introduced shield would block entire damage
-// dodge should only be rogue "defence = evasion..."
-
-*/

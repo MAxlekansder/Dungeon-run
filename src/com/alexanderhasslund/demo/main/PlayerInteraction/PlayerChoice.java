@@ -143,12 +143,13 @@ public class PlayerChoice {
     public String fightSequence() {
         return ("""
                 
-                1. FIGHT    2. GET STATUS       3. FLEE""");
+                ----\033[1;33m COMBAT OPTIONS \033[0m----
+                1. FIGHT    2. GET STATUS    3. FLEE""");
     }
 
     public String abilityChoice() {
-        return ("""
-                1. BASIC ATTACK     2. CHOOSE SPELL
-                """);
+        return (""" 
+                ----\033[1;33m IN ACTION MENU \033[0m----
+                1. BASIC ATTACK     2. CHOOSE SPELL     3. ULTIMATE""");
     }
 }

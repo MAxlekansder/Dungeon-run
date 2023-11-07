@@ -13,10 +13,13 @@ public class Flee {
 
         if (!monsterList.isEmpty()) {
             monsterList.removeAll(monsterList);
+            System.out.println("You got away safe!");
+        } else {
+            System.out.println("No monsters to flee from!");
         }
+
         // calculate and use this for entire party but monster can flee one by one
         // maybe brute shouldn't be able to flee
-
     }
 
 }

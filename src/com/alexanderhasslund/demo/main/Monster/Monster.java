@@ -158,7 +158,6 @@ public class Monster {
                 " initiative = " + initiative + " -- " +
                 " strength = " + strength + " -- " +
                 " agility = " + agility + " -- " +
-                " intellect = " + intellect + " -- " +
-                " Dead = " + isDead;
+                " intellect = " + intellect;
     }
 }

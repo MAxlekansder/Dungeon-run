@@ -81,11 +81,11 @@ public class Rogue extends Player implements IClasses, ICombat {
     }
 
     @Override
-    public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
+    public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster monster) {
         int monsterChoice = 1;
 
-        for (Monster monster : monsterList) {
-            System.out.println("CHOICE: "+ monsterChoice+ " " + monster);
+        for (Monster monster1 : monsterList) {
+            System.out.println("CHOICE: "+ monsterChoice+ " " + monster1);
             monsterChoice++;
         }
         System.out.print("Decide what monster you want to hit: ");

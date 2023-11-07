@@ -28,19 +28,18 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
     }
 
     @Override
-    public void attack(List<Player> playerList, int monsterIndex, List<Monster> monsterList) { //insert attack modifiers here?
+    public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList,  Monster currentMonster) { //insert attack modifiers here?
 
-        System.out.println("The spellweaver hits for: " + monsterList.get(monsterIndex).getDamage() + " damage");
+        System.out.println("The spellweaver hits for: " + currentMonster.getDamage() + " damage");
         Random random = new Random();
 
         int randPlayer = random.nextInt(playerList.size());
 
         playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
-                - monsterList.get(monsterIndex).getDamage());
+                - currentMonster.getDamage());
 
         System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
-        System.out.println("Press enter to continue: ");
-        String enter = Input.stringInput();
+
     }
 
     @Override

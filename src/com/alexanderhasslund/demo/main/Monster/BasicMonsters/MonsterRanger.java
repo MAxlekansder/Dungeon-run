@@ -12,7 +12,6 @@ import java.util.Random;
 public class MonsterRanger extends Monster implements IMonster, ICombat {
 
 
-
     public MonsterRanger() {
         super("VERMIN GUNSLINGER", 60,0,20,20,13,0,false,30,20,10, false, 0);
     }
@@ -30,17 +29,16 @@ public class MonsterRanger extends Monster implements IMonster, ICombat {
 
 
     @Override
-    public void attack(List<Player> playerList, int monsterIndex, List<Monster> monsterList) {
-        System.out.println("The ranger shoots for: " + monsterList.get(monsterIndex).getDamage() + " damage");
+    public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
+        System.out.println("The ranger shoots for: " + currentMonster.getDamage() + " damage");
         Random random = new Random();
 
         int randPlayer = random.nextInt(playerList.size());
         playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
-                - monsterList.get(monsterIndex).getDamage());
+                - currentMonster.getDamage());
 
         System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
-        System.out.println("Press enter to continue: ");
-        String enter = Input.stringInput();
+
     }
 
     @Override

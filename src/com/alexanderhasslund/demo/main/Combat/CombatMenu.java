@@ -1,5 +1,6 @@
 package com.alexanderhasslund.demo.main.Combat;
 
+import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
 
 import com.alexanderhasslund.demo.main.Monster.Monster;
@@ -11,10 +12,10 @@ import java.util.List;
 public class CombatMenu {
 
 
-    public void combatSwitch(List<Player> playerList, int paIT, List<Monster> monsterList, Player currentPlayer) {
+    public void combatSwitch(List<Player> playerList, List<Monster> monsterList, Player currentPlayer, Monster currentMonster) {
         PlayerChoice playerChoice = new PlayerChoice();
         Fight fight = new Fight();
-        System.out.printf("Player %s turn:\n", currentPlayer.getName());
+        System.out.printf("Player %s turn:", currentPlayer.getName());
 
         int fightInput = 0;
         boolean isFighting = true;
@@ -29,7 +30,7 @@ public class CombatMenu {
                     case 1 -> {
                         //System.out.println("fight");
                         System.out.println(playerChoice.abilityChoice());
-                        fight.fightMonster(playerList, paIT, monsterList, currentPlayer);
+                        fight.fightMonster(playerList, monsterList, currentPlayer, currentMonster);
                         //fight.fightMonster(pla);
                         //fight.fightMonster(); vill ha player som argument
                         isFighting = false;
@@ -45,6 +46,8 @@ public class CombatMenu {
                         System.out.println("flee");
                         Flee flee = new Flee();
                         flee.chanceOfFleeing(monsterList);
+                        isViewing = false;
+                        isFighting = false;
                         // calculate if you get away
                         // take flase or break into next step
 
@@ -72,12 +75,13 @@ public class CombatMenu {
 
         for (Monster monster : monsterList) {
             System.out.println(
-                    monster.getMonsterName()
-                    + " -- HP = " + monster.getHp()
-                    + " -- ID = " + (monster.getMonsterId() +1)
-                    + " -- Damage = " + monster.getDamage()
-                    + " -- Defence = "  + monster.getDefence()
-                    + " -- Initiative = "  + monster.getInitiative());
+                    Color.CYAN +"MONSTER" + Color.RESET
+                    + " // Type = "+ monster.getMonsterName()
+                    + " // HP = " + monster.getHp()
+                    + " // ID = " + (monster.getMonsterId() +1)
+                    + " // Damage = " + monster.getDamage()
+                    + " // Defence = "  + monster.getDefence()
+                    + " // Initiative = "  + monster.getInitiative());
         }
     }
 }

@@ -32,6 +32,12 @@ public class Player implements Serializable {
     private boolean hasPlayed;
 
 
+
+
+
+    // move reset here?
+
+
     public boolean isHasPlayed() {
         return hasPlayed;
     }

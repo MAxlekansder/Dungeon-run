@@ -22,7 +22,7 @@ public class Fight {
 
     private List<Player> playerList;
 
-    public void fightMonster(List<Player> playerList, List<Monster> monsterList, Player currentPlayer) {
+    public void fightMonster(List<Player> playerList, List<Monster> monsterList, Player currentPlayer, Monster currentMonster) {
         PlayerChoice playerChoice = new PlayerChoice();
         playerChoice.abilityChoice();
 
@@ -30,9 +30,9 @@ public class Fight {
         switch (fightSequence) {
 
             case 1 -> {
-                IntStream.range(0, playerList.size()).forEach(index -> {  //filter(index -> index == playerIndex)
+                IntStream.range(0, playerList.size()).filter(index -> index == currentPlayer.getId()).forEach(index -> {  //filter(index -> index == playerIndex)
                             if (currentPlayer instanceof ICombat) {
-                                ((ICombat) currentPlayer).attack(playerList, currentPlayer, monsterList);
+                                ((ICombat) currentPlayer).attack(playerList, currentPlayer, monsterList, currentMonster);
                             }
                         }
                 );
@@ -41,8 +41,8 @@ public class Fight {
             }
 
             case 2 -> {
-                IntStream.range(0,playerList.size()).forEach(index -> {  //.filter(index -> index == playerIndex)
-                    if (currentPlayer instanceof IClasses) {
+                IntStream.range(0, playerList.size()).filter(index -> index == currentPlayer.getId()).forEach(index -> {  //filter(index -> index == playerIndex)
+                    if (currentPlayer instanceof ICombat) {
                         ((IClasses) currentPlayer).spells(playerList, currentPlayer, monsterList);
                     }
                 });
@@ -50,11 +50,13 @@ public class Fight {
                 checkMonsterhasDied(monsterList,playerList);
             }
             case 3 -> {
-                IntStream.range(0,playerList.size()).forEach(index -> { // .filter(index -> index == playerIndex)
-                if (currentPlayer instanceof IClasses) {
+                IntStream.range(0, playerList.size()).filter(index -> index == currentPlayer.getId()).forEach(index -> {  //filter(index -> index == playerIndex)
+                    if (currentPlayer instanceof ICombat) {
                     ((IClasses) currentPlayer).trait(playerList, currentPlayer, monsterList);
+
                     currentPlayer.setHasPlayed(true);
                     checkMonsterhasDied(monsterList,playerList);
+
                 }
             });
             }
@@ -76,7 +78,7 @@ public class Fight {
             if (monsterList.get(i).getHp() <= 0) {
 
 
-                System.out.printf("\nMonster %s died!", monsterList.get(i).getMonsterName());
+                System.out.printf("\nMonster %s died!\n", monsterList.get(i).getMonsterName());
 
                 giveCurrency = (int) monsterList.get(i).getGivesCurrency() / playerList.size();
                 giveExperience = (int) monsterList.get(i).getGivesExperience() / playerList.size();

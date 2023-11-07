@@ -2,6 +2,7 @@ package com.alexanderhasslund.demo.main.Combat;
 
 import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
 import com.alexanderhasslund.demo.main.Combat.CombatController.MonsterAttack;
+import com.alexanderhasslund.demo.main.Combat.CombatController.ResetCombat;
 import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterBrute;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
@@ -22,9 +23,6 @@ public class FirstCombatEncounter {
     }
 
     public void firstPlayerFight() {
-        CombatMenu combatMenu = new CombatMenu();
-        MonsterAttack monsterAttack = new MonsterAttack();
-        List<Player> firstPlayerList = playerList;
         List<Monster> firstMonsterList = new ArrayList<>();
         firstMonsterList.add(new MonsterBrute());
 
@@ -41,7 +39,7 @@ public class FirstCombatEncounter {
                 You now have the option to explore every option during combat
                 """);
 
-        CombatController combatController = new CombatController(firstPlayerList, firstMonsterList);
+        CombatController combatController = new CombatController(playerList, firstMonsterList);
         combatController.initiateFight();
 
         System.out.println
@@ -57,7 +55,9 @@ public class FirstCombatEncounter {
             player.setCurrency(200);
         }
 
-        System.out.println("This might help you  ... for now...");
+        ResetCombat resetCombat = new ResetCombat();
+        resetCombat.resetPlayerBackToNormal(playerList);
+        System.out.println("This might help you... for now...");
     }
 
 
