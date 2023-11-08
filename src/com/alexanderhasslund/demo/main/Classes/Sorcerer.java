@@ -39,13 +39,43 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         this.hasPlayed = false;
     }
 
+    @Override
+    public void setLevelUp(Player currentPlayer) {
+
+        int PlayerCurrentExperienceExperince = currentPlayer.getExperience();
+        currentPlayer.setExperience(0);
+
+        for (int i = PlayerCurrentExperienceExperince; i > 0; i--) {
+            currentPlayer.setExperience(currentPlayer.getExperience()+1);
+
+            if (currentPlayer.getExperience() == 10) {
+                currentPlayer.setLevel(currentPlayer.getLevel() +1);
+                currentPlayer.setExperience(0);
+                addStatsToPlayer(currentPlayer);
+            }
+        }
+    }
+
+    @Override
+    public void addStatsToPlayer(Player currentPlayer) {
+
+        currentPlayer.setStrength(currentPlayer.getStrength() + (int)(currentPlayer.getLevel() / 2.3));
+        currentPlayer.setAgility(currentPlayer.getAgility() + (int)(currentPlayer.getLevel() / 1.2));
+        currentPlayer.setIntellect(currentPlayer.getIntellect() + (int)(currentPlayer.getLevel() / 0.8));
+
+        currentPlayer.setDamage(currentPlayer.getDamage() + (int)(currentPlayer.getIntellect() / 3));
+        currentPlayer.setResource(currentPlayer.getResource() + (int)(currentPlayer.getIntellect() / 4));
+        currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getIntellect() * 0.2));
+        currentPlayer.setHp(currentPlayer.getHp()+ (int) (currentPlayer.getStrength() * 0.1));
+    }
+
 
 
     @Override
-    public void trait(List<Player> playerList, Player player, List<Monster> monsterList) {
+    public void trait(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
 
         for (Monster monster : monsterList) {
-            monster.setHp(monster.getHp()- ((int) (damage * (level * 1.3))));
+            monster.setHp(monster.getHp()- ((int) (currentPlayer.getDamage() * (level * 1.3))));
         }
         //Dragons breath
         //Based on how many targets it will cleave
@@ -68,10 +98,6 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         }
     }
 
-    @Override
-    public void setLevelUp() {
-
-    }
 
     @Override
     public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster monster) {
@@ -85,19 +111,18 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         int monsterIndex = Input.intInput() -1;
         // build a miss system? Even for monsters based on something.
 
-        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() - currentPlayer.getDamage());
+        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
+        (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage()));
+
         System.out.printf("The Sorcerer attacks with all element aligned, Dealing %s to monster %s", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
-    @Override
-    public void flee() {
-
-    }
 
     @Override
     public void getStatus() {
 
     }
+
 
     @Override
     public int getId() {

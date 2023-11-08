@@ -1,11 +1,9 @@
 package com.alexanderhasslund.demo.main.Player;
-import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Inventory.Inventory;
 import com.alexanderhasslund.demo.main.TalentTree.TalentTree;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Player implements Serializable {
@@ -31,11 +29,6 @@ public class Player implements Serializable {
     private boolean isDead;
     private boolean hasPlayed;
 
-
-
-
-
-    // move reset here?
 
 
     public boolean isHasPlayed() {

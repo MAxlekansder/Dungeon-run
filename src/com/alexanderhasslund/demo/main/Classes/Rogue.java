@@ -1,5 +1,6 @@
 package com.alexanderhasslund.demo.main.Classes;
 
+import com.alexanderhasslund.demo.main.Combat.CombatController.ResetCombat;
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
@@ -29,7 +30,7 @@ public class Rogue extends Player implements IClasses, ICombat {
         this.className = Color.GREEN + "ROGUE" + Color.RESET;
         this.hp = 100; // change here and check all control values
         this.id = 0;
-        this.damage = 150;
+        this.damage = 15;
         this.resource = 200;
         this.strength = 8;
         this.agility = 20;
@@ -40,6 +41,39 @@ public class Rogue extends Player implements IClasses, ICombat {
         this.isDead = false;
         this.hasPlayed = false;
     }
+
+    @Override
+    public void setLevelUp(Player currentPlayer) {
+
+        int PlayerCurrentExperienceExperince = currentPlayer.getExperience();
+        currentPlayer.setExperience(0);
+
+        for (int i = PlayerCurrentExperienceExperince; i > 0; i--) {
+            currentPlayer.setExperience(currentPlayer.getExperience()+1);
+
+            if (currentPlayer.getExperience() == 100) {
+                currentPlayer.setLevel(currentPlayer.getLevel() +1);
+                currentPlayer.setExperience(0);
+
+                ResetCombat resetCombat = new ResetCombat();
+                resetCombat.resetPlayerBackToNormal(currentPlayer);
+                addStatsToPlayer(currentPlayer);
+            }
+        }
+    }
+
+    @Override
+    public void addStatsToPlayer(Player currentPlayer) {
+
+        currentPlayer.setStrength(currentPlayer.getStrength() + (int)(currentPlayer.getLevel() / 1.2));
+        currentPlayer.setAgility(currentPlayer.getAgility() + (int)(currentPlayer.getLevel() / 1.1));
+        currentPlayer.setIntellect(currentPlayer.getIntellect() + (int)(currentPlayer.getLevel() / 1.5));
+
+        currentPlayer.setDamage(currentPlayer.getDamage() + (int)(currentPlayer.getAgility() / 2.5));
+        currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getStrength() * 0.2));
+        currentPlayer.setHp(currentPlayer.getHp()+ (int) (currentPlayer.getStrength() * 0.1));
+    }
+
 
 
     @Override
@@ -74,11 +108,7 @@ public class Rogue extends Player implements IClasses, ICombat {
         }
     }
 
-    @Override
-    public void setLevelUp() {
 
-
-    }
 
     @Override
     public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster monster) {
@@ -92,19 +122,18 @@ public class Rogue extends Player implements IClasses, ICombat {
         int monsterIndex = Input.intInput() -1;
         // build a miss system? Even for monsters based on something.
 
-        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() - currentPlayer.getDamage());
+        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
+        (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage()));
         System.out.printf("The rogue attacks with a swift slash, Dealing %s to monster %s", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
-    @Override
-    public void flee() {
-
-    }
 
     @Override
     public void getStatus() {
         // should remove this one
     }
+
+
 
     @Override
     public String toString() {

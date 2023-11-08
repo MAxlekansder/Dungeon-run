@@ -1,15 +1,13 @@
 /* TODO
    Fixa sista combat
-   Fixa levels
    implementera bossar
-   implementera levels (MODULUS på EXP)
    Fixa intro
    Fixa save file
    Fixa potions
    Fixa Logik
    Fixa fler bossar
    Balansera monster mot spelare - ska vara svårt men inte för svårt
-
+   Fixa tester
 
 
 

@@ -13,7 +13,7 @@ public class MonsterRanger extends Monster implements IMonster, ICombat {
 
 
     public MonsterRanger() {
-        super("VERMIN GUNSLINGER", 60,0,20,20,13,0,false,30,20,10, false, 0);
+        super("VERMIN GUNSLINGER", 40,0,20,20,13,0,false,30,20,10, false, 0);
     }
 
     @Override
@@ -29,26 +29,40 @@ public class MonsterRanger extends Monster implements IMonster, ICombat {
 
 
     @Override
+    public void calculateChanceToBlock(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
+
+    }
+
+
+    @Override
     public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
-        System.out.println("The ranger shoots for: " + currentMonster.getDamage() + " damage");
+
+
         Random random = new Random();
 
         int randPlayer = random.nextInt(playerList.size());
+        int calculateDodge = random.nextInt(1, 20);
+
+        int calculatePlayerDodge = playerList.get(randPlayer).getDefence();
+        int dodgeChance = calculatePlayerDodge - calculateDodge;
+
+        if (dodgeChance > 30) {
+        System.out.println("The ranger ➼shoots➼ for: " + currentMonster.getDamage() + " damage");
         playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
                 - currentMonster.getDamage());
-
         System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
-
+        } else {
+            System.out.printf("The ranger misses %s player %s \n", playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getName());
+        }
     }
 
-    @Override
-    public void flee() {
-        // end combat and release, release all or just this class?
-        // if monster leaves, brute enrages?
-    }
+
+
+
 
     @Override
     public void getStatus() {
     }
+
 
 }

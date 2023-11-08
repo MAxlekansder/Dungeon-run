@@ -11,15 +11,25 @@ import java.util.List;
 
 public class CombatMenu {
 
+    private boolean hasFled;
+
+    public boolean isHasFled() {
+        return hasFled;
+    }
+
+    public void setHasFled(boolean hasFled) {
+        this.hasFled = hasFled;
+    }
 
     public void combatSwitch(List<Player> playerList, List<Monster> monsterList, Player currentPlayer, Monster currentMonster) {
         PlayerChoice playerChoice = new PlayerChoice();
         Fight fight = new Fight();
-        System.out.printf("Player %s turn:", currentPlayer.getName());
+        System.out.printf("Player %s %s turn: ", currentPlayer.getClassName(),currentPlayer.getName());
 
         int fightInput = 0;
         boolean isFighting = true;
         boolean isViewing = true;
+
 
         while (isFighting) {
             isViewing = true;
@@ -28,11 +38,10 @@ public class CombatMenu {
                 fightInput = Input.intInput();
                 switch (fightInput) {
                     case 1 -> {
-                        //System.out.println("fight");
+
                         System.out.println(playerChoice.abilityChoice());
                         fight.fightMonster(playerList, monsterList, currentPlayer, currentMonster);
-                        //fight.fightMonster(pla);
-                        //fight.fightMonster(); vill ha player som argument
+
                         isFighting = false;
                         isViewing = false;
 
@@ -43,13 +52,11 @@ public class CombatMenu {
                         isViewing = false;
                     }
                     case 3 -> {
-                        System.out.println("flee");
                         Flee flee = new Flee();
                         flee.chanceOfFleeing(monsterList);
                         isViewing = false;
                         isFighting = false;
-                        // calculate if you get away
-                        // take flase or break into next step
+                        hasFled = true;
 
                     }
                     default -> {
@@ -69,7 +76,7 @@ public class CombatMenu {
                     + " || Resource = " + player.getResource()
                     + " || Damage = " + player.getDamage()
                     + " || Defence = " + player.getDefence()
-                    + " || Initiative = " + player.getInitiative()
+                    + " || Initiative = " + player.getInitiative() +"\n"
             );
         }
 

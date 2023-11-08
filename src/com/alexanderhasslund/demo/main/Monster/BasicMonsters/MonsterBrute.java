@@ -15,7 +15,7 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
 
 
     public MonsterBrute() {
-        super("VERMIN OGRE", 60,0,20,20,13,0,false, 30,20,20, false,0);
+        super("VERMIN OGRE", 50,0,20,20,13,0,false, 30,20,20, false,0);
 
     }
 
@@ -31,31 +31,44 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
 
     }
 
+
+    @Override
+    public void calculateChanceToBlock(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
+
+    }
+
+
     @Override
     public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
         Random random = new Random();
 
         int randPlayer = random.nextInt(playerList.size());
-        System.out.println("The brute hits for: "+ currentMonster.getDamage() + " damage");
+        int calculateDodge = random.nextInt(1, 20);
 
-         playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
-            - currentMonster.getDamage());
+        int calculatePlayerDodge = playerList.get(randPlayer).getDefence();
+        int dodgeChance = calculatePlayerDodge - calculateDodge;
 
-        System.out.printf("And player: %s %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getHp());
 
+        if (dodgeChance > 30) {
+            System.out.println("The brute ⚔\uFE0Ehits⚔\uFE0E for: " + currentMonster.getDamage() + " damage");
+
+            playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
+                    - currentMonster.getDamage());
+
+            System.out.printf("And player: %s %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getHp());
+        } else {
+            System.out.printf("The brute misses %s player %s \n", playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getName());
+        }
     }
 
-    @Override
-    public void flee() {
-        // end combat and release, release all or just this class?
-        // if monster leaves, brute enrages?
 
-    }
 
     @Override
     public void getStatus() {
 
     }
+
+
 
 }
 

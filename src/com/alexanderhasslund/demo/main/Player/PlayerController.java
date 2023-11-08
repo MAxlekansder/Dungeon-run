@@ -34,6 +34,8 @@ public class PlayerController {
         this.countPlayers = countPlayers;
     }
 
+
+
     public void playerCount() {
         boolean isMany = true;
         while(isMany) {
@@ -103,9 +105,20 @@ public class PlayerController {
     }
 
 
-    public void playerResetToStandard() {
-        
+    public void playerSetStatsToLevel() {
+
     }
+
+    /*
+    public void calculatePlayerInvetory(List<Player> playerList) {
+        for( Player player : playerList) {
+            for (Inventory inventory : player.inventoryList) {
+                player.setDamage(player.getDamage() + inventory.getDamage());
+                player.setDefence(player.getDefence() + inventory.getDefence());
+                player.setInitiative(player.getInitiative() + inventory.getInitiative());
+            }
+        }
+    } */
 }
 
 

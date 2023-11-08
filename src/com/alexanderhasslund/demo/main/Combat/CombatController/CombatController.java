@@ -1,15 +1,13 @@
 package com.alexanderhasslund.demo.main.Combat.CombatController;
 import com.alexanderhasslund.demo.main.Combat.CombatMenu;
-import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
-import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
+import com.alexanderhasslund.demo.main.Player.PlayerController;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 
 public class CombatController {
@@ -32,12 +30,11 @@ public class CombatController {
     }
 
 
-    // move this one out????
-    // -- return boolean to break isPlaying -> easier to handle
     public void initiateFight() {
-        CombatEndingController combatEndingController = new CombatEndingController();
         CombatMenu combatMenu = new CombatMenu();
         MonsterAttack monsterAttack = new MonsterAttack();
+        PlayerController playerController = new PlayerController();
+        //playerController.calculatePlayerInvetory(playerList);
 
         Collections.sort(playerList, new PlayerInitiativeComperator());
         Collections.sort(monsterList, new MonsterInitiativeComperator());
@@ -77,7 +74,7 @@ public class CombatController {
 
                         if (currentPlayer.getInitiative() < currentMonster.getInitiative()) {
 
-                            combatMenu.combatSwitch(playerList,  monsterList, currentPlayer, currentMonster);
+                            combatMenu.combatSwitch(playerList, monsterList, currentPlayer, currentMonster);
 
                         } else {
 
@@ -88,6 +85,7 @@ public class CombatController {
                 }
             }
             countRounds++;
+            checkCombatSorted(playerList, monsterList);
 
             System.out.printf("\nend of round  %s \n", countRounds);
 
@@ -96,9 +94,18 @@ public class CombatController {
             resetMonsterInitiative(monsterList);
 
         }
+
         calculateLevels++;
-        combatEndingController.decideCombatWinner(playerList, calculateLevels);
-        enter = Input.stringInput();
+        if (combatMenu.isHasFled()) {
+            ResetCombat resetCombat = new ResetCombat();
+            System.out.println("you cowardly fled from the fight... did i already call you a coward? Coward");
+            resetCombat.resetPlayerListBackToNormal(playerList);
+
+        } else {
+            CombatEndingController combatEndingController = new CombatEndingController(calculateLevels);
+            combatEndingController.decideCombatWinner(playerList);
+            enter = Input.stringInput();
+        }
     }
 
 
@@ -139,18 +146,32 @@ public class CombatController {
 
 
     public void checkCombatSorted(List<Player> playerList, List<Monster> monsterList) {
-        InitiativeListView initiativeListView = new InitiativeListView();
-
-        initiativeListView.presentInitiative(playerList, monsterList);
 
 
-        Collections.sort(, new WindowInitiativComperator());
-        for(Object object : tempList){
-            System.out.println(object);
-            object.
+        List<InitiativeListView> initiativeList = new ArrayList<>();
+
+        for (Player player : playerList) {
+            initiativeList.add(new InitiativeListView(player.getClassName(), player.getName(), player.getInitiative(), player.getHp(), player.getResource(), player.getId(), player.getDefence(), player.getDamage()));
+
         }
-        System.out.println("----");
+        for (Monster monster : monsterList) {
+            initiativeList.add(new InitiativeListView("\033[1;36mMONSTER\033[0m", monster.getMonsterName(), monster.getInitiative(), monster.getHp(),monster.getResoruce(), monster.getMonsterId(), monster.getDefence(), monster.getDamage()));
+        }
 
+        Collections.sort(initiativeList, new WindowInitiativComperator());
+
+        System.out.println("\033[1;33mINITIATIVE LIST highest in list starts (lowest initiative starts)---------------->\033[0m");
+        for (InitiativeListView initiativeListView : initiativeList) {
+            System.out.println(
+                     initiativeListView.getClassName() + "  || "
+                    +initiativeListView.getCombatName() + "  || "
+                    +" initiative = " +initiativeListView.getInitiative() + " || "
+                    +" HP = " +initiativeListView.getHp()  + " ||  "
+                    +" Damage = " +initiativeListView.getDamage()  + "  ||  "
+                    +" Defence = " +initiativeListView.getDefence()  + "  ||  "
+            );
+        }
+        System.out.println("\nINITIATIVE LIST ----------------------------------------------------------------->");
 
 
     }

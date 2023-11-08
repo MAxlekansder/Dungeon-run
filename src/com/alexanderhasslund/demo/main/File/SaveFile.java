@@ -8,17 +8,8 @@ import java.util.List;
 
 public class SaveFile {
 
-    private List<Player> playerList;
 
-    public SaveFile(List<Player> playerList) {
-        this.playerList = playerList;
-    }
-
-
-
-
-
-        public void saveFilePlayer() throws IOException {
+        public void saveFilePlayer(List<Player> playerList) throws IOException {
 
             String osName = System.getProperty("os.name").toLowerCase();
             String firstNameInOS = osName.substring(0, osName.indexOf(' '));

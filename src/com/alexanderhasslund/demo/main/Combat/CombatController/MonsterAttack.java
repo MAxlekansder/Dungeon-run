@@ -14,7 +14,7 @@ public class MonsterAttack {
 
     public void monsterStrikePlayer( List<Monster> monsterList, List<Player> playerList, Monster currentMonster, Player currentPlayer) {
 
-        System.out.printf("Monster %s turn:\n", currentMonster.getMonsterName());
+        System.out.printf("\033[1;36mMONSTER\033[0m %s turn:\n", currentMonster.getMonsterName());
 
         IntStream.range(0, monsterList.size()).filter(index -> index == currentMonster.getMonsterId()).forEach(index -> {
             if (currentMonster instanceof ICombat) {

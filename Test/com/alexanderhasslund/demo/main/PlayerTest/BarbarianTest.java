@@ -1,4 +1,6 @@
-package com.alexanderhasslund.demo.main.Classes;
+package com.alexanderhasslund.demo.main.PlayerTest;
+
+import com.alexanderhasslund.demo.main.Classes.IClasses;
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
@@ -7,8 +9,7 @@ import com.alexanderhasslund.demo.main.Player.Player;
 
 import java.util.List;
 
-
-public class Barbarian extends Player implements IClasses, ICombat {
+public class BarbarianTest extends PlayerTest implements IClasses, ICombat {
 
     private String className;
     private int id;
@@ -25,7 +26,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
     private boolean hasPlayed;
 
 
-    public Barbarian() {
+    public BarbarianTest() {
         //Player barbarian = new Player(getName(),getTalentTreeList(),getInventoryList(),0,0,"BARBARIAN",115,20,100,22,8,0,0,10,55);
         //return barbarian;
         this.className = Color.RED + "BARBARIAN" + Color.RESET;
@@ -47,33 +48,33 @@ public class Barbarian extends Player implements IClasses, ICombat {
     @Override
     public void setLevelUp(Player currentPlayer) {
 
-        int PlayerCurrentExperienceExperince = currentPlayer.getExperience();
-        currentPlayer.setExperience(0);
+        // level up math
+        /*
+        level up = exp
+         */
+        for (int i = currentPlayer.getExperience(); i >0; i--){
+            if(currentPlayer.getExperience() % 100 * (currentPlayer.getLevel()* 1.04 ) <= 0) {
 
-        for (int i = PlayerCurrentExperienceExperince; i > 0; i--) {
-            currentPlayer.setExperience(currentPlayer.getExperience()+1);
-
-            if (currentPlayer.getExperience() == 100) {
-                currentPlayer.setLevel(currentPlayer.getLevel() +1);
-                currentPlayer.setExperience(0);
-                addStatsToPlayer(currentPlayer);
             }
         }
+
     }
 
-    public void addStatsToPlayer(Player currentPlayer) {
-
-        currentPlayer.setStrength(currentPlayer.getStrength() + (int)(currentPlayer.getLevel() / 1.1));
-        currentPlayer.setAgility(currentPlayer.getAgility() + (int)(currentPlayer.getLevel() / 0.9));
-        currentPlayer.setIntellect(currentPlayer.getIntellect() + (int)(currentPlayer.getLevel() / 2.2));
-
-        currentPlayer.setDamage(currentPlayer.getDamage() + (int)(currentPlayer.getStrength() / 3));
-        currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getStrength() * 0.2));
-        currentPlayer.setHp(currentPlayer.getHp()+ (int) (currentPlayer.getStrength() * 0.1));
+    @Override
+    public void addStatsToPlayer(Player player) {
 
     }
 
 
+    @Override
+    public void calculateDamageDone(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster monster) {
+
+    }
+
+    @Override
+    public void calculateChanceToBlock(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster monster) {
+
+    }
 
     @Override
     public void trait(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
@@ -121,11 +122,15 @@ public class Barbarian extends Player implements IClasses, ICombat {
         int monsterIndex = Input.intInput() -1;
         // build a miss system? Even for monsters based on something.
 
-        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
-            (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage()));
-        System.out.printf("The barbarian attacks with a hard hitting strike, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
+        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() - currentPlayer.getDamage());
+        System.out.printf("The barbarian attacks with a hard hitting strike, Dealing %s to monster %s", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
+
+    @Override
+    public void flee() {
+
+    }
 
     @Override
     public void getStatus() {
@@ -266,5 +271,3 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
 
 }
-
-

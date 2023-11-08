@@ -1,6 +1,10 @@
 package com.alexanderhasslund.demo.main.Monster.Boss;
 
 import com.alexanderhasslund.demo.main.Monster.IMonster;
+import com.alexanderhasslund.demo.main.Monster.Monster;
+import com.alexanderhasslund.demo.main.Player.Player;
+
+import java.util.List;
 
 public class BossTagTeam extends Boss implements IMonster {
 
@@ -19,6 +23,11 @@ public class BossTagTeam extends Boss implements IMonster {
 
     @Override
     public void damageMultiplierForLevel() {
+
+    }
+
+    @Override
+    public void calculateChanceToBlock(List<Player> playerList, Player player, List<Monster> monsterList, Monster monster) {
 
     }
 }

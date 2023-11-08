@@ -6,7 +6,13 @@ import java.util.List;
 
 public class CombatEndingController {
 
-    public void decideCombatWinner(List<Player> playerList,int calculateLevels) {
+    private int calculateLevels;
+
+    public CombatEndingController(int calculateLevels) {
+        this.calculateLevels = calculateLevels;
+    }
+
+    public void decideCombatWinner(List<Player> playerList) {
         ResetCombat resetCombat = new ResetCombat();
         if (playerList.isEmpty()) {
             System.out.println("Seems like you didnt make it further than here... ");
@@ -16,12 +22,10 @@ public class CombatEndingController {
 
         }
         else {
-
-            System.out.printf("You it made through leve %s! \n", calculateLevels);
-            resetCombat.resetPlayerBackToNormal(playerList);
+            System.out.printf("You it made through level %s! \n", calculateLevels);
+            resetCombat.resetPlayerListBackToNormal(playerList);
+            calculateLevels++;
             System.out.println("Restoring health and resource back to full");
-
         }
-
     }
 }

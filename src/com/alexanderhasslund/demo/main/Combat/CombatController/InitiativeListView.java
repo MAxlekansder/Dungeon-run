@@ -8,85 +8,41 @@ import java.util.List;
 
 public class InitiativeListView {
 
-    List<InitiativeListView> initiativeList = new ArrayList<>();
+    private String className;
     private String combatName;
     private int initiative;
     private int hp;
     private int resource;
     private int id;
     private int defence;
+    private int damage;
 
+
+    public InitiativeListView(String className, String combatName, int initiative, int hp, int resource, int id, int defence, int damage) {
+        this.className = className;
+        this.combatName = combatName;
+        this.initiative = initiative;
+        this.hp = hp;
+        this.resource = resource;
+        this.id = id;
+        this.defence = defence;
+        this.damage = damage;
     }
 
-    public void presentInitiative(List<Player> playerList, List<Monster> monsterList) {
-
-        for (int i = 0; i < playerList.size();i++) {
-
-        }
-
+    public String getClassName() {
+        return className;
     }
 
-
-
-
-    /*
-        for (Object object : tempList) {
-            if(object instanceof Player) {
-                System.out.println(
-                        ((Player) object).getClassName()
-                                + " || Player = " +((Player) object).getName()
-                                + " || HP = " + ((Player) object).getHp()
-                                + " || Resource = " + ((Player) object).getResource()
-                                + " || Damage = " + ((Player) object).getDamage()
-                                + " || Defence = " + ((Player) object).getDefence()
-                                + " || Initiative = " + ((Player) object).getInitiative());
-            }
-             else if (object instanceof Monster) {
-                System.out.println(
-                        Color.CYAN +"MONSTER" + Color.RESET
-                        + " // Type = " + ((Monster)object).getMonsterName()
-                        + " // ID = " + ((Monster)object).getMonsterId() +1
-                        + " // HP = " + ((Monster)object).getHp()
-                        + " // Damage = " + ((Monster)object).getDamage()
-                        + " // Defence = "  + ((Monster)object).getDefence()
-                        + " // Initiative = "  + ((Monster)object).getInitiative());
-            }
-        }
-
-        // fix vewing here and sort it so we see how everyone plays, thats the whole point of combat...
-        System.out.println("INITIATIVE TRACKER: Ascending order -----------------------------------\n");
-       /* for( Player player : playerList) {
-            System.out.println(
-                    player.getClassName()
-                    + " || Player = " +player.getName()
-                    + " || HP = " + player.getHp()
-                    + " || Resource = " + player.getResource()
-                    + " || Damage = " + player.getDamage()
-                    + " || Defence = " + player.getDefence()
-                    + " || Initiative = " + player.getInitiative());
-        }
-
-        for (Monster monster : monsterList) {
-            System.out.println(
-            Color.CYAN +"MONSTER" + Color.RESET
-                    + " // Type = "+ monster.getMonsterName()
-                    + " // HP = " + monster.getHp()
-                    + " // ID = " + (monster.getMonsterId() +1)
-                    + " // Damage = " + monster.getDamage()
-                    + " // Defence = "  + monster.getDefence()
-                    + " // Initiative = "  + monster.getInitiative());
-        }
-        System.out.println("\nINITIATIVE TRACKER: Ascending order -------
-
-     */
-
-
-    public List<InitiativeListView> getInitiativeList() {
-        return initiativeList;
+    public void setClassName(String className) {
+        this.className = className;
     }
 
-    public void setInitiativeList(List<InitiativeListView> initiativeList) {
-        this.initiativeList = initiativeList;
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 
     public String getCombatName() {
@@ -135,6 +91,20 @@ public class InitiativeListView {
 
     public void setDefence(int defence) {
         this.defence = defence;
+    }
+
+    @Override
+    public String toString() {
+        return "InitiativeListView{" +
+                "className='" + className + '\'' +
+                ", combatName='" + combatName + '\'' +
+                ", initiative=" + initiative +
+                ", hp=" + hp +
+                ", resource=" + resource +
+                ", id=" + id +
+                ", defence=" + defence +
+                ", damage=" + damage +
+                '}';
     }
 }
 

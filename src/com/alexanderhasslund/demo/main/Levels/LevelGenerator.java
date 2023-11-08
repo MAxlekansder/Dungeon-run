@@ -17,8 +17,5 @@ public class LevelGenerator {
         for (int i = 0; i < monsterList.size(); i++) {
             System.out.println(monsterList.get(i).getMonsterName());
         }
-
-
     }
-
 }

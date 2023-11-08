@@ -102,16 +102,13 @@ public class PlayerChoice {
 
     public String mainMenuChoice() {
 
-        return ("""
-                                    
-                1. CONTINUE
+        return ("""                 
+                1. CONTINUE STORY
                 2. SHOP
                 3. SAVE CURRENT GAME
                 4. CURRENT STATUS
                 5. CURRENT LEVEL
-                6. QUIT TO MAIN MENU
-                                    
-                """);
+                6. QUIT TO MAIN MENU""");
     }
 
 
@@ -162,5 +159,11 @@ public class PlayerChoice {
                 
                 ... i recommend paying a visit to the shop, as you're only able to reach it 
                 after each level encounter... """);
+    }
+
+
+    public String presentLevels() {
+        return ("""
+                """);
     }
 }

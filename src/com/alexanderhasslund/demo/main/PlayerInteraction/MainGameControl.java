@@ -7,6 +7,7 @@ import com.alexanderhasslund.demo.main.File.SaveFile;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
+import com.alexanderhasslund.demo.main.Player.PlayerController;
 import com.alexanderhasslund.demo.main.Shop.ShopMenu;
 
 import java.io.IOException;
@@ -28,10 +29,10 @@ public class MainGameControl {
     public void mainSwitch() throws IOException, NoSuchFieldException, IllegalAccessException {
         PlayerChoice playerChoice = new PlayerChoice();
         ShopMenu shopMenu = new ShopMenu(playerList); // this line becomes null, seems like something is wrong
-        SaveFile saveFile = new SaveFile(playerList);
+        //SaveFile saveFile = new SaveFile(playerList);
         MonsterController monsterController = new MonsterController(countPlayers);
         CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
-        CombatMenu combatMenu = new CombatMenu();
+        PlayerController playerController = new PlayerController();
 
         boolean isMainPlaying = true;
 
@@ -52,7 +53,7 @@ public class MainGameControl {
 
                 }
                 case 3 -> {
-                     saveFile.saveFilePlayer();
+                     //saveFile.saveFilePlayer();
                 }
                 case 4 -> {
 
@@ -62,7 +63,15 @@ public class MainGameControl {
                                 Color.WHITE + " Current level: " + Color.PURPLE  + playerList.get(i).getLevel() + Color.RESET +
                                 Color.WHITE + " Current currency:  " + Color.YELLOW + playerList.get(i).getCurrency() + Color.RESET +
                                 Color.WHITE + " Current experience " + Color.CYAN + playerList.get(i).getExperience() + Color.RESET +
-                                "       " + playerList.get(i));
+
+                                "       " + playerList.get(i).getClassName() + "  ||  " +
+                                " Damage = " + (playerList.get(i).getDamage() + playerList.get(i).getInventoryList().get(0).getDamage() + playerList.get(i).getInventoryList().get(1).getDamage())+ "  ||  " +
+                                " Resource = " + playerList.get(i).getResource()+ "  ||  " +
+                                " Strength = " + playerList.get(i).getStrength()+ "  ||  " +
+                                " Agility = " +playerList.get(i).getAgility()+ "  ||  " +
+                                " Intellect = " + playerList.get(i).getIntellect()+ "  ||  " +
+                                " Initiative = " +playerList.get(i).getInitiative()+ "  ||  "
+                        );
                     }
                 }
 

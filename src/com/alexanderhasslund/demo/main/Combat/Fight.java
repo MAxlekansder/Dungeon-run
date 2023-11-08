@@ -37,7 +37,7 @@ public class Fight {
                         }
                 );
                 currentPlayer.setHasPlayed(true);
-                checkMonsterhasDied(monsterList,playerList);
+                checkMonsterhasDied(monsterList, playerList, currentPlayer);
             }
 
             case 2 -> {
@@ -47,18 +47,18 @@ public class Fight {
                     }
                 });
                 currentPlayer.setHasPlayed(true);
-                checkMonsterhasDied(monsterList,playerList);
+                checkMonsterhasDied(monsterList, playerList, currentPlayer);
             }
             case 3 -> {
                 IntStream.range(0, playerList.size()).filter(index -> index == currentPlayer.getId()).forEach(index -> {  //filter(index -> index == playerIndex)
                     if (currentPlayer instanceof ICombat) {
-                    ((IClasses) currentPlayer).trait(playerList, currentPlayer, monsterList);
+                        ((IClasses) currentPlayer).trait(playerList, currentPlayer, monsterList);
 
-                    currentPlayer.setHasPlayed(true);
-                    checkMonsterhasDied(monsterList,playerList);
+                        currentPlayer.setHasPlayed(true);
+                        checkMonsterhasDied(monsterList, playerList, currentPlayer);
 
-                }
-            });
+                    }
+                });
             }
 
             case 4 -> {
@@ -68,7 +68,7 @@ public class Fight {
     }
 
 
-    public void checkMonsterhasDied(List<Monster> monsterList, List<Player> playerList) {
+    public void checkMonsterhasDied(List<Monster> monsterList, List<Player> playerList, Player currentPlayer) {
         int giveCurrency = 0;
         int giveExperience = 0;
 
@@ -89,8 +89,16 @@ public class Fight {
                     playerList.get(j).setExperience(giveExperience);
                 }
                 monsterList.remove(i);
+
             }
+
+            IntStream.range(0, playerList.size()).filter(index -> index == currentPlayer.getId()).forEach(index -> {  //filter(index -> index == playerIndex)
+                if (currentPlayer instanceof ICombat) {
+                    ((IClasses) currentPlayer).setLevelUp(currentPlayer);
+                }
+            });
         }
     }
 }
+
 

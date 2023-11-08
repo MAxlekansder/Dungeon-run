@@ -13,7 +13,7 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
 
 
     public MonsterSpellWeaver() {
-        super("VERMIN SPELLWEAVER", 50,0,20,0,13,20,false,25,30,5,false,0);
+        super("VERMIN SPELLWEAVER", 35,0,20,0,13,20,false,25,30,5,false,0);
 
     }
 
@@ -28,30 +28,39 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
     }
 
     @Override
-    public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList,  Monster currentMonster) { //insert attack modifiers here?
-
-        System.out.println("The spellweaver hits for: " + currentMonster.getDamage() + " damage");
-        Random random = new Random();
-
-        int randPlayer = random.nextInt(playerList.size());
-
-        playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
-                - currentMonster.getDamage());
-
-        System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
+    public void calculateChanceToBlock(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
 
     }
 
     @Override
-    public void flee() {
-        // end combat and release, release all or just this class?
-        // if monster leaves, brute enrages?
+    public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList,  Monster currentMonster) { //insert attack modifiers here?
+
+
+        Random random = new Random();
+
+        int randPlayer = random.nextInt(playerList.size());
+        int calculateDodge = random.nextInt(1, 20);
+
+        //calculate dogde or block?
+
+
+        int calculatePlayerDodge = playerList.get(randPlayer).getDefence();
+        int dodgeChance = calculatePlayerDodge - calculateDodge;
+
+        if (dodgeChance > 30) {
+            System.out.println("The spellweaver ☄. *. ⋆hits ☄. *. ⋆ for: " + currentMonster.getDamage() + " damage");
+            playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
+                    - currentMonster.getDamage());
+            System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
+        } else {
+            System.out.printf("The spellweaver misses %s player %s \n", playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getName());
+
+        }
     }
 
     @Override
     public void getStatus() {
 
     }
-
 
 }
