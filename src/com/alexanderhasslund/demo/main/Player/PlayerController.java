@@ -35,8 +35,17 @@ public class PlayerController {
     }
 
     public void playerCount() {
-        System.out.print("\nPlease enter number of players: ");
-        setCountPlayers(Input.intInput());
+        boolean isMany = true;
+        while(isMany) {
+            System.out.print("\nPlease enter number of players: ");
+            int playerC = Input.intInput();
+            if(playerC>3) {
+                System.out.println("Can't be more than 3");
+            } else {
+                setCountPlayers(playerC);
+                isMany = false;
+            }
+        }
 
     }
 

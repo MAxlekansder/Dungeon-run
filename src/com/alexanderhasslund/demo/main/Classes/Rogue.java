@@ -29,7 +29,7 @@ public class Rogue extends Player implements IClasses, ICombat {
         this.className = Color.GREEN + "ROGUE" + Color.RESET;
         this.hp = 100; // change here and check all control values
         this.id = 0;
-        this.damage = 15;
+        this.damage = 150;
         this.resource = 200;
         this.strength = 8;
         this.agility = 20;

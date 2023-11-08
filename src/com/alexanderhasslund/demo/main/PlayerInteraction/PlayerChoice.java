@@ -152,4 +152,15 @@ public class PlayerChoice {
                 ----\033[1;33m IN ACTION MENU \033[0m----
                 1. BASIC ATTACK     2. CHOOSE SPELL     3. ULTIMATE""");
     }
+
+    public String presentMainMenu() {
+        return("""
+                
+                In the main menu, you have the option to continue progressing to save princess Benny
+                after every level there might be something hiding around the corner.
+                As you do crawl through all levels, things might get more difficult...
+                
+                ... i recommend paying a visit to the shop, as you're only able to reach it 
+                after each level encounter... """);
+    }
 }

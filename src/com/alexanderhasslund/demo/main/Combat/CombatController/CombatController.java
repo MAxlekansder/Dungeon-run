@@ -89,7 +89,7 @@ public class CombatController {
             }
             countRounds++;
 
-            System.out.printf("end of round  %s \n", countRounds);
+            System.out.printf("\nend of round  %s \n", countRounds);
 
             resetPlayerInitiative();
 
@@ -97,7 +97,8 @@ public class CombatController {
 
         }
         calculateLevels++;
-        combatEndingController.decideCombatWinner(playerList);
+        combatEndingController.decideCombatWinner(playerList, calculateLevels);
+        enter = Input.stringInput();
     }
 
 
@@ -138,38 +139,19 @@ public class CombatController {
 
 
     public void checkCombatSorted(List<Player> playerList, List<Monster> monsterList) {
+        InitiativeListView initiativeListView = new InitiativeListView();
 
-        /*List<Object> tempList = new ArrayList<>();
-        tempList.addAll(playerList);
-        tempList.addAll(monsterList);
+        initiativeListView.presentInitiative(playerList, monsterList);
 
-        Collections.sort(tempList, new WindowInitiativComperator());
-        System.out.println(tempList); */
 
-        // fix vewing here and sort it so we see how everyone plays, thats the whole point of combat...
-        System.out.println("INITIATIVE TRACKER: Ascending order -----------------------------------\n");
-        for( Player player : playerList) {
-            System.out.println(
-                    player.getClassName()
-                    + " || Player = " +player.getName()
-                    + " || HP = " + player.getHp()
-                    + " || Resource = " + player.getResource()
-                    + " || Damage = " + player.getDamage()
-                    + " || Defence = " + player.getDefence()
-                    + " || Initiative = " + player.getInitiative());
+        Collections.sort(, new WindowInitiativComperator());
+        for(Object object : tempList){
+            System.out.println(object);
+            object.
         }
+        System.out.println("----");
 
-        for (Monster monster : monsterList) {
-            System.out.println(
-            Color.CYAN +"MONSTER" + Color.RESET
-                    + " // Type = "+ monster.getMonsterName()
-                    + " // HP = " + monster.getHp()
-                    + " // ID = " + (monster.getMonsterId() +1)
-                    + " // Damage = " + monster.getDamage()
-                    + " // Defence = "  + monster.getDefence()
-                    + " // Initiative = "  + monster.getInitiative());
-        }
-        System.out.println("\nINITIATIVE TRACKER: Ascending order -----------------------------------");
+
 
     }
 }
