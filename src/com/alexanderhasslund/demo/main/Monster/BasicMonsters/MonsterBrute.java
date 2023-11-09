@@ -15,7 +15,7 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
 
 
     public MonsterBrute() {
-        super("VERMIN OGRE", 50,0,20,20,13,0,false, 30,20,20, false,0);
+        super("VERMIN OGRE", 50,0,10,20,13,0,false, 30,20,20, false,0);
 
     }
 
@@ -43,13 +43,14 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
         Random random = new Random();
 
         int randPlayer = random.nextInt(playerList.size());
-        int calculateDodge = random.nextInt(1, 20);
+        int calculateDodge = random.nextInt(1, 50);
 
         int calculatePlayerDodge = playerList.get(randPlayer).getDefence();
-        int dodgeChance = calculatePlayerDodge - calculateDodge;
+        int dodgeChance = calculateDodge + calculatePlayerDodge;
+        int scalingDodgeChance = 50 + (int) Math.round(currentPlayer.getLevel() *  1.3);
 
 
-        if (dodgeChance > 30) {
+        if (dodgeChance < scalingDodgeChance) {
             System.out.println("The brute ⚔\uFE0Ehits⚔\uFE0E for: " + currentMonster.getDamage() + " damage");
 
             playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()

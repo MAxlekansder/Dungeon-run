@@ -31,13 +31,10 @@ public class MainGameControl {
         //SaveFile saveFile = new SaveFile(playerList);
         MonsterController monsterController = new MonsterController(countPlayers);
         CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
-        PlayerController playerController = new PlayerController();
         CombatEndingController combatEndingController = new CombatEndingController();
-        GameLevelMenu gameLevelMenu = new GameLevelMenu();
+        GameLevelMenu gameLevelMenu = new GameLevelMenu(combatEndingController.getCalculateLevels(), playerList, countPlayers);
 
         boolean isMainPlaying = true;
-
-        //monsterController.randomizeMonster(countPlayer);
 
         do {
             System.out.println(playerChoice.mainMenuChoice());
@@ -45,7 +42,7 @@ public class MainGameControl {
                 case 1 -> {
                     // continue
                    // this method call is only for test, this might be in levelGenerator
-                    gameLevelMenu.gameViewSwitch(combatEndingController.getCalculateLevels());
+                    gameLevelMenu.gameViewSwitch();
                     monsterController.monsterValueController();
                     combatController.initiateFight();
                 }

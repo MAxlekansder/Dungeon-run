@@ -6,12 +6,21 @@ import java.util.List;
 
 public class GameLevelMenu {
 
+    private int calculateLevels;
+    private List<Player> playerList;
+    private int countPlayers;
 
-    public void gameViewSwitch(int calculateLevels){
-        GameLevelOne gameLevelOne = new GameLevelOne();
-        GameLevelTwo gameLevelTwo = new GameLevelTwo();
-        GameLevelThree gameLevelThree = new GameLevelThree();
-        GameLevelFour gameLevelFour = new GameLevelFour();
+    public GameLevelMenu(int calculateLevels, List<Player> playerList, int countPlayers) {
+        this.calculateLevels = calculateLevels;
+        this.playerList = playerList;
+        this.countPlayers = countPlayers;
+    }
+
+    public void gameViewSwitch(){
+        GameLevelOne gameLevelOne = new GameLevelOne(calculateLevels, playerList, countPlayers);
+        GameLevelTwo gameLevelTwo = new GameLevelTwo(calculateLevels, playerList, countPlayers);
+        GameLevelThree gameLevelThree = new GameLevelThree(calculateLevels, playerList, countPlayers);
+        GameLevelFour gameLevelFour = new GameLevelFour(calculateLevels, playerList, countPlayers);
         boolean isGameLevel = true;
 
         while (isGameLevel) {

@@ -37,7 +37,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
         this.agility = 8;
         this.intellect = 0;
         this.level = 1;
-        this.defence = 1;
+        this.defence = 15;
         this.initiative = 55;
         this.isDead = false;
         this.hasPlayed = false;

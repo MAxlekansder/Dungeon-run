@@ -34,7 +34,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         this.intellect = 22;
         this.level = 1;
         this.initiative = 70;
-        this.defence = 0;
+        this.defence = 5;
         this.isDead = false;
         this.hasPlayed = false;
     }

@@ -47,9 +47,10 @@ public class CombatController {
         while (!(playerList.isEmpty() || monsterList.isEmpty())) {
             Collections.sort(playerList, new PlayerInitiativeComperator());
             Collections.sort(monsterList, new MonsterInitiativeComperator());
+            checkCombatSorted(playerList, monsterList);
 
             while (!(checkPlayerHasPLayed(playerList) && checkMonsterHasPLayed(monsterList))) {
-                checkCombatSorted(playerList, monsterList);
+
 
                 if (playerList.isEmpty() || monsterList.isEmpty()) {
                     break;

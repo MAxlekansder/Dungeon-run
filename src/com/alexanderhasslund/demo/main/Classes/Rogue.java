@@ -36,7 +36,7 @@ public class Rogue extends Player implements IClasses, ICombat {
         this.agility = 20;
         this.intellect = 2;
         this.level = 1;
-        this.defence = 1;
+        this.defence = 10;
         this.initiative = 40;
         this.isDead = false;
         this.hasPlayed = false;

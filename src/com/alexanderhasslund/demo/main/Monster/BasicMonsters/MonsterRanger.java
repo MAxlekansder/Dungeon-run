@@ -13,7 +13,7 @@ public class MonsterRanger extends Monster implements IMonster, ICombat {
 
 
     public MonsterRanger() {
-        super("VERMIN GUNSLINGER", 40,0,20,20,13,0,false,30,20,10, false, 0);
+        super("VERMIN GUNSLINGER", 40,0,10,20,13,0,false,30,20,10, false, 0);
     }
 
     @Override
@@ -41,12 +41,14 @@ public class MonsterRanger extends Monster implements IMonster, ICombat {
         Random random = new Random();
 
         int randPlayer = random.nextInt(playerList.size());
-        int calculateDodge = random.nextInt(1, 20);
+        int calculateDodge = random.nextInt(1, 50);
 
         int calculatePlayerDodge = playerList.get(randPlayer).getDefence();
-        int dodgeChance = calculatePlayerDodge - calculateDodge;
+        int dodgeChance = calculateDodge + calculatePlayerDodge;
+        int scalingDodgeChance = 50 + (int) Math.round(currentPlayer.getLevel() *  1.3);
 
-        if (dodgeChance > 30) {
+
+        if (dodgeChance < scalingDodgeChance) {
         System.out.println("The ranger ➼shoots➼ for: " + currentMonster.getDamage() + " damage");
         playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
                 - currentMonster.getDamage());

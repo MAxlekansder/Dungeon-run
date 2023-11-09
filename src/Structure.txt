@@ -1,9 +1,9 @@
 /* TODO
-   Fixa sista combat
+
    implementera bossar
-   Fixa intro
+
    Fixa save file
-   Fixa potions
+
    Fixa Logik
    Fixa fler bossar
    Balansera monster mot spelare - ska vara svårt men inte för svårt

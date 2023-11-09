@@ -13,7 +13,7 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
 
 
     public MonsterSpellWeaver() {
-        super("VERMIN SPELLWEAVER", 35,0,20,0,13,20,false,25,30,5,false,0);
+        super("VERMIN SPELLWEAVER", 35,0,10,0,13,20,false,25,30,5,false,0);
 
     }
 
@@ -39,15 +39,15 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
         Random random = new Random();
 
         int randPlayer = random.nextInt(playerList.size());
-        int calculateDodge = random.nextInt(1, 20);
-
-        //calculate dogde or block?
+        int calculateDodge = random.nextInt(1, 50);
 
 
         int calculatePlayerDodge = playerList.get(randPlayer).getDefence();
-        int dodgeChance = calculatePlayerDodge - calculateDodge;
+        int dodgeChance = calculateDodge + calculatePlayerDodge;
+        int scalingDodgeChance = 40 + (int) Math.round(currentPlayer.getLevel() *  1.3);
 
-        if (dodgeChance > 30) {
+
+        if (dodgeChance < scalingDodgeChance) {
             System.out.println("The spellweaver ☄. *. ⋆hits ☄. *. ⋆ for: " + currentMonster.getDamage() + " damage");
             playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
                     - currentMonster.getDamage());
