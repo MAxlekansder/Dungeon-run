@@ -5,8 +5,6 @@ import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
-import com.alexanderhasslund.demo.main.Player.PlayerController;
-import com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions.GameLevelMenu;
 import com.alexanderhasslund.demo.main.Shop.ShopMenu;
 
 import java.io.IOException;
@@ -41,10 +39,11 @@ public class MainGameControl {
             switch (Input.intInput()) {
                 case 1 -> {
                     // continue
-                   // this method call is only for test, this might be in levelGenerator
+                    // this method call is only for test, this might be in levelGenerator
                     gameLevelMenu.gameViewSwitch();
+                    /*
                     monsterController.monsterValueController();
-                    combatController.initiateFight();
+                    combatController.initiateFight(); */
                 }
                 case 2 -> {
                     // shop

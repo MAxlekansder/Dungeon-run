@@ -53,15 +53,20 @@ public class Barbarian extends Player implements IClasses, ICombat {
         for (int i = PlayerCurrentExperienceExperince; i > 0; i--) {
             currentPlayer.setExperience(currentPlayer.getExperience()+1);
 
-            if (currentPlayer.getExperience() == 100) {
+            if (currentPlayer.getExperience() == 100) { // fix better logic for leveling...
+
                 currentPlayer.setLevel(currentPlayer.getLevel() +1);
+                System.out.printf("%s %s just leveled up to level %s! ", currentPlayer.getClassName(), currentPlayer.getName(), currentPlayer.getLevel());
                 currentPlayer.setExperience(0);
                 addStatsToPlayer(currentPlayer);
+
             }
         }
     }
 
     public void addStatsToPlayer(Player currentPlayer) {
+
+        //include a reset here if player levels up - otherwise stats gets calculated based on currentvalue...
 
         currentPlayer.setStrength(currentPlayer.getStrength() + (int)(currentPlayer.getLevel() / 1.1));
         currentPlayer.setAgility(currentPlayer.getAgility() + (int)(currentPlayer.getLevel() / 0.9));

@@ -2,7 +2,6 @@ package com.alexanderhasslund.demo.main.Combat.CombatController;
 
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
-import com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions.GameLevelMenu;
 
 import java.util.List;
 

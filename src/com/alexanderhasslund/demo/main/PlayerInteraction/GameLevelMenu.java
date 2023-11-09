@@ -1,6 +1,10 @@
-package com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions;
+package com.alexanderhasslund.demo.main.PlayerInteraction;
 
 import com.alexanderhasslund.demo.main.Player.Player;
+import com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions.GameLevelFour;
+import com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions.GameLevelOne;
+import com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions.GameLevelThree;
+import com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions.GameLevelTwo;
 
 import java.util.List;
 
@@ -11,9 +15,9 @@ public class GameLevelMenu {
     private int countPlayers;
 
     public GameLevelMenu(int calculateLevels, List<Player> playerList, int countPlayers) {
-        this.calculateLevels = calculateLevels;
         this.playerList = playerList;
         this.countPlayers = countPlayers;
+        this.calculateLevels = calculateLevels;
     }
 
     public void gameViewSwitch(){
@@ -25,10 +29,10 @@ public class GameLevelMenu {
 
         while (isGameLevel) {
             switch (calculateLevels) {
-                case 1 -> {gameLevelOne.gameSwitchOne(); isGameLevel = false;}
-                case 2 -> {gameLevelTwo.gameSwitchTwo(); isGameLevel = false;}
-                case 3 -> {gameLevelThree.gameSwitchThree(); isGameLevel = false;}
-                case 4 -> {gameLevelFour.gameSwitchFour(); isGameLevel = false;}
+                case 1 -> {gameLevelOne.gameSwitchOne(); calculateLevels++; isGameLevel = false;}
+                case 2 -> {gameLevelTwo.gameSwitchTwo(); calculateLevels++;  isGameLevel = false;}
+                case 3 -> {gameLevelThree.gameSwitchThree(); calculateLevels++; isGameLevel = false;}
+                case 4 -> {gameLevelFour.gameSwitchFour(); calculateLevels++; isGameLevel = false;}
                 case 5 -> {isGameLevel = false;}
                 default -> {System.out.println("Use the right input");}
             }

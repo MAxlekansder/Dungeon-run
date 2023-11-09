@@ -51,7 +51,7 @@ public class Rogue extends Player implements IClasses, ICombat {
         for (int i = PlayerCurrentExperienceExperince; i > 0; i--) {
             currentPlayer.setExperience(currentPlayer.getExperience()+1);
 
-            if (currentPlayer.getExperience() == 100) {
+            if (currentPlayer.getExperience() == 100) { // fix better logic for leveling...
                 currentPlayer.setLevel(currentPlayer.getLevel() +1);
                 currentPlayer.setExperience(0);
 

@@ -25,7 +25,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
     public Sorcerer() {
         this.className = Color.BLUE + "SORCERER" + Color.RESET;
-        this.hp = 80;
+        this.hp = 90;
         this.id = 0;
         this.damage = 10; //find a good formula;
         this.resource = 150;
@@ -48,7 +48,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         for (int i = PlayerCurrentExperienceExperince; i > 0; i--) {
             currentPlayer.setExperience(currentPlayer.getExperience()+1);
 
-            if (currentPlayer.getExperience() == 10) {
+            if (currentPlayer.getExperience() == 100) { // fix better logic for leveling...
                 currentPlayer.setLevel(currentPlayer.getLevel() +1);
                 currentPlayer.setExperience(0);
                 addStatsToPlayer(currentPlayer);
@@ -63,7 +63,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         currentPlayer.setAgility(currentPlayer.getAgility() + (int)(currentPlayer.getLevel() / 1.2));
         currentPlayer.setIntellect(currentPlayer.getIntellect() + (int)(currentPlayer.getLevel() / 0.8));
 
-        currentPlayer.setDamage(currentPlayer.getDamage() + (int)(currentPlayer.getIntellect() / 3));
+        currentPlayer.setDamage(currentPlayer.getDamage() + (int)(currentPlayer.getIntellect() / 5));
         currentPlayer.setResource(currentPlayer.getResource() + (int)(currentPlayer.getIntellect() / 4));
         currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getIntellect() * 0.2));
         currentPlayer.setHp(currentPlayer.getHp()+ (int) (currentPlayer.getStrength() * 0.1));
@@ -75,11 +75,12 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     public void trait(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
 
         System.out.println("The sorcerer muster all its power and blast all monster in range: ");
+
         for (Monster monster : monsterList) {
-            monster.setHp(monster.getHp()- ((int) (currentPlayer.getDamage() * (level * 1.3))));
+             monster.setHp(monster.getHp() - (int) (currentPlayer.getDamage() * (level * 1.3)));
         }
         System.out.println("Doing per monster: " + ((int) (currentPlayer.getDamage() * (level * 1.3))));
-        System.out.println("And in total :" + ((int) (currentPlayer.getDamage() * (level * 1.3)*monsterList.size())));
+        System.out.println("And in total: " + ((int) (currentPlayer.getDamage() * (level * 1.3)*monsterList.size())));
 
         //Dragons breath
         //Based on how many targets it will cleave

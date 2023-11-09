@@ -1,6 +1,10 @@
 package com.alexanderhasslund.demo.main.Monster.BasicMonsters;
 
-import com.alexanderhasslund.demo.main.Levels.LevelController;
+import com.alexanderhasslund.demo.main.Monster.Boss.LastBossThaal.Thaal;
+import com.alexanderhasslund.demo.main.Monster.Boss.TagTeam.TagTeam;
+import com.alexanderhasslund.demo.main.Monster.Boss.TheTwinBrothers.Bram;
+import com.alexanderhasslund.demo.main.Monster.Boss.TheTwinBrothers.Ohrum;
+import com.alexanderhasslund.demo.main.Monster.Boss.theInquisition.theInquisition;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 
 import java.util.ArrayList;
@@ -21,13 +25,10 @@ public class MonsterController {
     }
 
 
-
     public void monsterValueController() {
-        LevelController levelController = new LevelController();
         Random rand = new Random();
 
-        countFloors = 1 + levelController.getCountLevels();
-        countMonsters = (2 * getCountPlayers()) + rand.nextInt(0,1);
+        countMonsters = (getCountPlayers() + rand.nextInt(1,2));
 
         List<Monster> allMonsters = new ArrayList<>();
         allMonsters.add(new MonsterRanger());
@@ -54,7 +55,52 @@ public class MonsterController {
 
             firstMonster.setMonsterId(i);
             monsterList.add(firstMonster);
+        }
+    }
 
+    public void chooseBossFight(int calculateLevels) {
+
+        switch(calculateLevels) {
+            case 1 -> {generateTagTeamBoss();}
+            case 2 -> {generateTwinBrotherBoss();}
+            case 3 -> {generateTheInquisition();}
+            case 4 -> {generateThall();}
+            default -> {
+                System.out.println("no input found");
+            }
+        }
+
+    }
+
+    public void generateThall() {
+
+        monsterList.add(new Thaal());
+
+    }
+
+    public void generateTheInquisition() {
+
+        monsterList.add(new theInquisition());
+    }
+
+
+    public void generateTagTeamBoss() {
+
+        monsterList.add(new TagTeam());
+        /*
+        for (Monster monster : monsterList) {
+            monster.setHp( monster.getHp() * );
+        } */
+
+    }
+
+    public void generateTwinBrotherBoss() {
+
+        monsterList.add(new Bram());
+        monsterList.add(new Ohrum());
+
+        for (Monster monster : monsterList) {
+            monster.setMonsterId(+1);
         }
     }
 

@@ -60,7 +60,6 @@ public class Fight {
                     }
                 });
             }
-
             case 4 -> {
                 System.out.println("back to menu");
             }

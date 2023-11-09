@@ -14,15 +14,6 @@ public class CombatController {
 
     private List<Player> playerList;
     private List<Monster> monsterList;
-    private int calculateLevels;
-
-    public int getCalculateLevels() {
-        return calculateLevels;
-    }
-
-    public void setCalculateLevels(int calculateLevels) {
-        this.calculateLevels = calculateLevels;
-    }
 
     public CombatController(List<Player> playerList, List<Monster> monsterList) {
         this.playerList = playerList;
@@ -33,15 +24,12 @@ public class CombatController {
     public void initiateFight() {
         CombatMenu combatMenu = new CombatMenu();
         MonsterAttack monsterAttack = new MonsterAttack();
-        PlayerController playerController = new PlayerController();
-        //playerController.calculatePlayerInvetory(playerList);
 
-        Collections.sort(playerList, new PlayerInitiativeComperator());
-        Collections.sort(monsterList, new MonsterInitiativeComperator());
+        //Collections.sort(playerList, new PlayerInitiativeComperator());
+        //Collections.sort(monsterList, new MonsterInitiativeComperator());
 
         System.out.println("Enter to start combat ");
         String enter = Input.stringInput();
-
         int countRounds = 0;
 
         while (!(playerList.isEmpty() || monsterList.isEmpty())) {
@@ -105,7 +93,6 @@ public class CombatController {
         } else {
             CombatEndingController combatEndingController = new CombatEndingController();
             combatEndingController.decideCombatWinner(playerList, monsterList);
-            calculateLevels++;
             enter = Input.stringInput();
         }
     }

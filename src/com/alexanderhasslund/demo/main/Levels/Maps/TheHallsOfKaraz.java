@@ -3,21 +3,28 @@ package com.alexanderhasslund.demo.main.Levels.Maps;
 import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
 import com.alexanderhasslund.demo.main.Levels.GameLevel;
 import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
+import com.alexanderhasslund.demo.main.Monster.Boss.Boss;
+import com.alexanderhasslund.demo.main.Monster.Boss.TagTeam.TagTeam;
 import com.alexanderhasslund.demo.main.Player.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TheHallsOfKaraz extends GameLevel {
 
     private int calculateLevels;
     private List<Player> playerList;
+    private List<Boss> bossList;
     private int countPlayers;
+
+
 
     public TheHallsOfKaraz(int calculateLevels, List<Player> playerList, int countPlayers) {
 
         this.calculateLevels = calculateLevels;
         this.playerList = playerList;
         this.countPlayers = countPlayers;
+        this.bossList = new ArrayList<>();
     }
 
     public void startUpGameOne() {
@@ -25,10 +32,12 @@ public class TheHallsOfKaraz extends GameLevel {
         CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
         monsterController.monsterValueController();
         combatController.initiateFight();
+
+        monsterController.chooseBossFight(calculateLevels);
+        combatController.initiateFight();
+
         // trigger same as in maingameMenu
 
-
     }
-
 
 }

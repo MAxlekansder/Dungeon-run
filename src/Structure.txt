@@ -8,7 +8,7 @@
    Fixa fler bossar
    Balansera monster mot spelare - ska vara svårt men inte för svårt
    Fixa tester
-
+   Fixa hur man presenterar att en spelare levelar - vad ska mer hända när en spelare levelar?
 
 
 

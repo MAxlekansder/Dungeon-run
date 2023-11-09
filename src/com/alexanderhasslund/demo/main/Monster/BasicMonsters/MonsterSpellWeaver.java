@@ -13,7 +13,7 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
 
 
     public MonsterSpellWeaver() {
-        super("VERMIN SPELLWEAVER", 35,0,10,0,13,20,false,25,30,5,false,0);
+        super("VERMIN SPELLWEAVER", 35,0,7,0,13,20,false,25,30,5,false,0);
 
     }
 
@@ -22,15 +22,6 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
         //spell fireball
     }
 
-    @Override
-    public void damageMultiplierForLevel() {
-
-    }
-
-    @Override
-    public void calculateChanceToBlock(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
-
-    }
 
     @Override
     public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList,  Monster currentMonster) { //insert attack modifiers here?
@@ -39,12 +30,12 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
         Random random = new Random();
 
         int randPlayer = random.nextInt(playerList.size());
-        int calculateDodge = random.nextInt(1, 50);
+        int calculateDodge = random.nextInt(1, 6) * 10;
 
 
         int calculatePlayerDodge = playerList.get(randPlayer).getDefence();
         int dodgeChance = calculateDodge + calculatePlayerDodge;
-        int scalingDodgeChance = 40 + (int) Math.round(currentPlayer.getLevel() *  1.3);
+        int scalingDodgeChance = 40 + (int) Math.round(playerList.get(randPlayer).getLevel() *  1.3);
 
 
         if (dodgeChance < scalingDodgeChance) {

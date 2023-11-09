@@ -15,7 +15,7 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
 
 
     public MonsterBrute() {
-        super("VERMIN OGRE", 50,0,10,20,13,0,false, 30,20,20, false,0);
+        super("VERMIN OGRE", 50,0,8,20,13,0,false, 30,20,20, false,0);
 
     }
 
@@ -26,16 +26,6 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
 
     }
 
-    @Override
-    public void damageMultiplierForLevel() {
-
-    }
-
-
-    @Override
-    public void calculateChanceToBlock(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
-
-    }
 
 
     @Override
@@ -43,11 +33,11 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
         Random random = new Random();
 
         int randPlayer = random.nextInt(playerList.size());
-        int calculateDodge = random.nextInt(1, 50);
+        int calculateDodge = random.nextInt(1, 6) * 10;
 
         int calculatePlayerDodge = playerList.get(randPlayer).getDefence();
         int dodgeChance = calculateDodge + calculatePlayerDodge;
-        int scalingDodgeChance = 50 + (int) Math.round(currentPlayer.getLevel() *  1.3);
+        int scalingDodgeChance = 60 + (int) Math.round(playerList.get(randPlayer).getLevel() *  1.3);
 
 
         if (dodgeChance < scalingDodgeChance) {
