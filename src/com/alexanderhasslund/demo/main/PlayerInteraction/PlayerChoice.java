@@ -69,7 +69,15 @@ public class PlayerChoice {
 
     public String potionsShop() {
         return ("""
+                 WELCOME TO THE POTION SHOP - 5 to leave...
                                 
+                \033[1;36m1.POTION OF HEALTH    \033[1;34m2.POTION OF DEFENCE           \033[1;35m3.POTION OF HASTE\033[0m            
+                \033[1;37mFOR THE THIRSTY       THOUGH NUT, ARENT YOU?        GOTTA GO FAST TO GET TO THE PRINCESS INTIME   
+                
+                Restores some health  Increases defence             Increases your initiative 
+                during combat         Sticks entire level           Sticks entire level    
+                                
+                Price: 50             Price: 70                     Price: 200             
                 """);
     }
 
@@ -162,8 +170,60 @@ public class PlayerChoice {
     }
 
 
-    public String presentLevels() {
+    public String presentLevel1() {
         return ("""
+                
+                1. THE HALLS OF KARAZ
+                \033[0;37m2. UPPER PLATEAU
+                3. CITY OF MARKAZH
+                4. THE GRAND HALL OF THAAL'S\033[0m
+                5.BACK TO MAIN MENU
                 """);
     }
+
+    public String presentLevel2() {
+        return ("""
+                
+                1. THE HALLS OF KARAZ
+                2. UPPER PLATEAU
+                \033[0;37m3. CITY OF MARKAZH
+                4. THE GRAND HALL OF THAAL'S\033[0m
+                5. BACK TO MAIN MENU
+                """);
+    }
+
+    public String presentLevel3() {
+        return ("""
+                
+                1. THE HALLS OF KARAZ
+                2. UPPER PLATEAU
+                \033[0;37m3. CITY OF MARKAZH
+                4. THE GRAND HALL OF THAAL'S\033[0m
+                5. BACK TO MAIN MENU
+                """);
+    }
+
+    public String presentLevel4() {
+        return ("""
+                
+                1. THE HALLS OF KARAZ
+                2. UPPER PLATEAU
+                3. CITY OF MARKAZH
+                \033[0;37m4. THE GRAND HALL OF THAAL'S\033[0m
+                5. BACK TO MAIN MENU
+                """);
+    }
+
+    public String presentFinalLevel() {
+        return ("""
+                1. THE HALLS OF KARAZ
+                2. UPPER PLATEAU
+                3. CITY OF MARKAZH
+                4. THE GRAND HALL OF THAAL'S
+                5. BACK TO MAIN MENU
+                """);
+    }
+
+
+
 }

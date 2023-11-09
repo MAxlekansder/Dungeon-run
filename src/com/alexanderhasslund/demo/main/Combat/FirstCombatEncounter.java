@@ -78,6 +78,7 @@ public class FirstCombatEncounter {
             System.out.println(playerChoice.presentMainMenu());
             System.out.println("Press enter to continue ");
             String enter = Input.stringInput();
+
         }
 
     }

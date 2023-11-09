@@ -75,7 +75,7 @@ public class GameStartControl {
     }
 
     //Singleton-isch...
-    public void startIntroductionChoice() throws IOException, NoSuchFieldException, IllegalAccessException, InterruptedException {
+    public void startIntroductionChoice() throws IOException, NoSuchFieldException, IllegalAccessException {
         PlayerController playerController = new PlayerController();
 
         PlayerChoice playerChoice = new PlayerChoice();
@@ -83,8 +83,6 @@ public class GameStartControl {
         //  stringManipulator.manipulateString(playerChoice.newGameSetup());
         playerController.playerCount();
         FirstCombatEncounter firstCombatEncounter = new FirstCombatEncounter(playerController.getPlayerList(), playerController.getCountPlayers());
-        MonsterController monsterController = new MonsterController(playerController.getCountPlayers());
-        CombatController combatController = new CombatController(playerController.getPlayerList(), monsterController.getMonsterList());
         playerController.chooseClass();
         playerController.choosePlayerName();
         playerController.getPlayerInformation();

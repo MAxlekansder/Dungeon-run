@@ -47,7 +47,7 @@ public class CombatMenu {
 
                     }
                     case 2 -> {
-                        System.out.println("get status");
+
                         getStatusActivePlayerAndMosnter(playerList, monsterList);
                         isViewing = false;
                     }

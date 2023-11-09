@@ -74,9 +74,13 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     @Override
     public void trait(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
 
+        System.out.println("The sorcerer muster all its power and blast all monster in range: ");
         for (Monster monster : monsterList) {
             monster.setHp(monster.getHp()- ((int) (currentPlayer.getDamage() * (level * 1.3))));
         }
+        System.out.println("Doing per monster: " + ((int) (currentPlayer.getDamage() * (level * 1.3))));
+        System.out.println("And in total :" + ((int) (currentPlayer.getDamage() * (level * 1.3)*monsterList.size())));
+
         //Dragons breath
         //Based on how many targets it will cleave
         //Find a good way to work this out, but first we need to add all monsters and then split

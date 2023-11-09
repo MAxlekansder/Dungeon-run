@@ -72,12 +72,12 @@ public class StringLore {
                 
                 -----------------------------------------------------   
                 \033[1;33mBERSERKERS RAGE                    FOOLS ELUSIVENESS               DRAGONS BREATH\033[0m
-                 The barbarian enrages,             The rogue performs a            The sorcerer breathes fire  
-                 increasing damage when under       swift attack striking           to every enemy dealing massive
-                 30% hp                             2 targets the rogue is          area of effect damage 
-                                                    facing, dealing double          **BETA** burning every enemy
-                                                    damage. But has a               for 2 rounds
-                                                    2 rounds cooldown
+                The barbarian enrages,             The rogue performs a            The sorcerer breathes fire  
+                increasing damage when under       swift attack striking           to every enemy dealing massive
+                30% hp                             2 targets the rogue is          area of effect damage 
+                                                   facing, dealing double          **BETA** burning every enemy
+                                                   damage. But has a               for 2 rounds
+                                                   2 rounds cooldown
                 -----------------------------------------------------   
                 """);
     }

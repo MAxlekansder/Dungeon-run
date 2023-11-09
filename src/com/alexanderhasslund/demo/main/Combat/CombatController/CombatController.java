@@ -39,7 +39,6 @@ public class CombatController {
         Collections.sort(playerList, new PlayerInitiativeComperator());
         Collections.sort(monsterList, new MonsterInitiativeComperator());
 
-        checkCombatSorted(playerList, monsterList);
         System.out.println("Enter to start combat ");
         String enter = Input.stringInput();
 
@@ -50,6 +49,7 @@ public class CombatController {
             Collections.sort(monsterList, new MonsterInitiativeComperator());
 
             while (!(checkPlayerHasPLayed(playerList) && checkMonsterHasPLayed(monsterList))) {
+                checkCombatSorted(playerList, monsterList);
 
                 if (playerList.isEmpty() || monsterList.isEmpty()) {
                     break;
@@ -85,7 +85,7 @@ public class CombatController {
                 }
             }
             countRounds++;
-            checkCombatSorted(playerList, monsterList);
+
 
             System.out.printf("\nend of round  %s \n", countRounds);
 
@@ -95,15 +95,16 @@ public class CombatController {
 
         }
 
-        calculateLevels++;
+
         if (combatMenu.isHasFled()) {
             ResetCombat resetCombat = new ResetCombat();
             System.out.println("you cowardly fled from the fight... did i already call you a coward? Coward");
             resetCombat.resetPlayerListBackToNormal(playerList);
 
         } else {
-            CombatEndingController combatEndingController = new CombatEndingController(calculateLevels);
-            combatEndingController.decideCombatWinner(playerList);
+            CombatEndingController combatEndingController = new CombatEndingController();
+            combatEndingController.decideCombatWinner(playerList, monsterList);
+            calculateLevels++;
             enter = Input.stringInput();
         }
     }

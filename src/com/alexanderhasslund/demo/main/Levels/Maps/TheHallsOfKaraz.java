@@ -4,5 +4,9 @@ import com.alexanderhasslund.demo.main.Levels.GameLevel;
 
 public class TheHallsOfKaraz extends GameLevel {
 
+    public void startUpGameOne() {
+
+    }
+
 
 }

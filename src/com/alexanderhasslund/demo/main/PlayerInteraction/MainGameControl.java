@@ -1,13 +1,12 @@
 package com.alexanderhasslund.demo.main.PlayerInteraction;
 import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
-import com.alexanderhasslund.demo.main.Combat.CombatMenu;
+import com.alexanderhasslund.demo.main.Combat.CombatController.CombatEndingController;
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
-import com.alexanderhasslund.demo.main.File.SaveFile;
-import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.Player.PlayerController;
+import com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions.GameLevelMenu;
 import com.alexanderhasslund.demo.main.Shop.ShopMenu;
 
 import java.io.IOException;
@@ -33,6 +32,8 @@ public class MainGameControl {
         MonsterController monsterController = new MonsterController(countPlayers);
         CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
         PlayerController playerController = new PlayerController();
+        CombatEndingController combatEndingController = new CombatEndingController();
+        GameLevelMenu gameLevelMenu = new GameLevelMenu();
 
         boolean isMainPlaying = true;
 
@@ -44,6 +45,7 @@ public class MainGameControl {
                 case 1 -> {
                     // continue
                    // this method call is only for test, this might be in levelGenerator
+                    gameLevelMenu.gameViewSwitch(combatEndingController.getCalculateLevels());
                     monsterController.monsterValueController();
                     combatController.initiateFight();
                 }

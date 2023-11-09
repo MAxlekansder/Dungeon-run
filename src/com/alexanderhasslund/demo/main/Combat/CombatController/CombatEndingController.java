@@ -1,19 +1,19 @@
 package com.alexanderhasslund.demo.main.Combat.CombatController;
 
+import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
+import com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions.GameLevelMenu;
 
 import java.util.List;
 
 public class CombatEndingController {
 
-    private int calculateLevels;
+    private static int calculateLevels;
 
-    public CombatEndingController(int calculateLevels) {
-        this.calculateLevels = calculateLevels;
-    }
-
-    public void decideCombatWinner(List<Player> playerList) {
+    public void decideCombatWinner(List<Player> playerList, List<Monster> monsterList) {
+        CombatController combatController = new CombatController(playerList, monsterList);
         ResetCombat resetCombat = new ResetCombat();
+
         if (playerList.isEmpty()) {
             System.out.println("Seems like you didnt make it further than here... ");
             System.out.println("too bad... better luck next time, hero");
@@ -22,10 +22,18 @@ public class CombatEndingController {
 
         }
         else {
-            System.out.printf("You it made through level %s! \n", calculateLevels);
+            System.out.println("You it made through the level!");
             resetCombat.resetPlayerListBackToNormal(playerList);
             calculateLevels++;
             System.out.println("Restoring health and resource back to full");
         }
+    }
+
+    public int getCalculateLevels() {
+        return calculateLevels;
+    }
+
+    public void setCalculateLevels(int calculateLevels) {
+        this.calculateLevels = calculateLevels;
     }
 }
