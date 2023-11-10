@@ -1,23 +1,25 @@
 package com.alexanderhasslund.demo.main.Classes;
 
-import com.alexanderhasslund.demo.main.Combat.CombatController.ResetCombat;
+import com.alexanderhasslund.demo.main.Combat.ResetCombat;
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
+import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
 import java.util.List;
 import java.util.Random;
 
 public class Rogue extends Player implements IClasses, ICombat {
 
-    private String className;
+    private final String className;
     private int id;
     private int maxHp;
     private int hp;
     private int damage;
     private int resource;
+    private int maxResource;
     private int strength;
     private int agility;
     private int intellect;
@@ -35,6 +37,7 @@ public class Rogue extends Player implements IClasses, ICombat {
         this.id = 0;
         this.damage = 15;
         this.resource = 200;
+        this.maxResource = 200;
         this.strength = 8;
         this.agility = 20;
         this.intellect = 2;
@@ -82,7 +85,7 @@ public class Rogue extends Player implements IClasses, ICombat {
 
     @Override
     public void trait(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
-        Random random = new Random();
+
         System.out.println("The rogue strikes in a quick sequence, dealing double damage to: ");
         int calcRogueUltimate = currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getDamage();
 
@@ -99,12 +102,21 @@ public class Rogue extends Player implements IClasses, ICombat {
 
     @Override
     public void spells(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
-        switch (1) {
+        System.out.println(PlayerChoice.spellsRogue());
+        int rogueSpells = Input.intInput();
+        Random random = new Random();
+        int randomMonster = random.nextInt(monsterList.size());
+        int randomCurrency = random.nextInt(5,20);
+
+            switch (rogueSpells) {
             case 1 -> {
-                System.out.printf("Backstabs the target, dealing: %s extra damage and gaining: %s extra defence", 3, 2);
+                System.out.printf("Backstabs the target, dealing: %s extra damage and gaining: %s extra defence \n", 3, 2);
+                monsterList.get(randomMonster).setHp(monsterList.get(randomMonster).getHp() - currentPlayer.getDamage() +3);
+                currentPlayer.setDefence(currentPlayer.getDefence() + 3);
             }
             case 2 -> {
-                System.out.printf("Pick pockets the target gaining: %s gold", 1);
+                System.out.printf("Pick pockets the target gaining: %s gold", randomCurrency);
+                currentPlayer.setResource(currentPlayer.getResource() - 30);
             }
             default -> {
                 System.out.println("Use right input");
@@ -131,7 +143,7 @@ public class Rogue extends Player implements IClasses, ICombat {
         + currentPlayer.getInventoryList().get(1).getDamage()) + (currentPlayer.getStrength() / 10)
         + (currentPlayer.getAgility() / 7));
 
-        System.out.printf("The rogue attacks with a swift slash, Dealing %s to monster %s", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
+        System.out.printf("The rogue attacks with a swift slash, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
 
@@ -168,10 +180,6 @@ public class Rogue extends Player implements IClasses, ICombat {
     @Override
     public String getClassName() {
         return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.alexanderhasslund.demo.main.Combat;
 
 import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
-import com.alexanderhasslund.demo.main.Combat.CombatController.ResetCombat;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterBrute;
 import com.alexanderhasslund.demo.main.Monster.Monster;

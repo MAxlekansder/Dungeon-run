@@ -1,9 +1,9 @@
 package com.alexanderhasslund.demo.main.Combat.CombatController;
 import com.alexanderhasslund.demo.main.Combat.CombatMenu;
+import com.alexanderhasslund.demo.main.Combat.ResetCombat;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
-import com.alexanderhasslund.demo.main.Player.PlayerController;
 
 import java.util.ArrayList;
 import java.util.Collections;

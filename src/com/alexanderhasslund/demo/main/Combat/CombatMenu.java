@@ -24,7 +24,8 @@ public class CombatMenu {
     public void combatSwitch(List<Player> playerList, List<Monster> monsterList, Player currentPlayer, Monster currentMonster) {
         PlayerChoice playerChoice = new PlayerChoice();
         Fight fight = new Fight();
-        System.out.printf("Player %s %s turn: ", currentPlayer.getClassName(),currentPlayer.getName());
+        System.out.printf("Player %s %s turn: Health - \033[1;37m%s\033[0m resoruce - \033[1;37m%s\033[0m"
+                , currentPlayer.getClassName(),currentPlayer.getName(), currentPlayer.getHp(), currentPlayer.getResource());
 
         int fightInput = 0;
         boolean isFighting = true;
@@ -47,11 +48,16 @@ public class CombatMenu {
 
                     }
                     case 2 -> {
+                        System.out.println(playerChoice.potionChoice());
+                        usePotion(currentPlayer);
+                    }
+
+                    case 3 -> {
 
                         getStatusActivePlayerAndMosnter(playerList, monsterList);
                         isViewing = false;
                     }
-                    case 3 -> {
+                    case 4 -> {
                         Flee flee = new Flee();
                         flee.chanceOfFleeing(monsterList);
                         isViewing = false;
@@ -90,5 +96,45 @@ public class CombatMenu {
                     + " // Defence = "  + monster.getDefence()
                     + " // Initiative = "  + monster.getInitiative());
         }
+    }
+
+    public void usePotion(Player currentPlayer) {
+        int potionChoice = Input.intInput();
+        boolean isPotionMenu = true;
+        do {
+            System.out.printf("Current potion equipped: %s",currentPlayer.getInventoryList().get(2).getItemName().toUpperCase());
+            switch (potionChoice) {
+
+                case 1 -> {
+
+                    if ( currentPlayer.getInventoryList().get(2).getItemName().equals("Potion of Haste")) {
+                        currentPlayer.setInitiative(1);
+                    }
+
+                    if ( currentPlayer.getInventoryList().get(2).getItemName().equals("Potion of Defence")) {
+                        currentPlayer.setDefence(currentPlayer.getDefence() + 20);
+                    }
+
+                    if ( currentPlayer.getInventoryList().get(2).getItemName().equals("Potion of Health")) {
+
+                        int newHp = currentPlayer.getHp() + 40;
+
+                        if (newHp > currentPlayer.getMaxHp()) {
+                            currentPlayer.setHp(currentPlayer.getHp());
+                        } else {
+                            currentPlayer.setHp(newHp);
+                        }
+
+                    }
+                    isPotionMenu = false;
+                }
+                case 2 -> {
+                    isPotionMenu = false;
+                }
+                default -> {
+                    System.out.println("use the right input");
+                }
+            }
+        } while (isPotionMenu);
     }
 }

@@ -21,6 +21,7 @@ public class Player implements Serializable {
     private int hp;
     private int damage;
     private int resource;
+    private int maxResource;
     private int strength;
     private int agility;
     private int intellect;
@@ -30,6 +31,13 @@ public class Player implements Serializable {
     private boolean isDead;
     private boolean hasPlayed;
 
+    public int getMaxResource() {
+        return maxResource;
+    }
+
+    public void setMaxResource(int maxResource) {
+        this.maxResource = maxResource;
+    }
 
     public int getMaxHp() {
         return maxHp;

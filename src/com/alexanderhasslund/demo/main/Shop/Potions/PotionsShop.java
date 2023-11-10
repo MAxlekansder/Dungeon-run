@@ -30,21 +30,24 @@ public class PotionsShop {
                     if (playerList.get(playerIndex).getCurrency() >= 50) {
                         playerList.get(playerIndex).getInventoryList().set(2, potion.potionOfHealth());
                         potionPrice= 50;
+                        isShop = false;
                     }
                 }
                 case 2 -> {
                     if (playerList.get(playerIndex).getCurrency() >= 70) {
                         playerList.get(playerIndex).getInventoryList().set(2, potion.potionOfDefence());
                         potionPrice = 70;
+                        isShop = false;
                     }
                 }
                 case 3 -> {
                     if (playerList.get(playerIndex).getCurrency() >= 200) {
                         playerList.get(playerIndex).getInventoryList().set(2, potion.potionOfHaste());
                         potionPrice = 200;
+                        isShop = false;
                     }
                 }
-                 case 4 -> { isShop = false;
+                 case 5 -> { isShop = false;
 
                  }
                 default -> {

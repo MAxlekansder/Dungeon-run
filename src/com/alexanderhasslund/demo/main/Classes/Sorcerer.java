@@ -4,17 +4,20 @@ import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
+import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
 import java.util.List;
+import java.util.Random;
 
 public class Sorcerer extends Player implements IClasses, ICombat {
 
-    private String className;
+    private final String className;
     private int id;
     private int maxHp;
     private int hp;
     private int damage;
     private int resource;
+    private int maxResource;
     private int strength;
     private int agility;
     private int intellect;
@@ -26,7 +29,6 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
     public Sorcerer() {
         this.className = Color.BLUE + "SORCERER" + Color.RESET;
-        this.maxHp = 90;
         this.hp = 90;
         this.id = 0;
         this.damage = 10; //find a good formula;
@@ -37,6 +39,8 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         this.level = 1;
         this.initiative = 70;
         this.defence = 5;
+        this.maxHp = 90;
+        this.maxResource = 150;
         this.isDead = false;
         this.hasPlayed = false;
     }
@@ -67,9 +71,9 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         currentPlayer.setIntellect(currentPlayer.getIntellect() + (int)(currentPlayer.getLevel() / 0.8));
 
         currentPlayer.setDamage(currentPlayer.getDamage() + (currentPlayer.getIntellect() / 5));
-        currentPlayer.setResource(currentPlayer.getResource() + (currentPlayer.getIntellect() / 2));
+        currentPlayer.setMaxResource(currentPlayer.getMaxResource() + (currentPlayer.getIntellect() / 2));
         currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getIntellect() * 0.2));
-        currentPlayer.setMaxHp(currentPlayer.getMaxHp()+ (int) (currentPlayer.getStrength() * 0.1));
+        currentPlayer.setMaxHp(currentPlayer.getMaxHp()+ (int) (currentPlayer.getStrength() * 1));
     }
 
 
@@ -95,15 +99,40 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     }
 
     @Override
-    public void spells(List<Player> playerList, Player player, List<Monster> monsterList) {
-        switch (1){
+    public void spells(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
+        System.out.println(PlayerChoice.spellsSorcerer());
+        int sorcererSpells = Input.intInput();
+
+        switch (sorcererSpells) {
             case 1 -> {
-                System.out.println("builds up damage over time, over three rounds: ");
+                System.out.println("Sorcerer gets a barrier -> shielding for 20 damage: ");
+                currentPlayer.setHp(currentPlayer.getHp() + 30);
+                currentPlayer.setResource(currentPlayer.getResource() - 40);
+
             }
             case 2 -> {
                 System.out.println("The sorcerer cocoons it self, soaks all incoming harm");
+                int monsterChoice = 1;
+
+                for (int i = 0; i < 2; i++) {
+                    for (Monster monster1 : monsterList) {
+                        System.out.println("CHOICE: " + monsterChoice + " " + monster1);
+                        monsterChoice++;
+                    }
+                    System.out.print("Decide what monster you want to hit: ");
+                    int monsterIndex = Input.intInput() - 1;
+                    // build a miss system? Even for monsters based on something.
+
+                    monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
+                            (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage())
+                            + (currentPlayer.getIntellect() / 7)
+                            + currentPlayer.getLevel());
+                }
+                 currentPlayer.setResource(currentPlayer.getResource() -70);
             }
-            default -> {System.out.println("Use right input");}
+            default -> {
+                System.out.println("Use right input");
+            }
         }
     }
 
@@ -124,9 +153,26 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage())
         + (currentPlayer.getIntellect() / 7));
 
-        System.out.printf("The Sorcerer attacks with all element aligned, Dealing %s to monster %s", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
+        System.out.printf("The Sorcerer attacks with all element aligned, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
+    @Override
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    @Override
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
+
+    public int getMaxResource() {
+        return maxResource;
+    }
+
+    public void setMaxResource(int maxResource) {
+        this.maxResource = maxResource;
+    }
 
     @Override
     public void getStatus() {
@@ -147,10 +193,6 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     @Override
     public String getClassName() {
         return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
     }
 
     @Override

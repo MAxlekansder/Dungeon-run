@@ -1,4 +1,4 @@
-package com.alexanderhasslund.demo.main.Combat.CombatController;
+package com.alexanderhasslund.demo.main.Combat;
 
 import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Classes.Rogue;
@@ -16,18 +16,18 @@ public class ResetCombat {
 
         for (Player player : playerList) {
             if (player instanceof Barbarian) {
-                player.setResource(barbarian.getResource());
-                player.setHp(barbarian.getHp());
+                player.setResource(barbarian.getMaxResource());
+                player.setHp(barbarian.getMaxHp());
                 player.setHasPlayed(false);
 
             } else if (player instanceof Rogue) {
-                player.setResource(rogue.getResource());
-                player.setHp(rogue.getHp());
+                player.setResource(rogue.getMaxResource());
+                player.setHp(rogue.getMaxHp());
                 player.setHasPlayed(false);
 
             } else if (player instanceof Sorcerer) {
-                player.setResource(sorcerer.getResource());
-                player.setHp(sorcerer.getHp());
+                player.setResource(sorcerer.getMaxResource());
+                player.setHp(sorcerer.getMaxHp());
                 player.setHasPlayed(false);
             } else {
                 System.out.println("No class found... ");

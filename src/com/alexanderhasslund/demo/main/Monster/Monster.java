@@ -158,7 +158,7 @@ public class Monster {
     @Override
     public String toString() {
         return
-                Color.CYAN +"MONSTER -  " + Color.RESET + monsterName + " -- " +
+                Color.CYAN + typeName + " - " + Color.RESET + monsterName + " -- " +
                 " HP = " + hp + " -- " +
                 " Defence = " + defence + " -- " +
                 " damage = " + damage + " -- " +

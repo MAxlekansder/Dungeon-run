@@ -72,11 +72,11 @@ public class PlayerChoice {
                  WELCOME TO THE POTION SHOP - 5 to leave...
                                 
                 \033[1;36m1.POTION OF HEALTH    \033[1;34m2.POTION OF DEFENCE           \033[1;35m3.POTION OF HASTE\033[0m            
-                \033[1;37mFOR THE THIRSTY       THOUGH NUT, ARENT YOU?        GOTTA GO FAST TO GET TO THE PRINCESS INTIME   
+                \033[1;37mFOR THE THIRSTY       THOUGH NUT, ARENT YOU?        GOTTA GO FAST TO GET TO THE PRINCESS INTIME\033[0m  
                 
                 Restores some health  Increases defence             Increases your initiative 
                 during combat         Sticks entire level           Sticks entire level    
-                                
+                Health 40             Defence 20                    Initiative 1
                 Price: 50             Price: 70                     Price: 200             
                 """);
     }
@@ -149,13 +149,19 @@ public class PlayerChoice {
         return ("""
                 
                 ----\033[1;33m COMBAT OPTIONS \033[0m----
-                1. FIGHT    2. GET STATUS    3. FLEE""");
+                1. FIGHT  2. USE POTIONS   3. GET STATUS    4. FLEE""");
     }
 
     public String abilityChoice() {
         return (""" 
                 ----\033[1;33m IN ACTION MENU \033[0m----
                 1. BASIC ATTACK     2. CHOOSE SPELL     3. ULTIMATE""");
+    }
+
+    public String potionChoice() {
+        return (""" 
+                ----\033[1;33m IN POTION MENU \033[0m----
+                1. USE POTION    2. BACK TO MENU""");
     }
 
     public String presentMainMenu() {
@@ -224,6 +230,19 @@ public class PlayerChoice {
                 """);
     }
 
+    public static String spellsBarbarian() {
+        return ("""
+                1. WAR CRY - grants strength to the party | resource: 20    2. ON THE DEFENCE - grants defence to the barbarian | resource: 10""");
+    }
 
+    public static String spellsRogue() {
+        return ("""
+                1. SHADOW DANCE - strikes target from behind - increasing defence | resource: 50     2. A THIEF'S THIEVERY  - steals gold, why not? resoruce: 30""");
+    }
 
+    public static String spellsSorcerer() {
+        return ("""
+                1. ELEMENTAL BARRIER - shields the player | cost: 40     2. ELEMENTAL BLAST - strikes two targets with elemental force | cost: 60
+                """);
+    }
 }

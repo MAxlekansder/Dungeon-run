@@ -4,18 +4,20 @@ import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
+import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
 import java.util.List;
 
 
 public class Barbarian extends Player implements IClasses, ICombat {
 
-    private String className;
+    private final String className;
     private int id;
     private int maxHp;
     private int hp;
     private int damage;
     private int resource;
+    private int maxResource;
     private int strength;
     private int agility;
     private int intellect;
@@ -35,6 +37,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
         this.id = 0;
         this.damage = 20;
         this.resource = 100;
+        this.maxResource = 100;
         this.strength = 22;
         this.agility = 8;
         this.intellect = 0;
@@ -87,7 +90,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
         int monsterChoice = 1;
 
         for (Monster monster1 : monsterList) {
-            System.out.println("CHOICE: "+ monsterChoice+ " " + monster1);
+            System.out.println("CHOICE :" + monsterChoice+ " " + monster1);
             monsterChoice++;
         }
         System.out.print("Decide what monster you want to hit: ");
@@ -95,14 +98,16 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
         int calcBarbarianUltimate = ((monsterList.get(monsterIndex).getHp() * 100) / currentPlayer.getHp());
 
-        if (currentPlayer.getResource() >= 50) {
+        if (currentPlayer.getResource() >= 100) {
             if (calcBarbarianUltimate <= 20) {
                 System.out.printf("The barbarian executes %s, to even out the odds \n", monsterList.get(monsterIndex).getMonsterName());
                 monsterList.get(monsterIndex).setHp(0);
+                currentPlayer.setResource(currentPlayer.getResource() - 100);
             } else {
                 System.out.printf("The barbarian tried to execute %s, but failed\n", monsterList.get(monsterIndex).getMonsterName());
+                System.out.println("No rage was spent");
             }
-            currentPlayer.setResource(currentPlayer.getResource() - 50);
+
         } else {
             System.out.printf("%s doesnt have enough rage to execute the target...", currentPlayer.getClassName());
         }
@@ -112,15 +117,16 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
     @Override
     public void spells(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
-
-        switch (1) {
+        System.out.println(PlayerChoice.spellsBarbarian());
+        int barbarianSpells = Input.intInput();
+        switch (barbarianSpells) {
             case 1 -> { // a baseline damage spell that adds 3 damage and uses 'resources'
 
-                System.out.printf("%s crys a war cry, increasing the parties strength by 10", currentPlayer.getClassName(), 10);
+                System.out.printf("%s crys a war cry, increasing the entire groups strength by 10 \n", currentPlayer.getClassName(), 10);
                 for (Player player : playerList) {
                     player.setStrength(player.getStrength() + 10);
                 }
-                currentPlayer.setResource(currentPlayer.getResource() - 10);
+                currentPlayer.setResource(currentPlayer.getResource() - 20);
 
             }
             case 2 -> { //
@@ -173,6 +179,16 @@ public class Barbarian extends Player implements IClasses, ICombat {
     }
 
 
+    @Override
+    public int getMaxResource() {
+        return maxResource;
+    }
+
+    @Override
+    public void setMaxResource(int maxResource) {
+        this.maxResource = maxResource;
+    }
+
     public int getMaxHp() {
         return maxHp;
     }
@@ -194,10 +210,6 @@ public class Barbarian extends Player implements IClasses, ICombat {
     @Override
     public String getClassName() {
         return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
     }
 
     @Override
