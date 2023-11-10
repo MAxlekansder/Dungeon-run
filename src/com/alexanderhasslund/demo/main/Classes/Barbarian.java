@@ -12,6 +12,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
     private String className;
     private int id;
+    private int maxHp;
     private int hp;
     private int damage;
     private int resource;
@@ -29,6 +30,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
         //Player barbarian = new Player(getName(),getTalentTreeList(),getInventoryList(),0,0,"BARBARIAN",115,20,100,22,8,0,0,10,55);
         //return barbarian;
         this.className = Color.RED + "BARBARIAN" + Color.RESET;
+        this.maxHp = 115;
         this.hp = 115;
         this.id = 0;
         this.damage = 20;
@@ -74,7 +76,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
         currentPlayer.setDamage(currentPlayer.getDamage() + (int)(currentPlayer.getStrength() / 3));
         currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getStrength() * 0.2));
-        currentPlayer.setHp(currentPlayer.getHp()+ (int) (currentPlayer.getStrength() * 0.1));
+        currentPlayer.setMaxHp(currentPlayer.getMaxHp() + (int) (currentPlayer.getStrength() * 0.1));
 
     }
 
@@ -82,32 +84,49 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
     @Override
     public void trait(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
-        //berserkers rage
-        //when hp is below 30 <- activate berserkers rage
+        int monsterChoice = 1;
 
-        if ( hp <= hp * 0.3) {
-            System.out.println("The barbarian gains berserker rage, gaining extra damage");
-            while (hp <= hp * 0.3) {
-                damage += (int) (damage * 0.07);
-            }
+        for (Monster monster1 : monsterList) {
+            System.out.println("CHOICE: "+ monsterChoice+ " " + monster1);
+            monsterChoice++;
         }
+        System.out.print("Decide what monster you want to hit: ");
+        int monsterIndex = Input.intInput() -1;
+
+        int calcBarbarianUltimate = ((monsterList.get(monsterIndex).getHp() * 100) / currentPlayer.getHp());
+
+        if (currentPlayer.getResource() >= 50) {
+            if (calcBarbarianUltimate <= 20) {
+                System.out.printf("The barbarian executes %s, to even out the odds \n", monsterList.get(monsterIndex).getMonsterName());
+                monsterList.get(monsterIndex).setHp(0);
+            } else {
+                System.out.printf("The barbarian tried to execute %s, but failed\n", monsterList.get(monsterIndex).getMonsterName());
+            }
+            currentPlayer.setResource(currentPlayer.getResource() - 50);
+        } else {
+            System.out.printf("%s doesnt have enough rage to execute the target...", currentPlayer.getClassName());
+        }
+
     }
 
 
     @Override
     public void spells(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
-        int temporaryBuffs = 0;
+
         switch (1) {
             case 1 -> { // a baseline damage spell that adds 3 damage and uses 'resources'
 
-                System.out.println("Cleaves the target with: " + temporaryBuffs);
-                strength += 10;
-                resource -= 20;
+                System.out.printf("%s crys a war cry, increasing the parties strength by 10", currentPlayer.getClassName(), 10);
+                for (Player player : playerList) {
+                    player.setStrength(player.getStrength() + 10);
+                }
+                currentPlayer.setResource(currentPlayer.getResource() - 10);
+
             }
             case 2 -> { //
                 System.out.println( "The barbarian muster its rage, gaining defence euqal to: " + (defence + 2));
-                resource -= 30;
-                defence += 2;
+                currentPlayer.setDefence(currentPlayer.getDefence() + 10);
+                currentPlayer.setResource(currentPlayer.getResource() - 10);
             }
             default -> {System.out.println("Use right input");}
         }
@@ -127,7 +146,9 @@ public class Barbarian extends Player implements IClasses, ICombat {
         // build a miss system? Even for monsters based on something.
 
         monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
-            (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage()));
+        (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage()
+        + currentPlayer.getInventoryList().get(1).getDamage()) + (currentPlayer.getStrength() /7));
+
         System.out.printf("The barbarian attacks with a hard hitting strike, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
@@ -151,6 +172,14 @@ public class Barbarian extends Player implements IClasses, ICombat {
                         " Initiative = " + initiative + "  ||";
     }
 
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
 
     @Override
     public int getId() {

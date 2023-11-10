@@ -23,9 +23,9 @@ public class GameLevelFour {
     }
 
     public void gameSwitchFour() {
-        FinalRoomOfKazarak finalRoomOfKazarak = new FinalRoomOfKazarak();
-        CityMarkazh cityMarkazh = new CityMarkazh();
-        UpperPlateau upperPlateau = new UpperPlateau();
+        FinalRoomOfKazarak finalRoomOfKazarak = new FinalRoomOfKazarak(calculateLevels, playerList, countPlayers);
+        CityMarkazh cityMarkazh = new CityMarkazh(calculateLevels, playerList, countPlayers);
+        UpperPlateau upperPlateau = new UpperPlateau(calculateLevels, playerList, countPlayers);
         TheHallsOfKaraz theHallsOfKaraz = new TheHallsOfKaraz(calculateLevels, playerList, countPlayers);
         PlayerChoice playerChoice = new PlayerChoice();
 

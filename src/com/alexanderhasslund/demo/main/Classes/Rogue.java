@@ -8,11 +8,13 @@ import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 
 import java.util.List;
+import java.util.Random;
 
 public class Rogue extends Player implements IClasses, ICombat {
 
     private String className;
     private int id;
+    private int maxHp;
     private int hp;
     private int damage;
     private int resource;
@@ -28,6 +30,7 @@ public class Rogue extends Player implements IClasses, ICombat {
 
     public Rogue() {
         this.className = Color.GREEN + "ROGUE" + Color.RESET;
+        this.maxHp = 100;
         this.hp = 100; // change here and check all control values
         this.id = 0;
         this.damage = 15;
@@ -53,6 +56,7 @@ public class Rogue extends Player implements IClasses, ICombat {
 
             if (currentPlayer.getExperience() == 100) { // fix better logic for leveling...
                 currentPlayer.setLevel(currentPlayer.getLevel() +1);
+                System.out.printf("%s %s just leveled up to level %s! ", currentPlayer.getClassName(), currentPlayer.getName(), currentPlayer.getLevel());
                 currentPlayer.setExperience(0);
 
                 ResetCombat resetCombat = new ResetCombat();
@@ -71,26 +75,26 @@ public class Rogue extends Player implements IClasses, ICombat {
 
         currentPlayer.setDamage(currentPlayer.getDamage() + (int)(currentPlayer.getAgility() / 2.5));
         currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getStrength() * 0.2));
-        currentPlayer.setHp(currentPlayer.getHp()+ (int) (currentPlayer.getStrength() * 0.1));
+        currentPlayer.setMaxHp(currentPlayer.getMaxHp() + (int) (currentPlayer.getStrength() * 0.1));
     }
 
 
 
     @Override
     public void trait(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
-        //When struck in combat you have a chance to dodge the attack, multiplies defence
-        //fools elusiveness
-        //count number of rounds and try to get it in here so there's a chance to use the trait
-        // maybe put the for loop for rounds in the fighting sequence and not in the spell?
-        //(int countrounds?)
-        int savePreviousDamage =currentPlayer.getDamage();
-        //trigger trait from within the combat menu?
-        for (int i = 0; i < 2; i++) {  // while här istället och skicka in antalet rundor (current round trigger round < 2 )
-            currentPlayer.setDamage(currentPlayer.getDamage() * 2);
-        }
-        currentPlayer.setDamage(savePreviousDamage);
+        Random random = new Random();
+        System.out.println("The rogue strikes in a quick sequence, dealing double damage to: ");
+        int calcRogueUltimate = currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getDamage();
 
-        //Cooldown
+        for (Monster monster : monsterList) {
+
+            monster.setHp(monster.getHp() - calcRogueUltimate); // based on sword damage
+            System.out.println(monster.getMonsterName() + " lost " + calcRogueUltimate + " hp!");
+
+            monster.setHp(monster.getHp() - calcRogueUltimate); // based on sword damage
+            System.out.println(monster.getMonsterName() + " lost "  + calcRogueUltimate + " hp!");
+        }
+        currentPlayer.setResource(currentPlayer.getResource() - 150);
     }
 
     @Override
@@ -123,7 +127,10 @@ public class Rogue extends Player implements IClasses, ICombat {
         // build a miss system? Even for monsters based on something.
 
         monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
-        (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage()));
+        (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage()
+        + currentPlayer.getInventoryList().get(1).getDamage()) + (currentPlayer.getStrength() / 10)
+        + (currentPlayer.getAgility() / 7));
+
         System.out.printf("The rogue attacks with a swift slash, Dealing %s to monster %s", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 

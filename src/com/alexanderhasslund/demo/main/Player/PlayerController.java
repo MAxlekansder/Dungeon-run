@@ -73,9 +73,32 @@ public class PlayerController {
     public void choosePlayerName() {
         for ( int i = 0; i < getCountPlayers(); i++) {
             System.out.printf("Enter character name, for player %s: ", (i + 1));
-            playerList.get(i).setName(Input.stringInput());
+            String playerName;
+            do {
+                 playerName = (Input.stringInput()).trim();
+                if (playerName.isEmpty()) {
+                    System.out.println("Please enter a real name, dont leave it empty");
+                }
+            } while (playerName.isEmpty());
+
+            playerList.get(i).setName(playerName);
             playerList.get(i).setId(i);
         }
+
+        /*
+        do {
+                System.out.print("Namn Spelare " + (i + 1) + ": ");
+                namn = Input.stringInput();
+
+                if (!namn.isEmpty() || !namn.isBlank()) {
+                    catchNamnInput = false;
+                } else {
+                    System.out.println("Du måste skriva ditt namn!");
+                }
+
+            } while (catchNamnInput);
+
+         */
 
         System.out.print("\n");
 

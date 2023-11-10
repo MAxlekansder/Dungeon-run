@@ -80,7 +80,7 @@ public class Fight {
                 System.out.printf("\nMonster %s died!\n", monsterList.get(i).getMonsterName());
 
                 giveCurrency = (int) monsterList.get(i).getGivesCurrency() / playerList.size();
-                giveExperience = (int) monsterList.get(i).getGivesExperience() / playerList.size();
+                giveExperience = (int) monsterList.get(i).getGivesExperience();
 
                 for (int j = 0; j < playerList.size(); j++) {
 

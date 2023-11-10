@@ -12,7 +12,7 @@ public class theInquisition extends Monster implements IMonster, ICombat {
 
 
     public theInquisition() {
-        super("The inqusition", 0, 0, 0,0,0,0,false,200,300,0,false,0);
+        super("\033[1;36mBOSS\033[0m","The inqusition", 0, 0, 0,0,0,0,false,200,300,0,false,0);
     }
 
     @Override

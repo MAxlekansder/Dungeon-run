@@ -68,7 +68,7 @@ public class FirstCombatEncounter {
                             """);
 
             for (Player player : playerList) {
-                System.out.println(player.getName() + " gets 200 coins! and some exp");
+                System.out.println(player.getName() + "\033[1;32m gets 200 coins! and some exp\033[0m");
                 player.setCurrency(200);
             }
 

@@ -15,15 +15,13 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
 
 
     public MonsterBrute() {
-        super("VERMIN OGRE", 50,0,8,20,13,0,false, 30,20,20, false,0);
+        super("\033[1;36mMONSTER\033[0m","VERMIN OGRE", 50,0,8,20,13,0,false, 30,20,20, false,0);
 
     }
 
-    //randomize initiative within bound?
     @Override
     public void spells() {
         //slams
-
     }
 
 

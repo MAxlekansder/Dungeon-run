@@ -17,6 +17,7 @@ public class Player implements Serializable {
 
     private String className;
     private int id;
+    private int maxHp;
     private int hp;
     private int damage;
     private int resource;
@@ -30,6 +31,13 @@ public class Player implements Serializable {
     private boolean hasPlayed;
 
 
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
 
     public boolean isHasPlayed() {
         return hasPlayed;
@@ -183,7 +191,7 @@ public class Player implements Serializable {
 
     }
 
-    public Player(String name, int id, List<TalentTree> talentTreeList, List<Inventory> inventoryList, int experience, int currency, String className, int hp, int damage, int resource, int strength, int agility, int intellect, int level, int defence, int initiative, boolean isDead, boolean hasPlayed) {
+    public Player(String name, int id, List<TalentTree> talentTreeList, List<Inventory> inventoryList, int experience, int currency, String className, int hp, int maxHp, int damage, int resource, int strength, int agility, int intellect, int level, int defence, int initiative, boolean isDead, boolean hasPlayed) {
         this.name = name;
         this.id = id;
         this.talentTreeList = talentTreeList;
@@ -192,6 +200,7 @@ public class Player implements Serializable {
         this.currency = currency;
         this.isDead = isDead;
         this.className = className;
+        this.maxHp = maxHp;
         this.hp = hp;
         this.damage = damage;
         this.resource = resource;

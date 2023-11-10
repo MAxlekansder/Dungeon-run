@@ -21,28 +21,29 @@ public class GameLevelThree {
         this.countPlayers = countPlayers;
     }
 
-    public void gameSwitchThree() {
-        CityMarkazh cityMarkazh = new CityMarkazh();
-        UpperPlateau upperPlateau = new UpperPlateau();
+    public boolean gameSwitchThree() {
+        CityMarkazh cityMarkazh = new CityMarkazh(calculateLevels, playerList, countPlayers);
+        UpperPlateau upperPlateau = new UpperPlateau(calculateLevels, playerList, countPlayers);
         TheHallsOfKaraz theHallsOfKaraz = new TheHallsOfKaraz(calculateLevels, playerList, countPlayers);
         PlayerChoice playerChoice = new PlayerChoice();
-
+        boolean isPlayerEncounter = false;
         boolean isChoice = true;
+
         do {
             System.out.println(playerChoice.presentLevel3());
             int gameMapChoice = Input.intInput();
 
             switch (gameMapChoice) {
                 case 1 -> {
-                    theHallsOfKaraz.startUpGameOne();
+                    isPlayerEncounter = theHallsOfKaraz.startUpGameOne();
                     isChoice = false;
                 }
                 case 2 -> {
-                    upperPlateau.startUpGameTwo();
+                    isPlayerEncounter = upperPlateau.startUpGameTwo();
                     isChoice = false;
                 }
                 case 3 -> {
-                    cityMarkazh.startUpGameThree();
+                    isPlayerEncounter = cityMarkazh.startUpGameThree();
                     isChoice = false;
                 }
                 case 4 -> {
@@ -57,5 +58,6 @@ public class GameLevelThree {
                 }
             }
         }while (isChoice);
+        return isPlayerEncounter;
     }
 }

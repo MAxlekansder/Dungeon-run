@@ -7,6 +7,7 @@ import java.util.Random;
 public class Monster {
 
     Random rand = new Random();
+    private String typeName;
     private String monsterName;
     private int hp;
     private int resoruce;
@@ -21,6 +22,11 @@ public class Monster {
     private int givesCurrency;
     private boolean hasPlayed;
     private int monsterId;
+
+
+    public String getTypeName() {
+        return typeName;
+    }
 
     public boolean isHasPlayed() {
         return hasPlayed;
@@ -130,8 +136,9 @@ public class Monster {
         this.monsterId = monsterId;
     }
 
-    public Monster(String monsterName, int hp, int resoruce, int damage, int strength, int agility, int intellect, boolean isDead, int givesExperience, int givesCurrency, int defence, boolean hasPlayed, int monsterId) {
+    public Monster(String typName, String monsterName, int hp, int resoruce, int damage, int strength, int agility, int intellect, boolean isDead, int givesExperience, int givesCurrency, int defence, boolean hasPlayed, int monsterId) {
 
+        this.typeName = typName;
         this.monsterName = monsterName;
         this.hp = hp;
         this.resoruce = resoruce;

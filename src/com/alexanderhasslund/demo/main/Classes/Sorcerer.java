@@ -11,6 +11,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
     private String className;
     private int id;
+    private int maxHp;
     private int hp;
     private int damage;
     private int resource;
@@ -25,6 +26,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
     public Sorcerer() {
         this.className = Color.BLUE + "SORCERER" + Color.RESET;
+        this.maxHp = 90;
         this.hp = 90;
         this.id = 0;
         this.damage = 10; //find a good formula;
@@ -50,6 +52,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
             if (currentPlayer.getExperience() == 100) { // fix better logic for leveling...
                 currentPlayer.setLevel(currentPlayer.getLevel() +1);
+                System.out.printf("%s %s just leveled up to level %s! ", currentPlayer.getClassName(), currentPlayer.getName(), currentPlayer.getLevel());
                 currentPlayer.setExperience(0);
                 addStatsToPlayer(currentPlayer);
             }
@@ -63,10 +66,10 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         currentPlayer.setAgility(currentPlayer.getAgility() + (int)(currentPlayer.getLevel() / 1.2));
         currentPlayer.setIntellect(currentPlayer.getIntellect() + (int)(currentPlayer.getLevel() / 0.8));
 
-        currentPlayer.setDamage(currentPlayer.getDamage() + (int)(currentPlayer.getIntellect() / 5));
-        currentPlayer.setResource(currentPlayer.getResource() + (int)(currentPlayer.getIntellect() / 4));
+        currentPlayer.setDamage(currentPlayer.getDamage() + (currentPlayer.getIntellect() / 5));
+        currentPlayer.setResource(currentPlayer.getResource() + (currentPlayer.getIntellect() / 2));
         currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getIntellect() * 0.2));
-        currentPlayer.setHp(currentPlayer.getHp()+ (int) (currentPlayer.getStrength() * 0.1));
+        currentPlayer.setMaxHp(currentPlayer.getMaxHp()+ (int) (currentPlayer.getStrength() * 0.1));
     }
 
 
@@ -82,6 +85,7 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         System.out.println("Doing per monster: " + ((int) (currentPlayer.getDamage() * (level * 1.3))));
         System.out.println("And in total: " + ((int) (currentPlayer.getDamage() * (level * 1.3)*monsterList.size())));
 
+        currentPlayer.setResource(currentPlayer.getResource() - 100);
         //Dragons breath
         //Based on how many targets it will cleave
         //Find a good way to work this out, but first we need to add all monsters and then split
@@ -117,7 +121,8 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         // build a miss system? Even for monsters based on something.
 
         monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
-        (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage()));
+        (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage())
+        + (currentPlayer.getIntellect() / 7));
 
         System.out.printf("The Sorcerer attacks with all element aligned, Dealing %s to monster %s", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }

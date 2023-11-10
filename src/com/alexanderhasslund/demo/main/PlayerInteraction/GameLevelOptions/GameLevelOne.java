@@ -19,10 +19,11 @@ public class GameLevelOne {
         this.countPlayers = countPlayers;
     }
 
-    public void gameSwitchOne() {
+    public boolean gameSwitchOne() {
         TheHallsOfKaraz theHallsOfKaraz = new TheHallsOfKaraz(calculateLevels, playerList, countPlayers);
         PlayerChoice playerChoice = new PlayerChoice();
 
+        boolean isPlayerEncounter = true;
         boolean isChoice = true;
         do {
             System.out.println(playerChoice.presentLevel1());
@@ -30,7 +31,8 @@ public class GameLevelOne {
 
             switch (gameMapChoice) {
                 case 1 -> {
-                    theHallsOfKaraz.startUpGameOne();
+                    isPlayerEncounter = theHallsOfKaraz.startUpGameOne();
+
                 }
                 case 2 -> {
                     System.out.println(" Level not reached");
@@ -50,5 +52,6 @@ public class GameLevelOne {
                 }
             }
         } while (isChoice);
+        return isPlayerEncounter;
     }
 }

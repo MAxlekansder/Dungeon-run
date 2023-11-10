@@ -20,11 +20,11 @@ public class GameLevelTwo {
         this.countPlayers = countPlayers;
     }
 
-    public void gameSwitchTwo() {
-        UpperPlateau upperPlateau = new UpperPlateau();
+    public boolean gameSwitchTwo() {
+        UpperPlateau upperPlateau = new UpperPlateau(calculateLevels, playerList, countPlayers);
         TheHallsOfKaraz theHallsOfKaraz = new TheHallsOfKaraz(calculateLevels, playerList, countPlayers);
         PlayerChoice playerChoice = new PlayerChoice();
-
+        boolean isPlayerEncounter = false;
         boolean isChoice = true;
         do {
             System.out.println(playerChoice.presentLevel2());
@@ -32,11 +32,11 @@ public class GameLevelTwo {
 
             switch (gameMapChoice) {
                 case 1 -> {
-                    theHallsOfKaraz.startUpGameOne();
+                    isPlayerEncounter = theHallsOfKaraz.startUpGameOne();
                     isChoice = false;
                 }
                 case 2 -> {
-                    upperPlateau.startUpGameTwo();
+                    isPlayerEncounter = upperPlateau.startUpGameTwo();
                     isChoice = false;
                 }
                 case 3 -> {
@@ -54,6 +54,8 @@ public class GameLevelTwo {
                 }
             }
         } while (isChoice);
+
+        return isPlayerEncounter;
     }
 
 }

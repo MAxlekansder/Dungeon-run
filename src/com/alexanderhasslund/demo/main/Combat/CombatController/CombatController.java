@@ -21,7 +21,7 @@ public class CombatController {
     }
 
 
-    public void initiateFight() {
+    public boolean initiateFight() {
         CombatMenu combatMenu = new CombatMenu();
         MonsterAttack monsterAttack = new MonsterAttack();
 
@@ -95,6 +95,10 @@ public class CombatController {
             combatEndingController.decideCombatWinner(playerList, monsterList);
             enter = Input.stringInput();
         }
+        if (playerList.isEmpty()) {
+            return false;
+        }
+        return true;
     }
 
 
@@ -144,7 +148,7 @@ public class CombatController {
 
         }
         for (Monster monster : monsterList) {
-            initiativeList.add(new InitiativeListView("\033[1;36mMONSTER\033[0m", monster.getMonsterName(), monster.getInitiative(), monster.getHp(),monster.getResoruce(), monster.getMonsterId(), monster.getDefence(), monster.getDamage()));
+            initiativeList.add(new InitiativeListView(monster.getTypeName(), monster.getMonsterName(), monster.getInitiative(), monster.getHp(),monster.getResoruce(), monster.getMonsterId(), monster.getDefence(), monster.getDamage()));
         }
 
         Collections.sort(initiativeList, new WindowInitiativComperator());

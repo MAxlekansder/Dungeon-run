@@ -13,7 +13,7 @@ public class TagTeam extends Monster implements IMonster, ICombat {
 
     //either they all have 3 bosses, or all together, shared health pool
     public TagTeam() {
-        super("THE VERMIN TAG TEAM: Skarrik, Rasknitt and DeathRattler", 10,10,120,40,25, 0, false, 0,400,0,false,0);
+        super("\033[1;36mBOSS\033[0m","THE VERMIN TAG TEAM: Skarrik, Rasknitt and DeathRattler", 150,10,120,40,25, 0, false, 0,400,0,false,0);
     }
 
 

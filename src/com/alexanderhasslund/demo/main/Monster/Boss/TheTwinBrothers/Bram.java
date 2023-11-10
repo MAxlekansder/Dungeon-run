@@ -12,7 +12,7 @@ import java.util.List;
 public class Bram extends Monster implements IMonster, ICombat {
 
     public Bram() {
-        super("THE TWIN BROTHERS - Bram",0,0,100,0,40,0,false,0,200,0,false,0);
+        super("\033[1;36mBOSS\033[0m","THE TWIN BROTHERS - Bram",100,0,7,0,40,0,false,0,200,0,false,0);
     }
 
     @Override

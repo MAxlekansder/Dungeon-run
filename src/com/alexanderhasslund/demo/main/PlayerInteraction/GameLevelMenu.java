@@ -20,21 +20,54 @@ public class GameLevelMenu {
         this.calculateLevels = calculateLevels;
     }
 
-    public void gameViewSwitch(){
+    public void gameViewSwitch() {
         GameLevelOne gameLevelOne = new GameLevelOne(calculateLevels, playerList, countPlayers);
         GameLevelTwo gameLevelTwo = new GameLevelTwo(calculateLevels, playerList, countPlayers);
         GameLevelThree gameLevelThree = new GameLevelThree(calculateLevels, playerList, countPlayers);
         GameLevelFour gameLevelFour = new GameLevelFour(calculateLevels, playerList, countPlayers);
         boolean isGameLevel = true;
+        boolean isPlayerEncounter = false;
 
         while (isGameLevel) {
             switch (calculateLevels) {
-                case 1 -> {gameLevelOne.gameSwitchOne(); calculateLevels++; isGameLevel = false;}
-                case 2 -> {gameLevelTwo.gameSwitchTwo(); calculateLevels++;  isGameLevel = false;}
-                case 3 -> {gameLevelThree.gameSwitchThree(); calculateLevels++; isGameLevel = false;}
-                case 4 -> {gameLevelFour.gameSwitchFour(); calculateLevels++; isGameLevel = false;}
-                case 5 -> {isGameLevel = false;}
-                default -> {System.out.println("Use the right input");}
+                case 1 -> {
+                    isPlayerEncounter = gameLevelOne.gameSwitchOne();
+                    if (isPlayerEncounter) {
+                        calculateLevels++;
+                        isGameLevel = false;
+                    }
+                    isGameLevel = false;
+                }
+                case 2 -> {
+                    isPlayerEncounter = gameLevelTwo.gameSwitchTwo();
+                    if (isPlayerEncounter) {
+                        calculateLevels++;
+                        isGameLevel = false;
+                    }
+                    isGameLevel = false;
+                }
+                case 3 -> {
+                    gameLevelThree.gameSwitchThree();
+                    if (isPlayerEncounter) {
+                        calculateLevels++;
+                        isGameLevel = false;
+                    }
+                    isGameLevel = false;
+                }
+                case 4 -> {
+                    gameLevelFour.gameSwitchFour();
+                    if (isPlayerEncounter) {
+                        calculateLevels++;
+                        isGameLevel = false;
+                    }
+                    isGameLevel = false;
+                }
+                case 5 -> {
+                    isGameLevel = false;
+                }
+                default -> {
+                    System.out.println("Use the right input");
+                }
             }
         }
     }

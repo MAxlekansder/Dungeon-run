@@ -72,12 +72,12 @@ public class StringLore {
                 
                 -----------------------------------------------------   
                 \033[1;33mBERSERKERS RAGE                    FOOLS ELUSIVENESS               DRAGONS BREATH\033[0m
-                The barbarian enrages,             The rogue performs a            The sorcerer breathes fire  
-                increasing damage when under       swift attack striking           to every enemy dealing massive
-                30% hp                             2 targets the rogue is          area of effect damage 
-                                                   facing, dealing double          **BETA** burning every enemy
+                Executes the target                The rogue performs a            The sorcerer breathes fire  
+                when monster hp is lower than      swift attack striking           to every enemy dealing massive
+                30% of barbarians hp               all targets the rogue is        area of effect damage 
+                                                   facing, dealing double          **TBA** burning every enemy
                                                    damage. But has a               for 2 rounds
-                                                   2 rounds cooldown
+                                                   **TBA**2 rounds cooldown
                 -----------------------------------------------------   
                 """);
     }
@@ -112,21 +112,19 @@ public class StringLore {
                 """);
     }
 
-    public String newGameWakingUp() {
+    public static String newGameWakingUp() {
         return ("""
                 
                 
                 """);
     }
 
-    public String bossTagTeam() {
+    public static String bossTagTeam() {
         return("""
                 sounding like a horde running towards the last room you just finished
                 Like shadows, you see nothing but the sound keeps getting closer
                 
                 you realise, there's not just one - but three of them...
-                
-                
                 """);
     }
 

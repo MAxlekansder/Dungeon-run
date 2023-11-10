@@ -8,7 +8,7 @@ public class Thaal extends Monster implements IMonster {
 
 
     public Thaal() {
-        super("THE GRAND EMPEROR - Thaal",0,0,0,0,0,0,false,0,1000,0,false,0);
+        super("\033[1;36mFINAL BOSS\033[0m","THE GRAND EMPEROR - Thaal",0,0,0,0,0,0,false,0,1000,0,false,0);
     }
 
     @Override

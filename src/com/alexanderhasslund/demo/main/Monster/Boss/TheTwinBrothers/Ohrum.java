@@ -12,7 +12,7 @@ public class Ohrum extends Monster implements IMonster, ICombat {
 
 
     public Ohrum() {
-        super("THE TWIN BROTHERS - Oh'rum",0,0,100,0,60,0,false,0,300,0,false,0);
+        super("\033[1;36mBOSS\033[0m","THE TWIN BROTHERS - Oh'rum",100,0,7,0,60,0,false,0,300,0,false,0);
     }
 
     @Override
