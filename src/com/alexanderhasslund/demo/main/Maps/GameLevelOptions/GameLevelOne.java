@@ -1,7 +1,7 @@
-package com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions;
+package com.alexanderhasslund.demo.main.Maps.GameLevelOptions;
 
 import com.alexanderhasslund.demo.main.Engine.Input;
-import com.alexanderhasslund.demo.main.Levels.Maps.TheHallsOfKaraz;
+import com.alexanderhasslund.demo.main.Maps.GameLevelFloors.TheHallsOfKaraz;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
@@ -32,7 +32,7 @@ public class GameLevelOne {
             switch (gameMapChoice) {
                 case 1 -> {
                     isPlayerEncounter = theHallsOfKaraz.startUpGameOne();
-
+                    if (!isPlayerEncounter) isChoice = false;
                 }
                 case 2 -> {
                     System.out.println(" Level not reached");

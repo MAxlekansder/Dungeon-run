@@ -1,7 +1,6 @@
 package com.alexanderhasslund.demo.main.Monster.Boss.theInquisition;
 
 import com.alexanderhasslund.demo.main.Combat.ICombat;
-import com.alexanderhasslund.demo.main.Monster.Boss.Boss;
 import com.alexanderhasslund.demo.main.Monster.IMonster;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
@@ -26,7 +25,7 @@ public class theInquisition extends Monster implements IMonster, ICombat {
     }
 
     @Override
-    public void spells() {
+    public void spells(List<Player> playerList, Player player, List<Monster> monsterList, Monster monster) {
 
     }
 }

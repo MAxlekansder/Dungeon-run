@@ -14,7 +14,7 @@ public class MonsterAttack {
 
     public void monsterStrikePlayer( List<Monster> monsterList, List<Player> playerList, Monster currentMonster, Player currentPlayer) {
 
-        System.out.printf("\033[1;36mMONSTER\033[0m %s turn:\n", currentMonster.getMonsterName());
+        System.out.printf("\n\033[1;36mMONSTER\033[0m %s turn:\n", currentMonster.getMonsterName());
 
         IntStream.range(0, monsterList.size()).filter(index -> index == currentMonster.getMonsterId()).forEach(index -> {
             if (currentMonster instanceof ICombat) {
@@ -26,9 +26,10 @@ public class MonsterAttack {
       checkPlayerhasDied(playerList);
       System.out.println("Press enter to continue: ");
       String enter = Input.stringInput();
+
     }
 
-
+    // check if this boolean is needed?
     public void checkPlayerhasDied(List<Player> playerList) {
         for (int i = 0; i < playerList.size(); i++) {
             if (playerList.get(i).getHp() <= 0) {

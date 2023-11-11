@@ -31,6 +31,53 @@ public class Player implements Serializable {
     private boolean isDead;
     private boolean hasPlayed;
 
+    private int baseStrength;
+    private int baseAgility;
+    private int baseIntellect;
+    private int baseDefence;
+    private int baseDamage;
+
+
+    public int getBaseStrength() {
+        return baseStrength;
+    }
+
+    public void setBaseStrength(int baseStrength) {
+        this.baseStrength = baseStrength;
+    }
+
+    public int getBaseAgility() {
+        return baseAgility;
+    }
+
+    public void setBaseAgility(int baseAgility) {
+        this.baseAgility = baseAgility;
+    }
+
+    public int getBaseIntellect() {
+        return baseIntellect;
+    }
+
+    public void setBaseIntellect(int baseIntellect) {
+        this.baseIntellect = baseIntellect;
+    }
+
+    public int getBaseDefence() {
+        return baseDefence;
+    }
+
+    public void setBaseDefence(int baseDefence) {
+        this.baseDefence = baseDefence;
+    }
+
+    public int getBaseDamage() {
+        return baseDamage;
+    }
+
+    public void setBaseDamage(int baseDamage) {
+        this.baseDamage = baseDamage;
+    }
+
     public int getMaxResource() {
         return maxResource;
     }

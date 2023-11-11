@@ -77,7 +77,7 @@ public class BarbarianTest extends PlayerTest implements IClasses, ICombat {
     }
 
     @Override
-    public void trait(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
+    public void ultimate(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
         //berserkers rage
         //when hp is below 30 <- activate berserkers rage
 
@@ -123,7 +123,7 @@ public class BarbarianTest extends PlayerTest implements IClasses, ICombat {
         // build a miss system? Even for monsters based on something.
 
         monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() - currentPlayer.getDamage());
-        System.out.printf("The barbarian attacks with a hard hitting strike, Dealing %s to monster %s", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
+        System.out.printf("\nThe barbarian attacks with a hard hitting strike, Dealing %s to monster %s", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
 

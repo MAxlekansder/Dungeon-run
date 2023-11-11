@@ -13,11 +13,10 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
     private final String className;
     private int id;
-    private int maxHp;
+
     private int hp;
     private int damage;
     private int resource;
-    private int maxResource;
     private int strength;
     private int agility;
     private int intellect;
@@ -26,6 +25,15 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     private int initiative;
     private boolean isDead;
     private boolean hasPlayed;
+
+    private int maxResource;
+    private int maxHp;
+    private int baseStrength;
+    private int baseAgility;
+    private int baseIntellect;
+    private int baseDefence;
+    private int baseDamage;
+
 
     public Sorcerer() {
         this.className = Color.BLUE + "SORCERER" + Color.RESET;
@@ -43,6 +51,13 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         this.maxResource = 150;
         this.isDead = false;
         this.hasPlayed = false;
+
+        this.baseStrength = 3;
+        this.baseAgility = 5;
+        this.baseIntellect = 22;
+        this.baseDefence = 5;
+        this.baseDamage = 10;
+
     }
 
     @Override
@@ -56,35 +71,36 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
             if (currentPlayer.getExperience() == 100) { // fix better logic for leveling...
                 currentPlayer.setLevel(currentPlayer.getLevel() +1);
-                System.out.printf("%s %s just leveled up to level %s! ", currentPlayer.getClassName(), currentPlayer.getName(), currentPlayer.getLevel());
+                System.out.printf("%s %s just leveled up to level %s! \n", currentPlayer.getClassName(), currentPlayer.getName(), currentPlayer.getLevel());
                 currentPlayer.setExperience(0);
                 addStatsToPlayer(currentPlayer);
             }
         }
     }
 
+
     @Override
     public void addStatsToPlayer(Player currentPlayer) {
 
-        currentPlayer.setStrength(currentPlayer.getStrength() + (int)(currentPlayer.getLevel() / 2.3));
-        currentPlayer.setAgility(currentPlayer.getAgility() + (int)(currentPlayer.getLevel() / 1.2));
-        currentPlayer.setIntellect(currentPlayer.getIntellect() + (int)(currentPlayer.getLevel() / 0.8));
+        currentPlayer.setBaseStrength(currentPlayer.getBaseStrength() + (int)(currentPlayer.getLevel() / 2.3));
+        currentPlayer.setBaseAgility(currentPlayer.getBaseAgility() + (int)(currentPlayer.getLevel() / 1.2));
+        currentPlayer.setBaseIntellect(currentPlayer.getBaseIntellect() + (int)(currentPlayer.getLevel() / 0.8));
 
-        currentPlayer.setDamage(currentPlayer.getDamage() + (currentPlayer.getIntellect() / 5));
+        currentPlayer.setBaseDamage(currentPlayer.getBaseDamage() + (currentPlayer.getIntellect() / 5));
         currentPlayer.setMaxResource(currentPlayer.getMaxResource() + (currentPlayer.getIntellect() / 2));
-        currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getIntellect() * 0.2));
+        currentPlayer.setBaseDefence(currentPlayer.getBaseDefence() + (int) (currentPlayer.getIntellect() * 0.2));
         currentPlayer.setMaxHp(currentPlayer.getMaxHp()+ (int) (currentPlayer.getStrength() * 1));
     }
 
 
 
     @Override
-    public void trait(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
+    public void ultimate(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
 
         System.out.println("The sorcerer muster all its power and blast all monster in range: ");
 
         for (Monster monster : monsterList) {
-             monster.setHp(monster.getHp() - (int) (currentPlayer.getDamage() * (level * 1.3)));
+             monster.setHp(monster.getHp() - (int) (currentPlayer.getDamage() * (level * 1.3))); // guessing the damage gets fucked with the multiplier
         }
         System.out.println("Doing per monster: " + ((int) (currentPlayer.getDamage() * (level * 1.3))));
         System.out.println("And in total: " + ((int) (currentPlayer.getDamage() * (level * 1.3)*monsterList.size())));
@@ -156,6 +172,17 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         System.out.printf("The Sorcerer attacks with all element aligned, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
+
+    @Override
+    public boolean isHasPlayed() {
+        return hasPlayed;
+    }
+
+    @Override
+    public void setHasPlayed(boolean hasPlayed) {
+        this.hasPlayed = hasPlayed;
+    }
+
     @Override
     public int getMaxHp() {
         return maxHp;
@@ -178,7 +205,6 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     public void getStatus() {
 
     }
-
 
     @Override
     public int getId() {

@@ -1,31 +1,26 @@
-package com.alexanderhasslund.demo.main.Levels.Maps;
+package com.alexanderhasslund.demo.main.Maps.GameLevelFloors;
 
 import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
-import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
-import com.alexanderhasslund.demo.main.Monster.Boss.Boss;
+import com.alexanderhasslund.demo.main.Monster.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.StringLore;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class UpperPlateau {
+public class FinalRoomOfKazarak {
+
     private int calculateLevels;
     private List<Player> playerList;
-    private List<Boss> bossList;
     private int countPlayers;
 
-
-    public UpperPlateau(int calculateLevels, List<Player> playerList, int countPlayers) {
-
+    public FinalRoomOfKazarak(int calculateLevels, List<Player> playerList, int countPlayers) {
         this.calculateLevels = calculateLevels;
         this.playerList = playerList;
         this.countPlayers = countPlayers;
-        this.bossList = new ArrayList<>();
     }
 
-    public boolean startUpGameTwo() {
+    public boolean startUpGameFour() {
         MonsterController monsterController = new MonsterController(countPlayers);
         CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
         StringManipulator stringManipulator = new StringManipulator();
@@ -42,6 +37,5 @@ public class UpperPlateau {
 
         // trigger same as in maingameMenu
         return checkPlayerEncounter;
-
     }
 }

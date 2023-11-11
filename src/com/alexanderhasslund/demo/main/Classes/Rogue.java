@@ -29,6 +29,12 @@ public class Rogue extends Player implements IClasses, ICombat {
     private boolean isDead;
     private boolean hasPlayed;
 
+    private int baseStrength;
+    private int baseAgility;
+    private int baseIntellect;
+    private int baseDefence;
+    private int baseDamage;
+
 
     public Rogue() {
         this.className = Color.GREEN + "ROGUE" + Color.RESET;
@@ -42,10 +48,17 @@ public class Rogue extends Player implements IClasses, ICombat {
         this.agility = 20;
         this.intellect = 2;
         this.level = 1;
-        this.defence = 10;
+        this.defence = 6;
         this.initiative = 40;
         this.isDead = false;
         this.hasPlayed = false;
+
+        //setters for reseting when leveling
+        this.baseStrength = 8;
+        this.baseAgility = 20;
+        this.baseIntellect = 2;
+        this.baseDefence = 6;
+        this.baseDamage = 15;
     }
 
     @Override
@@ -59,7 +72,7 @@ public class Rogue extends Player implements IClasses, ICombat {
 
             if (currentPlayer.getExperience() == 100) { // fix better logic for leveling...
                 currentPlayer.setLevel(currentPlayer.getLevel() +1);
-                System.out.printf("%s %s just leveled up to level %s! ", currentPlayer.getClassName(), currentPlayer.getName(), currentPlayer.getLevel());
+                System.out.printf("%s %s just leveled up to level %s! \n", currentPlayer.getClassName(), currentPlayer.getName(), currentPlayer.getLevel());
                 currentPlayer.setExperience(0);
 
                 ResetCombat resetCombat = new ResetCombat();
@@ -72,22 +85,22 @@ public class Rogue extends Player implements IClasses, ICombat {
     @Override
     public void addStatsToPlayer(Player currentPlayer) {
 
-        currentPlayer.setStrength(currentPlayer.getStrength() + (int)(currentPlayer.getLevel() / 1.2));
-        currentPlayer.setAgility(currentPlayer.getAgility() + (int)(currentPlayer.getLevel() / 1.1));
-        currentPlayer.setIntellect(currentPlayer.getIntellect() + (int)(currentPlayer.getLevel() / 1.5));
+        currentPlayer.setBaseStrength(currentPlayer.getBaseStrength() + (int)(currentPlayer.getLevel() / 1.2));
+        currentPlayer.setBaseAgility(currentPlayer.getBaseAgility() + (int)(currentPlayer.getLevel() / 1.1));
+        currentPlayer.setBaseIntellect(currentPlayer.getBaseIntellect() + (int)(currentPlayer.getLevel() / 1.5));
 
-        currentPlayer.setDamage(currentPlayer.getDamage() + (int)(currentPlayer.getAgility() / 2.5));
-        currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getStrength() * 0.2));
+        currentPlayer.setBaseDamage(currentPlayer.getBaseDamage() + (int)(currentPlayer.getAgility() / 2.5));
+        currentPlayer.setBaseDefence(currentPlayer.getBaseDefence() + (int) (currentPlayer.getStrength() * 0.2));
         currentPlayer.setMaxHp(currentPlayer.getMaxHp() + (int) (currentPlayer.getStrength() * 0.1));
     }
 
 
 
     @Override
-    public void trait(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
+    public void ultimate(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
 
         System.out.println("The rogue strikes in a quick sequence, dealing double damage to: ");
-        int calcRogueUltimate = currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getDamage();
+        int calcRogueUltimate = (currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getDamage() - 4);
 
         for (Monster monster : monsterList) {
 
@@ -123,7 +136,6 @@ public class Rogue extends Player implements IClasses, ICombat {
             }
         }
     }
-
 
 
     @Override
@@ -167,6 +179,35 @@ public class Rogue extends Player implements IClasses, ICombat {
                         " Initiative = " + initiative + "  ||";
     }
 
+    @Override
+    public int getDefence() {
+        return defence;
+    }
+
+    @Override
+    public void setDefence(int defence) {
+        this.defence = defence;
+    }
+
+    @Override
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    @Override
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
+
+    @Override
+    public int getMaxResource() {
+        return maxResource;
+    }
+
+    @Override
+    public void setMaxResource(int maxResource) {
+        this.maxResource = maxResource;
+    }
     @Override
     public int getId() {
         return id;

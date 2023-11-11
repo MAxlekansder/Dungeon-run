@@ -1,64 +1,64 @@
-package com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions;
+package com.alexanderhasslund.demo.main.Maps.GameLevelOptions;
 
 import com.alexanderhasslund.demo.main.Engine.Input;
-import com.alexanderhasslund.demo.main.Levels.Maps.CityMarkazh;
-import com.alexanderhasslund.demo.main.Levels.Maps.FinalRoomOfKazarak;
-import com.alexanderhasslund.demo.main.Levels.Maps.TheHallsOfKaraz;
-import com.alexanderhasslund.demo.main.Levels.Maps.UpperPlateau;
+import com.alexanderhasslund.demo.main.Maps.GameLevelFloors.CityMarkazh;
+import com.alexanderhasslund.demo.main.Maps.GameLevelFloors.TheHallsOfKaraz;
+import com.alexanderhasslund.demo.main.Maps.GameLevelFloors.UpperPlateau;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
 import java.util.List;
 
-public class GameLevelFour {
+public class GameLevelThree {
 
     private int calculateLevels;
     private List<Player> playerList;
     private int countPlayers;
 
-    public GameLevelFour(int calculateLevels, List<Player> playerList, int countPlayers) {
+    public GameLevelThree(int calculateLevels, List<Player> playerList, int countPlayers) {
         this.calculateLevels = calculateLevels;
         this.playerList = playerList;
         this.countPlayers = countPlayers;
     }
 
-    public void gameSwitchFour() {
-        FinalRoomOfKazarak finalRoomOfKazarak = new FinalRoomOfKazarak(calculateLevels, playerList, countPlayers);
+    public boolean gameSwitchThree() {
         CityMarkazh cityMarkazh = new CityMarkazh(calculateLevels, playerList, countPlayers);
         UpperPlateau upperPlateau = new UpperPlateau(calculateLevels, playerList, countPlayers);
         TheHallsOfKaraz theHallsOfKaraz = new TheHallsOfKaraz(calculateLevels, playerList, countPlayers);
         PlayerChoice playerChoice = new PlayerChoice();
-
-        System.out.println(playerChoice.presentLevel4());
-        int gameMapChoice = Input.intInput();
+        boolean isPlayerEncounter = false;
         boolean isChoice = true;
+
         do {
+            System.out.println(playerChoice.presentLevel3());
+            int gameMapChoice = Input.intInput();
+
             switch (gameMapChoice) {
                 case 1 -> {
-                    theHallsOfKaraz.startUpGameOne();
+                    isPlayerEncounter = theHallsOfKaraz.startUpGameOne();
                     isChoice = false;
                 }
                 case 2 -> {
-                    upperPlateau.startUpGameTwo();
+                    isPlayerEncounter = upperPlateau.startUpGameTwo();
                     isChoice = false;
                 }
                 case 3 -> {
-                    cityMarkazh.startUpGameThree();
+                    isPlayerEncounter = cityMarkazh.startUpGameThree();
                     isChoice = false;
                 }
                 case 4 -> {
-                    finalRoomOfKazarak.startUpGameFour();
-                    isChoice = false;
+                    System.out.println(" Level not reached");
                 }
                 case 5 -> {
                     System.out.println(" quit");
+                    isPlayerEncounter = true;
                     isChoice = false;
                 }
                 default -> {
                     System.out.println("Use right input...");
                 }
             }
-        } while (isChoice);
+        }while (isChoice);
+        return isPlayerEncounter;
     }
 }
-

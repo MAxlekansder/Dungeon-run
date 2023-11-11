@@ -1,10 +1,10 @@
 package com.alexanderhasslund.demo.main.PlayerInteraction;
 
 import com.alexanderhasslund.demo.main.Player.Player;
-import com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions.GameLevelFour;
-import com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions.GameLevelOne;
-import com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions.GameLevelThree;
-import com.alexanderhasslund.demo.main.PlayerInteraction.GameLevelOptions.GameLevelTwo;
+import com.alexanderhasslund.demo.main.Maps.GameLevelOptions.GameLevelFour;
+import com.alexanderhasslund.demo.main.Maps.GameLevelOptions.GameLevelOne;
+import com.alexanderhasslund.demo.main.Maps.GameLevelOptions.GameLevelThree;
+import com.alexanderhasslund.demo.main.Maps.GameLevelOptions.GameLevelTwo;
 
 import java.util.List;
 
@@ -20,13 +20,13 @@ public class GameLevelMenu {
         this.calculateLevels = calculateLevels;
     }
 
-    public void gameViewSwitch() {
+    public boolean gameViewSwitch() {
         GameLevelOne gameLevelOne = new GameLevelOne(calculateLevels, playerList, countPlayers);
         GameLevelTwo gameLevelTwo = new GameLevelTwo(calculateLevels, playerList, countPlayers);
         GameLevelThree gameLevelThree = new GameLevelThree(calculateLevels, playerList, countPlayers);
         GameLevelFour gameLevelFour = new GameLevelFour(calculateLevels, playerList, countPlayers);
         boolean isGameLevel = true;
-        boolean isPlayerEncounter = false;
+        boolean isPlayerEncounter = true;
 
         while (isGameLevel) {
             switch (calculateLevels) {
@@ -37,6 +37,7 @@ public class GameLevelMenu {
                         isGameLevel = false;
                     }
                     isGameLevel = false;
+
                 }
                 case 2 -> {
                     isPlayerEncounter = gameLevelTwo.gameSwitchTwo();
@@ -47,7 +48,7 @@ public class GameLevelMenu {
                     isGameLevel = false;
                 }
                 case 3 -> {
-                    gameLevelThree.gameSwitchThree();
+                    isPlayerEncounter = gameLevelThree.gameSwitchThree();
                     if (isPlayerEncounter) {
                         calculateLevels++;
                         isGameLevel = false;
@@ -70,6 +71,7 @@ public class GameLevelMenu {
                 }
             }
         }
+        return isPlayerEncounter;
     }
 
 }

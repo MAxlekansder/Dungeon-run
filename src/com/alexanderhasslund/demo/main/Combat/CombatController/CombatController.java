@@ -24,7 +24,7 @@ public class CombatController {
     public boolean initiateFight() {
         CombatMenu combatMenu = new CombatMenu();
         MonsterAttack monsterAttack = new MonsterAttack();
-
+        boolean isGameOver = false;
         //Collections.sort(playerList, new PlayerInitiativeComperator());
         //Collections.sort(monsterList, new MonsterInitiativeComperator());
 
@@ -37,7 +37,9 @@ public class CombatController {
             Collections.sort(monsterList, new MonsterInitiativeComperator());
             checkCombatSorted(playerList, monsterList);
 
-            while (!(checkPlayerHasPLayed(playerList) && checkMonsterHasPLayed(monsterList))) {
+            do {
+                Collections.sort(playerList, new PlayerInitiativeComperator());
+                Collections.sort(monsterList, new MonsterInitiativeComperator());
 
 
                 if (playerList.isEmpty() || monsterList.isEmpty()) {
@@ -72,7 +74,8 @@ public class CombatController {
                         }
                     }
                 }
-            }
+            } while (!(checkPlayerHasPLayed(playerList) && checkMonsterHasPLayed(monsterList)));
+
             countRounds++;
 
 
@@ -95,10 +98,11 @@ public class CombatController {
             combatEndingController.decideCombatWinner(playerList, monsterList);
             enter = Input.stringInput();
         }
-        if (playerList.isEmpty()) {
+        if (playerList.isEmpty() && !combatMenu.isHasFled()) {
             return false;
+        } else {
+            return true;
         }
-        return true;
     }
 
 
@@ -156,12 +160,10 @@ public class CombatController {
         System.out.println("\033[1;33mINITIATIVE LIST highest in list starts (lowest initiative starts)---------------->\033[0m");
         for (InitiativeListView initiativeListView : initiativeList) {
             System.out.println(
-                     initiativeListView.getClassName() + "  || "
-                    +initiativeListView.getCombatName() + "  || "
-                    +" initiative = " +initiativeListView.getInitiative() + " || "
-                    +" HP = " +initiativeListView.getHp()  + " ||  "
-                    +" Damage = " +initiativeListView.getDamage()  + "  ||  "
-                    +" Defence = " +initiativeListView.getDefence()  + "  ||  "
+                     initiativeListView.getClassName() + "   ||     "
+                    +initiativeListView.getCombatName() + "   ||     "
+                    +" initiative = " +initiativeListView.getInitiative() + "   ||     "
+                    +" HP = " +initiativeListView.getHp()  + "   ||     "
             );
         }
         System.out.println("\nINITIATIVE LIST ----------------------------------------------------------------->");
