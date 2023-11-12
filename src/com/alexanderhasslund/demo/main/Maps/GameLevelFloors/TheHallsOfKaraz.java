@@ -30,11 +30,11 @@ public class TheHallsOfKaraz  {
         monsterController.monsterValueController();
         combatController.initiateFight();
 
+        if (combatController.initiateFight()) {
+            stringManipulator.manipulateString(StringLore.bossTagTeam());
 
-        stringManipulator.manipulateString(StringLore.bossTagTeam());
-
-        monsterController.chooseBossFight(calculateLevels);
-
+            monsterController.chooseBossFight(calculateLevels);
+        } else System.out.println("As you run out, you still here the screeches of a horde, maybe another day...");
         boolean checkPlayerEncounter = combatController.initiateFight();
         // sout a "you killed the first boss... give rewards etc etc
 

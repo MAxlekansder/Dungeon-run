@@ -107,8 +107,6 @@ public class Rogue extends Player implements IClasses, ICombat {
             monster.setHp(monster.getHp() - calcRogueUltimate); // based on sword damage
             System.out.println(monster.getMonsterName() + " lost " + calcRogueUltimate + " hp!");
 
-            monster.setHp(monster.getHp() - calcRogueUltimate); // based on sword damage
-            System.out.println(monster.getMonsterName() + " lost "  + calcRogueUltimate + " hp!");
         }
         currentPlayer.setResource(currentPlayer.getResource() - 150);
     }

@@ -54,12 +54,12 @@ public class CombatController {
                     if (currentMonster == null) {
 
                         combatMenu.combatSwitch(playerList, monsterList, currentPlayer, currentMonster);
-                        break;
+                        //break;
 
                     } else if (currentPlayer == null) {
 
                         monsterAttack.monsterStrikePlayer( monsterList, playerList, currentMonster, currentPlayer);
-                        break;
+                        //break;
 
                     } else {
 
@@ -92,6 +92,7 @@ public class CombatController {
             ResetCombat resetCombat = new ResetCombat();
             System.out.println("you cowardly fled from the fight... did i already call you a coward? Coward");
             resetCombat.resetPlayerListBackToNormal(playerList);
+            return false;
 
         } else {
             CombatEndingController combatEndingController = new CombatEndingController();

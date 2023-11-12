@@ -71,7 +71,9 @@ public class PlayerAttack {
 
     public void checkMonsterhasDied(List<Monster> monsterList, List<Player> playerList, Player currentPlayer) {
 
-        for (int i = 0; i < monsterList.size(); i++) {
+
+        //for (int i = 0; i < monsterList.size(); i++) {
+        for (int i = monsterList.size() -1; i >=0; i--) {
             countDeadMonsters++;
             if (monsterList.get(i).getHp() <= 0) {
 
