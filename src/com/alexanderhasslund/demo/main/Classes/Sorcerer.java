@@ -27,6 +27,12 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     private boolean isDead;
     private boolean hasPlayed;
 
+    private int baseDamage;
+    private int baseStrength;
+    private int baseAgility;
+    private int baseIntellect;
+    private int baseDefence;
+
     public Sorcerer() {
         this.className = Color.BLUE + "SORCERER" + Color.RESET;
         this.hp = 90;
@@ -43,6 +49,12 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         this.maxResource = 150;
         this.isDead = false;
         this.hasPlayed = false;
+
+        this.baseDamage = 10;
+        this.baseStrength = 3;
+        this.baseAgility = 5;
+        this.baseIntellect = 22;
+        this.baseDefence = 5;
     }
 
     @Override
@@ -66,13 +78,13 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     @Override
     public void addStatsToPlayer(Player currentPlayer) {
 
-        currentPlayer.setStrength(currentPlayer.getStrength() + (int)(currentPlayer.getLevel() / 2.3));
-        currentPlayer.setAgility(currentPlayer.getAgility() + (int)(currentPlayer.getLevel() / 1.2));
-        currentPlayer.setIntellect(currentPlayer.getIntellect() + (int)(currentPlayer.getLevel() / 0.8));
+        currentPlayer.setBaseStrength(currentPlayer.getBaseStrength() + (int)(currentPlayer.getLevel() / 2.3));
+        currentPlayer.setBaseAgility(currentPlayer.getBaseAgility() + (int)(currentPlayer.getLevel() / 1.2));
+        currentPlayer.setBaseAgility(currentPlayer.getBaseAgility() + (int)(currentPlayer.getLevel() / 0.8));
 
-        currentPlayer.setDamage(currentPlayer.getDamage() + (currentPlayer.getIntellect() / 5));
+        currentPlayer.setBaseDamage(currentPlayer.getBaseDamage() + (currentPlayer.getIntellect() / 5));
         currentPlayer.setMaxResource(currentPlayer.getMaxResource() + (currentPlayer.getIntellect() / 2));
-        currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getIntellect() * 0.2));
+        currentPlayer.setBaseDefence(currentPlayer.getBaseDefence() + (int) (currentPlayer.getIntellect() * 0.2));
         currentPlayer.setMaxHp(currentPlayer.getMaxHp()+ (int) (currentPlayer.getStrength() * 1));
     }
 
@@ -154,6 +166,56 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         + (currentPlayer.getIntellect() / 7));
 
         System.out.printf("The Sorcerer attacks with all element aligned, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
+    }
+
+    @Override
+    public int getBaseDamage() {
+        return baseDamage;
+    }
+
+    @Override
+    public void setBaseDamage(int baseDamage) {
+        this.baseDamage = baseDamage;
+    }
+
+    @Override
+    public int getBaseStrength() {
+        return baseStrength;
+    }
+
+    @Override
+    public void setBaseStrength(int baseStrength) {
+        this.baseStrength = baseStrength;
+    }
+
+    @Override
+    public int getBaseAgility() {
+        return baseAgility;
+    }
+
+    @Override
+    public void setBaseAgility(int baseAgility) {
+        this.baseAgility = baseAgility;
+    }
+
+    @Override
+    public int getBaseIntellect() {
+        return baseIntellect;
+    }
+
+    @Override
+    public void setBaseIntellect(int baseIntellect) {
+        this.baseIntellect = baseIntellect;
+    }
+
+    @Override
+    public int getBaseDefence() {
+        return baseDefence;
+    }
+
+    @Override
+    public void setBaseDefence(int baseDefence) {
+        this.baseDefence = baseDefence;
     }
 
     @Override

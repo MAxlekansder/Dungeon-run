@@ -17,7 +17,7 @@ public class theInquisition extends Monster implements IMonster, ICombat {
 
     @Override
     public void attack(List<Player> playerList, Player player, List<Monster> monsterList, Monster monster) {
-
+    
     }
 
     @Override

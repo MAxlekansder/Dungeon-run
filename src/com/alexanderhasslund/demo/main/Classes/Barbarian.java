@@ -27,6 +27,12 @@ public class Barbarian extends Player implements IClasses, ICombat {
     private boolean isDead;
     private boolean hasPlayed;
 
+    private int baseDamage;
+    private int baseStrength;
+    private int baseAgility;
+    private int baseIntellect;
+    private int baseDefence;
+
 
     public Barbarian() {
         //Player barbarian = new Player(getName(),getTalentTreeList(),getInventoryList(),0,0,"BARBARIAN",115,20,100,22,8,0,0,10,55);
@@ -46,6 +52,12 @@ public class Barbarian extends Player implements IClasses, ICombat {
         this.initiative = 55;
         this.isDead = false;
         this.hasPlayed = false;
+
+        this.baseDamage = 20;
+        this.baseStrength = 22;
+        this.baseAgility = 8;
+        this.baseIntellect = 0;
+        this.baseDefence = 15;
     }
 
 
@@ -73,12 +85,12 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
         //include a reset here if player levels up - otherwise stats gets calculated based on currentvalue...
 
-        currentPlayer.setStrength(currentPlayer.getStrength() + (int)(currentPlayer.getLevel() / 1.1));
-        currentPlayer.setAgility(currentPlayer.getAgility() + (int)(currentPlayer.getLevel() / 0.9));
-        currentPlayer.setIntellect(currentPlayer.getIntellect() + (int)(currentPlayer.getLevel() / 2.2));
+        currentPlayer.setBaseStrength(currentPlayer.getBaseStrength() + (int)(currentPlayer.getLevel() / 1.1));
+        currentPlayer.setBaseAgility(currentPlayer.getBaseAgility() + (int)(currentPlayer.getLevel() / 0.9));
+        currentPlayer.setBaseIntellect(currentPlayer.getBaseIntellect() + (int)(currentPlayer.getLevel() / 2.2));
 
-        currentPlayer.setDamage(currentPlayer.getDamage() + (int)(currentPlayer.getStrength() / 3));
-        currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getStrength() * 0.2));
+        currentPlayer.setBaseDamage(currentPlayer.getBaseDamage() + (int)(currentPlayer.getStrength() / 3));
+        currentPlayer.setBaseDefence(currentPlayer.getBaseDefence() + (int) (currentPlayer.getStrength() * 0.2));
         currentPlayer.setMaxHp(currentPlayer.getMaxHp() + (int) (currentPlayer.getStrength() * 0.1));
 
     }
@@ -178,6 +190,55 @@ public class Barbarian extends Player implements IClasses, ICombat {
                         " Initiative = " + initiative + "  ||";
     }
 
+    @Override
+    public int getBaseDamage() {
+        return baseDamage;
+    }
+
+    @Override
+    public void setBaseDamage(int baseDamage) {
+        this.baseDamage = baseDamage;
+    }
+
+    @Override
+    public int getBaseStrength() {
+        return baseStrength;
+    }
+
+    @Override
+    public void setBaseStrength(int baseStrength) {
+        this.baseStrength = baseStrength;
+    }
+
+    @Override
+    public int getBaseAgility() {
+        return baseAgility;
+    }
+
+    @Override
+    public void setBaseAgility(int baseAgility) {
+        this.baseAgility = baseAgility;
+    }
+
+    @Override
+    public int getBaseIntellect() {
+        return baseIntellect;
+    }
+
+    @Override
+    public void setBaseIntellect(int baseIntellect) {
+        this.baseIntellect = baseIntellect;
+    }
+
+    @Override
+    public int getBaseDefence() {
+        return baseDefence;
+    }
+
+    @Override
+    public void setBaseDefence(int baseDefence) {
+        this.baseDefence = baseDefence;
+    }
 
     @Override
     public int getMaxResource() {

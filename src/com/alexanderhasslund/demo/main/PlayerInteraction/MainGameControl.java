@@ -3,6 +3,7 @@ import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
 import com.alexanderhasslund.demo.main.Combat.CombatController.CombatEndingController;
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
+import com.alexanderhasslund.demo.main.File.SaveFile;
 import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.Shop.ShopMenu;
@@ -26,7 +27,7 @@ public class MainGameControl {
     public void mainSwitch() throws IOException, NoSuchFieldException, IllegalAccessException {
         PlayerChoice playerChoice = new PlayerChoice();
         ShopMenu shopMenu = new ShopMenu(playerList); // this line becomes null, seems like something is wrong
-        //SaveFile saveFile = new SaveFile(playerList);
+        SaveFile saveFile = new SaveFile();
         MonsterController monsterController = new MonsterController(countPlayers);
         CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
         CombatEndingController combatEndingController = new CombatEndingController();
@@ -51,7 +52,7 @@ public class MainGameControl {
 
                 }
                 case 3 -> {
-                     //saveFile.saveFilePlayer();
+                    saveFile.saveFilePlayer(playerList);
                 }
                 case 4 -> {
 
