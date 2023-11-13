@@ -4,6 +4,7 @@ import com.alexanderhasslund.demo.main.Inventory.Inventory;
 
 public class Swords extends Weapon {
 
+
     private String name;
     private int damage;
     private int initiative;
@@ -30,7 +31,7 @@ public class Swords extends Weapon {
     }
 
     public Inventory divineSword() {
-        Inventory divineSword = new Inventory("Divine sword",60, 20, 15,0,0);
+        Inventory divineSword = new Inventory("Divine sword",60, 20, 10,0,0);
         return divineSword;
     }
 

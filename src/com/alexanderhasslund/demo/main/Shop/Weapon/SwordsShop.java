@@ -61,7 +61,7 @@ public class SwordsShop {
 
                 }
                 case 4 -> {
-                    if (playerList.get(playerIndex).getLevel() >= 15 && playerList.get(playerIndex).getCurrency() >= 15000) {
+                    if (playerList.get(playerIndex).getLevel() >= 10 && playerList.get(playerIndex).getCurrency() >= 3000) {
                         playerList.get(playerIndex).getInventoryList().set(0,swords.divineSword());
 
                         swordPrice = 15000;

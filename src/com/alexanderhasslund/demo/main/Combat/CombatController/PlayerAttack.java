@@ -82,38 +82,20 @@ public class PlayerAttack {
 
                 for (int j = 0; j < playerList.size(); j++) {
 
-                    playerList.get(j).setCurrency( monsterList.get(i).getGivesCurrency());
-                    playerList.get(j).setExperience( monsterList.get(i).getGivesCurrency());
+                    playerList.get(j).setCurrency(playerList.get(j).getCurrency() + monsterList.get(i).getGivesCurrency());
+                    playerList.get(j).setExperience( playerList.get(j).getExperience() +monsterList.get(i).getGivesExperience());
                 }
                 monsterList.remove(monsterList.get(i));
             }
 
         }
 
-        playerList.forEach( player -> ((IClasses) currentPlayer).setLevelUp(player));//filter(index -> index == playerIndex)
+        playerList.forEach( player -> ((IClasses) currentPlayer).setLevelUp(player)); //filter(index -> index == playerIndex)
 
         //((IClasses) currentPlayer).setLevelUp(currentPlayer);
 
     }
 
-/*
-    public void setLevelUp(List<Player> playerList) {
-        int PlayerCurrentExperienceExperince = currentPlayer.getExperience();
-        currentPlayer.setExperience(0);
-
-        for (int i = PlayerCurrentExperienceExperince; i > 0; i--) {
-            currentPlayer.setExperience(currentPlayer.getExperience()+1);
-
-            if (currentPlayer.getExperience() == 100) { // fix better logic for leveling...
-
-                currentPlayer.setLevel(currentPlayer.getLevel() +1);
-                System.out.printf("%s %s just leveled up to level %s! ", currentPlayer.getClassName(), currentPlayer.getName(), currentPlayer.getLevel());
-                currentPlayer.setExperience(0);
-                addStatsToPlayer(currentPlayer);
-
-            }
-        }
-    } */
 }
 
 

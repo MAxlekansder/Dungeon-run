@@ -54,7 +54,7 @@ public class FirstCombatEncounter {
             firstMonsterList.add(new MonsterBrute());
             firstMonsterList.get(0).setHp(10);
             firstMonsterList.get(0).setInitiative(1);
-            firstMonsterList.get(0).setGivesExperience(firstMonsterList.get(0).getGivesExperience() + 200);
+            firstMonsterList.get(0).setGivesExperience(5);
             combatControllerif.initiateFight();
         } else {
 

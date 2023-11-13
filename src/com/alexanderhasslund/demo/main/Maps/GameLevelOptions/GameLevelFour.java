@@ -1,12 +1,14 @@
 package com.alexanderhasslund.demo.main.Maps.GameLevelOptions;
 
 import com.alexanderhasslund.demo.main.Engine.Input;
+import com.alexanderhasslund.demo.main.Engine.StringManipulator;
 import com.alexanderhasslund.demo.main.Maps.GameLevelFloors.CityMarkazh;
 import com.alexanderhasslund.demo.main.Maps.GameLevelFloors.FinalRoomOfKazarak;
 import com.alexanderhasslund.demo.main.Maps.GameLevelFloors.TheHallsOfKaraz;
 import com.alexanderhasslund.demo.main.Maps.GameLevelFloors.UpperPlateau;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
+import com.alexanderhasslund.demo.main.PlayerInteraction.StringLore;
 
 import java.util.List;
 
@@ -28,8 +30,11 @@ public class GameLevelFour {
         UpperPlateau upperPlateau = new UpperPlateau(calculateLevels, playerList, countPlayers);
         TheHallsOfKaraz theHallsOfKaraz = new TheHallsOfKaraz(calculateLevels, playerList, countPlayers);
         PlayerChoice playerChoice = new PlayerChoice();
+        StringManipulator stringManipulator = new StringManipulator();
 
-        System.out.println(playerChoice.presentLevel4());
+
+
+        System.out.println(playerChoice.presentFinalLevel());
         int gameMapChoice = Input.intInput();
         boolean isChoice = true;
         do {

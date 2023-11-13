@@ -87,7 +87,6 @@ public class CombatController {
 
         }
 
-
         if (combatMenu.isHasFled()) {
             ResetCombat resetCombat = new ResetCombat();
             System.out.println("you cowardly fled from the fight... did i already call you a coward? Coward");
@@ -99,11 +98,15 @@ public class CombatController {
             combatEndingController.decideCombatWinner(playerList, monsterList);
             enter = Input.stringInput();
         }
+
+
         if (playerList.isEmpty() && !combatMenu.isHasFled()) {
             return false;
         } else {
             return true;
         }
+
+
     }
 
 
@@ -156,14 +159,14 @@ public class CombatController {
             initiativeList.add(new InitiativeListView(monster.getTypeName(), monster.getMonsterName(), monster.getInitiative(), monster.getHp(),monster.getResoruce(), monster.getMonsterId(), monster.getDefence(), monster.getDamage()));
         }
 
-        Collections.sort(initiativeList, new WindowInitiativComperator());
+        Collections.sort(initiativeList, new CombatViewInitiativComperator());
 
         System.out.println("\033[1;33mINITIATIVE LIST highest in list starts (lowest initiative starts)---------------->\033[0m");
         for (InitiativeListView initiativeListView : initiativeList) {
             System.out.println(
                      initiativeListView.getClassName() + "   ||     "
-                    +initiativeListView.getCombatName() + "   ||     "
                     +" initiative = " +initiativeListView.getInitiative() + "   ||     "
+                    +" Name = " + initiativeListView.getCombatName() + "   ||     "
                     +" HP = " +initiativeListView.getHp()  + "   ||     "
             );
         }

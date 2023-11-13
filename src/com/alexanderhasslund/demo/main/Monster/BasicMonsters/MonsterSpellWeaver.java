@@ -13,8 +13,7 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
 
 
     public MonsterSpellWeaver() {
-        super("\033[1;36mMONSTER\033[0m","VERMIN SPELLWEAVER", 35,0,7,0,13,20,false,35,30,5,false,0);
-
+        super("\033[1;36mMONSTER\033[0m","VERMIN SPELLWEAVER", 35,0,7,0,13,20,false,50,50,5,false,0);
     }
 
     @Override
@@ -47,11 +46,6 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
             System.out.printf("The spellweaver misses %s player %s \n", playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getName());
 
         }
-    }
-
-    @Override
-    public void getStatus() {
-
     }
 
 }

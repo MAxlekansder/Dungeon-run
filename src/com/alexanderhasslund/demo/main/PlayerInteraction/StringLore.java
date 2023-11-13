@@ -112,21 +112,48 @@ public class StringLore {
                 """);
     }
 
-    public static String newGameWakingUp() {
-        return ("""
-                
-                
-                """);
-    }
 
     public static String reachingUpperPlateau() {
         return ("""
                 You've never seen anything like that before, rat-like vermin's...
                
                 a whole world opens up, nothing like the world you're use to.
-                In the underworld, a fully fleshed machinery with black tar build with black steel.
+                In the underworld, a fully fleshed machinery with black tar build with black steel
                 
                 you can't believe your eyes when you reach the upper plateau
+                """);
+    }
+
+    public static String theInnerCity() {
+        return ("""
+                The brothers was a though fight, but you made it trough
+                
+                "It's been entertaining" a voice echoes from above 
+                
+                "Never have we seen such a performance, usually no one gets passed the Deathrattler..."
+                
+                "Pfft... my grand design of the twins, Bram could have taken them out by himself!" 
+                
+                "SILENCE" - a figure that appears to be their leader shouts 
+                
+                "At least they're not getting past us. Guards! Kill them..."
+                """);
+    }
+
+    public static String theFinalRoomThaal() {
+        return("""
+                With their last, final breath - the council of thaal in unison 
+                breathes: " don't let them through" 
+                
+                "Thaal can't know that we failed..." 
+                
+                As the leader draws her last breath, you see her pointing towards something
+                reaching for salvation and forgiveness, but get's no response 
+                
+                you realise that the leader was pointing towards a path leading to 
+                the final plateau 
+                
+                but as you push for it, you still feel the curse of the inquisition....
                 """);
     }
 
@@ -141,12 +168,62 @@ public class StringLore {
 
     public static String bossTwinBrothers() {
         return ("""
+                In a synchronized sweep, two stone statues taller than anything you seen before
+                both with a halberd reaching to the heavens - in a second both have entered a
+                defensive state, you didnt have time to blink...
+                
+                They seem to be in sync, aligned with each other performing everything coordinated.
+                """);
+    }
+
+
+
+    public static String bossTheInquisition() {
+        return ("""
+                
+                As you might have understood, the six of the order, the inquisition have been watching 
+                all along - evaluating and playing with that you have faced as pawns
+                
+                Now it's time to take down the council of Thaal...
+               
+                """);
+    }
+
+
+    public static String bossIntroThaal() {
+        return ("""
+                In the realm of shadows, I, Thaal, the unyielding warlord
+                command the underworld with a malevolence that echoes through every cavern and crevice 
+                My dominion is draped in fear, and those who dare defy me find their destinies entwined with despair 
+                The underworld bends to my will, a symphony of darkness conducted by the unchallenged lord of shadows
+                
+                This will not be a set back, everything you faced so far is just numbers. The council of what? Really...
+                
+                But do come - let the last breath you take, be be taken by me.
+                """);
+    }
+
+    public static String bossLastBossThaal() {
+        return ("""
+                
+                In Thaal's last breaths, a twisted satisfaction lingered in the corners of his consciousness. 
+                Death had claimed him, but his malevolent legacy would endure, a shadow cast across the realms 
+                whispering tales of the once-mighty Thaal who dared to challenge even the forces of darkness.
+                
+                "In our world, you're the antagonist" he laughed. Spitting blood as he tries to stand up.
+                
+                With out hesitation, you slit Thaals throat - ending his life for good...
+                
+               
+                """);
+    }
+
+    public static String youWin() {
+        return ("""
+                            ===== CONGRATULATIONS! =====
+                You saved the city and the princess! BENNY IS NOW SAFE! 
                 
                 """);
     }
 
-    public String presentHowToPlay() {
-        return ("""
-                """);
-    }
 }

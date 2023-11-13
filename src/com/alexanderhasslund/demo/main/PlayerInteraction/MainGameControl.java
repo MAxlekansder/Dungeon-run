@@ -38,59 +38,60 @@ public class MainGameControl {
             System.out.println(playerChoice.mainMenuChoice());
             switch (Input.intInput()) {
                 case 1 -> {
-                    // continue
-                    // this method call is only for test, this might be in levelGenerator
+
                     isMainPlaying = gameLevelMenu.gameViewSwitch();
 
-                    /*
-                    monsterController.monsterValueController();
-                    combatController.initiateFight(); */
                 }
                 case 2 -> {
-                    // shop
+
                     shopMenu.mainShopMenu();
 
                 }
                 case 3 -> {
+
 
                     saveFile.saveFilePlayer(playerList);
 
                 }
                 case 4 -> {
 
-                    for (int i = 0; i < playerList.size(); i++) {
-                        System.out.println(
-                                Color.WHITE + playerList.get(i).getName().toUpperCase() + Color.RESET +
-                                        Color.WHITE + " Current level: " + Color.PURPLE + playerList.get(i).getLevel() + Color.RESET +
-                                        Color.WHITE + " Current currency:  " + Color.YELLOW + playerList.get(i).getCurrency() + Color.RESET +
-                                        Color.WHITE + " Current experience " + Color.CYAN + playerList.get(i).getExperience() + Color.RESET +
-
-                                        "       " + playerList.get(i).getClassName() + "  ||  " +
-                                        " Damage = " + (playerList.get(i).getDamage() + playerList.get(i).getInventoryList().get(0).getDamage() + playerList.get(i).getInventoryList().get(1).getDamage()) + "  ||  " +
-                                        " Resource = " + playerList.get(i).getResource() + "  ||  " +
-                                        " Strength = " + playerList.get(i).getStrength() + "  ||  " +
-                                        " Agility = " + playerList.get(i).getAgility() + "  ||  " +
-                                        " Intellect = " + playerList.get(i).getIntellect() + "  ||  " +
-                                        " Initiative = " + playerList.get(i).getInitiative() + "  ||  "
-                        );
-                    }
+                    checkPlayerStatus();
                 }
+
 
                 case 5 -> {
-                    // current level
-                    if (!isMainPlaying) {
-                        isMainPlaying = false;
-                    }
-                }
-                case 6 -> {
-                    // quit game
+
                     isMainPlaying = false;
                 }
                 default -> {
-                    System.out.println("error");
+                    System.out.println("Use the right input");
                 }
             }
         }
+    }
 
+    public void checkPlayerStatus() {
+        for (int i = 0; i < playerList.size(); i++) {
+            System.out.println(
+                    Color.WHITE + playerList.get(i).getName().toUpperCase() + Color.RESET +
+                            Color.WHITE + " Current level: " + Color.PURPLE + playerList.get(i).getLevel() + Color.RESET +
+                            Color.WHITE + " Current currency:  " + Color.YELLOW + playerList.get(i).getCurrency() + Color.RESET +
+                            Color.WHITE + " Current experience " + Color.CYAN + playerList.get(i).getExperience() + Color.RESET +
+
+                            "  Class =  " + playerList.get(i).getClassName() + "  ||  " +
+                            " Damage = " + (playerList.get(i).getBaseDamage() + playerList.get(i).getInventoryList().get(0).getDamage() + playerList.get(i).getInventoryList().get(1).getDamage()) + "  ||  " +
+                            " HP = " + (playerList.get(i).getMaxHp()) + " / " + playerList.get(i).getHp() + "  ||  " +
+                            " Resource = " + playerList.get(i).getMaxResource() + " / " + playerList.get(i).getResource()+ "  ||  " +
+                            " Strength = " + playerList.get(i).getBaseStrength() + "  ||  " +
+                            " Agility = " + playerList.get(i).getBaseAgility() + "  ||  " +
+                            " Intellect = " + playerList.get(i).getBaseIntellect() + "  ||  " +
+                            " Initiative = " + playerList.get(i).getInitiative() + "  ||  " +
+                            " Equipped sword = "  +playerList.get(i).getInventoryList().get(0).getItemName() + "  ||  " +
+                            " Equipped shield = "  +playerList.get(i).getInventoryList().get(1).getItemName() + "  ||  " +
+                            " Equipped potions = "  +playerList.get(i).getInventoryList().get(2).getItemName() + "  ||  "
+            );
+
+
+        }
     }
 }

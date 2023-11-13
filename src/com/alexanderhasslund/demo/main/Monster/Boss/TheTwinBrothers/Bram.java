@@ -11,26 +11,15 @@ import java.util.Random;
 public class Bram extends Monster implements IMonster, ICombat {
 
     public Bram() {
-        super("\033[1;36mBOSS\033[0m","THE TWIN BROTHERS - Bram",80,0,7,0,40,0,false,90,200,0,false,0);
+        super("\033[1;36mBOSS\033[0m","THE TWIN BROTHERS - Bram",80,0,10,0,40,0,false,50,200,0,false,0);
     }
 
     @Override
-    public void attack(List<Player> playerList, Player player, List<Monster> monsterList, Monster monster) {
-
-    }
-
-    @Override
-    public void getStatus() {
-
-    }
-
-    @Override
-    public void spells(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
-
+    public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
         Random random = new Random();
-        int chanceOfSpell = random.nextInt(10);
+        int chanceOfSpell = random.nextInt(8);
 
-        if (chanceOfSpell < 2) {
+        if (chanceOfSpell > 2) {
 
             int randPlayer = random.nextInt(playerList.size());
             int calculateDodge = random.nextInt(1, 6) * 10;
@@ -41,18 +30,28 @@ public class Bram extends Monster implements IMonster, ICombat {
 
 
             if (dodgeChance < scalingDodgeChance) {
-                System.out.println("The Tag team, strikes one by one, dealing: " + currentMonster.getDamage() + " damage");
+                System.out.println("Bram, strikes with its halberd, dealing: " + currentMonster.getDamage() + " damage");
                 playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
                         - currentMonster.getDamage());
                 System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
 
             } else {
 
-                System.out.printf("The Tag team misses %s player %s \n", playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getName());
+                System.out.printf("Bram team misses %s player %s \n", playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getName());
             }
 
         } else {
             spells(playerList, currentPlayer, monsterList, currentMonster);
+        }
+    }
+
+    @Override
+    public void spells(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
+
+        System.out.println("Bram strengthens him self and his brother, granting staggering damage");
+        for (Monster monster : monsterList) {
+            monster.setDamage(monster.getDamage() + 5);
+            System.out.println(monster.getMonsterName()+ "Current damage: " + monster.getDamage());
         }
 
     }

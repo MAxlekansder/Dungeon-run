@@ -2,7 +2,9 @@ package com.alexanderhasslund.demo.main.Inventory;
 
 import com.alexanderhasslund.demo.main.Engine.Color;
 
-public class Inventory {
+import java.io.Serializable;
+
+public class Inventory implements Serializable {
 
     private String itemName;
     private int damage;

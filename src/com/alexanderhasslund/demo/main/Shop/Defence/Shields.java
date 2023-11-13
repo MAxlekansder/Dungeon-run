@@ -27,7 +27,7 @@ public class Shields extends Defence {
     }
 
     public Inventory divineShield() {
-        Inventory divineShield = new Inventory("Divine shield",10,0,15,40,30);
+        Inventory divineShield = new Inventory("Divine shield",10,0,10,40,30);
         return divineShield;
     }
 

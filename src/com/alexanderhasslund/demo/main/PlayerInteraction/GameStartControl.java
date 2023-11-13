@@ -6,9 +6,16 @@ import com.alexanderhasslund.demo.main.Classes.Sorcerer;
 import com.alexanderhasslund.demo.main.Combat.FirstCombatEncounter;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
+import com.alexanderhasslund.demo.main.File.SaveFile;
 import com.alexanderhasslund.demo.main.Player.PlayerController;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameStartControl {
 
@@ -41,6 +48,7 @@ public class GameStartControl {
 
     public void startUpMenu() throws InterruptedException, IOException, NoSuchFieldException, IllegalAccessException {
         PlayerChoice playerChoice = new PlayerChoice();
+        SaveFile saveFile = new SaveFile();
         boolean isPlaying = true;
 
 
@@ -49,18 +57,23 @@ public class GameStartControl {
             playerChoice.startMenuChoice();
             switch (Input.intInput()) {
                 case 1 -> {
-                    // start new game
-                    // while in this menu -> only loop that switch
-                    // create a check to see if playerList exists?
 
                     startIntroductionChoice();
 
                 }
                 case 2 -> {
-                    System.out.println("No file found");
-                    // continue
-                    // load into the save
-                    // if no save file exists, make the text grey...
+                    Path path = Paths.get("Player.txt");
+
+                    if (Files.exists(path)) {
+
+                        MainGameControl mainGameControl = new MainGameControl(saveFile.loadFilePlayer(), saveFile.loadFilePlayer().size());
+                        mainGameControl.mainSwitch();
+                    } else {
+
+                        System.out.println("No file found");
+
+                    }
+
                 }
                 case 3 -> {
                     // highscore
@@ -72,11 +85,10 @@ public class GameStartControl {
         } while (isPlaying);
     }
 
-    //Singleton-isch...
+
+
     public void startIntroductionChoice() throws IOException, NoSuchFieldException, IllegalAccessException {
         PlayerController playerController = new PlayerController();
-
-        PlayerChoice playerChoice = new PlayerChoice();
         StringManipulator stringManipulator = new StringManipulator();
         //  stringManipulator.manipulateString(playerChoice.newGameSetup());
         playerController.playerCount();
@@ -91,4 +103,6 @@ public class GameStartControl {
         firstCombatEncounter.firstPlayerFight();
         mainGameControl.mainSwitch();
     }
+
 }
+

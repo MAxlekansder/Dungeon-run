@@ -12,35 +12,38 @@ public class Ohrum extends Monster implements IMonster, ICombat {
 
 
     public Ohrum() {
-        super("\033[1;36mBOSS\033[0m", "THE TWIN BROTHERS - Oh'rum", 80, 0, 7, 0, 60, 0, false, 90, 300, 0, false, 0);
+        super("\033[1;36mBOSS\033[0m", "THE TWIN BROTHERS - Oh'rum", 80, 0, 10, 0, 60, 0, false, 50,300 , 0, false, 0);
     }
 
     @Override
     public void spells(List<Player> playerList, Player player, List<Monster> monsterList, Monster monster) {
         //Twin brother pact
         Random random = new Random();
-        Monster bossMonster1 = monsterList.get(0);
-        Monster bossMonster2 = monsterList.get(1);
 
+
+        int playerIndex = random.nextInt(playerList.size());
         System.out.println("twin brothers pact - with a synchronised lift, both brothers flies into the air, attacks with a symmetrical attack. Stricking at the same time");
 
         for (Monster monsterSpecial : monsterList) {
-            player.setHp(player.getHp() - monster.getDamage() + 2);
-            System.out.println(monsterSpecial.getMonsterName() + " Strikes for: " + monsterSpecial.getDamage() + 2);
+            playerList.get(playerIndex).setHp(playerList.get(playerIndex).getHp() - monster.getDamage() + 2);
+            System.out.println(monsterSpecial.getMonsterName() + " Strikes for: " + (monsterSpecial.getDamage() + 2));
         }
 
         System.out.println("THE TWIN BROTHERS REALIGNS WITH THE STARS");
 
-        if (bossMonster1.getHp() > bossMonster2.getHp()) {
-            bossMonster2.setHp(bossMonster1.getHp());
+        for (int i = 0; i < monsterList.size();i++) {
+            if (monsterList.get(i).getHp() > monsterList.get(i+1).getHp()) {
+                monsterList.get(i).setHp(monsterList.get(i+1).getHp());
+                
 
-            System.out.printf(" TWIN PACT, BLOOD SOUL -  %s draws strength from his brother setting HP to %s\n", bossMonster1.getMonsterName(), bossMonster1.getHp());
+                System.out.printf(" TWIN PACT, BLOOD SOUL -  %s draws strength from his brother setting HP to %s\n", monsterList.get(i).getMonsterName(), monsterList.get(i).getHp());
 
-        } else if (bossMonster2.getHp() > bossMonster1.getHp()) {
-            bossMonster1.setHp(bossMonster2.getHp());
-            System.out.printf(" TWIN PACT, BLOOD SOUL -  %s draws strength from his brother setting HP to %s\n", bossMonster2.getMonsterName(), bossMonster2.getHp());
-        } else {
-            System.out.println("The twin brothers have the same set of HP ");
+            } else if (monsterList.get(i).getHp() < monsterList.get(i+1).getHp()) {
+                monsterList.get(i).setHp(monsterList.get(i+1).getHp());
+                System.out.printf(" TWIN PACT, BLOOD SOUL -  %s draws strength from his brother setting HP to %s\n", monsterList.get(i+1).getMonsterName(), monsterList.get(i+1).getHp());
+            } else {
+                System.out.println("No alignment could be made");
+            }
         }
     }
 
@@ -48,11 +51,10 @@ public class Ohrum extends Monster implements IMonster, ICombat {
     @Override
     public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
 
-
         Random random = new Random();
-        int chanceOfSpell = random.nextInt(12);
+        int chanceOfSpell = random.nextInt(6);
 
-        if (chanceOfSpell < 2) {
+        if (chanceOfSpell > 2) {
 
             int randPlayer = random.nextInt(playerList.size());
             int calculateDodge = random.nextInt(1, 6) * 10;
@@ -78,8 +80,4 @@ public class Ohrum extends Monster implements IMonster, ICombat {
         }
     }
 
-    @Override
-    public void getStatus() {
-
-    }
 }

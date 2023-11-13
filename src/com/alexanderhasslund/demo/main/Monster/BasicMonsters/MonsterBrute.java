@@ -15,8 +15,7 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
 
 
     public MonsterBrute() {
-        super("\033[1;36mMONSTER\033[0m","VERMIN OGRE", 50,0,8,20,13,0,false, 40,35,20,false,0);
-
+        super("\033[1;36mMONSTER\033[0m","VERMIN OGRE", 50,0,8,20,13,0,false, 60,50,20,false,0);
     }
 
     @Override
@@ -48,13 +47,6 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
         } else {
             System.out.printf("The brute misses %s player %s \n", playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getName());
         }
-    }
-
-
-
-    @Override
-    public void getStatus() {
-
     }
 
 

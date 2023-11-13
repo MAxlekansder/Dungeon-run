@@ -8,10 +8,11 @@ import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
 
-public class Rogue extends Player implements IClasses, ICombat {
+public class Rogue extends Player implements IClasses, ICombat, Serializable {
 
     private final String className;
     private int id;
@@ -87,13 +88,14 @@ public class Rogue extends Player implements IClasses, ICombat {
     @Override
     public void addStatsToPlayer(Player currentPlayer) {
 
-        currentPlayer.setBaseStrength(currentPlayer.getBaseStrength() + (int)(currentPlayer.getLevel() / 1.2));
-        currentPlayer.setBaseAgility(currentPlayer.getBaseAgility() + (int)(currentPlayer.getLevel() / 1.1));
-        currentPlayer.setBaseIntellect(currentPlayer.getBaseIntellect() + (int)(currentPlayer.getLevel() / 1.5));
+        currentPlayer.setBaseStrength(currentPlayer.getBaseStrength() + (int)(currentPlayer.getLevel() / 5));
+        currentPlayer.setBaseAgility(currentPlayer.getBaseAgility() + (int)(currentPlayer.getLevel() / 4));
+        currentPlayer.setBaseIntellect(currentPlayer.getBaseIntellect() + (int)(currentPlayer.getLevel() / 3.5));
 
-        currentPlayer.setBaseDamage(currentPlayer.getBaseDamage() + (int)(currentPlayer.getAgility() / 2.5));
-        currentPlayer.setBaseDefence(currentPlayer.getBaseDefence() + (int) (currentPlayer.getStrength() * 0.2));
-        currentPlayer.setMaxHp(currentPlayer.getMaxHp() + (int) (currentPlayer.getStrength() * 0.1));
+        currentPlayer.setBaseDamage(currentPlayer.getBaseDamage() + (int)(currentPlayer.getBaseAgility() / 9));
+        currentPlayer.setBaseDefence(currentPlayer.getBaseDefence() + (int) (currentPlayer.getBaseStrength() * 9));
+        currentPlayer.setMaxHp(currentPlayer.getMaxHp() + (int) (currentPlayer.getBaseStrength() * 0.1));
+
     }
 
 
@@ -113,11 +115,13 @@ public class Rogue extends Player implements IClasses, ICombat {
         currentPlayer.setResource(currentPlayer.getResource() - 150);
     }
 
+
     @Override
     public void spells(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
         System.out.println(PlayerChoice.spellsRogue());
         int rogueSpells = Input.intInput();
         Random random = new Random();
+
         int randomMonster = random.nextInt(monsterList.size());
         int randomCurrency = random.nextInt(5,20);
 
@@ -159,12 +163,6 @@ public class Rogue extends Player implements IClasses, ICombat {
     }
 
 
-    @Override
-    public void getStatus() {
-        // should remove this one
-    }
-
-
 
     @Override
     public String toString() {
@@ -178,6 +176,8 @@ public class Rogue extends Player implements IClasses, ICombat {
                         " Intellect = " + intellect + "  || " +
                         " Initiative = " + initiative + "  ||";
     }
+
+
 
 
     @Override

@@ -44,7 +44,7 @@ public class GameLevelOne {
                     System.out.println(" Level not reached");
                 }
                 case 5 -> {
-                    System.out.println(" quit");
+                    System.out.println(" LEAVING TO MAIN MENU");
                     isChoice = false;
                 }
                 default -> {

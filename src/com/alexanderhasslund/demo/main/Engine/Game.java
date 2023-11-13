@@ -14,12 +14,6 @@ public class Game {
     List<Player> saveCharacterList = new ArrayList<>();
     LocalDate date;
 
-    // se också hur vi skriver till en fil och återhämtar filen
-
-    public void saveGame() {
-
-    }
-
     public void highScore() {
 
     }
@@ -27,5 +21,6 @@ public class Game {
     public void saveCharacter() {
         //if you want to go back to check how it went maybe?
         // Like high score (Alexander with this and this -> expand to see build, tree, item and stats?
+
     }
 }

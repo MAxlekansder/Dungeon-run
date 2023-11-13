@@ -2,6 +2,10 @@ package com.alexanderhasslund.demo.main.PlayerInteraction;
 
 import com.alexanderhasslund.demo.main.Player.PlayerController;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class PlayerChoice {
 
     public String nameAndClass() {
@@ -44,10 +48,9 @@ public class PlayerChoice {
                 \033[1;37mTHE TRUSTY SWORD     FOR THE FAST ATTACKER      THE TACHI BLADE       THE ONE TRUE BLADE\033[0m    
                 
                 Damage 6             Damage 4                   Damage 20             Damage 60
-                Initiative 40        Initiative 60              Initiative 55         Initiative 85
-                Level lock 0         Level lock 2               Level lock 5          Level lock 15
+                Level lock 0         Level lock 2               Level lock 5          Level lock 10
                 
-                Price: 200           Price: 500                 Price: 1000           Price: 15000 
+                Price: 200           Price: 500                 Price: 1000           Price: 3000 
                 """);
     }
 
@@ -60,10 +63,9 @@ public class PlayerChoice {
                 \033[1;37mTHE TRUSTY SHIELD      YOU'RE NOT GETTING THROUGH      BITE ME, ILL BITE BACK    SVALINN, THE SUN EATER\033[0m 
                 
                 Defence 5              Defence 10                      Defence 15                Defence 40
-                Block 1                Block 1                         Block 5                   Block 30
-                Level lock 0           Level lock 2                    Level lock 5              Level lock 15
+                Level lock 0           Level lock 2                    Level lock 5              Level lock 10
                 
-                Price: 200             Price: 500                      Price: 1000               Price: 15000 
+                Price: 200             Price: 500                      Price: 1000               Price: 3000 
                 """);
     }
 
@@ -90,8 +92,9 @@ public class PlayerChoice {
     }
 
     public void startMenuChoice() {
-        int savedFile = 0; // placeholder
-        if (savedFile == 0) {
+        Path path = Paths.get("Player.txt");
+        //int savedFile = 0; // placeholder
+        if (!Files.exists(path)) {
             System.out.println("""
                                         
                     1. START NEW GAME 
@@ -115,8 +118,7 @@ public class PlayerChoice {
                 2. SHOP
                 3. SAVE CURRENT GAME
                 4. CURRENT STATUS
-                5. CURRENT LEVEL
-                6. QUIT TO MAIN MENU""");
+                5. QUIT TO MAIN MENU""");
     }
 
 
@@ -148,19 +150,19 @@ public class PlayerChoice {
     public String fightSequence() {
         return ("""
                 
-                ----\033[1;33m COMBAT OPTIONS \033[0m----
+                    ----\033[1;33m COMBAT OPTIONS \033[0m----
                 1. FIGHT  2. USE POTIONS   3. GET STATUS    4. FLEE""");
     }
 
     public String abilityChoice() {
         return (""" 
-                ----\033[1;33m IN ACTION MENU \033[0m----
+                    ----\033[1;33m IN ACTION MENU \033[0m----
                 1. BASIC ATTACK     2. CHOOSE SPELL     3. ULTIMATE""");
     }
 
     public String potionChoice() {
         return (""" 
-                ----\033[1;33m IN POTION MENU \033[0m----
+                    ----\033[1;33m IN POTION MENU \033[0m----
                 1. USE POTION    2. BACK TO MENU""");
     }
 
@@ -203,8 +205,8 @@ public class PlayerChoice {
                 
                 1. THE HALLS OF KARAZ
                 2. UPPER PLATEAU
-                \033[0;37m3. CITY OF MARKAZH
-                4. THE GRAND HALL OF THAAL'S\033[0m
+                3. CITY OF MARKAZH
+                \033[0;37m4. THE GRAND HALL OF THAAL'S\033[0m
                 5. BACK TO MAIN MENU
                 """);
     }
@@ -225,7 +227,7 @@ public class PlayerChoice {
                 1. THE HALLS OF KARAZ
                 2. UPPER PLATEAU
                 3. CITY OF MARKAZH
-                4. \033[1;33mmTHE GRAND HALL OF THAAL'S\033[0m
+                4. \033[1;33mTHE GRAND HALL OF THAAL'S\033[0m
                 5. BACK TO MAIN MENU
                 """);
     }

@@ -85,20 +85,6 @@ public class PlayerController {
             playerList.get(i).setId(i);
         }
 
-        /*
-        do {
-                System.out.print("Namn Spelare " + (i + 1) + ": ");
-                namn = Input.stringInput();
-
-                if (!namn.isEmpty() || !namn.isBlank()) {
-                    catchNamnInput = false;
-                } else {
-                    System.out.println("Du måste skriva ditt namn!");
-                }
-
-            } while (catchNamnInput);
-
-         */
 
         System.out.print("\n");
 
@@ -128,20 +114,6 @@ public class PlayerController {
     }
 
 
-    public void playerSetStatsToLevel() {
-
-    }
-
-    /*
-    public void calculatePlayerInvetory(List<Player> playerList) {
-        for( Player player : playerList) {
-            for (Inventory inventory : player.inventoryList) {
-                player.setDamage(player.getDamage() + inventory.getDamage());
-                player.setDefence(player.getDefence() + inventory.getDefence());
-                player.setInitiative(player.getInitiative() + inventory.getInitiative());
-            }
-        }
-    } */
 }
 
 

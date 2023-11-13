@@ -4,6 +4,7 @@ import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
 import com.alexanderhasslund.demo.main.Monster.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
+import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 import com.alexanderhasslund.demo.main.PlayerInteraction.StringLore;
 
 import java.util.List;
@@ -25,17 +26,18 @@ public class UpperPlateau {
         MonsterController monsterController = new MonsterController(countPlayers);
         CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
         StringManipulator stringManipulator = new StringManipulator();
-
-        stringManipulator.manipulateString(StringLore.reachingUpperPlateau());
-
         monsterController.monsterValueController();
-        combatController.initiateFight();
+        //combatController.initiateFight();
+        stringManipulator.manipulateString(StringLore.reachingUpperPlateau());
+        boolean checkPlayerEncounter = false;
 
+        if (combatController.initiateFight()) {
+            stringManipulator.manipulateString(StringLore.bossTwinBrothers());
 
-        stringManipulator.manipulateString(StringLore.bossTwinBrothers());
-
-        monsterController.chooseBossFight(calculateLevels);
-        boolean checkPlayerEncounter = combatController.initiateFight();
+            monsterController.chooseBossFight(calculateLevels);
+            checkPlayerEncounter = combatController.initiateFight();
+        } else System.out.println("As you run out, a ringing 'OUHM' deafening you, maybe another day...");
+        //boolean checkPlayerEncounter = combatController.initiateFight();
         // sout a "you killed the first boss... give rewards etc etc
 
 

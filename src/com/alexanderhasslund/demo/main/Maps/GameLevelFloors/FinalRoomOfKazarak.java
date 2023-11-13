@@ -2,6 +2,7 @@ package com.alexanderhasslund.demo.main.Maps.GameLevelFloors;
 
 import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
+import com.alexanderhasslund.demo.main.File.SaveFile;
 import com.alexanderhasslund.demo.main.Monster.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.StringLore;
@@ -24,18 +25,26 @@ public class FinalRoomOfKazarak {
         MonsterController monsterController = new MonsterController(countPlayers);
         CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
         StringManipulator stringManipulator = new StringManipulator();
-        monsterController.monsterValueController();
-        combatController.initiateFight();
+        SaveFile saveFile = new SaveFile();
+
+        stringManipulator.manipulateString(StringLore.theFinalRoomThaal());
+        stringManipulator.manipulateString(StringLore.bossIntroThaal());
+
+        boolean checkPlayerEncounter = false;
+
+          stringManipulator.manipulateString(StringLore.bossLastBossThaal());
+
+          monsterController.chooseBossFight(calculateLevels);
+          if(  checkPlayerEncounter = combatController.initiateFight()) {
+
+              saveFile.saveHistoricPlayer(playerList);
+              stringManipulator.manipulateString(StringLore.theFinalRoomThaal());
+          } else {
+
+          }
 
 
-        stringManipulator.manipulateString(StringLore.bossTagTeam());
-
-        monsterController.chooseBossFight(calculateLevels);
-        boolean checkPlayerEncounter = combatController.initiateFight();
-        // sout a "you killed the first boss... give rewards etc etc
-
-
-        // trigger same as in maingameMenu
+        saveFile.saveHistoricPlayer(playerList);
         return checkPlayerEncounter;
     }
 }

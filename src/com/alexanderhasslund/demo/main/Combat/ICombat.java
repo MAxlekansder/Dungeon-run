@@ -8,6 +8,6 @@ import java.util.List;
 public interface ICombat {
 
     public void attack(List<Player> playerList, Player player, List<Monster> monsterList, Monster monster);
-    public void getStatus();
+
 
 }

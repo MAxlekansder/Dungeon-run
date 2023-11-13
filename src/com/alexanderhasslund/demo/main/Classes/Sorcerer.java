@@ -6,10 +6,11 @@ import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
 
-public class Sorcerer extends Player implements IClasses, ICombat {
+public class Sorcerer extends Player implements IClasses, ICombat, Serializable {
 
     private final String className;
     private int id;
@@ -82,14 +83,14 @@ public class Sorcerer extends Player implements IClasses, ICombat {
     @Override
     public void addStatsToPlayer(Player currentPlayer) {
 
-        currentPlayer.setBaseStrength(currentPlayer.getBaseStrength() + (int)(currentPlayer.getLevel() / 2.3));
-        currentPlayer.setBaseAgility(currentPlayer.getBaseAgility() + (int)(currentPlayer.getLevel() / 1.2));
-        currentPlayer.setBaseIntellect(currentPlayer.getBaseIntellect() + (int)(currentPlayer.getLevel() / 0.8));
+        currentPlayer.setBaseStrength(currentPlayer.getBaseStrength() + (int)(currentPlayer.getLevel() / 10));
+        currentPlayer.setBaseAgility(currentPlayer.getBaseAgility() + (int)(currentPlayer.getLevel() / 10));
+        currentPlayer.setBaseIntellect(currentPlayer.getBaseIntellect() + (int)(currentPlayer.getLevel() / 3));
 
-        currentPlayer.setBaseDamage(currentPlayer.getBaseDamage() + (currentPlayer.getIntellect() / 5));
-        currentPlayer.setMaxResource(currentPlayer.getMaxResource() + (currentPlayer.getIntellect() / 2));
+        currentPlayer.setBaseDamage(currentPlayer.getBaseDamage() + (currentPlayer.getIntellect() / 8));
+        currentPlayer.setMaxResource(currentPlayer.getMaxResource() + (currentPlayer.getIntellect() / 9));
         currentPlayer.setBaseDefence(currentPlayer.getBaseDefence() + (int) (currentPlayer.getIntellect() * 0.2));
-        currentPlayer.setMaxHp(currentPlayer.getMaxHp()+ (int) (currentPlayer.getStrength() * 1));
+        currentPlayer.setMaxHp(currentPlayer.getMaxHp() + (int) (currentPlayer.getBaseStrength() * 0.5));
     }
 
 
@@ -100,10 +101,10 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         System.out.println("The sorcerer muster all its power and blast all monster in range: ");
 
         for (Monster monster : monsterList) {
-             monster.setHp(monster.getHp() - (int) (currentPlayer.getDamage() * (level * 1.3))); // guessing the damage gets fucked with the multiplier
+             monster.setHp(monster.getHp() - (int) (currentPlayer.getDamage() + (level * 1.3))); // guessing the damage gets fucked with the multiplier
         }
-        System.out.println("Doing per monster: " + ((int) (currentPlayer.getDamage() * (level * 1.3))));
-        System.out.println("And in total: " + ((int) (currentPlayer.getDamage() * (level * 1.3)*monsterList.size())));
+        System.out.println("Doing per monster: " + ((int) (currentPlayer.getDamage() + (level * 1.3))));
+        System.out.println("And in total: " + ((int) (currentPlayer.getDamage() + (level * 1.3)*monsterList.size())));
 
         currentPlayer.setResource(currentPlayer.getResource() - 100);
         //Dragons breath
@@ -121,13 +122,13 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
         switch (sorcererSpells) {
             case 1 -> {
-                System.out.println("Sorcerer gets a barrier -> shielding for 20 damage: ");
+                System.out.println("Sorcerer gets a barrier, shielding for 30 damage: ");
                 currentPlayer.setHp(currentPlayer.getHp() + 30);
                 currentPlayer.setResource(currentPlayer.getResource() - 40);
 
             }
             case 2 -> {
-                System.out.println("The sorcerer cocoons it self, soaks all incoming harm");
+                System.out.println("Striking two targets at the same time, dealing damage based on your intellect");
                 int monsterChoice = 1;
 
                 for (int i = 0; i < 2; i++) {
@@ -140,11 +141,12 @@ public class Sorcerer extends Player implements IClasses, ICombat {
                     // build a miss system? Even for monsters based on something.
 
                     monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
-                            (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage())
-                            + (currentPlayer.getIntellect() / 7)
-                            + currentPlayer.getLevel());
+                            (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage()
+                            + (currentPlayer.getBaseStrength() / 7)
+                            + currentPlayer.getLevel()));
                 }
                  currentPlayer.setResource(currentPlayer.getResource() -70);
+
             }
             default -> {
                 System.out.println("Use right input");
@@ -163,11 +165,10 @@ public class Sorcerer extends Player implements IClasses, ICombat {
         }
         System.out.print("Decide what monster you want to hit: ");
         int monsterIndex = Input.intInput() -1;
-        // build a miss system? Even for monsters based on something.
 
         monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
         (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage())
-        + (currentPlayer.getIntellect() / 7));
+        + (currentPlayer.getBaseIntellect() / 7));
 
         System.out.printf("The Sorcerer attacks with all element aligned, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
@@ -249,11 +250,6 @@ public class Sorcerer extends Player implements IClasses, ICombat {
 
     public void setMaxResource(int maxResource) {
         this.maxResource = maxResource;
-    }
-
-    @Override
-    public void getStatus() {
-
     }
 
     @Override

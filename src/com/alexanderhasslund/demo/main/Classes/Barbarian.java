@@ -6,10 +6,11 @@ import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class Barbarian extends Player implements IClasses, ICombat {
+public class Barbarian extends Player implements IClasses, ICombat, Serializable {
 
     private final String className;
     private int id;
@@ -84,15 +85,14 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
     public void addStatsToPlayer(Player currentPlayer) {
 
-        //include a reset here if player levels up - otherwise stats gets calculated based on currentvalue...
 
-        currentPlayer.setBaseStrength(currentPlayer.getBaseStrength() + (int)(currentPlayer.getLevel() / 1.1));
-        currentPlayer.setBaseAgility(currentPlayer.getBaseAgility() + (int)(currentPlayer.getLevel() / 0.9));
+        currentPlayer.setBaseStrength(currentPlayer.getBaseStrength() + (int)(currentPlayer.getLevel() / 4));
+        currentPlayer.setBaseAgility(currentPlayer.getBaseAgility() + (int)(currentPlayer.getLevel() / 4));
         currentPlayer.setBaseIntellect(currentPlayer.getBaseIntellect() + (int)(currentPlayer.getLevel() / 2.2));
 
-        currentPlayer.setBaseDamage(currentPlayer.getBaseDamage() + (int)(currentPlayer.getStrength() / 3));
-        currentPlayer.setBaseDefence(currentPlayer.getBaseDefence() + (int) (currentPlayer.getStrength() * 0.2));
-        currentPlayer.setMaxHp(currentPlayer.getMaxHp() + (int) (currentPlayer.getStrength() * 0.1));
+        currentPlayer.setBaseDamage(currentPlayer.getBaseDamage() + (int)(currentPlayer.getBaseStrength() / 10));
+        currentPlayer.setBaseDefence(currentPlayer.getBaseDefence() + (int) (currentPlayer.getBaseStrength()/ 7));
+        currentPlayer.setMaxHp(currentPlayer.getMaxHp() + (int) (currentPlayer.getBaseStrength() * 0.5));
 
     }
 
@@ -122,7 +122,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
             }
 
         } else {
-            System.out.printf("%s doesnt have enough rage to execute the target...", currentPlayer.getClassName());
+            System.out.printf("%s doesnt have enough rage to execute the target...\n", currentPlayer.getClassName());
         }
 
     }
@@ -169,12 +169,6 @@ public class Barbarian extends Player implements IClasses, ICombat {
         + currentPlayer.getInventoryList().get(1).getDamage()) + (currentPlayer.getStrength() /7));
 
         System.out.printf("\nThe barbarian attacks with a hard hitting strike, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
-    }
-
-
-    @Override
-    public void getStatus() {
-
     }
 
 

@@ -36,15 +36,15 @@ public class GameLevelThree {
             switch (gameMapChoice) {
                 case 1 -> {
                     isPlayerEncounter = theHallsOfKaraz.startUpGameOne();
-                    isChoice = false;
+                    if (!isPlayerEncounter) isChoice = false;
                 }
                 case 2 -> {
                     isPlayerEncounter = upperPlateau.startUpGameTwo();
-                    isChoice = false;
+                    if (!isPlayerEncounter) isChoice = false;
                 }
                 case 3 -> {
                     isPlayerEncounter = cityMarkazh.startUpGameThree();
-                    isChoice = false;
+                    if (!isPlayerEncounter) isChoice = false;
                 }
                 case 4 -> {
                     System.out.println(" Level not reached");
