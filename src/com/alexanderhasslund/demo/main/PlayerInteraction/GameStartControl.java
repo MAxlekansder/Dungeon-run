@@ -3,11 +3,9 @@ package com.alexanderhasslund.demo.main.PlayerInteraction;
 import com.alexanderhasslund.demo.main.Classes.Barbarian;
 import com.alexanderhasslund.demo.main.Classes.Rogue;
 import com.alexanderhasslund.demo.main.Classes.Sorcerer;
-import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
 import com.alexanderhasslund.demo.main.Combat.FirstCombatEncounter;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
-import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
 import com.alexanderhasslund.demo.main.Player.PlayerController;
 
 import java.io.IOException;

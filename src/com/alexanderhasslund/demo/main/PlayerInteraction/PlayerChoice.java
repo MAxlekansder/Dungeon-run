@@ -225,7 +225,7 @@ public class PlayerChoice {
                 1. THE HALLS OF KARAZ
                 2. UPPER PLATEAU
                 3. CITY OF MARKAZH
-                4. THE GRAND HALL OF THAAL'S
+                4. \033[1;33mmTHE GRAND HALL OF THAAL'S\033[0m
                 5. BACK TO MAIN MENU
                 """);
     }

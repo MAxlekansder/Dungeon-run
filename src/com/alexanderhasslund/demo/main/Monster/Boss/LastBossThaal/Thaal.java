@@ -1,8 +1,10 @@
 package com.alexanderhasslund.demo.main.Monster.Boss.LastBossThaal;
 
-import com.alexanderhasslund.demo.main.Monster.Boss.Boss;
 import com.alexanderhasslund.demo.main.Monster.IMonster;
 import com.alexanderhasslund.demo.main.Monster.Monster;
+import com.alexanderhasslund.demo.main.Player.Player;
+
+import java.util.List;
 
 public class Thaal extends Monster implements IMonster {
 
@@ -12,7 +14,7 @@ public class Thaal extends Monster implements IMonster {
     }
 
     @Override
-    public void spells() {
+    public void spells(List<Player> playerList, Player player, List<Monster> monsterList, Monster monster) {
 
     }
 }

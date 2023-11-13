@@ -1,15 +1,17 @@
-package com.alexanderhasslund.demo.main.Combat;
+package com.alexanderhasslund.demo.main.Combat.CombatController;
 
 import com.alexanderhasslund.demo.main.Classes.IClasses;
+import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class Fight {
+public class PlayerAttack {
     private int countDeadMonsters;
 
     public int getCountDeadMonsters() {
@@ -52,7 +54,7 @@ public class Fight {
             case 3 -> {
                 IntStream.range(0, playerList.size()).filter(index -> index == currentPlayer.getId()).forEach(index -> {  //filter(index -> index == playerIndex)
                     if (currentPlayer instanceof ICombat) {
-                        ((IClasses) currentPlayer).trait(playerList, currentPlayer, monsterList);
+                        ((IClasses) currentPlayer).ultimate(playerList, currentPlayer, monsterList);
 
                         currentPlayer.setHasPlayed(true);
                         checkMonsterhasDied(monsterList, playerList, currentPlayer);
@@ -68,36 +70,50 @@ public class Fight {
 
 
     public void checkMonsterhasDied(List<Monster> monsterList, List<Player> playerList, Player currentPlayer) {
-        int giveCurrency = 0;
-        int giveExperience = 0;
 
 
-        for (int i = 0; i < monsterList.size(); i++) {
+        //for (int i = 0; i < monsterList.size(); i++) {
+        for (int i = monsterList.size() -1; i >=0; i--) {
             countDeadMonsters++;
             if (monsterList.get(i).getHp() <= 0) {
 
-
                 System.out.printf("\nMonster %s died!\n", monsterList.get(i).getMonsterName());
 
-                giveCurrency = (int) monsterList.get(i).getGivesCurrency() / playerList.size();
-                giveExperience = (int) monsterList.get(i).getGivesExperience();
 
                 for (int j = 0; j < playerList.size(); j++) {
 
-                    playerList.get(j).setCurrency(giveCurrency);
-                    playerList.get(j).setExperience(giveExperience);
+                    playerList.get(j).setCurrency( monsterList.get(i).getGivesCurrency());
+                    playerList.get(j).setExperience( monsterList.get(i).getGivesCurrency());
                 }
-                monsterList.remove(i);
-
+                monsterList.remove(monsterList.get(i));
             }
 
-            IntStream.range(0, playerList.size()).filter(index -> index == currentPlayer.getId()).forEach(index -> {  //filter(index -> index == playerIndex)
-                if (currentPlayer instanceof ICombat) {
-                    ((IClasses) currentPlayer).setLevelUp(currentPlayer);
-                }
-            });
         }
+
+        playerList.forEach( player -> ((IClasses) currentPlayer).setLevelUp(player));//filter(index -> index == playerIndex)
+
+        //((IClasses) currentPlayer).setLevelUp(currentPlayer);
+
     }
+
+/*
+    public void setLevelUp(List<Player> playerList) {
+        int PlayerCurrentExperienceExperince = currentPlayer.getExperience();
+        currentPlayer.setExperience(0);
+
+        for (int i = PlayerCurrentExperienceExperince; i > 0; i--) {
+            currentPlayer.setExperience(currentPlayer.getExperience()+1);
+
+            if (currentPlayer.getExperience() == 100) { // fix better logic for leveling...
+
+                currentPlayer.setLevel(currentPlayer.getLevel() +1);
+                System.out.printf("%s %s just leveled up to level %s! ", currentPlayer.getClassName(), currentPlayer.getName(), currentPlayer.getLevel());
+                currentPlayer.setExperience(0);
+                addStatsToPlayer(currentPlayer);
+
+            }
+        }
+    } */
 }
 
 

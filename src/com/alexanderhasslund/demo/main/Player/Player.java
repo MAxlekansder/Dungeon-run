@@ -37,13 +37,6 @@ public class Player implements Serializable {
     private int baseIntellect;
     private int baseDefence;
 
-    public int getBaseDamage() {
-        return baseDamage;
-    }
-
-    public void setBaseDamage(int baseDamage) {
-        this.baseDamage = baseDamage;
-    }
 
     public int getBaseStrength() {
         return baseStrength;
@@ -75,6 +68,14 @@ public class Player implements Serializable {
 
     public void setBaseDefence(int baseDefence) {
         this.baseDefence = baseDefence;
+    }
+
+    public int getBaseDamage() {
+        return baseDamage;
+    }
+
+    public void setBaseDamage(int baseDamage) {
+        this.baseDamage = baseDamage;
     }
 
     public int getMaxResource() {

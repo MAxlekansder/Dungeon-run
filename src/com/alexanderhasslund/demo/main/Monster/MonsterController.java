@@ -1,5 +1,8 @@
-package com.alexanderhasslund.demo.main.Monster.BasicMonsters;
+package com.alexanderhasslund.demo.main.Monster;
 
+import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterBrute;
+import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterRanger;
+import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterSpellWeaver;
 import com.alexanderhasslund.demo.main.Monster.Boss.LastBossThaal.Thaal;
 import com.alexanderhasslund.demo.main.Monster.Boss.TagTeam.TagTeam;
 import com.alexanderhasslund.demo.main.Monster.Boss.TheTwinBrothers.Bram;
@@ -69,7 +72,6 @@ public class MonsterController {
                 System.out.println("no input found");
             }
         }
-
     }
 
     public void generateThall() {
@@ -83,14 +85,10 @@ public class MonsterController {
         monsterList.add(new theInquisition());
     }
 
-
     public void generateTagTeamBoss() {
 
         monsterList.add(new TagTeam());
-        /*
-        for (Monster monster : monsterList) {
-            monster.setHp( monster.getHp() * );
-        } */
+
 
     }
 

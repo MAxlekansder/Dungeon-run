@@ -29,6 +29,7 @@ public class CombatEndingController {
         }
     }
 
+
     public int getCalculateLevels() {
         return calculateLevels;
     }

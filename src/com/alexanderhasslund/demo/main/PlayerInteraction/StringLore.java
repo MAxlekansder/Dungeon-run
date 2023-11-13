@@ -119,12 +119,29 @@ public class StringLore {
                 """);
     }
 
+    public static String reachingUpperPlateau() {
+        return ("""
+                You've never seen anything like that before, rat-like vermin's...
+               
+                a whole world opens up, nothing like the world you're use to.
+                In the underworld, a fully fleshed machinery with black tar build with black steel.
+                
+                you can't believe your eyes when you reach the upper plateau
+                """);
+    }
+
     public static String bossTagTeam() {
         return("""
                 sounding like a horde running towards the last room you just finished
                 Like shadows, you see nothing but the sound keeps getting closer
                 
                 you realise, there's not just one - but three of them...
+                """);
+    }
+
+    public static String bossTwinBrothers() {
+        return ("""
+                
                 """);
     }
 

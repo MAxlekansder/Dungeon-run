@@ -13,12 +13,12 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
 
 
     public MonsterSpellWeaver() {
-        super("\033[1;36mMONSTER\033[0m","VERMIN SPELLWEAVER", 35,0,7,0,13,20,false,25,30,5,false,0);
+        super("\033[1;36mMONSTER\033[0m","VERMIN SPELLWEAVER", 35,0,7,0,13,20,false,35,30,5,false,0);
 
     }
 
     @Override
-    public void spells() {
+    public void spells(List<Player> playerList, Player player, List<Monster> monsterList, Monster monster) {
         //spell fireball
     }
 

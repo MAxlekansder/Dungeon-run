@@ -1,19 +1,16 @@
-package com.alexanderhasslund.demo.main.Levels.Maps;
+package com.alexanderhasslund.demo.main.Maps.GameLevelFloors;
 import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
-import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
-import com.alexanderhasslund.demo.main.Monster.Boss.Boss;
+import com.alexanderhasslund.demo.main.Monster.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.StringLore;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TheHallsOfKaraz  {
 
     private int calculateLevels;
     private List<Player> playerList;
-    private List<Boss> bossList;
     private int countPlayers;
 
 
@@ -23,7 +20,6 @@ public class TheHallsOfKaraz  {
         this.calculateLevels = calculateLevels;
         this.playerList = playerList;
         this.countPlayers = countPlayers;
-        this.bossList = new ArrayList<>();
     }
 
 
@@ -34,10 +30,11 @@ public class TheHallsOfKaraz  {
         monsterController.monsterValueController();
         combatController.initiateFight();
 
+        if (combatController.initiateFight()) {
+            stringManipulator.manipulateString(StringLore.bossTagTeam());
 
-        stringManipulator.manipulateString(StringLore.bossTagTeam());
-
-        monsterController.chooseBossFight(calculateLevels);
+            monsterController.chooseBossFight(calculateLevels);
+        } else System.out.println("As you run out, you still here the screeches of a horde, maybe another day...");
         boolean checkPlayerEncounter = combatController.initiateFight();
         // sout a "you killed the first boss... give rewards etc etc
 

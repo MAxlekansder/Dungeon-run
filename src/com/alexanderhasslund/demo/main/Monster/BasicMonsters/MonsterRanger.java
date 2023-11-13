@@ -13,11 +13,11 @@ public class MonsterRanger extends Monster implements IMonster, ICombat {
 
 
     public MonsterRanger() {
-        super("\033[1;36mMONSTER\033[0m","VERMIN GUNSLINGER", 40,0,5,20,13,0,false,30,20,10, false, 0);
+        super("\033[1;36mMONSTER\033[0m","VERMIN GUNSLINGER", 40,0,5,20,13,0,false,40,50,10, false, 0);
     }
 
     @Override
-    public void spells() {
+    public void spells(List<Player> playerList, Player player, List<Monster> monsterList, Monster monster) {
         //shoot ranged
 
     }

@@ -1,41 +1,38 @@
-package com.alexanderhasslund.demo.main.Levels.Maps;
+package com.alexanderhasslund.demo.main.Maps.GameLevelFloors;
 
 import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
-import com.alexanderhasslund.demo.main.Levels.GameLevel;
-import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterController;
-import com.alexanderhasslund.demo.main.Monster.Boss.Boss;
+import com.alexanderhasslund.demo.main.Monster.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.StringLore;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CityMarkazh extends GameLevel {
-
+public class UpperPlateau {
     private int calculateLevels;
     private List<Player> playerList;
-    private List<Boss> bossList;
     private int countPlayers;
 
 
-    public CityMarkazh(int calculateLevels, List<Player> playerList, int countPlayers) {
+    public UpperPlateau(int calculateLevels, List<Player> playerList, int countPlayers) {
 
         this.calculateLevels = calculateLevels;
         this.playerList = playerList;
         this.countPlayers = countPlayers;
-        this.bossList = new ArrayList<>();
     }
 
-    public boolean startUpGameThree() {
+    public boolean startUpGameTwo() {
         MonsterController monsterController = new MonsterController(countPlayers);
         CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
         StringManipulator stringManipulator = new StringManipulator();
+
+        stringManipulator.manipulateString(StringLore.reachingUpperPlateau());
+
         monsterController.monsterValueController();
         combatController.initiateFight();
 
 
-        stringManipulator.manipulateString(StringLore.bossTagTeam());
+        stringManipulator.manipulateString(StringLore.bossTwinBrothers());
 
         monsterController.chooseBossFight(calculateLevels);
         boolean checkPlayerEncounter = combatController.initiateFight();
@@ -44,6 +41,6 @@ public class CityMarkazh extends GameLevel {
 
         // trigger same as in maingameMenu
         return checkPlayerEncounter;
+
     }
 }
-

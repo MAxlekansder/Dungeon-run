@@ -1,5 +1,6 @@
 package com.alexanderhasslund.demo.main.Combat;
 
+import com.alexanderhasslund.demo.main.Combat.CombatController.PlayerAttack;
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
 
@@ -23,7 +24,7 @@ public class CombatMenu {
 
     public void combatSwitch(List<Player> playerList, List<Monster> monsterList, Player currentPlayer, Monster currentMonster) {
         PlayerChoice playerChoice = new PlayerChoice();
-        Fight fight = new Fight();
+        PlayerAttack playerAttack = new PlayerAttack();
         System.out.printf("Player %s %s turn: Health - \033[1;37m%s\033[0m resoruce - \033[1;37m%s\033[0m"
                 , currentPlayer.getClassName(),currentPlayer.getName(), currentPlayer.getHp(), currentPlayer.getResource());
 
@@ -41,7 +42,7 @@ public class CombatMenu {
                     case 1 -> {
 
                         System.out.println(playerChoice.abilityChoice());
-                        fight.fightMonster(playerList, monsterList, currentPlayer, currentMonster);
+                        playerAttack.fightMonster(playerList, monsterList, currentPlayer, currentMonster);
 
                         isFighting = false;
                         isViewing = false;
@@ -80,8 +81,8 @@ public class CombatMenu {
                     + " || Player = " +player.getName()
                     + " || HP = " + player.getHp()
                     + " || Resource = " + player.getResource()
-                    + " || Damage = " + player.getDamage()
-                    + " || Defence = " + player.getDefence()
+                    + " || Damage = " + (player.getDamage() + player.getInventoryList().get(0).getDamage() + player.getInventoryList().get(1).getDamage())
+                    + " || Defence = " + (player.getDefence() + player.getInventoryList().get(0).getDefence() + player.getInventoryList().get(1).getDefence())
                     + " || Initiative = " + player.getInitiative() +"\n"
             );
         }

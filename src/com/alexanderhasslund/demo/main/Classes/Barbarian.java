@@ -58,6 +58,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
         this.baseAgility = 8;
         this.baseIntellect = 0;
         this.baseDefence = 15;
+
     }
 
 
@@ -73,7 +74,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
             if (currentPlayer.getExperience() == 100) { // fix better logic for leveling...
 
                 currentPlayer.setLevel(currentPlayer.getLevel() +1);
-                System.out.printf("%s %s just leveled up to level %s! ", currentPlayer.getClassName(), currentPlayer.getName(), currentPlayer.getLevel());
+                System.out.printf("%s %s just leveled up to level %s! \n", currentPlayer.getClassName(), currentPlayer.getName(), currentPlayer.getLevel());
                 currentPlayer.setExperience(0);
                 addStatsToPlayer(currentPlayer);
 
@@ -98,7 +99,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
 
     @Override
-    public void trait(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
+    public void ultimate(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
         int monsterChoice = 1;
 
         for (Monster monster1 : monsterList) {
@@ -112,11 +113,11 @@ public class Barbarian extends Player implements IClasses, ICombat {
 
         if (currentPlayer.getResource() >= 100) {
             if (calcBarbarianUltimate <= 20) {
-                System.out.printf("The barbarian executes %s, to even out the odds \n", monsterList.get(monsterIndex).getMonsterName());
+                System.out.printf("\nThe barbarian executes %s, to even out the odds \n", monsterList.get(monsterIndex).getMonsterName());
                 monsterList.get(monsterIndex).setHp(0);
                 currentPlayer.setResource(currentPlayer.getResource() - 100);
             } else {
-                System.out.printf("The barbarian tried to execute %s, but failed\n", monsterList.get(monsterIndex).getMonsterName());
+                System.out.printf("\nThe barbarian tried to execute %s, but failed\n", monsterList.get(monsterIndex).getMonsterName());
                 System.out.println("No rage was spent");
             }
 
@@ -167,7 +168,7 @@ public class Barbarian extends Player implements IClasses, ICombat {
         (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage()
         + currentPlayer.getInventoryList().get(1).getDamage()) + (currentPlayer.getStrength() /7));
 
-        System.out.printf("The barbarian attacks with a hard hitting strike, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
+        System.out.printf("\nThe barbarian attacks with a hard hitting strike, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
 
