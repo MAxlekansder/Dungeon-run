@@ -11,6 +11,7 @@ public class ResetCombat {
 
     public void resetPlayerListBackToNormal(List<Player> playerList) {
         Barbarian barbarian = new Barbarian();
+        Sorcerer sorcerer = new Sorcerer();
         Rogue rogue = new Rogue();
 
         for (Player player : playerList) {
@@ -20,6 +21,7 @@ public class ResetCombat {
                 player.setStrength(player.getBaseStrength());
                 player.setIntellect(player.getIntellect());
                 player.setBaseDamage(player.getBaseDamage());
+                player.setInitiative(barbarian.getInitiative());
                 player.setHp(player.getMaxHp());
                 player.setHasPlayed(false);
 
@@ -29,6 +31,7 @@ public class ResetCombat {
                 player.setStrength(player.getBaseStrength());
                 player.setIntellect(player.getIntellect());
                 player.setBaseDamage(player.getBaseDamage());
+                player.setInitiative(rogue.getInitiative());
                 player.setHp(player.getMaxHp());
                 player.setHasPlayed(false);
 
@@ -38,6 +41,7 @@ public class ResetCombat {
                 player.setStrength(player.getBaseStrength());
                 player.setIntellect(player.getIntellect());
                 player.setBaseDamage(player.getBaseDamage());
+                player.setInitiative(sorcerer.getInitiative());
                 player.setHp(player.getMaxHp());
                 player.setHasPlayed(false);
             } else {
@@ -46,7 +50,7 @@ public class ResetCombat {
         }
     }
 
-
+/*
     public void resetPlayerBackToNormal(Player currentPlayer) {
 
         if (currentPlayer instanceof Barbarian) {
@@ -77,6 +81,6 @@ public class ResetCombat {
             currentPlayer.setHasPlayed(false);
         } else {
             System.out.println("No class found... ");
-        }
-    }
+        } */
 }
+

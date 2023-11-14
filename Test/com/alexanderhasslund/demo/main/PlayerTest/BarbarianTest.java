@@ -11,11 +11,13 @@ import java.util.List;
 
 public class BarbarianTest extends PlayerTest implements IClasses, ICombat {
 
-    private String className;
+    private final String className;
     private int id;
+    private int maxHp;
     private int hp;
     private int damage;
     private int resource;
+    private int maxResource;
     private int strength;
     private int agility;
     private int intellect;
@@ -24,6 +26,13 @@ public class BarbarianTest extends PlayerTest implements IClasses, ICombat {
     private int initiative;
     private boolean isDead;
     private boolean hasPlayed;
+
+    private int baseDamage;
+    private int baseStrength;
+    private int baseAgility;
+    private int baseIntellect;
+    private int baseDefence;
+
 
 
     public BarbarianTest() {
@@ -42,23 +51,15 @@ public class BarbarianTest extends PlayerTest implements IClasses, ICombat {
         this.initiative = 55;
         this.isDead = false;
         this.hasPlayed = false;
+
+        this.baseDamage = 20;
+        this.baseStrength = 22;
+        this.baseAgility = 8;
+        this.baseIntellect = 0;
+        this.baseDefence = 15;
     }
 
 
-    @Override
-    public void setLevelUp(Player currentPlayer) {
-
-        // level up math
-        /*
-        level up = exp
-         */
-        for (int i = currentPlayer.getExperience(); i >0; i--){
-            if(currentPlayer.getExperience() % 100 * (currentPlayer.getLevel()* 1.04 ) <= 0) {
-
-            }
-        }
-
-    }
 
     @Override
     public void addStatsToPlayer(Player player) {
@@ -66,15 +67,6 @@ public class BarbarianTest extends PlayerTest implements IClasses, ICombat {
     }
 
 
-    @Override
-    public void calculateDamageDone(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster monster) {
-
-    }
-
-    @Override
-    public void calculateChanceToBlock(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster monster) {
-
-    }
 
     @Override
     public void ultimate(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
@@ -109,6 +101,11 @@ public class BarbarianTest extends PlayerTest implements IClasses, ICombat {
         }
     }
 
+    @Override
+    public void setLevelUp(Player player) {
+
+    }
+
 
     @Override
     public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster monster) {
@@ -127,15 +124,6 @@ public class BarbarianTest extends PlayerTest implements IClasses, ICombat {
     }
 
 
-    @Override
-    public void flee() {
-
-    }
-
-    @Override
-    public void getStatus() {
-
-    }
 
 
     @Override
@@ -151,6 +139,61 @@ public class BarbarianTest extends PlayerTest implements IClasses, ICombat {
                         " Initiative = " + initiative + "  ||";
     }
 
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
+
+    public int getMaxResource() {
+        return maxResource;
+    }
+
+    public void setMaxResource(int maxResource) {
+        this.maxResource = maxResource;
+    }
+
+    public int getBaseDamage() {
+        return baseDamage;
+    }
+
+    public void setBaseDamage(int baseDamage) {
+        this.baseDamage = baseDamage;
+    }
+
+    public int getBaseStrength() {
+        return baseStrength;
+    }
+
+    public void setBaseStrength(int baseStrength) {
+        this.baseStrength = baseStrength;
+    }
+
+    public int getBaseAgility() {
+        return baseAgility;
+    }
+
+    public void setBaseAgility(int baseAgility) {
+        this.baseAgility = baseAgility;
+    }
+
+    public int getBaseIntellect() {
+        return baseIntellect;
+    }
+
+    public void setBaseIntellect(int baseIntellect) {
+        this.baseIntellect = baseIntellect;
+    }
+
+    public int getBaseDefence() {
+        return baseDefence;
+    }
+
+    public void setBaseDefence(int baseDefence) {
+        this.baseDefence = baseDefence;
+    }
 
     @Override
     public int getId() {
@@ -167,9 +210,6 @@ public class BarbarianTest extends PlayerTest implements IClasses, ICombat {
         return className;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
-    }
 
     @Override
     public int getHp() {

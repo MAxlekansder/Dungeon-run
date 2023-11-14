@@ -41,7 +41,7 @@ public class MonsterSpellWeaver extends Monster implements IMonster, ICombat {
             System.out.println("The spellweaver ☄. *. ⋆hits ☄. *. ⋆ for: " + currentMonster.getDamage() + " damage");
             playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
                     - currentMonster.getDamage());
-            System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
+            System.out.printf("And player: %s %s has %s HP left \n", playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
         } else {
             System.out.printf("The spellweaver misses %s player %s \n", playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getName());
 

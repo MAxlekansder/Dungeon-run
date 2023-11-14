@@ -121,7 +121,7 @@ public class CombatMenu {
                         int newHp = currentPlayer.getHp() + 40;
 
                         if (newHp > currentPlayer.getMaxHp()) {
-                            currentPlayer.setHp(currentPlayer.getHp());
+                            currentPlayer.setHp(currentPlayer.getMaxHp());
                         } else {
                             currentPlayer.setHp(newHp);
                         }

@@ -36,6 +36,7 @@ public class CityMarkazh {
 
             monsterController.chooseBossFight(calculateLevels);
             checkPlayerEncounter = combatController.initiateFight();
+            stringManipulator.manipulateString(StringLore.theFinalRoomThaal());
         } else System.out.println("As the inquisition have watch you the entire time, in unison you hear the most chilling laugh, maybe another day...");
         //boolean checkPlayerEncounter = combatController.initiateFight();
         // sout a "you killed the first boss... give rewards etc etc

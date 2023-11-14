@@ -21,7 +21,7 @@ public class Swords extends Weapon {
     }
 
     public Inventory fastSword() {
-        Inventory fastSword = new Inventory("Fast sword",4, 10, 2,0,0);
+        Inventory fastSword = new Inventory("Fast sword",12, 10, 2,0,0);
         return fastSword;
     }
 

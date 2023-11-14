@@ -15,7 +15,7 @@ public class StringLore {
                 Stowed away and locked in the dungeon darkest!' shouts a distressed citizen 
                 'Someone needs to save the princess!!' another one yells
                                 
-                In the quite town where nothing really happens, chaos abruptly spews out from the sewers 
+                In the quiet town where nothing really happens, chaos abruptly spews out from the sewers 
                 with fell-like substance, swords and mayhem
                 obscure creatures raids the city 
                                 
@@ -88,14 +88,16 @@ public class StringLore {
                 Each Class have their own unique play style and attributes:
                 All have one basic attack that doesnt cost any resource. 
                 Two spells that's on a low cost and deals modirate damage 
-                One ulitmate as seen above - these spells have works around cooldowns
-                while the rest doesnt. 
+                One ulitmate as seen above - cost a lot more and might only be used once per level
                 
                 Every class has a higher set of the main attributes per class -
                 
                 \033[1;31mStrength\033[0m is an attribute that grants more raw damage and protection
                 \033[1;32mAgility\033[0m is an attirubte that give higher initiative and a better chance to dodge
                 \033[1;34mIntellect\033[0m is an attribute that gives higher resources and higher scaling damage
+                                
+                                To make the best of it - PLEASE use only one of the classes per player...
+                                therefor a 3 player party restriction.
                                 
                 The game have some basic rules, you can either play alone or with a party of 3.
                 it's a turned based dungeon crawl, with a rogue-like twist... 
@@ -192,6 +194,8 @@ public class StringLore {
 
     public static String bossIntroThaal() {
         return ("""
+                
+                
                 In the realm of shadows, I, Thaal, the unyielding warlord
                 command the underworld with a malevolence that echoes through every cavern and crevice 
                 My dominion is draped in fear, and those who dare defy me find their destinies entwined with despair 
@@ -223,6 +227,22 @@ public class StringLore {
                             ===== CONGRATULATIONS! =====
                 You saved the city and the princess! BENNY IS NOW SAFE! 
                 
+                        T H A N K  Y O U  F O R  P L A Y I N G
+                        
+                                Designed by
+                                Alexander Hasslund
+                                
+                                Music by
+                                Alexander Hasslund
+                                
+                                Scene and graphics 
+                                Alexander hasslund
+                                
+                Voice actor 1, monster brute - Alexander Hasslund
+                Voice actor 2, monster spellweaver - Alexander Hasslund    
+                Voice actor 3, monster ranger - Alexander Hasslund
+                Voice actor 4, guy on the phone in the back - Alexander Hasslund
+                                
                 """);
     }
 

@@ -112,7 +112,7 @@ public class Barbarian extends Player implements IClasses, ICombat, Serializable
         int calcBarbarianUltimate = ((monsterList.get(monsterIndex).getHp() * 100) / currentPlayer.getHp());
 
         if (currentPlayer.getResource() >= 100) {
-            if (calcBarbarianUltimate <= 20) {
+            if (calcBarbarianUltimate <= 25) {
                 System.out.printf("\nThe barbarian executes %s, to even out the odds \n", monsterList.get(monsterIndex).getMonsterName());
                 monsterList.get(monsterIndex).setHp(0);
                 currentPlayer.setResource(currentPlayer.getResource() - 100);
@@ -122,7 +122,7 @@ public class Barbarian extends Player implements IClasses, ICombat, Serializable
             }
 
         } else {
-            System.out.printf("%s doesnt have enough rage to execute the target...\n", currentPlayer.getClassName());
+            System.out.printf("%s doesnt have enough rage to perform berserkers rage\n", currentPlayer.getClassName());
         }
 
     }

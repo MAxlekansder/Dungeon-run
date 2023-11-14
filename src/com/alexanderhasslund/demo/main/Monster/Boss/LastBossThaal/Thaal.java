@@ -19,10 +19,10 @@ public class Thaal extends Monster implements IMonster, ICombat {
     public void spells(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
         System.out.println("GRASP AND CONSUME - LIFE DRAIN, Thaal grabs every champion and damages everyone, healing himself " );
         for (Player player : playerList) {
-            player.setHp(player.getHp() - (currentMonster.getDamage() - player.getDefence()));
+            player.setHp(player.getHp() - (currentMonster.getDamage() - (player.getDefence() /10)));
 
         }
-        if (currentMonster.getHp() < 500) {
+        if (currentMonster.getHp() < 300) {
             currentMonster.setHp(currentMonster.getHp() + 20);
         }
     }
@@ -32,7 +32,7 @@ public class Thaal extends Monster implements IMonster, ICombat {
         Random random = new Random();
         int chanceOfSpell = random.nextInt(10);
 
-        if (chanceOfSpell > 2) {
+        if (chanceOfSpell <= 5) {
 
             int randPlayer = random.nextInt(playerList.size());
             int calculateDodge = random.nextInt(1, 6) * 10;

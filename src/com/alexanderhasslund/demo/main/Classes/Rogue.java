@@ -78,8 +78,6 @@ public class Rogue extends Player implements IClasses, ICombat, Serializable {
                 System.out.printf("%s %s just leveled up to level %s! \n", currentPlayer.getClassName(), currentPlayer.getName(), currentPlayer.getLevel());
                 currentPlayer.setExperience(0);
 
-                ResetCombat resetCombat = new ResetCombat();
-                resetCombat.resetPlayerBackToNormal(currentPlayer);
                 addStatsToPlayer(currentPlayer);
             }
         }
@@ -103,16 +101,20 @@ public class Rogue extends Player implements IClasses, ICombat, Serializable {
     @Override
     public void ultimate(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
 
-        System.out.println("The rogue strikes in a quick sequence, dealing double damage to: ");
-        int calcRogueUltimate = (currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getDamage() - 4);
+        if (currentPlayer.getResource() >= 150) {
+            System.out.println("The rogue strikes in a quick sequence, dealing double damage to: ");
+            int calcRogueUltimate = (currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getDamage() - 4);
 
-        for (Monster monster : monsterList) {
+            for (Monster monster : monsterList) {
 
-            monster.setHp(monster.getHp() - calcRogueUltimate); // based on sword damage
-            System.out.println(monster.getMonsterName() + " lost " + calcRogueUltimate + " hp!");
+                monster.setHp(monster.getHp() - calcRogueUltimate); // based on sword damage
+                System.out.println(monster.getMonsterName() + " lost " + calcRogueUltimate + " hp!");
 
+            }
+            currentPlayer.setResource(currentPlayer.getResource() - 150);
+        } else {
+            System.out.printf("The %s %s doesnt have enough energy to perform Fools elusiveness \n\n", currentPlayer.getClassName(), currentPlayer.getName());
         }
-        currentPlayer.setResource(currentPlayer.getResource() - 150);
     }
 
 
@@ -159,7 +161,7 @@ public class Rogue extends Player implements IClasses, ICombat, Serializable {
         + currentPlayer.getInventoryList().get(1).getDamage()) + (currentPlayer.getStrength() / 10)
         + (currentPlayer.getAgility() / 7));
 
-        System.out.printf("The rogue attacks with a swift slash, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
+        System.out.printf("The rogue attacks with a swift slash, Dealing %s to monster %s \n\n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }
 
 

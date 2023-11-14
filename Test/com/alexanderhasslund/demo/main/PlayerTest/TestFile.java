@@ -1,9 +1,13 @@
 package com.alexanderhasslund.demo.main.PlayerTest;
 
+import com.alexanderhasslund.demo.main.Engine.StringManipulator;
+import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterBrute;
+import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import com.alexanderhasslund.demo.main.PlayerInteraction.StringLore;
+import org.junit.jupiter.api.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -54,10 +58,10 @@ public class TestFile {
         //for (int i = currentPlayer.getExperience(); i > 0; i--) {
         int PlayerCurrentExperienceExperince = currentPlayer.getExperience();
         currentPlayer.setExperience(0);
-        System.out.println("old strength "+currentPlayer.getStrength());
-        System.out.println("old damage "+currentPlayer.getDamage());
-        System.out.println("old defence " + currentPlayer.getDefence());
-        System.out.println("old HP" + currentPlayer.getHp());
+        System.out.println("old strength "+currentPlayer.getBaseStrength());
+        System.out.println("old damage "+currentPlayer.getBaseDamage());
+        System.out.println("old defence " + currentPlayer.getBaseDefence());
+        System.out.println("old HP" + currentPlayer.getMaxHp());
 
         for (int i = PlayerCurrentExperienceExperince; i > 0; i--) {
             currentPlayer.setExperience(currentPlayer.getExperience()+1);
@@ -65,9 +69,15 @@ public class TestFile {
             if (currentPlayer.getExperience() == 10) {
                 currentPlayer.setLevel(currentPlayer.getLevel() +1);
                 currentPlayer.setExperience(0);
-                //addStatsToPlayer(currentPlayer);
 
-                //trying out level factors and how the math plays out...
+                currentPlayer.setBaseStrength(currentPlayer.getBaseStrength() + (int)(currentPlayer.getLevel() / 4));
+                currentPlayer.setBaseAgility(currentPlayer.getBaseAgility() + (int)(currentPlayer.getLevel() / 4));
+                currentPlayer.setBaseIntellect(currentPlayer.getBaseIntellect() + (int)(currentPlayer.getLevel() / 2.2));
+
+                currentPlayer.setBaseDamage(currentPlayer.getBaseDamage() + (int)(currentPlayer.getBaseStrength() / 10));
+                currentPlayer.setBaseDefence(currentPlayer.getBaseDefence() + (int) (currentPlayer.getBaseStrength()/ 7));
+                currentPlayer.setMaxHp(currentPlayer.getMaxHp() + (int) (currentPlayer.getBaseStrength() * 0.5));
+
                 currentPlayer.setStrength(currentPlayer.getStrength() + (int)(currentPlayer.getLevel() / 1.1));
                 currentPlayer.setAgility(currentPlayer.getAgility() + (int)(currentPlayer.getLevel() / 0.9));
                 currentPlayer.setIntellect(currentPlayer.getIntellect() + (int)(currentPlayer.getLevel() / 2.2));
@@ -75,30 +85,35 @@ public class TestFile {
                 currentPlayer.setDamage(currentPlayer.getDamage() + (int)(currentPlayer.getStrength() / 3));
                 currentPlayer.setDefence(currentPlayer.getDefence() + (int) (currentPlayer.getStrength() * 0.2));
                 currentPlayer.setHp(currentPlayer.getHp()+ (int) (currentPlayer.getStrength() * 0.1));
-                /*
-                System.out.println(currentPlayer.getStrength());
-                System.out.println(currentPlayer.getDamage());
-                System.out.println(currentPlayer.getDefence());
-                System.out.println(currentPlayer.getHp()); */
+
             }
         }
 
-        System.out.println("new strength "+currentPlayer.getStrength());
-        System.out.println("New damage " +currentPlayer.getDamage());
-        System.out.println("New defence" + currentPlayer.getDefence());
-        System.out.println("New HP" + currentPlayer.getHp());
+        System.out.println("new strength "+currentPlayer.getBaseStrength());
+        System.out.println("New damage " +currentPlayer.getBaseDamage());
+        System.out.println("New defence " + currentPlayer.getBaseDefence());
+        System.out.println("New HP " + currentPlayer.getMaxHp());
 
         System.out.println(currentPlayer.getExperience());
         assertEquals(3,currentPlayer.getLevel());
         assertEquals(2, currentPlayer.getExperience());
-        assertEquals(currentPlayer.getDamage(), 35);
+        assertEquals(currentPlayer.getBaseDamage(), 24);
 
     }
-    /*
-    @Test
-    @DisplayName("Add class stats to player")
-    public void addStatsToPlayer(PlayerTest currentPlayer) {
+    @RepeatedTest(3)
+    @DisplayName("Adding monsters to list")
+    public void addMonsters(){
+    List<Monster> monsterListTest = new ArrayList<>();
+    monsterListTest.add(new MonsterBrute());
 
-    } */
+    assertEquals(1,monsterListTest.size());
+    }
 
+    @BeforeAll
+    @Timeout(1000)
+    public static void testPresentation(){
+        StringManipulator stringManipulator = new StringManipulator();
+        stringManipulator.manipulateString(StringLore.bossIntroThaal());
+        stringManipulator.manipulateString(StringLore.youWin());
+    }
 }

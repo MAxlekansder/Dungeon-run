@@ -98,21 +98,20 @@ public class Sorcerer extends Player implements IClasses, ICombat, Serializable 
     @Override
     public void ultimate(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
 
-        System.out.println("The sorcerer muster all its power and blast all monster in range: ");
+        if (currentPlayer.getResource() >= 100) {
+            System.out.println("The sorcerer muster all its power and blast all monster in range: ");
 
-        for (Monster monster : monsterList) {
-             monster.setHp(monster.getHp() - (int) (currentPlayer.getDamage() + (level * 1.3))); // guessing the damage gets fucked with the multiplier
+            for (Monster monster : monsterList) {
+                monster.setHp(monster.getHp() - (int) (currentPlayer.getDamage() + (level * 1.3))); // guessing the damage gets fucked with the multiplier
+                System.out.println("Doing per monster: " + ((int) (currentPlayer.getDamage() + (level * 1.3))));
+            }
+
+            System.out.println("And in total: " + ((int) (currentPlayer.getDamage() + (level * 1.3) * monsterList.size())));
+
+            currentPlayer.setResource(currentPlayer.getResource() - 100);
+        } else {
+            System.out.printf("The %s %s doesnt have enough mana to perform dragons breath!", currentPlayer.getClassName(), currentPlayer.getName());
         }
-        System.out.println("Doing per monster: " + ((int) (currentPlayer.getDamage() + (level * 1.3))));
-        System.out.println("And in total: " + ((int) (currentPlayer.getDamage() + (level * 1.3)*monsterList.size())));
-
-        currentPlayer.setResource(currentPlayer.getResource() - 100);
-        //Dragons breath
-        //Based on how many targets it will cleave
-        //Find a good way to work this out, but first we need to add all monsters and then split
-        //damage * some trait / array.size() == all monster in Array
-
-        //Cooldown
     }
 
     @Override
@@ -129,9 +128,10 @@ public class Sorcerer extends Player implements IClasses, ICombat, Serializable 
             }
             case 2 -> {
                 System.out.println("Striking two targets at the same time, dealing damage based on your intellect");
-                int monsterChoice = 1;
+                //int monsterChoice = 1;
 
                 for (int i = 0; i < 2; i++) {
+                    int monsterChoice = 1;
                     for (Monster monster1 : monsterList) {
                         System.out.println("CHOICE: " + monsterChoice + " " + monster1);
                         monsterChoice++;

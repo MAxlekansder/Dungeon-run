@@ -47,7 +47,7 @@ public class PlayerChoice {
                 \033[1;36m1.STANDARD SWORD     \033[1;34m2.FAST SWORD               \033[1;35m3.SHARP SWORD         \033[1;33m4.DIVINE SWORD\033[0m             
                 \033[1;37mTHE TRUSTY SWORD     FOR THE FAST ATTACKER      THE TACHI BLADE       THE ONE TRUE BLADE\033[0m    
                 
-                Damage 6             Damage 4                   Damage 20             Damage 60
+                Damage 6             Damage 12                  Damage 20             Damage 60
                 Level lock 0         Level lock 2               Level lock 5          Level lock 10
                 
                 Price: 200           Price: 500                 Price: 1000           Price: 3000 

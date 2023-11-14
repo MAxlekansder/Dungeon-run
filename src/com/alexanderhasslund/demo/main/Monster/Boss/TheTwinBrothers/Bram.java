@@ -30,14 +30,14 @@ public class Bram extends Monster implements IMonster, ICombat {
 
 
             if (dodgeChance < scalingDodgeChance) {
-                System.out.println("Bram, strikes with its halberd, dealing: " + currentMonster.getDamage() + " damage");
+                System.out.print("THE TWIN BROTHERS - Bram, strikes with its halberd, dealing: " + currentMonster.getDamage() + " damage\n");
                 playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
                         - currentMonster.getDamage());
-                System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
+                System.out.printf("And player: %s %s has %s HP left \n", playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
 
             } else {
 
-                System.out.printf("Bram team misses %s player %s \n", playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getName());
+                System.out.printf("Bram misses %s player %s \n", playerList.get(randPlayer).getClassName(), playerList.get(randPlayer).getName());
             }
 
         } else {
@@ -51,7 +51,7 @@ public class Bram extends Monster implements IMonster, ICombat {
         System.out.println("Bram strengthens him self and his brother, granting staggering damage");
         for (Monster monster : monsterList) {
             monster.setDamage(monster.getDamage() + 5);
-            System.out.println(monster.getMonsterName()+ "Current damage: " + monster.getDamage());
+            System.out.println(monster.getMonsterName()+ " Current damage: " + monster.getDamage());
         }
 
     }

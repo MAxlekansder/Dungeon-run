@@ -12,7 +12,7 @@ public class theInquisition extends Monster implements IMonster, ICombat {
 
 
     public theInquisition() {
-        super("\033[1;36mBOSS\033[0m","The inqusition", 250, 0, 30,0,0,0,false,50,1000,0,false,0);
+        super("\033[1;36mBOSS\033[0m","The inqusition", 250, 0, 6,0,0,0,false,100,1000,0,false,0);
     }
 
 
@@ -23,9 +23,9 @@ public class theInquisition extends Monster implements IMonster, ICombat {
         Random random = new Random();
         int randomPlayer = random.nextInt(playerList.size()-1);
 
-        System.out.printf("Banishes the player to the abyss, setting %s %s initiative last!\n", playerList.get(randomPlayer).getClassName(), playerList.get(randomPlayer).getName());
+        System.out.printf("Banishes the player to the abyss and dealing 10 damage, setting %s %s initiative last!\n", playerList.get(randomPlayer).getClassName(), playerList.get(randomPlayer).getName());
         playerList.get(randomPlayer).setInitiative(99);
-
+        playerList.get(randomPlayer).setHp(playerList.get(randomPlayer).getHp() - 10);
         System.out.println("Oh... what a shame... ");
     }
 
@@ -49,8 +49,10 @@ public class theInquisition extends Monster implements IMonster, ICombat {
 
             if (dodgeChance < scalingDodgeChance) {
                 System.out.println("The Inquisition, strikes one by one, dealing: " + currentMonster.getDamage() + " damage");
-                playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
-                        - currentMonster.getDamage());
+                for (int i = 0; i < 6; i++) {
+                    playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
+                            - currentMonster.getDamage());
+                }
                 System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
 
             } else {

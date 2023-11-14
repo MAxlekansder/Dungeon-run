@@ -37,7 +37,7 @@ public class GameStartControl {
         System.out.println(sorcerer);
 
         System.out.println(stringLore.ultimateClassPresentation());
-        //stringManipulator.manipulateString(stringLore.gameIntroductionRules());
+        stringManipulator.manipulateString(stringLore.gameIntroductionRules());
         System.out.println("Press enter to continue, where you start the game and choose class");
 
         String enter = Input.stringInput();
@@ -46,7 +46,7 @@ public class GameStartControl {
     }
 
 
-    public void startUpMenu() throws InterruptedException, IOException, NoSuchFieldException, IllegalAccessException {
+    public void startUpMenu() throws IOException, NoSuchFieldException, IllegalAccessException {
         PlayerChoice playerChoice = new PlayerChoice();
         SaveFile saveFile = new SaveFile();
         boolean isPlaying = true;
@@ -90,7 +90,8 @@ public class GameStartControl {
     public void startIntroductionChoice() throws IOException, NoSuchFieldException, IllegalAccessException {
         PlayerController playerController = new PlayerController();
         StringManipulator stringManipulator = new StringManipulator();
-        //  stringManipulator.manipulateString(playerChoice.newGameSetup());
+        PlayerChoice playerChoice = new PlayerChoice();
+        stringManipulator.manipulateString(playerChoice.newGameSetup());
         playerController.playerCount();
         FirstCombatEncounter firstCombatEncounter = new FirstCombatEncounter(playerController.getPlayerList(), playerController.getCountPlayers());
         playerController.chooseClass();
@@ -99,7 +100,7 @@ public class GameStartControl {
         MainGameControl mainGameControl = new MainGameControl(playerController.getPlayerList(), playerController.getCountPlayers());
 
 
-        //stringManipulator.manipulateStringFast(playerChoice.firstFightIntroduction());
+        stringManipulator.manipulateString(playerChoice.firstFightIntroduction());
         firstCombatEncounter.firstPlayerFight();
         mainGameControl.mainSwitch();
     }

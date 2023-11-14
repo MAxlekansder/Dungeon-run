@@ -10,32 +10,93 @@ import static org.junit.jupiter.api.Assertions.*;
 class PlayerTest {
 
 
-        private String name;
-        private int playerId;
-        List<TalentTree> talentTreeList = new ArrayList<>(3);
-        List<Inventory> inventoryList = new ArrayList<>(4);
-        private int experience;
-        private int currency;
 
-        private String className;
-        private int id;
-        private int hp;
-        private int damage;
-        private int resource;
-        private int strength;
-        private int agility;
-        private int intellect;
-        private int level;
-        private int defence;
-        private int initiative;
-        private boolean isDead;
-        private boolean hasPlayed;
+    private String name;
+    private int playerId;
+    List<TalentTree> talentTreeList = new ArrayList<>(3);
+    List<Inventory> inventoryList = new ArrayList<>(4);
+    private int experience;
+    private int currency;
 
+    private String className;
+    private int id;
+    private int maxHp;
+    private int hp;
+    private int damage;
+    private int resource;
+    private int maxResource;
+    private int strength;
+    private int agility;
+    private int intellect;
+    private int level;
+    private int defence;
+    private int initiative;
+    private boolean isDead;
+    private boolean hasPlayed;
 
-        // move reset here?
+    private int baseDamage;
+    private int baseStrength;
+    private int baseAgility;
+    private int baseIntellect;
+    private int baseDefence;
 
+    public int getMaxHp() {
+        return maxHp;
+    }
 
-        public boolean isHasPlayed() {
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
+
+    public int getMaxResource() {
+        return maxResource;
+    }
+
+    public void setMaxResource(int maxResource) {
+        this.maxResource = maxResource;
+    }
+
+    public int getBaseDamage() {
+        return baseDamage;
+    }
+
+    public void setBaseDamage(int baseDamage) {
+        this.baseDamage = baseDamage;
+    }
+
+    public int getBaseStrength() {
+        return baseStrength;
+    }
+
+    public void setBaseStrength(int baseStrength) {
+        this.baseStrength = baseStrength;
+    }
+
+    public int getBaseAgility() {
+        return baseAgility;
+    }
+
+    public void setBaseAgility(int baseAgility) {
+        this.baseAgility = baseAgility;
+    }
+
+    public int getBaseIntellect() {
+        return baseIntellect;
+    }
+
+    public void setBaseIntellect(int baseIntellect) {
+        this.baseIntellect = baseIntellect;
+    }
+
+    public int getBaseDefence() {
+        return baseDefence;
+    }
+
+    public void setBaseDefence(int baseDefence) {
+        this.baseDefence = baseDefence;
+    }
+
+    public boolean isHasPlayed() {
             return hasPlayed;
         }
 
