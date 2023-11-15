@@ -1,14 +1,11 @@
 **** DOKUMENTATION ****
 
 
-I realised that during the creation of each map, where i wanted an element of "locked objects" to work,
-I implemented different "stages" of the boss fight - now in hindsight, i see that i could just have had one file file and one method
-to do it, as I based my logic on a fall through and a level lock system... passing the variable around allowed me to just have one check.
+PLAYING THE GAME!! READ THIS BEFORE
+DONT CREATE MULTIPLE CLASSES OF THE SAME CLASS. 
+Dont play 3 rogues as example
 
-It's to late now to implement this work, so ill leave it as it is for now
-
-For next time, i'd keep all bosses in the same class instead of breaking it out, the same thing goes for
-my "Maps"
-
-- as i want every level to have it's own unqiue boss -> this method that i went with might be the best working way for that, connected to my current knowledge.
+WHEN YOU BEAT THE LEVEL / ENCOUNTER, YOU'LL SEE THE SAME MENU 
+PLEASE GO BACK TO MAIN MENU TO TRIGGER NEXT ENCOUNTER - THIS IS INTENANTIONAL AS I WANT YOU TO USE THE SHOP
+AND GET THE CHANCE TO PROGRESS WITH YOUR CHARACTER
 

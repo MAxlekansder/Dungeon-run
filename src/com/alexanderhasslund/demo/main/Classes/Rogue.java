@@ -103,7 +103,7 @@ public class Rogue extends Player implements IClasses, ICombat, Serializable {
 
         if (currentPlayer.getResource() >= 150) {
             System.out.println("The rogue strikes in a quick sequence, dealing double damage to: ");
-            int calcRogueUltimate = (currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getDamage() +1000);
+            int calcRogueUltimate = (currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getDamage() -4);
 
             for (Monster monster : monsterList) {
 
