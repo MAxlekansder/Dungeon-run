@@ -13,7 +13,7 @@ public class TagTeam extends Monster implements IMonster, ICombat {
 
     //either they all have 3 bosses, or all together, shared health pool
     public TagTeam() {
-        super("\033[1;36mBOSS\033[0m","THE VERMIN TAG TEAM: Skarrik, Rasknitt and Deathrattler", 90,0,12,40,25, 0, false, 50,300,0,false,0);
+        super("\033[1;36mBOSS\033[0m","THE VERMIN TAG TEAM: Skarrik, Rasknitt and Deathrattler", 90,0,12,40,25, 0, false, 50,500,0,false,0);
     }
 
 
@@ -52,7 +52,7 @@ public class TagTeam extends Monster implements IMonster, ICombat {
             if (dodgeChance < scalingDodgeChance) {
                 System.out.println("The Tag team, strikes one by one, dealing: " + currentMonster.getDamage() + " damage");
                 playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
-                        - currentMonster.getDamage());
+                        - (currentMonster.getDamage() - (int) (playerList.get(randPlayer).getDefence() / 8)));
                 System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
 
             } else {

@@ -11,7 +11,18 @@ import java.util.Random;
 public class Bram extends Monster implements IMonster, ICombat {
 
     public Bram() {
-        super("\033[1;36mBOSS\033[0m","THE TWIN BROTHERS - Bram",80,0,10,0,40,0,false,50,200,0,false,0);
+        super("\033[1;36mBOSS\033[0m","THE TWIN BROTHERS - Bram",80,0,10,0,40,0,false,50,1000,0,false,0);
+    }
+
+    @Override
+    public void spells(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
+
+        System.out.println("Bram strengthens him self and his brother, granting staggering damage");
+        for (Monster monster : monsterList) {
+            monster.setDamage(monster.getDamage() + 5);
+            System.out.println(monster.getMonsterName()+ " Current damage: " + monster.getDamage());
+        }
+
     }
 
     @Override
@@ -45,14 +56,5 @@ public class Bram extends Monster implements IMonster, ICombat {
         }
     }
 
-    @Override
-    public void spells(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {
 
-        System.out.println("Bram strengthens him self and his brother, granting staggering damage");
-        for (Monster monster : monsterList) {
-            monster.setDamage(monster.getDamage() + 5);
-            System.out.println(monster.getMonsterName()+ " Current damage: " + monster.getDamage());
-        }
-
-    }
 }

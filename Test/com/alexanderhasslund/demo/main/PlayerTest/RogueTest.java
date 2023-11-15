@@ -1,6 +1,6 @@
-package com.alexanderhasslund.demo.main.Classes;
+package com.alexanderhasslund.demo.main.PlayerTest;
 
-import com.alexanderhasslund.demo.main.Combat.ResetCombat;
+import com.alexanderhasslund.demo.main.Classes.IClasses;
 import com.alexanderhasslund.demo.main.Combat.ICombat;
 import com.alexanderhasslund.demo.main.Engine.Color;
 import com.alexanderhasslund.demo.main.Engine.Input;
@@ -8,11 +8,11 @@ import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.PlayerChoice;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
 
-public class Rogue extends Player implements IClasses, ICombat, Serializable {
+import static org.junit.jupiter.api.Assertions.*;
+class RogueTest extends PlayerTest implements ICombat, IClasses {
 
     private final String className;
     private int id;
@@ -38,7 +38,7 @@ public class Rogue extends Player implements IClasses, ICombat, Serializable {
 
 
 
-    public Rogue() {
+    public RogueTest() {
         this.className = Color.GREEN + "ROGUE" + Color.RESET;
         this.maxHp = 100;
         this.hp = 100; // change here and check all control values
@@ -127,23 +127,15 @@ public class Rogue extends Player implements IClasses, ICombat, Serializable {
         int randomMonster = random.nextInt(monsterList.size());
         int randomCurrency = random.nextInt(5,20);
 
-            switch (rogueSpells) {
+        switch (rogueSpells) {
             case 1 -> {
-                if (currentPlayer.getResource() >= 20) {
-                    System.out.printf("Backstabs a random target, dealing: %s extra damage and gaining: %s extra defence \n", 3, 2);
-                    monsterList.get(randomMonster).setHp(monsterList.get(randomMonster).getHp() - currentPlayer.getDamage() + 3);
-                    currentPlayer.setDefence(currentPlayer.getDefence() + 3);
-                } else {
-                    System.out.println("The rogue doesnt have enough energy");
-                }
+                System.out.printf("Backstabs the target, dealing: %s extra damage and gaining: %s extra defence \n", 3, 2);
+                monsterList.get(randomMonster).setHp(monsterList.get(randomMonster).getHp() - currentPlayer.getDamage() +3);
+                currentPlayer.setDefence(currentPlayer.getDefence() + 3);
             }
             case 2 -> {
-                if (currentPlayer.getResource() >= 30) {
-                    System.out.printf("Pick pockets the target gaining: %s gold", randomCurrency);
-                    currentPlayer.setResource(currentPlayer.getResource() - 30);
-                } else {
-                    System.out.println("The rogue doesnt have enough energy");
-                }
+                System.out.printf("Pick pockets the target gaining: %s gold", randomCurrency);
+                currentPlayer.setResource(currentPlayer.getResource() - 30);
             }
             default -> {
                 System.out.println("Use right input");
@@ -165,9 +157,9 @@ public class Rogue extends Player implements IClasses, ICombat, Serializable {
         // build a miss system? Even for monsters based on something.
 
         monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
-        (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage()
-        + currentPlayer.getInventoryList().get(1).getDamage()) + (currentPlayer.getStrength() / 10)
-        + (currentPlayer.getAgility() / 7));
+                (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage()
+                        + currentPlayer.getInventoryList().get(1).getDamage()) + (currentPlayer.getStrength() / 10)
+                + (currentPlayer.getAgility() / 7));
 
         System.out.printf("The rogue attacks with a swift slash, Dealing %s to monster %s \n\n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
     }

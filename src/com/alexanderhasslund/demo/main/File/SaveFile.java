@@ -24,7 +24,7 @@ public class SaveFile {
         }*/
 
         try {
-            String saveName = "Game save.txt";
+            String saveName = "Gamesave.txt";
             FileOutputStream fos = new FileOutputStream(saveName);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
@@ -45,7 +45,7 @@ public class SaveFile {
         List<Player> loadedPlayerList = new ArrayList<>();
 
         try {
-            FileInputStream fin = new FileInputStream("Game save.txt");
+            FileInputStream fin = new FileInputStream("Gamesave.txt");
             ObjectInputStream objIn = new ObjectInputStream(fin);
             loadedPlayerList = (List<Player>) objIn.readObject();
         } catch (Exception e) {

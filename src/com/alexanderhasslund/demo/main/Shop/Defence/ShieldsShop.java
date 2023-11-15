@@ -19,11 +19,12 @@ public class ShieldsShop {
         PlayerChoice playerChoice = new PlayerChoice();
         int shieldPrice = 0;
 
+
         System.out.println(playerChoice.shieldsMenu());
         int shieldChoice = Input.intInput();
         boolean isShop = true;
-        do {
 
+        do {
             switch (shieldChoice) {
                 case 1 -> {
                     if (playerList.get(playerIndex).getLevel() >= 0 && playerList.get(playerIndex).getCurrency() >= 200) {

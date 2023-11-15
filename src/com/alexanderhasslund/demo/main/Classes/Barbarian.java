@@ -132,22 +132,38 @@ public class Barbarian extends Player implements IClasses, ICombat, Serializable
     public void spells(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
         System.out.println(PlayerChoice.spellsBarbarian());
         int barbarianSpells = Input.intInput();
-        switch (barbarianSpells) {
-            case 1 -> { // a baseline damage spell that adds 3 damage and uses 'resources'
+        boolean isSpell = true;
 
-                System.out.printf("%s crys a war cry, increasing the entire groups strength by 10 \n", currentPlayer.getClassName(), 10);
-                for (Player player : playerList) {
-                    player.setStrength(player.getStrength() + 10);
+        while (isSpell) {
+            switch (barbarianSpells) {
+                case 1 -> { // a baseline damage spell that adds 3 damage and uses 'resources'
+                    if (currentPlayer.getResource() >= 20) {
+                        System.out.printf("%s crys a war cry, increasing the entire groups strength by 10 \n", currentPlayer.getClassName(), 10);
+                        for (Player player : playerList) {
+                            player.setStrength(player.getStrength() + 10);
+                        }
+                        currentPlayer.setResource(currentPlayer.getResource() - 20);
+                        isSpell = false;
+                    } else {
+                        System.out.println("The barbarian doesnt enough rage");
+                    }
+
                 }
-                currentPlayer.setResource(currentPlayer.getResource() - 20);
-
+                case 2 -> {
+                    if (currentPlayer.getResource() >= 10) {
+                        System.out.println("The barbarian muster its rage, gaining defence euqal to: " + (defence + 2));
+                        currentPlayer.setDefence(currentPlayer.getDefence() + 10);
+                        currentPlayer.setResource(currentPlayer.getResource() - 10);
+                        isSpell = false;
+                    }
+                    else {
+                        System.out.println("The barbarian doesnt enough rage");
+                    }
+                }
+                    default -> {
+                        System.out.println("Use right input");
+                    }
             }
-            case 2 -> { //
-                System.out.println( "The barbarian muster its rage, gaining defence euqal to: " + (defence + 2));
-                currentPlayer.setDefence(currentPlayer.getDefence() + 10);
-                currentPlayer.setResource(currentPlayer.getResource() - 10);
-            }
-            default -> {System.out.println("Use right input");}
         }
     }
 

@@ -15,15 +15,13 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
 
 
     public MonsterBrute() {
-        super("\033[1;36mMONSTER\033[0m","VERMIN OGRE", 50,0,8,20,13,0,false, 60,50,20,false,0);
+        super("\033[1;36mMONSTER\033[0m","VERMIN OGRE", 50,0,8,20,13,0,false, 60,70,20,false,0);
     }
 
     @Override
     public void spells(List<Player> playerList, Player player, List<Monster> monsterList, Monster monster) {
-        //slams
+
     }
-
-
 
     @Override
     public void attack(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, Monster currentMonster) {

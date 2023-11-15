@@ -9,7 +9,7 @@ import com.alexanderhasslund.demo.main.Monster.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.Shop.ShopMenu;
 
-import java.io.IOException;
+
 import java.util.List;
 
 public class MainGameControl {
@@ -25,7 +25,7 @@ public class MainGameControl {
     }
 
 
-    public void mainSwitch() throws IOException, NoSuchFieldException, IllegalAccessException {
+    public void mainSwitch()  {
         PlayerChoice playerChoice = new PlayerChoice();
         ShopMenu shopMenu = new ShopMenu(playerList); // this line becomes null, seems like something is wrong
         SaveFile saveFile = new SaveFile();
@@ -33,6 +33,8 @@ public class MainGameControl {
         CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
         CombatEndingController combatEndingController = new CombatEndingController();
         GameLevelMenu gameLevelMenu = new GameLevelMenu(combatEndingController.getCalculateLevels(), playerList, countPlayers);
+
+
         boolean isMainPlaying = true;
         while (isMainPlaying) {
             System.out.println(playerChoice.mainMenuChoice());
@@ -40,27 +42,21 @@ public class MainGameControl {
                 case 1 -> {
 
                     isMainPlaying = gameLevelMenu.gameViewSwitch();
-
+                    if (!(isMainPlaying && playerList.isEmpty())) {
+                        isMainPlaying = true;
+                    }
                 }
                 case 2 -> {
-
                     shopMenu.mainShopMenu();
-
                 }
                 case 3 -> {
-
-
                     saveFile.saveFilePlayer(playerList);
-
                 }
                 case 4 -> {
-
                     checkPlayerStatus();
                 }
 
-
                 case 5 -> {
-
                     isMainPlaying = false;
                 }
                 default -> {

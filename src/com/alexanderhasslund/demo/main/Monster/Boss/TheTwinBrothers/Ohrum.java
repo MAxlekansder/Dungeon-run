@@ -12,7 +12,7 @@ public class Ohrum extends Monster implements IMonster, ICombat {
 
 
     public Ohrum() {
-        super("\033[1;36mBOSS\033[0m", "THE TWIN BROTHERS - Oh'rum", 80, 0, 10, 0, 60, 0, false, 50,300 , 0, false, 0);
+        super("\033[1;36mBOSS\033[0m", "THE TWIN BROTHERS - Oh'rum", 80, 0, 10, 0, 60, 0, false, 50,1000 , 0, false, 0);
     }
 
     @Override
@@ -22,10 +22,9 @@ public class Ohrum extends Monster implements IMonster, ICombat {
         System.out.println("THE TWIN BROTHERS REALIGNS WITH THE STARS");
         System.out.println("Ohrum heals himself and his brother, building up more HP overtime");
         for (Monster monster : monsterList) {
-            monster.setHp(monster.getHp() + 10);
+            monster.setHp(monster.getHp() + 15);
             System.out.println(monster.getMonsterName()+ "Current HP: " + monster.getHp());
         }
-
     }
 
 

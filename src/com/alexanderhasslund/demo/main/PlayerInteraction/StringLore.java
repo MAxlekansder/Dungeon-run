@@ -39,11 +39,15 @@ public class StringLore {
                 """);
     }
 
-    public void gameTitle() throws InterruptedException {
+    public void gameTitle() {
 
-        for (int i = 0; i < 4; i++) {
-            System.out.println(RED + "SAVE PRINCESS BENNY" + RESET);
-            Thread.sleep(300);
+        try {
+            for (int i = 0; i < 4; i++) {
+                System.out.println(RED + "SAVE PRINCESS BENNY" + RESET);
+                Thread.sleep(300);
+            }
+        } catch (Exception e) {
+            System.out.println("Intro taking to long");
         }
     }
 
@@ -101,7 +105,7 @@ public class StringLore {
                                 
                 The game have some basic rules, you can either play alone or with a party of 3.
                 it's a turned based dungeon crawl, with a rogue-like twist... 
-                Uou'll explore the skewering underworld of Azgarak Karaz
+                You'll explore the skewering underworld of Azgarak Karaz
                 beneath the city of Elderwell
                                 
                 where both you and the monsters have initative, the lower the number
@@ -183,7 +187,7 @@ public class StringLore {
     public static String bossTheInquisition() {
         return ("""
                 
-                As you might have understood, the six of the order, the inquisition have been watching 
+                The six of the order, the inquisition have been watching 
                 all along - evaluating and playing with that you have faced as pawns
                 
                 Now it's time to take down the council of Thaal...

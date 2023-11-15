@@ -16,22 +16,22 @@ public class Swords extends Weapon {
 
 
     public Inventory standardSword() {
-        Inventory standardSword = new Inventory("Standard sword",6, 5, 0,0,0);
+        Inventory standardSword = new Inventory("Standard sword",6, 0, 0,0,0);
         return standardSword;
     }
 
     public Inventory fastSword() {
-        Inventory fastSword = new Inventory("Fast sword",12, 10, 2,0,0);
+        Inventory fastSword = new Inventory("Fast sword",12, 0, 2,0,0);
         return fastSword;
     }
 
     public Inventory sharpSword() {
-        Inventory sharpSword = new Inventory("Sharp sword",20, 15, 5,0,0);
+        Inventory sharpSword = new Inventory("Sharp sword",20, 0, 5,0,0);
         return sharpSword;
     }
 
     public Inventory divineSword() {
-        Inventory divineSword = new Inventory("Divine sword",60, 20, 10,0,0);
+        Inventory divineSword = new Inventory("Divine sword",30, 0, 10,0,0);
         return divineSword;
     }
 

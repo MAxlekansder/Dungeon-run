@@ -45,9 +45,10 @@ public class FirstCombatEncounter {
 
 
         CombatController combatController = new CombatController(playerList, firstMonsterList);
-        combatController.initiateFight();
+        boolean isPlaying = combatController.initiateFight();
 
-        if (combatMenu.isHasFled()) {
+        if (!isPlaying) {
+
             CombatController combatControllerif = new CombatController(playerList, firstMonsterList);
             System.out.println("\nyou're not getting away that easy...");
             System.out.println("We're going again....");
@@ -56,6 +57,7 @@ public class FirstCombatEncounter {
             firstMonsterList.get(0).setInitiative(1);
             firstMonsterList.get(0).setGivesExperience(5);
             combatControllerif.initiateFight();
+
         } else {
 
             // move these out

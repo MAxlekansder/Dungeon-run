@@ -87,7 +87,7 @@ public class CombatController {
 
         }
 
-        if (combatMenu.isHasFled()) {
+        if (combatMenu.isFled()) {
             ResetCombat resetCombat = new ResetCombat();
             System.out.println("you cowardly fled from the fight... did i already call you a coward? Coward");
             resetCombat.resetPlayerListBackToNormal(playerList);
@@ -100,7 +100,7 @@ public class CombatController {
         }
 
 
-        if (playerList.isEmpty() && !combatMenu.isHasFled()) {
+        if (playerList.isEmpty() && !combatMenu.isFled()) {
             return false;
         } else {
             return true;

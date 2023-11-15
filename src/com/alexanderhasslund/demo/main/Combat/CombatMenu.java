@@ -12,15 +12,17 @@ import java.util.List;
 
 public class CombatMenu {
 
-    private boolean hasFled;
+    private boolean isFled;
 
-    public boolean isHasFled() {
-        return hasFled;
+    public boolean isFled() {
+        return isFled;
     }
 
-    public void setHasFled(boolean hasFled) {
-        this.hasFled = hasFled;
+    public void setFled(boolean fled) {
+        this.isFled = fled;
     }
+
+
 
     public void combatSwitch(List<Player> playerList, List<Monster> monsterList, Player currentPlayer, Monster currentMonster) {
         PlayerChoice playerChoice = new PlayerChoice();
@@ -63,7 +65,7 @@ public class CombatMenu {
                         flee.chanceOfFleeing(monsterList);
                         isViewing = false;
                         isFighting = false;
-                        hasFled = true;
+                        isFled = true;
 
                     }
                     default -> {
@@ -109,15 +111,19 @@ public class CombatMenu {
                 case 1 -> {
 
                     if ( currentPlayer.getInventoryList().get(2).getItemName().equals("Potion of Haste")) {
+                        System.out.printf("%s %s used potion of Haste! Setting them first ahead, quick arent we?", currentPlayer.getClassName(), currentPlayer.getName());
                         currentPlayer.setInitiative(1);
+                        currentPlayer.getInventoryList().remove(2);
                     }
 
                     if ( currentPlayer.getInventoryList().get(2).getItemName().equals("Potion of Defence")) {
+                        System.out.printf("%s %s used potion of defence! you start feeling almost like a stone...",currentPlayer.getClassName(), currentPlayer.getName());
                         currentPlayer.setDefence(currentPlayer.getDefence() + 20);
+                        currentPlayer.getInventoryList().remove(2);
                     }
 
                     if ( currentPlayer.getInventoryList().get(2).getItemName().equals("Potion of Health")) {
-
+                        System.out.printf("%s %s used potion of health! Refreshing...",currentPlayer.getClassName(), currentPlayer.getName());
                         int newHp = currentPlayer.getHp() + 40;
 
                         if (newHp > currentPlayer.getMaxHp()) {
@@ -125,6 +131,7 @@ public class CombatMenu {
                         } else {
                             currentPlayer.setHp(newHp);
                         }
+                        currentPlayer.getInventoryList().remove(2);
 
                     }
                     isPotionMenu = false;

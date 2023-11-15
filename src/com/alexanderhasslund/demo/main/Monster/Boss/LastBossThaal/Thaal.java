@@ -12,7 +12,7 @@ public class Thaal extends Monster implements IMonster, ICombat {
 
 
     public Thaal() {
-        super("\033[1;36mFINAL BOSS\033[0m","THE GRAND EMPEROR - Thaal",300,0,10,0,0,0,false,200,2000,0,false,0);
+        super("\033[1;36mFINAL BOSS\033[0m","THE GRAND EMPEROR - Thaal",300,0,15,0,0,0,false,200,2000,0,false,0);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class Thaal extends Monster implements IMonster, ICombat {
             if (dodgeChance < scalingDodgeChance) {
                 System.out.println("Thaal, strikes with a mighty blow, dealing: " + currentMonster.getDamage() + " damage");
                 playerList.get(randPlayer).setHp(playerList.get(randPlayer).getHp()
-                        - currentMonster.getDamage());
+                        - (currentMonster.getDamage() - (int) (playerList.get(randPlayer).getDefence() / 10)));
                 System.out.printf("And player: %s has %s HP left \n", playerList.get(randPlayer).getName(), playerList.get(randPlayer).getHp());
 
             } else {

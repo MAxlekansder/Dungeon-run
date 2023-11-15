@@ -88,7 +88,7 @@ public class Sorcerer extends Player implements IClasses, ICombat, Serializable 
         currentPlayer.setBaseIntellect(currentPlayer.getBaseIntellect() + (int)(currentPlayer.getLevel() / 3));
 
         currentPlayer.setBaseDamage(currentPlayer.getBaseDamage() + (currentPlayer.getIntellect() / 8));
-        currentPlayer.setMaxResource(currentPlayer.getMaxResource() + (currentPlayer.getIntellect() / 9));
+        currentPlayer.setMaxResource(currentPlayer.getMaxResource() + (currentPlayer.getIntellect() / 5));
         currentPlayer.setBaseDefence(currentPlayer.getBaseDefence() + (int) (currentPlayer.getIntellect() * 0.2));
         currentPlayer.setMaxHp(currentPlayer.getMaxHp() + (int) (currentPlayer.getBaseStrength() * 0.5));
     }
@@ -103,11 +103,8 @@ public class Sorcerer extends Player implements IClasses, ICombat, Serializable 
 
             for (Monster monster : monsterList) {
                 monster.setHp(monster.getHp() - (int) (currentPlayer.getDamage() + (level * 1.3))); // guessing the damage gets fucked with the multiplier
-                System.out.println("Doing per monster: " + ((int) (currentPlayer.getDamage() + (level * 1.3))));
+                System.out.println("CLEAVING EACH MONSTER FOR: " + ((int) (currentPlayer.getDamage() + (level * 1.3))));
             }
-
-            System.out.println("And in total: " + ((int) (currentPlayer.getDamage() + (level * 1.3) * monsterList.size())));
-
             currentPlayer.setResource(currentPlayer.getResource() - 100);
         } else {
             System.out.printf("The %s %s doesnt have enough mana to perform dragons breath!", currentPlayer.getClassName(), currentPlayer.getName());
@@ -121,32 +118,37 @@ public class Sorcerer extends Player implements IClasses, ICombat, Serializable 
 
         switch (sorcererSpells) {
             case 1 -> {
-                System.out.println("Sorcerer gets a barrier, shielding for 30 damage: ");
-                currentPlayer.setHp(currentPlayer.getHp() + 30);
-                currentPlayer.setResource(currentPlayer.getResource() - 40);
-
+                if (currentPlayer.getResource() >= 40) {
+                    System.out.println("Sorcerer gets a barrier, shielding for 30 damage: ");
+                    currentPlayer.setHp(currentPlayer.getHp() + 30);
+                    currentPlayer.setResource(currentPlayer.getResource() - 40);
+                } else {
+                    System.out.println("The sorcerer doesnt have enough mana");
+                }
             }
             case 2 -> {
                 System.out.println("Striking two targets at the same time, dealing damage based on your intellect");
                 //int monsterChoice = 1;
+                if (currentPlayer.getResource() >= 70) {
+                    for (int i = 0; i < 2; i++) {
+                        int monsterChoice = 1;
+                        for (Monster monster1 : monsterList) {
+                            System.out.println("CHOICE: " + monsterChoice + " " + monster1);
+                            monsterChoice++;
+                        }
+                        System.out.print("Decide what monster you want to hit: ");
+                        int monsterIndex = Input.intInput() - 1;
+                        // build a miss system? Even for monsters based on something.
 
-                for (int i = 0; i < 2; i++) {
-                    int monsterChoice = 1;
-                    for (Monster monster1 : monsterList) {
-                        System.out.println("CHOICE: " + monsterChoice + " " + monster1);
-                        monsterChoice++;
+                        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
+                                (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage()
+                                        + (currentPlayer.getBaseStrength() / 7)
+                                        + currentPlayer.getLevel()));
                     }
-                    System.out.print("Decide what monster you want to hit: ");
-                    int monsterIndex = Input.intInput() - 1;
-                    // build a miss system? Even for monsters based on something.
-
-                    monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
-                            (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage()
-                            + (currentPlayer.getBaseStrength() / 7)
-                            + currentPlayer.getLevel()));
+                    currentPlayer.setResource(currentPlayer.getResource() - 70);
+                } else {
+                    System.out.println("The sorcerer doesnt have enough mana");
                 }
-                 currentPlayer.setResource(currentPlayer.getResource() -70);
-
             }
             default -> {
                 System.out.println("Use right input");

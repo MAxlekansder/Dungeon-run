@@ -9,23 +9,20 @@ import com.alexanderhasslund.demo.main.Engine.StringManipulator;
 import com.alexanderhasslund.demo.main.File.SaveFile;
 import com.alexanderhasslund.demo.main.Player.PlayerController;
 
-import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class GameStartControl {
 
 
-    public void startIntroductionGame() throws InterruptedException, IOException, NoSuchFieldException, IllegalAccessException {
+    public void startIntroductionGame() {
         StringManipulator stringManipulator = new StringManipulator();
         StringLore stringLore = new StringLore();
 
 
-        //stringManipulator.manipulateString(stringLore.intro());
+        stringManipulator.manipulateString(stringLore.intro());
         stringLore.gameTitle();
         System.out.println(stringLore.gameIntroductionClasses());
 
@@ -42,11 +39,10 @@ public class GameStartControl {
 
         String enter = Input.stringInput();
         startUpMenu();
-
     }
 
 
-    public void startUpMenu() throws IOException, NoSuchFieldException, IllegalAccessException {
+    public void startUpMenu() {
         PlayerChoice playerChoice = new PlayerChoice();
         SaveFile saveFile = new SaveFile();
         boolean isPlaying = true;
@@ -62,7 +58,7 @@ public class GameStartControl {
 
                 }
                 case 2 -> {
-                    Path path = Paths.get("Player.txt");
+                    Path path = Paths.get("Gamesave.txt");
 
                     if (Files.exists(path)) {
 
@@ -87,11 +83,11 @@ public class GameStartControl {
 
 
 
-    public void startIntroductionChoice() throws IOException, NoSuchFieldException, IllegalAccessException {
+    public void startIntroductionChoice() {
         PlayerController playerController = new PlayerController();
         StringManipulator stringManipulator = new StringManipulator();
         PlayerChoice playerChoice = new PlayerChoice();
-        stringManipulator.manipulateString(playerChoice.newGameSetup());
+
         playerController.playerCount();
         FirstCombatEncounter firstCombatEncounter = new FirstCombatEncounter(playerController.getPlayerList(), playerController.getCountPlayers());
         playerController.chooseClass();

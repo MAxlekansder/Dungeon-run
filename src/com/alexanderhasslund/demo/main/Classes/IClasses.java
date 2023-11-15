@@ -10,4 +10,5 @@ public interface IClasses {
     public void spells(List<Player> playerList, Player player, List<Monster> monsterList);
     public void setLevelUp(Player player);
     public void addStatsToPlayer(Player player);
+
 }

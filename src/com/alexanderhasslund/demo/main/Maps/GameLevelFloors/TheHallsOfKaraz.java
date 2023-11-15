@@ -1,5 +1,6 @@
 package com.alexanderhasslund.demo.main.Maps.GameLevelFloors;
 import com.alexanderhasslund.demo.main.Combat.CombatController.CombatController;
+import com.alexanderhasslund.demo.main.Combat.CombatMenu;
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
 import com.alexanderhasslund.demo.main.Monster.MonsterController;
 import com.alexanderhasslund.demo.main.Player.Player;
@@ -27,22 +28,25 @@ public class TheHallsOfKaraz  {
         MonsterController monsterController = new MonsterController(countPlayers);
         CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
         StringManipulator stringManipulator = new StringManipulator();
+        CombatMenu combatMenu = new CombatMenu();
         monsterController.monsterValueController();
-       //combatController.initiateFight();
         boolean checkPlayerEncounter = false;
+
 
         if (combatController.initiateFight()) {
             stringManipulator.manipulateString(StringLore.bossTagTeam());
 
-            monsterController.chooseBossFight(calculateLevels);
-            checkPlayerEncounter = combatController.initiateFight();
+                monsterController.chooseBossFight(calculateLevels);
+                checkPlayerEncounter = combatController.initiateFight();
+
         } else System.out.println("As you run out, you still here the screeches of a horde, maybe another day...");
         //boolean checkPlayerEncounter = combatController.initiateFight();
         // sout a "you killed the first boss... give rewards etc etc
 
 
+       return checkPlayerEncounter;
         // trigger same as in maingameMenu
-        return checkPlayerEncounter;
+        //return checkPlayerEncounter;
     }
 
 }

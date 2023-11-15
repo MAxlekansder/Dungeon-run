@@ -21,8 +21,8 @@ public class SwordsShop {
         System.out.println(playerChoice.swordsMenu());
         int swordChoice = Input.intInput();
         boolean isShop = true;
-        do {
 
+        do {
             switch (swordChoice) {
                 case 1 -> {
                     if (playerList.get(playerIndex).getLevel() >= 0 && playerList.get(playerIndex).getCurrency() >= 200) {

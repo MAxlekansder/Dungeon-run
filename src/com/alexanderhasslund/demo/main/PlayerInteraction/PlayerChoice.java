@@ -150,19 +150,19 @@ public class PlayerChoice {
     public String fightSequence() {
         return ("""
                 
-                    ----\033[1;33m COMBAT OPTIONS \033[0m----
+                         ----\033[1;33m COMBAT OPTIONS \033[0m----
                 1. FIGHT  2. USE POTIONS   3. GET STATUS    4. FLEE""");
     }
 
     public String abilityChoice() {
         return (""" 
-                    ----\033[1;33m IN ACTION MENU \033[0m----
+                            ----\033[1;33m IN ACTION MENU \033[0m----
                 1. BASIC ATTACK     2. CHOOSE SPELL     3. ULTIMATE""");
     }
 
     public String potionChoice() {
         return (""" 
-                    ----\033[1;33m IN POTION MENU \033[0m----
+                            ----\033[1;33m IN POTION MENU \033[0m----
                 1. USE POTION    2. BACK TO MENU""");
     }
 

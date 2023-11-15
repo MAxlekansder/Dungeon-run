@@ -1,5 +1,6 @@
 package com.alexanderhasslund.demo.main.PlayerInteraction;
 
+import com.alexanderhasslund.demo.main.Combat.CombatMenu;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.Maps.GameLevelOptions.GameLevelFour;
 import com.alexanderhasslund.demo.main.Maps.GameLevelOptions.GameLevelOne;
@@ -14,6 +15,7 @@ public class GameLevelMenu {
     private List<Player> playerList;
     private int countPlayers;
 
+
     public GameLevelMenu(int calculateLevels, List<Player> playerList, int countPlayers) {
         this.playerList = playerList;
         this.countPlayers = countPlayers;
@@ -25,6 +27,7 @@ public class GameLevelMenu {
         GameLevelTwo gameLevelTwo = new GameLevelTwo(calculateLevels, playerList, countPlayers);
         GameLevelThree gameLevelThree = new GameLevelThree(calculateLevels, playerList, countPlayers);
         GameLevelFour gameLevelFour = new GameLevelFour(calculateLevels, playerList, countPlayers);
+
         boolean isGameLevel = true;
         boolean isPlayerEncounter = true;
 

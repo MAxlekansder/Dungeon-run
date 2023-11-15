@@ -31,7 +31,7 @@ public class GameLevelFour {
         TheHallsOfKaraz theHallsOfKaraz = new TheHallsOfKaraz(calculateLevels, playerList, countPlayers);
         PlayerChoice playerChoice = new PlayerChoice();
         StringManipulator stringManipulator = new StringManipulator();
-
+        boolean isPlayerEncounter = true;
 
 
         System.out.println(playerChoice.presentFinalLevel());
@@ -40,20 +40,21 @@ public class GameLevelFour {
         do {
             switch (gameMapChoice) {
                 case 1 -> {
-                    theHallsOfKaraz.startUpGameOne();
-                    isChoice = false;
+                    isPlayerEncounter = theHallsOfKaraz.startUpGameOne();
+                    if (!isPlayerEncounter) isChoice = false;
                 }
                 case 2 -> {
-                    upperPlateau.startUpGameTwo();
-                    isChoice = false;
+                    isPlayerEncounter = upperPlateau.startUpGameTwo();
+                    if (!isPlayerEncounter) isChoice = false;
                 }
                 case 3 -> {
-                    cityMarkazh.startUpGameThree();
-                    isChoice = false;
+                    isPlayerEncounter = cityMarkazh.startUpGameThree();
+                    if (!isPlayerEncounter) isChoice = false;
                 }
                 case 4 -> {
-                    finalRoomOfKazarak.startUpGameFour();
-                    isChoice = false;
+                    isPlayerEncounter = finalRoomOfKazarak.startUpGameFour();
+                    if (!isPlayerEncounter) isChoice = false;
+
                 }
                 case 5 -> {
                     System.out.println(" quit");

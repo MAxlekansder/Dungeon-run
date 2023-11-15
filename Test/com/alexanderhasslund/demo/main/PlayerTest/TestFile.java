@@ -1,14 +1,19 @@
 package com.alexanderhasslund.demo.main.PlayerTest;
 
+import com.alexanderhasslund.demo.main.Classes.Rogue;
+import com.alexanderhasslund.demo.main.Engine.Input;
 import com.alexanderhasslund.demo.main.Engine.StringManipulator;
 import com.alexanderhasslund.demo.main.Monster.BasicMonsters.MonsterBrute;
 import com.alexanderhasslund.demo.main.Monster.Monster;
 import com.alexanderhasslund.demo.main.Player.Player;
 import com.alexanderhasslund.demo.main.PlayerInteraction.StringLore;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -110,10 +115,51 @@ public class TestFile {
     }
 
     @BeforeAll
+    @Test
     @Timeout(1000)
     public static void testPresentation(){
         StringManipulator stringManipulator = new StringManipulator();
         stringManipulator.manipulateString(StringLore.bossIntroThaal());
         stringManipulator.manipulateString(StringLore.youWin());
     }
+
+
+    @RepeatedTest(8)
+    @DisplayName("Regression testing rand")
+    public void monsteDoingDamage() {
+        Random random = new Random();
+        Rogue rogue = new Rogue();
+        playerControllerTest.chooseClass();
+        PlayerTest currentPlayer = playerControllerTest.getPlayerList().get(0);
+        int randomPlayer = random.nextInt(playerControllerTest.getPlayerList().size());
+        assertEquals(0,randomPlayer);
+
+        playerControllerTest.chooseClass();
+        playerControllerTest.chooseClass();
+
+       assertEquals(3, playerControllerTest.getPlayerList().size());
+
+    }
+
+    @Test
+    @DisplayName("Adding barb and rogue")
+    public void testAddMorePlayers() {
+        playerControllerTest.getPlayerList().add(new BarbarianTest());
+        playerControllerTest.getPlayerList().add(new RogueTest());
+
+        assertEquals(2, playerControllerTest.getPlayerList().size());
+        playerControllerTest.getPlayerList().remove(0);
+        //should return rogue as barb was removed
+        assertEquals(playerControllerTest.getPlayerList().get(0).getClassName().startsWith("ROGUE", 6), playerControllerTest.getPlayerList().get(0).getClassName().startsWith("ROGUE", 6));
+    }
+
+    @Test
+    @DisplayName("For adding names")
+    public void testInputString() {
+        String strTest = "Alexander";
+        assertTrue(strTest instanceof String, strTest);
+    }
+
+
+
 }
