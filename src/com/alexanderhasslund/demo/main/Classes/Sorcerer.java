@@ -168,13 +168,21 @@ public class Sorcerer extends Player implements IClasses, ICombat, Serializable 
         System.out.print("Decide what monster you want to hit: ");
         int monsterIndex = Input.intInput() -1;
 
-        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
-        (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getInventoryList().get(1).getDamage())
-        + (currentPlayer.getBaseIntellect() / 7));
+        int sorcererDamage = calculateDamage(playerList, currentPlayer,monsterList, monsterIndex);
+        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() - sorcererDamage);
 
-        System.out.printf("The Sorcerer attacks with all element aligned, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
+        System.out.printf("The Sorcerer attacks with all element aligned, Dealing %s to monster %s \n", sorcererDamage, monsterList.get(monsterIndex).getMonsterName());
     }
 
+    public int calculateDamage(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, int monsterIndex) {
+        int calculateHeroDamage =
+                currentPlayer.getDamage()
+                + currentPlayer.getInventoryList().get(0).getDamage()
+                + currentPlayer.getInventoryList().get(1).getDamage()
+                + (currentPlayer.getIntellect() / 5);
+
+        return calculateHeroDamage;
+    }
 
     @Override
     public boolean isHasPlayed() {

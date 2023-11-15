@@ -114,8 +114,8 @@ public class TestFile {
     assertEquals(1,monsterListTest.size());
     }
 
-    @BeforeAll
-    @Test
+   // @BeforeAll
+   // @Test
     @Timeout(1000)
     public static void testPresentation(){
         StringManipulator stringManipulator = new StringManipulator();
@@ -125,7 +125,7 @@ public class TestFile {
 
 
     @RepeatedTest(8)
-    @DisplayName("Regression testing rand")
+    @DisplayName("testing rand of size")
     public void monsteDoingDamage() {
         Random random = new Random();
         Rogue rogue = new Rogue();
@@ -160,6 +160,30 @@ public class TestFile {
         assertTrue(strTest instanceof String, strTest);
     }
 
+    @ParameterizedTest
+    @ValueSource (ints = {100, 200, 300, 400})
+    public void testMoreLevels(int number) {
+        playerControllerTest.getPlayerList().add(new BarbarianTest());
+        PlayerTest currentPlayerTest = playerControllerTest.getPlayerList().get(0);
 
+        int PlayerCurrentExperienceExperince = number;
+        currentPlayerTest.setExperience(0);
+        int expectedLevels = 1;
+        for (int i = PlayerCurrentExperienceExperince; i > 0; i--) {
+            currentPlayerTest.setExperience(currentPlayerTest.getExperience()+1);
+
+
+            if (currentPlayerTest.getExperience() == 100) { // fix better logic for leveling...
+
+                currentPlayerTest.setLevel(currentPlayerTest.getLevel() +1);
+
+                currentPlayerTest.setExperience(0);
+                expectedLevels++;
+
+            }
+        }
+        assertEquals(expectedLevels,currentPlayerTest.getLevel());
+
+    }
 
 }

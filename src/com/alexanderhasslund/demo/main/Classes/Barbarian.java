@@ -178,13 +178,21 @@ public class Barbarian extends Player implements IClasses, ICombat, Serializable
         }
         System.out.print("Decide what monster you want to hit: ");
         int monsterIndex = Input.intInput() -1;
-        // build a miss system? Even for monsters based on something.
 
-        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -
-        (currentPlayer.getDamage() + currentPlayer.getInventoryList().get(0).getDamage()
-        + currentPlayer.getInventoryList().get(1).getDamage()) + (currentPlayer.getStrength() /7));
+        int barbarianDamage = calculateDamage(playerList, currentPlayer, monsterList, monsterIndex);
+        monsterList.get(monsterIndex).setHp(monsterList.get(monsterIndex).getHp() -  barbarianDamage);
 
-        System.out.printf("\nThe barbarian attacks with a hard hitting strike, Dealing %s to monster %s \n", currentPlayer.getDamage(), monsterList.get(monsterIndex).getMonsterName());
+        System.out.printf("\nThe barbarian attacks with a hard hitting strike, Dealing %s to monster %s \n", barbarianDamage, monsterList.get(monsterIndex).getMonsterName());
+    }
+
+    public int calculateDamage(List<Player> playerList, Player currentPlayer, List<Monster> monsterList, int monsterIndex) {
+        int calculateHeroDamage =
+                currentPlayer.getDamage()
+                + currentPlayer.getInventoryList().get(0).getDamage()
+                + currentPlayer.getInventoryList().get(1).getDamage()
+                + (currentPlayer.getStrength() / 7);
+
+        return calculateHeroDamage;
     }
 
 
