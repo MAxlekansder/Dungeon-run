@@ -28,14 +28,14 @@ public class FinalRoomOfKazarak {
         SaveFile saveFile = new SaveFile();
 
 
-      //  stringManipulator.manipulateString(StringLore.bossIntroThaal());
+        stringManipulator.manipulateString(StringLore.bossIntroThaal());
         boolean checkPlayerEncounter = false;
 
 
 
           monsterController.chooseBossFight(calculateLevels);
           if(combatController.initiateFight()) {
-            //  stringManipulator.manipulateString(StringLore.bossLastBossThaal());
+              stringManipulator.manipulateString(StringLore.bossLastBossThaal());
               saveFile.saveHistoricPlayer(playerList);
               playerList.removeAll(playerList);
 

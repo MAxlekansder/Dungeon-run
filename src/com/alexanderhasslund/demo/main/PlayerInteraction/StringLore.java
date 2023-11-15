@@ -97,7 +97,7 @@ public class StringLore {
                 Every class has a higher set of the main attributes per class -
                 
                 \033[1;31mStrength\033[0m is an attribute that grants more raw damage and protection
-                \033[1;32mAgility\033[0m is an attirubte that give higher initiative and a better chance to dodge
+                \033[1;32mAgility\033[0m is an attirubte that has higher initiative and abit hybrid
                 \033[1;34mIntellect\033[0m is an attribute that gives higher resources and higher scaling damage
                                 
                                 To make the best of it - PLEASE use only one of the classes per player...
