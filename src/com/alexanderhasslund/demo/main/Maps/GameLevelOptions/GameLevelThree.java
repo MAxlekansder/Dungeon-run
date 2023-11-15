@@ -50,7 +50,7 @@ public class GameLevelThree {
                     System.out.println(" Level not reached");
                 }
                 case 5 -> {
-                    System.out.println(" quit");
+
                     isPlayerEncounter = true;
                     isChoice = false;
                 }

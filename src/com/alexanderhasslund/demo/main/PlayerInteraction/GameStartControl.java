@@ -22,9 +22,9 @@ public class GameStartControl {
         StringLore stringLore = new StringLore();
 
 
-        stringManipulator.manipulateString(stringLore.intro());
+        //stringManipulator.manipulateString(stringLore.intro());
         stringLore.gameTitle();
-        System.out.println(stringLore.gameIntroductionClasses());
+        //System.out.println(stringLore.gameIntroductionClasses());
 
         Barbarian barbarian = new Barbarian();
         System.out.println(barbarian);
@@ -34,7 +34,7 @@ public class GameStartControl {
         System.out.println(sorcerer);
 
         System.out.println(stringLore.ultimateClassPresentation());
-        stringManipulator.manipulateString(stringLore.gameIntroductionRules());
+        //stringManipulator.manipulateString(stringLore.gameIntroductionRules());
         System.out.println("Press enter to continue, where you start the game and choose class");
 
         String enter = Input.stringInput();
@@ -72,7 +72,7 @@ public class GameStartControl {
 
                 }
                 case 3 -> {
-                    // highscore
+                    System.out.println("Feature comming soon!");
                 }
                 case 4 -> {
                     isPlaying = false;
@@ -96,7 +96,7 @@ public class GameStartControl {
         MainGameControl mainGameControl = new MainGameControl(playerController.getPlayerList(), playerController.getCountPlayers());
 
 
-        stringManipulator.manipulateString(playerChoice.firstFightIntroduction());
+        //stringManipulator.manipulateString(playerChoice.firstFightIntroduction());
         firstCombatEncounter.firstPlayerFight();
         mainGameControl.mainSwitch();
     }

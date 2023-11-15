@@ -150,7 +150,7 @@ public class PlayerChoice {
     public String fightSequence() {
         return ("""
                 
-                         ----\033[1;33m COMBAT OPTIONS \033[0m----
+                            ----\033[1;33m COMBAT OPTIONS \033[0m----
                 1. FIGHT  2. USE POTIONS   3. GET STATUS    4. FLEE""");
     }
 

@@ -28,21 +28,22 @@ public class FinalRoomOfKazarak {
         SaveFile saveFile = new SaveFile();
 
 
-        stringManipulator.manipulateString(StringLore.bossIntroThaal());
+      //  stringManipulator.manipulateString(StringLore.bossIntroThaal());
         boolean checkPlayerEncounter = false;
 
 
 
           monsterController.chooseBossFight(calculateLevels);
-          if( checkPlayerEncounter = combatController.initiateFight()) {
-              stringManipulator.manipulateString(StringLore.bossLastBossThaal());
+          if(combatController.initiateFight()) {
+            //  stringManipulator.manipulateString(StringLore.bossLastBossThaal());
               saveFile.saveHistoricPlayer(playerList);
+              playerList.removeAll(playerList);
 
               stringManipulator.manipulateString(StringLore.youWin());
+              return false;
           } else {
               System.out.println("BENNY WILL BE MINE FOREVER AND THE CITY OF ELDERWELL WILL BURN");
+              return true;
           }
-          
-        return false;
     }
 }

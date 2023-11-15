@@ -233,10 +233,10 @@ public class StringLore {
                 
                         T H A N K  Y O U  F O R  P L A Y I N G
                         
-                                Designed by
+                                   Designed by
                                 Alexander Hasslund
                                 
-                                Music by
+                                    Music by
                                 Alexander Hasslund
                                 
                                 Scene and graphics 

@@ -44,6 +44,8 @@ public class MainGameControl {
                     isMainPlaying = gameLevelMenu.gameViewSwitch();
                     if (!(isMainPlaying && playerList.isEmpty())) {
                         isMainPlaying = true;
+                    } else {
+                        isMainPlaying = false;
                     }
                 }
                 case 2 -> {

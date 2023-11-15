@@ -57,7 +57,7 @@ public class GameLevelFour {
 
                 }
                 case 5 -> {
-                    System.out.println(" quit");
+
                     isChoice = false;
                 }
                 default -> {
