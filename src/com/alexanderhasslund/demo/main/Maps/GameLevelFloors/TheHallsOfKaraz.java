@@ -40,13 +40,10 @@ public class TheHallsOfKaraz  {
                 checkPlayerEncounter = combatController.initiateFight();
 
         } else System.out.println("As you run out, you still here the screeches of a horde, maybe another day...");
-        //boolean checkPlayerEncounter = combatController.initiateFight();
-        // sout a "you killed the first boss... give rewards etc etc
 
 
        return checkPlayerEncounter;
-        // trigger same as in maingameMenu
-        //return checkPlayerEncounter;
+
     }
 
 }

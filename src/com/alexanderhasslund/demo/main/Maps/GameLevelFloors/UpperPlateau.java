@@ -27,7 +27,7 @@ public class UpperPlateau {
         CombatController combatController = new CombatController(playerList, monsterController.getMonsterList());
         StringManipulator stringManipulator = new StringManipulator();
         monsterController.monsterValueController();
-        //combatController.initiateFight();
+
         stringManipulator.manipulateString(StringLore.reachingUpperPlateau());
         boolean checkPlayerEncounter = false;
 
@@ -37,11 +37,7 @@ public class UpperPlateau {
             monsterController.chooseBossFight(calculateLevels);
             checkPlayerEncounter = combatController.initiateFight();
         } else System.out.println("As you run out, a ringing 'OUHM' deafening you, maybe another day...");
-        //boolean checkPlayerEncounter = combatController.initiateFight();
-        // sout a "you killed the first boss... give rewards etc etc
 
-
-        // trigger same as in maingameMenu
         return checkPlayerEncounter;
 
     }

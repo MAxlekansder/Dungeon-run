@@ -50,37 +50,5 @@ public class ResetCombat {
         }
     }
 
-/*
-    public void resetPlayerBackToNormal(Player currentPlayer) {
-
-        if (currentPlayer instanceof Barbarian) {
-            currentPlayer.setResource(currentPlayer.getMaxResource());
-            currentPlayer.setAgility(currentPlayer.getBaseAgility());
-            currentPlayer.setStrength(currentPlayer.getBaseStrength());
-            currentPlayer.setIntellect(currentPlayer.getIntellect());
-            currentPlayer.setBaseDamage(currentPlayer.getBaseDamage());
-            currentPlayer.setHp(currentPlayer.getMaxHp());
-            currentPlayer.setHasPlayed(false);
-
-        } else if (currentPlayer instanceof Rogue) {
-            currentPlayer.setResource(currentPlayer.getMaxResource());
-            currentPlayer.setAgility(currentPlayer.getBaseAgility());
-            currentPlayer.setStrength(currentPlayer.getBaseStrength());
-            currentPlayer.setIntellect(currentPlayer.getIntellect());
-            currentPlayer.setBaseDamage(currentPlayer.getBaseDamage());
-            currentPlayer.setHp(currentPlayer.getMaxHp());
-            currentPlayer.setHasPlayed(false);
-
-        } else if (currentPlayer instanceof Sorcerer) {
-            currentPlayer.setResource(currentPlayer.getMaxResource());
-            currentPlayer.setAgility(currentPlayer.getBaseAgility());
-            currentPlayer.setStrength(currentPlayer.getBaseStrength());
-            currentPlayer.setIntellect(currentPlayer.getIntellect());
-            currentPlayer.setBaseDamage(currentPlayer.getBaseDamage());
-            currentPlayer.setHp(currentPlayer.getMaxHp());
-            currentPlayer.setHasPlayed(false);
-        } else {
-            System.out.println("No class found... ");
-        } */
 }
 

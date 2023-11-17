@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class PlayerAttack {
-    private int countDeadMonsters;
+    private int countDeadMonsters; // no usages else where - ignored
 
     public int getCountDeadMonsters() {
         return countDeadMonsters;

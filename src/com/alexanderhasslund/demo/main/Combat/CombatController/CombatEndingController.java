@@ -17,8 +17,7 @@ public class CombatEndingController {
         if (playerList.isEmpty()) {
             System.out.println("Seems like you didnt make it further than here... ");
             System.out.println("too bad... better luck next time, hero");
-            // save a file here
-            // break this loop
+
 
         }
         else {

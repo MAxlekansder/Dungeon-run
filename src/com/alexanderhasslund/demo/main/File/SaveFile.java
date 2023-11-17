@@ -14,14 +14,6 @@ public class SaveFile {
 
     public void saveFilePlayer(List<Player> playerList) {
 
-    /*
-        String osName = System.getProperty("os.name").toLowerCase();
-        String firstNameInOS = osName.substring(0, osName.indexOf(' '));
-        switch (firstNameInOS) {
-            case "linux" -> System.out.println("running on Linux");
-            case "mac os x" -> System.out.println("running on macOS");
-            case "windows" -> System.out.println("running on PC");
-        }*/
 
         try {
             String saveName = "Gamesave.txt";
@@ -57,15 +49,7 @@ public class SaveFile {
 
     public void saveHistoricPlayer(List<Player> playerList) {
 
-    /*
-        String osName = System.getProperty("os.name").toLowerCase();
-        String firstNameInOS = osName.substring(0, osName.indexOf(' '));
-        switch (firstNameInOS) {
-            case "linux" -> System.out.println("running on Linux");
-            case "mac os x" -> System.out.println("running on macOS");
-            case "windows" -> System.out.println("running on PC");
-        }
-*/
+
         try {
             //String dateNow = String.valueOf(LocalDateTime.now());
 

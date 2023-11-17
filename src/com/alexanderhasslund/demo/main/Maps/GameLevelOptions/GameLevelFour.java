@@ -30,7 +30,6 @@ public class GameLevelFour {
         UpperPlateau upperPlateau = new UpperPlateau(calculateLevels, playerList, countPlayers);
         TheHallsOfKaraz theHallsOfKaraz = new TheHallsOfKaraz(calculateLevels, playerList, countPlayers);
         PlayerChoice playerChoice = new PlayerChoice();
-        StringManipulator stringManipulator = new StringManipulator();
         boolean isPlayerEncounter = true;
 
 

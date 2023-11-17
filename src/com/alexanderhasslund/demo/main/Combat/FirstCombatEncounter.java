@@ -13,7 +13,7 @@ import java.util.List;
 public class FirstCombatEncounter {
 
     private List<Player> playerList;
-    private int playerCount;
+    private int playerCount; // from older versions, left it in just because
 
 
 

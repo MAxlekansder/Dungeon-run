@@ -25,8 +25,7 @@ public class CombatController {
         CombatMenu combatMenu = new CombatMenu();
         MonsterAttack monsterAttack = new MonsterAttack();
         boolean isGameOver = false;
-        //Collections.sort(playerList, new PlayerInitiativeComperator());
-        //Collections.sort(monsterList, new MonsterInitiativeComperator());
+
 
         System.out.println("Enter to start combat ");
         String enter = Input.stringInput();

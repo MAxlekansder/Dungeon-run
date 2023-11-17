@@ -20,7 +20,7 @@ public class MonsterBrute extends Monster implements IMonster, ICombat {
 
     @Override
     public void spells(List<Player> playerList, Player player, List<Monster> monsterList, Monster monster) {
-
+        //slam
     }
 
     @Override
