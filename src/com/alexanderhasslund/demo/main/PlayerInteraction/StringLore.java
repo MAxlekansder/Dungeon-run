@@ -79,7 +79,7 @@ public class StringLore {
                 Executes the target                The rogue performs a            The sorcerer breathes fire  
                 when monster hp is lower than      swift attack striking           to every enemy dealing massive
                 30% of barbarians hp               all targets the rogue is        area of effect damage 
-                                                   facing, dealing double          **TBA** burning every enemy
+                                                   facing, dealing                 **TBA** burning every enemy
                                                    damage. But has a               for 2 rounds
                                                    **TBA**2 rounds cooldown
                 -----------------------------------------------------   
@@ -93,6 +93,9 @@ public class StringLore {
                 All have one basic attack that doesnt cost any resource. 
                 Two spells that's on a low cost and deals modirate damage 
                 One ulitmate as seen above - cost a lot more and might only be used once per level
+                \033[1;31mBERSERKERS RAGE\033[0m | COSTS: 100
+                \033[1;32mFOOLS ELUSIVENESS\033[0m | COSTS: 100
+                \033[1;34mDRAGONS BREATH\033[0m | COSTS: 100
                 
                 Every class has a higher set of the main attributes per class -
                 

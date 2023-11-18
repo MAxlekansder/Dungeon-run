@@ -101,7 +101,7 @@ public class Rogue extends Player implements IClasses, ICombat, Serializable {
     @Override
     public void ultimate(List<Player> playerList, Player currentPlayer, List<Monster> monsterList) {
 
-        if (currentPlayer.getResource() >= 150) {
+        if (currentPlayer.getResource() >= 100) {
             System.out.println("The rogue strikes in a quick sequence, dealing double damage to: ");
             int calcRogueUltimate = (currentPlayer.getInventoryList().get(0).getDamage() + currentPlayer.getDamage() - 4);
 
@@ -111,7 +111,7 @@ public class Rogue extends Player implements IClasses, ICombat, Serializable {
                 System.out.println(monster.getMonsterName() + " lost " + calcRogueUltimate + " hp!");
 
             }
-            currentPlayer.setResource(currentPlayer.getResource() - 150);
+            currentPlayer.setResource(currentPlayer.getResource() - 100);
         } else {
             System.out.printf("The %s %s doesnt have enough energy to perform Fools elusiveness \n\n", currentPlayer.getClassName(), currentPlayer.getName());
         }
